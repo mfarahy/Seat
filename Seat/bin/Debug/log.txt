@@ -222,3 +222,12 @@ System.Net.Http.HttpRequestException: Response status code does not indicate suc
 09:06:05,975 [User = Anonymouse] TsetmcOnlineDataProvider INFO number of deals base on heven changes is 1 
 09:06:06,611 [User = Anonymouse] TsetmcStorage INFO successfuly 25 client types was added 
 09:06:08,508 [User = Anonymouse] Form1 TRACE start refresh observer messages 
+09:06:16,088 [User = Anonymouse] TsetmcOnlineDataProvider INFO number of deals base on heven changes is 3 
+09:06:16,718 [User = Anonymouse] TsetmcStorage INFO successfuly 5 client types was added 
+09:06:26,082 [User = Anonymouse] TsetmcOnlineDataProvider INFO number of deals base on heven changes is 3 
+09:06:26,754 [User = Anonymouse] TsetmcStorage INFO successfuly 3 client types was added 
+09:06:28,630 [User = Anonymouse] TsetmcStorage INFO successfuly 276 client types was added 
+09:06:33,370 [User = Anonymouse] Form1 TRACE start refresh observer messages 
+09:06:37,094 [User = Anonymouse] TsetmcOnlineDataProvider INFO number of deals base on heven changes is 3 
+09:06:38,036 [User = Anonymouse] TsetmcStorage INFO successfuly 13 client types was added 
+09:06:39,096 [User = Anonymouse] TsetmcStorage INFO successfuly 18 client types was added 
