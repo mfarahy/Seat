@@ -1,0 +1,301 @@
+﻿09:06:34,781 [User = Anonymouse] TsetmcOnlineDataProvider INFO number of deals base on heven changes is 19 
+09:06:38,001 [User = Anonymouse] TsetmcOnlineDataProvider INFO load client types was called and detect 69 changes 
+09:06:44,549 [User = Anonymouse] TsetmcOnlineDataProvider INFO successfuly 1356 instance was loaded by LoadData 
+09:07:37,733 [User = Anonymouse] TsetmcOnlineDataProvider INFO number of deals base on heven changes is 35 
+09:07:37,820 [User = Anonymouse] TsetmcOnlineDataProvider INFO load client types was called and detect 281 changes 
+09:07:46,186 [User = Anonymouse] TsetmcOnlineDataProvider INFO successfuly 1360 instance was loaded by LoadData 
+09:24:05,267 [User = Anonymouse] TsetmcOnlineDataProvider INFO number of deals base on heven changes is 4 
+09:24:05,301 [User = Anonymouse] TsetmcOnlineDataProvider INFO load client types was called and detect 612 changes 
+09:24:10,703 [User = Anonymouse] TsetmcOnlineDataProvider INFO successfuly 1385 instance was loaded by LoadData 
+09:24:20,209 [User = Anonymouse] TsetmcStorage INFO successfuly 100 observer message was saved in database 
+09:28:56,347 [User = Anonymouse] TsetmcOnlineDataProvider INFO number of deals base on heven changes is 18 
+09:28:56,391 [User = Anonymouse] TsetmcOnlineDataProvider INFO load client types was called and detect 617 changes 
+09:29:00,515 [User = Anonymouse] TsetmcOnlineDataProvider INFO successfuly 1394 instance was loaded by LoadData 
+09:29:02,803 [User = Anonymouse] TsetmcStorage INFO successfuly 100 observer message was saved in database 
+09:41:26,639 [User = Anonymouse] TsetmcOnlineDataProvider INFO number of deals base on heven changes is 16 
+09:41:26,679 [User = Anonymouse] TsetmcOnlineDataProvider INFO load client types was called and detect 627 changes 
+09:41:29,759 [User = Anonymouse] TsetmcOnlineDataProvider INFO successfuly 1421 instance was loaded by LoadData 
+09:41:59,187 [User = Anonymouse] TsetmcOnlineDataProvider INFO number of deals base on heven changes is 17 
+09:42:00,770 [User = Anonymouse] TsetmcOnlineDataProvider INFO load client types was called and detect 627 changes 
+09:42:05,829 [User = Anonymouse] TsetmcOnlineDataProvider INFO successfuly 1422 instance was loaded by LoadData 
+09:42:58,721 [User = Anonymouse] TsetmcOnlineDataProvider INFO number of deals base on heven changes is 20 
+09:42:58,873 [User = Anonymouse] TsetmcOnlineDataProvider INFO load client types was called and detect 627 changes 
+09:43:09,349 [User = Anonymouse] TsetmcOnlineDataProvider INFO successfuly 1421 instance was loaded by LoadData 
+10:04:02,508 [User = Anonymouse] TsetmcOnlineDataProvider INFO number of deals base on heven changes is 14 
+10:04:02,550 [User = Anonymouse] TsetmcOnlineDataProvider INFO load client types was called and detect 613 changes 
+10:04:05,253 [User = Anonymouse] TsetmcOnlineDataProvider INFO successfuly 1430 instance was loaded by LoadData 
+10:06:35,116 [User = Anonymouse] TsetmcOnlineDataProvider INFO number of deals base on heven changes is 7 
+10:06:35,184 [User = Anonymouse] TsetmcOnlineDataProvider INFO load client types was called and detect 703 changes 
+10:06:37,835 [User = Anonymouse] TsetmcOnlineDataProvider INFO successfuly 1440 instance was loaded by LoadData 
+10:06:58,402 [User = Anonymouse] TsetmcOnlineDataProvider INFO number of deals base on heven changes is 23 
+10:06:58,492 [User = Anonymouse] TsetmcOnlineDataProvider INFO load client types was called and detect 703 changes 
+10:07:06,165 [User = Anonymouse] TsetmcOnlineDataProvider INFO successfuly 1440 instance was loaded by LoadData 
+10:07:58,608 [User = Anonymouse] TsetmcStorage INFO successfuly 100 observer message was saved in database 
+10:25:19,112 [User = Anonymouse] TsetmcStorage INFO successfuly 1 observer message was saved in database 
+10:30:42,848 [User = Anonymouse] TsetmcOnlineDataProvider INFO number of deals base on heven changes is 17 
+10:30:43,302 [User = Anonymouse] TsetmcOnlineDataProvider INFO load client types was called and detect 730 changes 
+10:30:50,342 [User = Anonymouse] TsetmcOnlineDataProvider INFO successfuly 1463 instance was loaded by LoadData 
+10:30:59,284 [User = Anonymouse] TsetmcStorage INFO successfuly 100 observer message was saved in database 
+10:32:09,721 [User = Anonymouse] TsetmcOnlineDataProvider ERROR cannot load data for 0th trying 
+System.Threading.Tasks.TaskCanceledException: A task was canceled.
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   at Seat.SeatEngine.DataProvider.TsetmcOnlineDataProvider.<UpdateMarketWatch>d__14.MoveNext() in C:\Users\mfarahi\source\repos\Seat\Seat\SeatEngine\DataProvider\TsetmcOnlineDataProvider.cs:line 137
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   at Seat.SeatEngine.DataProvider.TsetmcOnlineDataProvider.<LoadData>d__34.MoveNext() in C:\Users\mfarahi\source\repos\Seat\Seat\SeatEngine\DataProvider\TsetmcOnlineDataProvider.cs:line 350
+10:32:09,843 [User = Anonymouse] TsetmcOnlineDataProvider INFO number of deals base on heven changes is 10 
+10:32:09,876 [User = Anonymouse] TsetmcOnlineDataProvider INFO load client types was called and detect 735 changes 
+10:32:13,041 [User = Anonymouse] TsetmcOnlineDataProvider INFO successfuly 1461 instance was loaded by LoadData 
+10:32:52,479 [User = Anonymouse] TsetmcOnlineDataProvider INFO number of deals base on heven changes is 13 
+10:32:52,517 [User = Anonymouse] TsetmcOnlineDataProvider INFO load client types was called and detect 735 changes 
+10:32:59,095 [User = Anonymouse] TsetmcOnlineDataProvider INFO successfuly 1460 instance was loaded by LoadData 
+10:33:33,855 [User = Anonymouse] TsetmcOnlineDataProvider ERROR cannot load data for 0th trying 
+System.Threading.Tasks.TaskCanceledException: A task was canceled.
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   at Seat.SeatEngine.DataProvider.TsetmcOnlineDataProvider.<UpdateMarketWatch>d__14.MoveNext() in C:\Users\mfarahi\source\repos\Seat\Seat\SeatEngine\DataProvider\TsetmcOnlineDataProvider.cs:line 137
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   at Seat.SeatEngine.DataProvider.TsetmcOnlineDataProvider.<LoadData>d__34.MoveNext() in C:\Users\mfarahi\source\repos\Seat\Seat\SeatEngine\DataProvider\TsetmcOnlineDataProvider.cs:line 350
+10:33:44,915 [User = Anonymouse] TsetmcOnlineDataProvider ERROR cannot load data for 1th trying 
+System.Threading.Tasks.TaskCanceledException: A task was canceled.
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   at Seat.SeatEngine.DataProvider.TsetmcOnlineDataProvider.<UpdateMarketWatch>d__14.MoveNext() in C:\Users\mfarahi\source\repos\Seat\Seat\SeatEngine\DataProvider\TsetmcOnlineDataProvider.cs:line 137
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   at Seat.SeatEngine.DataProvider.TsetmcOnlineDataProvider.<LoadData>d__34.MoveNext() in C:\Users\mfarahi\source\repos\Seat\Seat\SeatEngine\DataProvider\TsetmcOnlineDataProvider.cs:line 350
+10:33:55,969 [User = Anonymouse] TsetmcOnlineDataProvider ERROR cannot load data for 2th trying 
+System.Threading.Tasks.TaskCanceledException: A task was canceled.
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   at Seat.SeatEngine.DataProvider.TsetmcOnlineDataProvider.<UpdateMarketWatch>d__14.MoveNext() in C:\Users\mfarahi\source\repos\Seat\Seat\SeatEngine\DataProvider\TsetmcOnlineDataProvider.cs:line 137
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   at Seat.SeatEngine.DataProvider.TsetmcOnlineDataProvider.<LoadData>d__34.MoveNext() in C:\Users\mfarahi\source\repos\Seat\Seat\SeatEngine\DataProvider\TsetmcOnlineDataProvider.cs:line 350
+10:34:07,009 [User = Anonymouse] TsetmcOnlineDataProvider ERROR cannot load data for 3th trying 
+System.Threading.Tasks.TaskCanceledException: A task was canceled.
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   at Seat.SeatEngine.DataProvider.TsetmcOnlineDataProvider.<UpdateMarketWatch>d__14.MoveNext() in C:\Users\mfarahi\source\repos\Seat\Seat\SeatEngine\DataProvider\TsetmcOnlineDataProvider.cs:line 137
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   at Seat.SeatEngine.DataProvider.TsetmcOnlineDataProvider.<LoadData>d__34.MoveNext() in C:\Users\mfarahi\source\repos\Seat\Seat\SeatEngine\DataProvider\TsetmcOnlineDataProvider.cs:line 350
+10:34:14,561 [User = Anonymouse] TsetmcOnlineDataProvider INFO number of deals base on heven changes is 21 
+10:34:14,615 [User = Anonymouse] TsetmcOnlineDataProvider INFO load client types was called and detect 735 changes 
+10:34:21,156 [User = Anonymouse] TsetmcOnlineDataProvider INFO successfuly 1464 instance was loaded by LoadData 
+10:34:42,945 [User = Anonymouse] TsetmcStorage INFO successfuly 1 observer message was saved in database 
+10:35:03,562 [User = Anonymouse] TsetmcOnlineDataProvider INFO number of deals base on heven changes is 21 
+10:35:03,611 [User = Anonymouse] TsetmcOnlineDataProvider INFO load client types was called and detect 738 changes 
+10:35:07,198 [User = Anonymouse] TsetmcOnlineDataProvider INFO successfuly 1470 instance was loaded by LoadData 
+10:35:12,743 [User = Anonymouse] TsetmcStorage INFO successfuly 100 observer message was saved in database 
+10:35:38,189 [User = Anonymouse] TsetmcStorage INFO successfuly 1 observer message was saved in database 
+10:37:13,422 [User = Anonymouse] TsetmcOnlineDataProvider INFO number of deals base on heven changes is 23 
+10:37:15,060 [User = Anonymouse] TsetmcOnlineDataProvider INFO load client types was called and detect 744 changes 
+10:37:17,933 [User = Anonymouse] TsetmcOnlineDataProvider INFO successfuly 1468 instance was loaded by LoadData 
+10:39:08,541 [User = Anonymouse] TsetmcOnlineDataProvider INFO number of deals base on heven changes is 18 
+10:39:08,592 [User = Anonymouse] TsetmcOnlineDataProvider INFO load client types was called and detect 745 changes 
+10:39:11,743 [User = Anonymouse] TsetmcOnlineDataProvider INFO successfuly 1468 instance was loaded by LoadData 
+10:39:41,111 [User = Anonymouse] TsetmcStorage INFO successfuly 100 observer message was saved in database 
+10:42:28,362 [User = Anonymouse] TsetmcOnlineDataProvider INFO number of deals base on heven changes is 64 
+10:42:28,464 [User = Anonymouse] TsetmcOnlineDataProvider INFO load client types was called and detect 747 changes 
+10:42:34,531 [User = Anonymouse] TsetmcOnlineDataProvider INFO successfuly 1470 instance was loaded by LoadData 
+10:42:44,238 [User = Anonymouse] TsetmcStorage INFO successfuly 100 observer message was saved in database 
+10:52:53,507 [User = Anonymouse] TsetmcOnlineDataProvider INFO number of deals base on heven changes is 30 
+10:52:53,573 [User = Anonymouse] TsetmcOnlineDataProvider INFO load client types was called and detect 536 changes 
+10:52:57,218 [User = Anonymouse] TsetmcOnlineDataProvider INFO successfuly 1475 instance was loaded by LoadData 
+10:53:41,576 [User = Anonymouse] TsetmcOnlineDataProvider INFO number of deals base on heven changes is 32 
+10:53:41,690 [User = Anonymouse] TsetmcOnlineDataProvider INFO load client types was called and detect 754 changes 
+10:53:44,985 [User = Anonymouse] TsetmcOnlineDataProvider INFO successfuly 1475 instance was loaded by LoadData 
+10:55:01,761 [User = Anonymouse] TsetmcOnlineDataProvider INFO number of deals base on heven changes is 15 
+10:55:02,161 [User = Anonymouse] TsetmcOnlineDataProvider INFO load client types was called and detect 754 changes 
+10:55:05,475 [User = Anonymouse] TsetmcOnlineDataProvider INFO successfuly 1475 instance was loaded by LoadData 
+10:55:31,079 [User = Anonymouse] TsetmcStorage INFO successfuly 33 instance was updated 
+10:55:31,136 [User = Anonymouse] TsetmcStorage INFO successfuly 100 observer message was saved in database 
+10:56:05,989 [User = Anonymouse] TsetmcStorage INFO successfuly 1 observer message was saved in database 
+11:02:33,254 [User = Anonymouse] TsetmcOnlineDataProvider INFO number of deals base on heven changes is 8 
+11:02:33,307 [User = Anonymouse] TsetmcOnlineDataProvider INFO load client types was called and detect 756 changes 
+11:02:39,247 [User = Anonymouse] TsetmcOnlineDataProvider INFO successfuly 1475 instance was loaded by LoadData 
+11:02:45,174 [User = Anonymouse] TsetmcStorage INFO successfuly 1086 instance was updated 
+11:02:54,894 [User = Anonymouse] TsetmcStorage INFO successfuly 2 observer message was saved in database 
+11:10:04,917 [User = Anonymouse] TsetmcStorage INFO successfuly 1 observer message was saved in database 
+11:10:12,606 [User = Anonymouse] TsetmcStorage INFO successfuly 1 observer message was saved in database 
+11:11:47,938 [User = Anonymouse] TsetmcStorage INFO successfuly 1 observer message was saved in database 
+11:16:33,590 [User = Anonymouse] TsetmcStorage INFO successfuly 1 observer message was saved in database 
+11:16:59,140 [User = Anonymouse] TsetmcStorage INFO successfuly 1 observer message was saved in database 
+11:19:48,779 [User = Anonymouse] TsetmcStorage INFO successfuly 1 observer message was saved in database 
+11:48:49,486 [User = Anonymouse] TsetmcOnlineDataProvider INFO number of deals base on heven changes is 15 
+11:48:49,543 [User = Anonymouse] TsetmcOnlineDataProvider INFO load client types was called and detect 783 changes 
+11:48:57,039 [User = Anonymouse] TsetmcOnlineDataProvider INFO successfuly 1485 instance was loaded by LoadData 
+11:48:57,432 [User = Anonymouse] TsetmcOnlineDataProvider INFO number of deals base on heven changes is 6 
+11:48:57,457 [User = Anonymouse] TsetmcOnlineDataProvider INFO load client types was called and detect 783 changes 
+11:49:06,491 [User = Anonymouse] TsetmcOnlineDataProvider INFO successfuly 1485 instance was loaded by LoadData 
+11:49:08,221 [User = Anonymouse] TsetmcOnlineDataProvider INFO number of deals base on heven changes is 4 
+11:49:09,067 [User = Anonymouse] TsetmcOnlineDataProvider INFO load client types was called and detect 783 changes 
+11:49:16,278 [User = Anonymouse] TsetmcOnlineDataProvider INFO successfuly 1485 instance was loaded by LoadData 
+11:49:16,328 [User = Anonymouse] TsetmcOnlineDataProvider INFO number of deals base on heven changes is 4 
+11:49:16,360 [User = Anonymouse] TsetmcOnlineDataProvider INFO load client types was called and detect 783 changes 
+11:49:18,745 [User = Anonymouse] TsetmcOnlineDataProvider ERROR cannot load data for 3th trying 
+System.Threading.Tasks.TaskCanceledException: A task was canceled.
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   at Seat.SeatEngine.DataProvider.TsetmcOnlineDataProvider.<LoadInstHistory>d__8.MoveNext() in C:\Users\mfarahi\source\repos\Seat\Seat\SeatEngine\DataProvider\TsetmcOnlineDataProvider.cs:line 80
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.GetResult()
+   at Seat.SeatEngine.DataProvider.TsetmcOnlineDataProvider.<<LoadData>b__34_0>d.MoveNext() in C:\Users\mfarahi\source\repos\Seat\Seat\SeatEngine\DataProvider\TsetmcOnlineDataProvider.cs:line 350
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.GetResult()
+   at Seat.SeatEngine.DataProvider.TsetmcOnlineDataProvider.<try_do>d__35.MoveNext() in C:\Users\mfarahi\source\repos\Seat\Seat\SeatEngine\DataProvider\TsetmcOnlineDataProvider.cs:line 361
+11:49:54,769 [User = Anonymouse] TsetmcOnlineDataProvider ERROR cannot load data for 0th trying 
+System.Threading.Tasks.TaskCanceledException: A task was canceled.
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   at Seat.SeatEngine.DataProvider.TsetmcOnlineDataProvider.<UpdateMarketWatch>d__14.MoveNext() in C:\Users\mfarahi\source\repos\Seat\Seat\SeatEngine\DataProvider\TsetmcOnlineDataProvider.cs:line 137
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   at Seat.SeatEngine.DataProvider.TsetmcOnlineDataProvider.<<LoadData>b__34_0>d.MoveNext() in C:\Users\mfarahi\source\repos\Seat\Seat\SeatEngine\DataProvider\TsetmcOnlineDataProvider.cs:line 348
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.GetResult()
+   at Seat.SeatEngine.DataProvider.TsetmcOnlineDataProvider.<try_do>d__35.MoveNext() in C:\Users\mfarahi\source\repos\Seat\Seat\SeatEngine\DataProvider\TsetmcOnlineDataProvider.cs:line 361
+11:50:01,922 [User = Anonymouse] TsetmcOnlineDataProvider INFO number of deals base on heven changes is 11 
+11:50:13,018 [User = Anonymouse] TsetmcOnlineDataProvider ERROR cannot load data for 1th trying 
+System.Threading.Tasks.TaskCanceledException: A task was canceled.
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   at Seat.SeatEngine.DataProvider.TsetmcOnlineDataProvider.<LoadClientType>d__7.MoveNext() in C:\Users\mfarahi\source\repos\Seat\Seat\SeatEngine\DataProvider\TsetmcOnlineDataProvider.cs:line 43
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.GetResult()
+   at Seat.SeatEngine.DataProvider.TsetmcOnlineDataProvider.<<LoadData>b__34_0>d.MoveNext() in C:\Users\mfarahi\source\repos\Seat\Seat\SeatEngine\DataProvider\TsetmcOnlineDataProvider.cs:line 349
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.GetResult()
+   at Seat.SeatEngine.DataProvider.TsetmcOnlineDataProvider.<try_do>d__35.MoveNext() in C:\Users\mfarahi\source\repos\Seat\Seat\SeatEngine\DataProvider\TsetmcOnlineDataProvider.cs:line 361
+11:50:17,334 [User = Anonymouse] TsetmcOnlineDataProvider INFO number of deals base on heven changes is 2 
+11:50:17,380 [User = Anonymouse] TsetmcOnlineDataProvider INFO load client types was called and detect 786 changes 
+11:50:23,616 [User = Anonymouse] TsetmcOnlineDataProvider INFO successfuly 1487 instance was loaded by LoadData 
+11:50:23,677 [User = Anonymouse] TsetmcOnlineDataProvider INFO number of deals base on heven changes is 3 
+11:50:23,718 [User = Anonymouse] TsetmcOnlineDataProvider INFO load client types was called and detect 786 changes 
+11:50:29,148 [User = Anonymouse] TsetmcOnlineDataProvider INFO successfuly 1487 instance was loaded by LoadData 
+11:50:29,169 [User = Anonymouse] TsetmcOnlineDataProvider INFO number of deals base on heven changes is 5 
+11:50:29,202 [User = Anonymouse] TsetmcOnlineDataProvider INFO load client types was called and detect 786 changes 
+11:51:03,700 [User = Anonymouse] TsetmcOnlineDataProvider INFO number of deals base on heven changes is 20 
+11:51:04,109 [User = Anonymouse] TsetmcOnlineDataProvider INFO load client types was called and detect 786 changes 
+11:51:10,606 [User = Anonymouse] TsetmcOnlineDataProvider INFO successfuly 1509 instance was loaded by LoadData 
+11:51:17,417 [User = Anonymouse] TsetmcStorage INFO successfuly 1113 instance was updated 
+11:53:59,289 [User = Anonymouse] TsetmcStorage INFO successfuly 8 observer message was saved in database 
+11:54:08,301 [User = Anonymouse] TsetmcStorage INFO successfuly 1 observer message was saved in database 
+11:57:09,286 [User = Anonymouse] TsetmcStorage INFO successfuly 1 observer message was saved in database 
+11:59:19,016 [User = Anonymouse] TsetmcStorage INFO successfuly 1 observer message was saved in database 
+12:41:42,462 [User = Anonymouse] TsetmcOnlineDataProvider INFO number of deals base on heven changes is 17 
+12:41:42,514 [User = Anonymouse] TsetmcOnlineDataProvider INFO load client types was called and detect 839 changes 
+12:41:46,764 [User = Anonymouse] TsetmcOnlineDataProvider INFO successfuly 1506 instance was loaded by LoadData 
+12:43:04,811 [User = Anonymouse] TsetmcOnlineDataProvider INFO number of deals base on heven changes is 14 
+12:43:05,161 [User = Anonymouse] TsetmcOnlineDataProvider INFO load client types was called and detect 839 changes 
+12:43:08,298 [User = Anonymouse] TsetmcOnlineDataProvider INFO successfuly 1527 instance was loaded by LoadData 
+12:43:16,711 [User = Anonymouse] TsetmcStorage INFO successfuly 1113 instance was updated 
+12:43:40,964 [User = Anonymouse] TsetmcOnlineDataProvider INFO number of deals base on heven changes is 17 
+12:43:41,005 [User = Anonymouse] TsetmcOnlineDataProvider INFO load client types was called and detect 839 changes 
+12:43:46,323 [User = Anonymouse] TsetmcOnlineDataProvider INFO successfuly 1489 instance was loaded by LoadData 
+12:43:54,525 [User = Anonymouse] TsetmcStorage INFO successfuly 1113 instance was updated 
+12:44:36,182 [User = Anonymouse] TsetmcOnlineDataProvider INFO number of deals base on heven changes is 17 
+12:44:36,219 [User = Anonymouse] TsetmcOnlineDataProvider INFO load client types was called and detect 839 changes 
+12:44:41,179 [User = Anonymouse] TsetmcOnlineDataProvider INFO successfuly 1489 instance was loaded by LoadData 
+12:44:49,390 [User = Anonymouse] TsetmcStorage INFO successfuly 1113 instance was updated 
+12:45:05,079 [User = Anonymouse] TsetmcOnlineDataProvider INFO number of deals base on heven changes is 14 
+12:45:05,117 [User = Anonymouse] TsetmcOnlineDataProvider INFO load client types was called and detect 839 changes 
+12:45:09,943 [User = Anonymouse] TsetmcOnlineDataProvider INFO successfuly 1489 instance was loaded by LoadData 
+12:45:18,036 [User = Anonymouse] TsetmcStorage INFO successfuly 1113 instance was updated 
+12:51:29,695 [User = Anonymouse] TsetmcOnlineDataProvider INFO number of deals base on heven changes is 11 
+12:51:29,781 [User = Anonymouse] TsetmcOnlineDataProvider INFO load client types was called and detect 842 changes 
+12:51:31,106 [User = Anonymouse] TsetmcOnlineDataProvider ERROR cannot load data for 0th trying 
+System.Net.Http.HttpRequestException: Response status code does not indicate success: 500 (Internal Server Error).
+   at System.Net.Http.HttpResponseMessage.EnsureSuccessStatusCode()
+   at Seat.SeatEngine.DataProvider.TsetmcOnlineDataProvider.<LoadInstHistory>d__23.MoveNext() in C:\Users\mfarahi\source\repos\Seat\Seat\SeatEngine\DataProvider\TsetmcOnlineDataProvider.cs:line 76
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.GetResult()
+   at Seat.SeatEngine.DataProvider.TsetmcOnlineDataProvider.<<LoadData>b__29_0>d.MoveNext() in C:\Users\mfarahi\source\repos\Seat\Seat\SeatEngine\DataProvider\TsetmcOnlineDataProvider.cs:line 306
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.GetResult()
+   at Seat.SeatEngine.DataProvider.DataProvider.<try_do>d__10.MoveNext() in C:\Users\mfarahi\source\repos\Seat\Seat\SeatEngine\DataProvider\DataProvider.cs:line 73
+12:51:31,179 [User = Anonymouse] TsetmcOnlineDataProvider INFO number of deals base on heven changes is 1 
+12:51:31,201 [User = Anonymouse] TsetmcOnlineDataProvider INFO load client types was called and detect 842 changes 
+12:51:38,200 [User = Anonymouse] TsetmcOnlineDataProvider INFO successfuly 1488 instance was loaded by LoadData 
+12:51:46,601 [User = Anonymouse] TsetmcStorage INFO successfuly 1112 instance was updated 
+12:55:53,309 [User = Anonymouse] TsetmcOnlineDataProvider INFO number of deals base on heven changes is 9 
+12:55:53,369 [User = Anonymouse] TsetmcOnlineDataProvider INFO load client types was called and detect 842 changes 
+12:55:56,449 [User = Anonymouse] TsetmcOnlineDataProvider INFO successfuly 1488 instance was loaded by LoadData 
+12:56:04,644 [User = Anonymouse] TsetmcStorage INFO successfuly 1108 instance was updated 
+13:01:40,283 [User = Anonymouse] TsetmcOnlineDataProvider INFO number of deals base on heven changes is 10 
+13:01:40,326 [User = Anonymouse] TsetmcOnlineDataProvider INFO load client types was called and detect 842 changes 
+13:01:45,757 [User = Anonymouse] TsetmcOnlineDataProvider INFO successfuly 1485 instance was loaded by LoadData 
+13:01:54,067 [User = Anonymouse] TsetmcStorage INFO successfuly 1107 instance was updated 
+13:03:19,361 [User = Anonymouse] TsetmcOnlineDataProvider INFO number of deals base on heven changes is 10 
+13:03:19,430 [User = Anonymouse] TsetmcOnlineDataProvider INFO load client types was called and detect 842 changes 
+13:03:25,089 [User = Anonymouse] TsetmcOnlineDataProvider INFO successfuly 1483 instance was loaded by LoadData 
+13:03:34,219 [User = Anonymouse] TsetmcStorage INFO successfuly 1107 instance was updated 
+13:07:01,658 [User = Anonymouse] TsetmcOnlineDataProvider INFO number of deals base on heven changes is 11 
+13:07:01,716 [User = Anonymouse] TsetmcOnlineDataProvider INFO load client types was called and detect 842 changes 
+13:07:07,758 [User = Anonymouse] TsetmcOnlineDataProvider INFO successfuly 1482 instance was loaded by LoadData 
+13:07:16,088 [User = Anonymouse] TsetmcStorage INFO successfuly 1106 instance was updated 
+13:07:23,498 [User = Anonymouse] TsetmcOnlineDataProvider INFO successfuly 180 new codal messages was detected. 
+13:08:07,723 [User = Anonymouse] TsetmcOnlineDataProvider INFO number of deals base on heven changes is 9 
+13:08:07,767 [User = Anonymouse] TsetmcOnlineDataProvider INFO load client types was called and detect 842 changes 
+13:08:13,689 [User = Anonymouse] TsetmcOnlineDataProvider INFO successfuly 1482 instance was loaded by LoadData 
+13:08:21,899 [User = Anonymouse] TsetmcStorage INFO successfuly 1106 instance was updated 
+13:10:23,989 [User = Anonymouse] TsetmcOnlineDataProvider INFO number of deals base on heven changes is 10 
+13:10:24,045 [User = Anonymouse] TsetmcOnlineDataProvider INFO load client types was called and detect 842 changes 
+13:10:30,537 [User = Anonymouse] TsetmcOnlineDataProvider INFO successfuly 1483 instance was loaded by LoadData 
+13:10:38,552 [User = Anonymouse] TsetmcStorage INFO successfuly 1106 instance was updated 
+13:13:49,334 [User = Anonymouse] TsetmcOnlineDataProvider INFO successfuly 1 new codal messages was detected. 
+13:14:49,397 [User = Anonymouse] TsetmcOnlineDataProvider INFO successfuly 1 new codal messages was detected. 
+13:20:49,810 [User = Anonymouse] TsetmcOnlineDataProvider INFO successfuly 1 new codal messages was detected. 
+13:23:50,013 [User = Anonymouse] TsetmcOnlineDataProvider INFO successfuly 1 new codal messages was detected. 
+13:27:50,229 [User = Anonymouse] TsetmcOnlineDataProvider INFO successfuly 1 new codal messages was detected. 
+13:30:50,380 [User = Anonymouse] TsetmcOnlineDataProvider INFO successfuly 1 new codal messages was detected. 
+13:32:50,568 [User = Anonymouse] TsetmcOnlineDataProvider INFO successfuly 1 new codal messages was detected. 
+13:50:51,632 [User = Anonymouse] TsetmcOnlineDataProvider INFO successfuly 2 new codal messages was detected. 
+13:55:51,983 [User = Anonymouse] TsetmcOnlineDataProvider INFO successfuly 2 new codal messages was detected. 
+13:59:52,221 [User = Anonymouse] TsetmcOnlineDataProvider INFO successfuly 2 new codal messages was detected. 
+14:03:53,018 [User = Anonymouse] TsetmcOnlineDataProvider INFO successfuly 1 new codal messages was detected. 
+14:14:53,829 [User = Anonymouse] TsetmcOnlineDataProvider INFO successfuly 1 new codal messages was detected. 
+14:15:53,911 [User = Anonymouse] TsetmcOnlineDataProvider INFO successfuly 1 new codal messages was detected. 
+14:18:54,078 [User = Anonymouse] TsetmcOnlineDataProvider INFO successfuly 1 new codal messages was detected. 
+14:19:54,153 [User = Anonymouse] TsetmcOnlineDataProvider INFO successfuly 2 new codal messages was detected. 
+14:20:54,215 [User = Anonymouse] TsetmcOnlineDataProvider INFO successfuly 2 new codal messages was detected. 
+14:22:54,315 [User = Anonymouse] TsetmcOnlineDataProvider INFO successfuly 1 new codal messages was detected. 
+14:23:54,380 [User = Anonymouse] TsetmcOnlineDataProvider INFO successfuly 1 new codal messages was detected. 
+14:26:54,824 [User = Anonymouse] TsetmcOnlineDataProvider INFO successfuly 1 new codal messages was detected. 

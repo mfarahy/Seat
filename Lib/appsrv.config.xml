@@ -1,0 +1,51 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<objects xmlns="http://www.springframework.net"
+             xmlns:db="http://www.springframework.net/database">
+
+  <object id="AzDbUserService" singleton="true" scope="application" type="Exir.Framework.ApplicationService.SecurityUiApi.AzDbUserService, Exir.Framework.ApplicationService"/>
+
+  <object id="AzRoleService" singleton="true" scope="application" type="Exir.Framework.ApplicationService.SecurityUiApi.AzRoleService, Exir.Framework.ApplicationService">
+    <constructor-arg name="engine" ref="AuthorizationEngine" />
+  </object>
+  <object id="AzTaskService" singleton="true" scope="application" type="Exir.Framework.ApplicationService.SecurityUiApi.AzTaskService, Exir.Framework.ApplicationService">
+    <constructor-arg name="engine" ref="AuthorizationEngine" />
+  </object>
+  <object id="AzUserTaskService" singleton="true" scope="application" type="Exir.Framework.ApplicationService.SecurityUiApi.AzUserTaskService, Exir.Framework.ApplicationService">
+    <constructor-arg name="engine" ref="AuthorizationEngine" />
+  </object>
+  <object id="SecurityUiApiServiceFactory" singleton="true" scope="application" type="Exir.Framework.ApplicationService.SecurityUiApi.SecurityUiApiServiceFactory, Exir.Framework.ApplicationService" />
+
+  <object id="LogService" lazy-init="true" singleton="true" scope="application" type="Exir.Framework.ApplicationService.Logging.LogService, Exir.Framework.ApplicationService">
+    <constructor-arg value="LocalSqlServer"/>
+  </object>
+  
+  <object id="ExceptionHandlingAdvicer" type="Exir.Framework.ApplicationService.ExceptionHandling.ExceptionHandlingAdvicer, Exir.Framework.ApplicationService" />
+
+  <object id="ChangeRecorderAdvice" type="Exir.Framework.ApplicationService.ChangeLogger.ChangeRecorderAdvice, Exir.Framework.ApplicationService">
+    <property name="IgnoreProperties">
+      <list>
+        <value>UpdateDate</value>
+      </list>
+    </property>
+  </object>
+  
+    <object id="SaveMethodPointcut" type="Spring.Aop.Support.NameMatchMethodPointcut, Spring.Aop">
+    <property name="MappedName" value="Save" />
+  </object>
+  
+  <object id="ChangeRecorderAdvisor" type="Spring.Aop.Support.DefaultPointcutAdvisor, Spring.Aop">
+    <property name="Advice" ref="ChangeRecorderAdvice" />
+    <property name="Pointcut" ref="SaveMethodPointcut" />
+  </object>
+
+  <object id="ExhExceptionLogService" type="Exir.Framework.ApplicationService.ExceptionHandling.ExhExceptionLogService, Exir.Framework.ApplicationService"/>
+
+  <object id="ExhExtraLogInfoService" type="Exir.Framework.ApplicationService.ExceptionHandling.ExhExtraLogInfoService, Exir.Framework.ApplicationService"/>
+
+  <object id="ExhResolverService" type="Exir.Framework.ApplicationService.ExceptionHandling.ExhResolverService, Exir.Framework.ApplicationService"/>
+
+  <object id="ExhExceptionService" type="Exir.Framework.ApplicationService.ExceptionHandling.ExhExceptionService, Exir.Framework.ApplicationService"/>
+
+  <object id="ExceptionHandlingController" type="Exir.Framework.ApplicationService.ExceptionHandling.ExceptionHandlingController, Exir.Framework.ApplicationService"/>
+
+</objects>

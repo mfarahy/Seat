@@ -1,0 +1,175 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="SeatDBModelStoreContainer" CdmEntityContainer="SeatEntities">
+    <EntitySetMapping Name="ClientTypes">
+      <EntityTypeMapping TypeName="SeatDBModel.ClientType">
+        <MappingFragment StoreEntitySet="ClientTypes">
+          <ScalarProperty Name="VisitCount" ColumnName="VisitCount" />
+          <ScalarProperty Name="InsCode" ColumnName="InsCode" />
+          <ScalarProperty Name="heven" ColumnName="heven" />
+          <ScalarProperty Name="Prev_TVol" ColumnName="Prev_TVol" />
+          <ScalarProperty Name="Prev_Pl" ColumnName="Prev_Pl" />
+          <ScalarProperty Name="Prev_Sell_N_Volume" ColumnName="Prev_Sell_N_Volume" />
+          <ScalarProperty Name="Prev_Sell_I_Volume" ColumnName="Prev_Sell_I_Volume" />
+          <ScalarProperty Name="Prev_Sell_CountN" ColumnName="Prev_Sell_CountN" />
+          <ScalarProperty Name="Prev_Sell_CountI" ColumnName="Prev_Sell_CountI" />
+          <ScalarProperty Name="Prev_Buy_N_Volume" ColumnName="Prev_Buy_N_Volume" />
+          <ScalarProperty Name="Prev_Buy_I_Volume" ColumnName="Prev_Buy_I_Volume" />
+          <ScalarProperty Name="Prev_Buy_CountN" ColumnName="Prev_Buy_CountN" />
+          <ScalarProperty Name="Prev_Buy_CountI" ColumnName="Prev_Buy_CountI" />
+          <ScalarProperty Name="ClintTypePK" ColumnName="ClintTypePK" />
+          <ScalarProperty Name="DayDt" ColumnName="DayDt" />
+          <ScalarProperty Name="Buy_CountI" ColumnName="Buy_CountI" />
+          <ScalarProperty Name="Buy_CountN" ColumnName="Buy_CountN" />
+          <ScalarProperty Name="Buy_I_Volume" ColumnName="Buy_I_Volume" />
+          <ScalarProperty Name="Buy_N_Volume" ColumnName="Buy_N_Volume" />
+          <ScalarProperty Name="Sell_CountI" ColumnName="Sell_CountI" />
+          <ScalarProperty Name="Sell_CountN" ColumnName="Sell_CountN" />
+          <ScalarProperty Name="Sell_I_Volume" ColumnName="Sell_I_Volume" />
+          <ScalarProperty Name="Sell_N_Volume" ColumnName="Sell_N_Volume" />
+          <ScalarProperty Name="Pl" ColumnName="Pl" />
+          <ScalarProperty Name="TVol" ColumnName="TVol" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Messages">
+      <EntityTypeMapping TypeName="SeatDBModel.Message">
+        <MappingFragment StoreEntitySet="Messages">
+          <ScalarProperty Name="InsCode" ColumnName="InsCode" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="MessageDt" ColumnName="MessageDt" />
+          <ScalarProperty Name="Subject" ColumnName="Subject" />
+          <ScalarProperty Name="MessagePK" ColumnName="MessagePK" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CodalMessages">
+      <EntityTypeMapping TypeName="SeatDBModel.CodalMessage">
+        <MappingFragment StoreEntitySet="CodalMessages">
+          <ScalarProperty Name="InsCode" ColumnName="InsCode" />
+          <ScalarProperty Name="PublishDateTime" ColumnName="PublishDateTime" />
+          <ScalarProperty Name="SentDateTime" ColumnName="SentDateTime" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
+          <ScalarProperty Name="CompanyName" ColumnName="CompanyName" />
+          <ScalarProperty Name="Symbol" ColumnName="Symbol" />
+          <ScalarProperty Name="TracingNo" ColumnName="TracingNo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Instruments">
+      <EntityTypeMapping TypeName="SeatDBModel.Instrument">
+        <MappingFragment StoreEntitySet="Instruments">
+          <ScalarProperty Name="Z" ColumnName="Z" />
+          <ScalarProperty Name="Cs" ColumnName="Cs" />
+          <ScalarProperty Name="BVol" ColumnName="BVol" />
+          <ScalarProperty Name="Type" ColumnName="Type" />
+          <ScalarProperty Name="Pe" ColumnName="Pe" />
+          <ScalarProperty Name="Eps" ColumnName="Eps" />
+          <ScalarProperty Name="YVal" ColumnName="YVal" />
+          <ScalarProperty Name="CSoSecVal" ColumnName="CSoSecVal" />
+          <ScalarProperty Name="CSecVal" ColumnName="CSecVal" />
+          <ScalarProperty Name="CComVal" ColumnName="CComVal" />
+          <ScalarProperty Name="YMarNSC" ColumnName="YMarNSC" />
+          <ScalarProperty Name="CGrValCot" ColumnName="CGrValCot" />
+          <ScalarProperty Name="CGdSVal" ColumnName="CGdSVal" />
+          <ScalarProperty Name="LSoc30" ColumnName="LSoc30" />
+          <ScalarProperty Name="Flow" ColumnName="Flow" />
+          <ScalarProperty Name="DEven" ColumnName="DEven" />
+          <ScalarProperty Name="CIsin" ColumnName="CIsin" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Symbol" ColumnName="Symbol" />
+          <ScalarProperty Name="CompanyCode" ColumnName="CompanyCode" />
+          <ScalarProperty Name="LatinName" ColumnName="LatinName" />
+          <ScalarProperty Name="LatinSymbol" ColumnName="LatinSymbol" />
+          <ScalarProperty Name="InstrumentID" ColumnName="InstrumentID" />
+          <ScalarProperty Name="InsCode" ColumnName="InsCode" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <AssociationSetMapping Name="InsMsgMap" TypeName="SeatDBModel.InsMsgMap" StoreEntitySet="InsMsgMap">
+      <EndProperty Name="Message">
+        <ScalarProperty Name="MessagePK" ColumnName="MessagePK" />
+      </EndProperty>
+      <EndProperty Name="Instrument">
+        <ScalarProperty Name="InsCode" ColumnName="InsCode" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <EntitySetMapping Name="Histories">
+      <EntityTypeMapping TypeName="SeatDBModel.History">
+        <MappingFragment StoreEntitySet="Histories">
+          <ScalarProperty Name="HasDetails" ColumnName="HasDetails" />
+          <ScalarProperty Name="Sell_N_Volume" ColumnName="Sell_N_Volume" />
+          <ScalarProperty Name="Sell_I_Volume" ColumnName="Sell_I_Volume" />
+          <ScalarProperty Name="Sell_CountN" ColumnName="Sell_CountN" />
+          <ScalarProperty Name="Sell_CountI" ColumnName="Sell_CountI" />
+          <ScalarProperty Name="Buy_N_Volume" ColumnName="Buy_N_Volume" />
+          <ScalarProperty Name="Buy_I_Volume" ColumnName="Buy_I_Volume" />
+          <ScalarProperty Name="Buy_CountN" ColumnName="Buy_CountN" />
+          <ScalarProperty Name="Buy_CountI" ColumnName="Buy_CountI" />
+          <ScalarProperty Name="BigMoney" ColumnName="BigMoney" />
+          <ScalarProperty Name="VisitCount" ColumnName="VisitCount" />
+          <ScalarProperty Name="Pe" ColumnName="Pe" />
+          <ScalarProperty Name="Eps" ColumnName="Eps" />
+          <ScalarProperty Name="Heven" ColumnName="Heven" />
+          <ScalarProperty Name="PriceFirst" ColumnName="PriceFirst" />
+          <ScalarProperty Name="PriceYesterday" ColumnName="PriceYesterday" />
+          <ScalarProperty Name="PriceMax" ColumnName="PriceMax" />
+          <ScalarProperty Name="PriceMin" ColumnName="PriceMin" />
+          <ScalarProperty Name="QTotCap" ColumnName="QTotCap" />
+          <ScalarProperty Name="QTotTran5J" ColumnName="QTotTran5J" />
+          <ScalarProperty Name="ZTotTran" ColumnName="ZTotTran" />
+          <ScalarProperty Name="PDrCotVal" ColumnName="PDrCotVal" />
+          <ScalarProperty Name="PClosing" ColumnName="PClosing" />
+          <ScalarProperty Name="DEven" ColumnName="DEven" />
+          <ScalarProperty Name="Date" ColumnName="Date" />
+          <ScalarProperty Name="InsCode" ColumnName="InsCode" />
+          <ScalarProperty Name="HistoryPK" ColumnName="HistoryPK" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="BestLimits">
+      <EntityTypeMapping TypeName="SeatDBModel.BestLimit">
+        <MappingFragment StoreEntitySet="BestLimits">
+          <ScalarProperty Name="DateTime" ColumnName="DateTime" />
+          <ScalarProperty Name="Sell_Count" ColumnName="Sell_Count" />
+          <ScalarProperty Name="Sell_Volume" ColumnName="Sell_Volume" />
+          <ScalarProperty Name="Sell_Price" ColumnName="Sell_Price" />
+          <ScalarProperty Name="Buy_Price" ColumnName="Buy_Price" />
+          <ScalarProperty Name="Buy_Volume" ColumnName="Buy_Volume" />
+          <ScalarProperty Name="Buy_Count" ColumnName="Buy_Count" />
+          <ScalarProperty Name="Row" ColumnName="Row" />
+          <ScalarProperty Name="InsCode" ColumnName="InsCode" />
+          <ScalarProperty Name="BestLimitPK" ColumnName="BestLimitPK" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Trades">
+      <EntityTypeMapping TypeName="SeatDBModel.Trade">
+        <MappingFragment StoreEntitySet="Trades">
+          <ScalarProperty Name="Unknown1" ColumnName="Unknown1" />
+          <ScalarProperty Name="Price" ColumnName="Price" />
+          <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+          <ScalarProperty Name="Number" ColumnName="Number" />
+          <ScalarProperty Name="DateTime" ColumnName="DateTime" />
+          <ScalarProperty Name="InsCode" ColumnName="InsCode" />
+          <ScalarProperty Name="TradePK" ColumnName="TradePK" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ShareHolderChanges">
+      <EntityTypeMapping TypeName="SeatDBModel.ShareHolderChange">
+        <MappingFragment StoreEntitySet="ShareHolderChanges">
+          <ScalarProperty Name="Percent" ColumnName="Percent" />
+          <ScalarProperty Name="DateTime" ColumnName="DateTime" />
+          <ScalarProperty Name="InsCode" ColumnName="InsCode" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Arrow" ColumnName="Arrow" />
+          <ScalarProperty Name="Quoantity" ColumnName="Quoantity" />
+          <ScalarProperty Name="InstrumentID" ColumnName="InstrumentID" />
+          <ScalarProperty Name="HolderPK" ColumnName="HolderPK" />
+          <ScalarProperty Name="ShareHolderChangePK" ColumnName="ShareHolderChangePK" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

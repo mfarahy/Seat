@@ -1,0 +1,70 @@
+﻿08:55:35,936 [User = Anonymouse] TsetmcWebServiceDataProvider INFO start update instruments using tsetmc web service 
+08:55:38,053 [User = Anonymouse] TsetmcWebServiceDataProvider ERROR cannot get data  
+System.ServiceModel.CommunicationException: The maximum message size quota for incoming messages (65536) has been exceeded. To increase the quota, use the MaxReceivedMessageSize property on the appropriate binding element. ---> System.ServiceModel.QuotaExceededException: The maximum message size quota for incoming messages (65536) has been exceeded. To increase the quota, use the MaxReceivedMessageSize property on the appropriate binding element.
+   --- End of inner exception stack trace ---
+
+Server stack trace: 
+   at System.ServiceModel.Channels.MessageEncoder.BufferMessageStream(Stream stream, BufferManager bufferManager, Int32 maxBufferSize)
+   at System.ServiceModel.Channels.MessageEncoder.ReadMessage(Stream stream, BufferManager bufferManager, Int32 maxBufferSize, String contentType)
+   at System.ServiceModel.Channels.HttpInput.ReadChunkedBufferedMessage(Stream inputStream)
+   at System.ServiceModel.Channels.HttpInput.ParseIncomingMessage(HttpRequestMessage httpRequestMessage, Exception& requestException)
+   at System.ServiceModel.Channels.HttpChannelFactory`1.HttpRequestChannel.HttpChannelRequest.WaitForReply(TimeSpan timeout)
+   at System.ServiceModel.Channels.RequestChannel.Request(Message message, TimeSpan timeout)
+   at System.ServiceModel.Dispatcher.RequestChannelBinder.Request(Message message, TimeSpan timeout)
+   at System.ServiceModel.Channels.ServiceChannel.Call(String action, Boolean oneway, ProxyOperationRuntime operation, Object[] ins, Object[] outs, TimeSpan timeout)
+   at System.ServiceModel.Channels.ServiceChannelProxy.InvokeService(IMethodCallMessage methodCall, ProxyOperationRuntime operation)
+   at System.ServiceModel.Channels.ServiceChannelProxy.Invoke(IMessage message)
+
+Exception rethrown at [0]: 
+   at System.Runtime.Remoting.Proxies.RealProxy.HandleReturnMessage(IMessage reqMsg, IMessage retMsg)
+   at System.Runtime.Remoting.Proxies.RealProxy.PrivateInvoke(MessageData& msgData, Int32 type)
+   at Seat.TsetmcWebService.WebServiceTseClientSoap.InstrumentAndShare(InstrumentAndShareRequest request)
+   at Seat.TsetmcWebService.WebServiceTseClientSoapClient.Seat.TsetmcWebService.WebServiceTseClientSoap.InstrumentAndShare(InstrumentAndShareRequest request) in C:\Users\mfarahi\source\repos\Seat\Seat\Connected Services\TsetmcWebService\Reference.cs:line 518
+   at Seat.TsetmcWebService.WebServiceTseClientSoapClient.InstrumentAndShare(Int32 DEven, Int64 LastID) in C:\Users\mfarahi\source\repos\Seat\Seat\Connected Services\TsetmcWebService\Reference.cs:line 526
+   at Seat.SeatEngine.DataProvider.Tsetmc.TsetmcWebServiceDataProvider.UpdateInstruments() in C:\Users\mfarahi\source\repos\Seat\Seat\SeatEngine\DataProvider\Tsetmc\TsetmcWebServiceDataProvider.cs:line 52
+08:55:54,431 [User = Anonymouse] TsetmcWebServiceDataProvider INFO start update instruments using tsetmc web service 
+09:00:43,520 [User = Anonymouse] TsetmcWebServiceDataProvider INFO start update instruments using tsetmc web service 
+09:00:44,508 [User = Anonymouse] TsetmcWebServiceDataProvider ERROR cannot get data  
+System.ServiceModel.CommunicationException: The maximum message size quota for incoming messages (65536) has been exceeded. To increase the quota, use the MaxReceivedMessageSize property on the appropriate binding element. ---> System.ServiceModel.QuotaExceededException: The maximum message size quota for incoming messages (65536) has been exceeded. To increase the quota, use the MaxReceivedMessageSize property on the appropriate binding element.
+   --- End of inner exception stack trace ---
+
+Server stack trace: 
+   at System.ServiceModel.Channels.MessageEncoder.BufferMessageStream(Stream stream, BufferManager bufferManager, Int32 maxBufferSize)
+   at System.ServiceModel.Channels.MessageEncoder.ReadMessage(Stream stream, BufferManager bufferManager, Int32 maxBufferSize, String contentType)
+   at System.ServiceModel.Channels.HttpInput.ReadChunkedBufferedMessage(Stream inputStream)
+   at System.ServiceModel.Channels.HttpInput.ParseIncomingMessage(HttpRequestMessage httpRequestMessage, Exception& requestException)
+   at System.ServiceModel.Channels.HttpChannelFactory`1.HttpRequestChannel.HttpChannelRequest.WaitForReply(TimeSpan timeout)
+   at System.ServiceModel.Channels.RequestChannel.Request(Message message, TimeSpan timeout)
+   at System.ServiceModel.Dispatcher.RequestChannelBinder.Request(Message message, TimeSpan timeout)
+   at System.ServiceModel.Channels.ServiceChannel.Call(String action, Boolean oneway, ProxyOperationRuntime operation, Object[] ins, Object[] outs, TimeSpan timeout)
+   at System.ServiceModel.Channels.ServiceChannelProxy.InvokeService(IMethodCallMessage methodCall, ProxyOperationRuntime operation)
+   at System.ServiceModel.Channels.ServiceChannelProxy.Invoke(IMessage message)
+
+Exception rethrown at [0]: 
+   at System.Runtime.Remoting.Proxies.RealProxy.HandleReturnMessage(IMessage reqMsg, IMessage retMsg)
+   at System.Runtime.Remoting.Proxies.RealProxy.PrivateInvoke(MessageData& msgData, Int32 type)
+   at Seat.TsetmcWebService.WebServiceTseClientSoap.InstrumentAndShare(InstrumentAndShareRequest request)
+   at Seat.TsetmcWebService.WebServiceTseClientSoapClient.Seat.TsetmcWebService.WebServiceTseClientSoap.InstrumentAndShare(InstrumentAndShareRequest request) in C:\Users\mfarahi\source\repos\Seat\Seat\Connected Services\TsetmcWebService\Reference.cs:line 518
+   at Seat.TsetmcWebService.WebServiceTseClientSoapClient.InstrumentAndShare(Int32 DEven, Int64 LastID) in C:\Users\mfarahi\source\repos\Seat\Seat\Connected Services\TsetmcWebService\Reference.cs:line 526
+   at Seat.SeatEngine.DataProvider.Tsetmc.TsetmcWebServiceDataProvider.UpdateInstruments() in C:\Users\mfarahi\source\repos\Seat\Seat\SeatEngine\DataProvider\Tsetmc\TsetmcWebServiceDataProvider.cs:line 52
+09:00:49,502 [User = Anonymouse] TsetmcWebServiceDataProvider INFO start update instruments using tsetmc web service 
+09:02:43,248 [User = Anonymouse] TsetmcWebServiceDataProvider INFO start update instruments using tsetmc web service 
+09:05:53,090 [User = Anonymouse] TsetmcWebServiceDataProvider INFO start update instruments using tsetmc web service 
+09:05:54,108 [User = Anonymouse] TsetmcWebServiceDataProvider INFO tsetmc web service method InstrumentAndShare with deven=0 and lastId=0 was called and return 363703 character 
+09:06:02,920 [User = Anonymouse] TsetmcWebServiceDataProvider INFO start update instruments using tsetmc web service 
+09:06:28,012 [User = Anonymouse] TsetmcWebServiceDataProvider INFO start update instruments using tsetmc web service 
+09:06:42,063 [User = Anonymouse] TsetmcWebServiceDataProvider ERROR cannot get data  
+System.NullReferenceException: Object reference not set to an instance of an object.
+   at Seat.SeatEngine.DataProvider.Tsetmc.TsetmcWebServiceDataProvider.UpdateInstruments() in C:\Users\mfarahi\source\repos\Seat\Seat\SeatEngine\DataProvider\Tsetmc\TsetmcWebServiceDataProvider.cs:line 35
+09:06:44,624 [User = Anonymouse] TsetmcWebServiceDataProvider INFO start update instruments using tsetmc web service 
+09:06:51,768 [User = Anonymouse] TsetmcWebServiceDataProvider ERROR cannot get data  
+System.NullReferenceException: Object reference not set to an instance of an object.
+   at Seat.SeatEngine.DataProvider.Tsetmc.TsetmcWebServiceDataProvider.UpdateInstruments() in C:\Users\mfarahi\source\repos\Seat\Seat\SeatEngine\DataProvider\Tsetmc\TsetmcWebServiceDataProvider.cs:line 35
+09:06:59,703 [User = Anonymouse] TsetmcWebServiceDataProvider INFO start update instruments using tsetmc web service 
+09:07:25,505 [User = Anonymouse] TsetmcWebServiceDataProvider INFO tsetmc web service method InstrumentAndShare with deven=0 and lastId=0 was called and return 363703 character 
+10:04:21,582 [User = Anonymouse] TsetmcWebServiceDataProvider INFO start update instruments using tsetmc web service 
+10:05:56,031 [User = Anonymouse] TsetmcWebServiceDataProvider INFO start update instruments using tsetmc web service 
+10:06:03,389 [User = Anonymouse] TsetmcWebServiceDataProvider ERROR cannot get data  
+System.NullReferenceException: Object reference not set to an instance of an object.
+   at Seat.SeatEngine.DataProvider.Tsetmc.TsetmcWebServiceDataProvider.UpdateInstruments() in C:\Users\mfarahi\source\repos\Seat\Seat\SeatEngine\DataProvider\Tsetmc\TsetmcWebServiceDataProvider.cs:line 36
+10:06:10,701 [User = Anonymouse] TsetmcWebServiceDataProvider INFO start update instruments using tsetmc web service 

@@ -1,0 +1,62 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+
+<objects xmlns="http://www.springframework.net"
+             xmlns:db="http://www.springframework.net/database">
+
+  <object id="WorkflowDriver" type="Exir.Workbox.FormFlow.WorkflowDriverAspect, Exir.Workbox"/>
+
+  <object id="P2pWorkflowUpdater" type="Exir.Workbox.Services.P2pWorkflowUpdater, Exir.Workbox"/>
+
+  <object id="WorkboxSqlServerTransactionAdvisor" type="Exir.Framework.DataAccess.Transaction.SqlServerTransactionAdvisor, Exir.Framework.DataAccess">
+    <constructor-arg index="0" value="LocalSqlServer" />
+    <constructor-arg index="1" value="WORKBOX-" />
+  </object>
+
+  <object id="BoxPresenter" singleton="false" type="Exir.Workbox.Web.BoxPresenter, Exir.Workbox.Web" />
+
+  <object type="Spring.Aop.Framework.AutoProxy.ObjectNameAutoProxyCreator, Spring.Aop">
+    <property name="Optimize" value="true" />
+    <property name="ObjectNames">
+      <list>
+        <value>BoxPresenter</value>
+      </list>
+    </property>
+    <property name="InterceptorNames">
+      <list>
+        <value>WorkboxSqlServerTransactionAdvisor</value>
+      </list>
+    </property>
+  </object>
+
+  <object id="WebServiceNegotiator" type="Exir.Workbox.Negotiator, Exir.Workbox" singleton="false" scope="request" />
+
+
+  <object id="WorkboxWebSrvAuthAdvice" type="Spring.Aop.Support.AttributeMatchMethodPointcutAdvisor, Spring.Aop">
+    <property name="advice">
+      <object type="Exir.Framework.Security.Authentication.WebServiceAuthenticaterAdvice, Exir.Framework.Security" />
+    </property>
+    <property name="attribute" value="Exir.Framework.Security.Authentication.WebServiceAuthenticateAttribute, Exir.Framework.Security" />
+  </object>
+
+  <object id="NegotiatorProxy" type="Spring.Aop.Framework.ProxyFactoryObject, Spring.Aop">
+    <property name="TargetName" value="WebServiceNegotiator" />
+    <property name="IsSingleton" value="true" />
+    <property name="InterceptorNames">
+      <list>
+        <value>WorkboxWebSrvAuthAdvice</value>
+      </list>
+    </property>
+  </object>
+
+  <object id="Negotiator" type="Spring.Web.Services.WebServiceExporter, Spring.Web">
+    <property name="TargetName" value="NegotiatorProxy" />
+    <property name="Namespace" value="http://localhost:1275/Exir/Workbox/Services/Negotiator.asmx" />
+    <property name="Description" value="My exported HelloWorld web service" />
+    <property name="Interfaces">
+      <list>
+        <value>Exir.Workbox.INegotiator, Exir.Workbox</value>
+      </list>
+    </property>
+  </object>
+
+</objects>

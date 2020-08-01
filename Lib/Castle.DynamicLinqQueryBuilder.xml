@@ -1,0 +1,262 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Castle.DynamicLinqQueryBuilder</name>
+    </assembly>
+    <members>
+        <member name="T:Castle.DynamicLinqQueryBuilder.ColumnBuilder">
+            <summary>
+            Class to assist with building column definitions for the jQuery Query Builder
+            </summary>
+        </member>
+        <member name="M:Castle.DynamicLinqQueryBuilder.ColumnBuilder.GetDefaultColumnDefinitionsForType(System.Type,System.Boolean)">
+            <summary>
+            Gets the default column definitions for a given type.
+            </summary>
+            <param name="dataType">Type of the data.</param>
+            <param name="camelCase">if set to <c>true</c> [camel case].</param>
+            <returns></returns>
+        </member>
+        <member name="M:Castle.DynamicLinqQueryBuilder.ColumnBuilder.ToCamelCase(System.String)">
+            <summary>
+            Camel cases a string.
+            </summary>
+            <param name="input">The input.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Castle.DynamicLinqQueryBuilder.ColumnBuilder.ToFriendlySpacedString(System.String)">
+            <summary>
+            Pretty-prints a property name.
+            </summary>
+            <param name="input">The input.</param>
+            <returns></returns>
+        </member>
+        <member name="T:Castle.DynamicLinqQueryBuilder.ColumnDefinition">
+            <summary>
+            Defines the columns to be filtered against in the UI component of jQuery Query Builder
+            </summary>
+        </member>
+        <member name="M:Castle.DynamicLinqQueryBuilder.ColumnDefinition.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Castle.DynamicLinqQueryBuilder.ColumnDefinition"/> class.
+            </summary>
+        </member>
+        <member name="P:Castle.DynamicLinqQueryBuilder.ColumnDefinition.Label">
+            <summary>
+            Gets or sets the label.
+            </summary>
+            <value>
+            The label.
+            </value>
+        </member>
+        <member name="P:Castle.DynamicLinqQueryBuilder.ColumnDefinition.Field">
+            <summary>
+            Gets or sets the field.
+            </summary>
+            <value>
+            The field.
+            </value>
+        </member>
+        <member name="P:Castle.DynamicLinqQueryBuilder.ColumnDefinition.Type">
+            <summary>
+            Gets or sets the type.
+            </summary>
+            <value>
+            The type.
+            </value>
+        </member>
+        <member name="P:Castle.DynamicLinqQueryBuilder.ColumnDefinition.Input">
+            <summary>
+            Gets or sets the input.
+            </summary>
+            <value>
+            The input.
+            </value>
+        </member>
+        <member name="P:Castle.DynamicLinqQueryBuilder.ColumnDefinition.Multiple">
+            <summary>
+            Gets or sets the multiple.
+            </summary>
+            <value>
+            The multiple.
+            </value>
+        </member>
+        <member name="P:Castle.DynamicLinqQueryBuilder.ColumnDefinition.Values">
+            <summary>
+            Gets or sets the values.
+            </summary>
+            <value>
+            The values.
+            </value>
+        </member>
+        <member name="P:Castle.DynamicLinqQueryBuilder.ColumnDefinition.Operators">
+            <summary>
+            Gets or sets the operators.
+            </summary>
+            <value>
+            The operators.
+            </value>
+        </member>
+        <member name="P:Castle.DynamicLinqQueryBuilder.ColumnDefinition.Template">
+            <summary>
+            Gets or sets the template.
+            </summary>
+            <value>
+            The template.
+            </value>
+        </member>
+        <member name="P:Castle.DynamicLinqQueryBuilder.ColumnDefinition.ItemBankNotFilterable">
+            <summary>
+            Gets or sets the item bank not filterable.
+            </summary>
+            <value>
+            The item bank not filterable.
+            </value>
+        </member>
+        <member name="P:Castle.DynamicLinqQueryBuilder.ColumnDefinition.ItemBankNotColumn">
+            <summary>
+            Gets or sets the item bank not column.
+            </summary>
+            <value>
+            The item bank not column.
+            </value>
+        </member>
+        <member name="P:Castle.DynamicLinqQueryBuilder.ColumnDefinition.PrettyOutputTransformer">
+            <summary>
+            Gets or sets the pretty output transformer.
+            </summary>
+            <value>
+            The pretty output transformer.
+            </value>
+        </member>
+        <member name="P:Castle.DynamicLinqQueryBuilder.ColumnDefinition.Id">
+            <summary>
+            Gets or sets the identifier.
+            </summary>
+            <value>
+            The identifier.
+            </value>
+        </member>
+        <member name="T:Castle.DynamicLinqQueryBuilder.FilterRule">
+            <summary>
+            This class is used to define a hierarchical filter for a given collection.
+            </summary>
+        </member>
+        <member name="P:Castle.DynamicLinqQueryBuilder.FilterRule.Condition">
+            <summary>
+            Condition - acceptable values are "and" and "or".
+            </summary>
+            <value>
+            The condition.
+            </value>
+        </member>
+        <member name="P:Castle.DynamicLinqQueryBuilder.FilterRule.Field">
+            <summary>
+            The name of the field that the filter applies to.
+            </summary>
+            <value>
+            The field.
+            </value>
+        </member>
+        <member name="P:Castle.DynamicLinqQueryBuilder.FilterRule.Id">
+            <summary>
+            Gets or sets the identifier.
+            </summary>
+            <value>
+            The identifier.
+            </value>
+        </member>
+        <member name="P:Castle.DynamicLinqQueryBuilder.FilterRule.Input">
+            <summary>
+            Gets or sets the input.
+            </summary>
+            <value>
+            The input.
+            </value>
+        </member>
+        <member name="P:Castle.DynamicLinqQueryBuilder.FilterRule.Operator">
+            <summary>
+            Gets or sets the operator.
+            </summary>
+            <value>
+            The operator.
+            </value>
+        </member>
+        <member name="P:Castle.DynamicLinqQueryBuilder.FilterRule.Rules">
+            <summary>
+            Gets or sets nested filter rules.
+            </summary>
+            <value>
+            The rules.
+            </value>
+        </member>
+        <member name="P:Castle.DynamicLinqQueryBuilder.FilterRule.Type">
+            <summary>
+            Gets or sets the type. Supported values are "integer", "double", "string", "date", "datetime", and "boolean".
+            </summary>
+            <value>
+            The type.
+            </value>
+        </member>
+        <member name="P:Castle.DynamicLinqQueryBuilder.FilterRule.Value">
+            <summary>
+            Gets or sets the value of the filter.
+            </summary>
+            <value>
+            The value.
+            </value>
+        </member>
+        <member name="T:Castle.DynamicLinqQueryBuilder.QueryBuilder">
+            <summary>
+            Generic IQueryable filter implementation.  Based upon configuration of FilterRules 
+            mapping to the data source.  When applied, acts as an advanced filter mechanism.
+            </summary>
+        </member>
+        <member name="P:Castle.DynamicLinqQueryBuilder.QueryBuilder.ParseDatesAsUtc">
+            <summary>
+            Gets or sets a value indicating whether incoming dates in the filter should be parsed as UTC.
+            </summary>
+            <value>
+              <c>true</c> if [parse dates as UTC]; otherwise, <c>false</c>.
+            </value>
+        </member>
+        <member name="M:Castle.DynamicLinqQueryBuilder.QueryBuilder.BuildQuery``1(System.Collections.Generic.IEnumerable{``0},Castle.DynamicLinqQueryBuilder.FilterRule)">
+            <summary>
+            Gets the filtered collection after applying the provided filter rules.
+            </summary>
+            <typeparam name="T">The generic type.</typeparam>
+            <param name="queryable">The queryable.</param>
+            <param name="filterRule">The filter rule.</param>
+            <returns>Filtered IQueryable</returns>
+        </member>
+        <member name="M:Castle.DynamicLinqQueryBuilder.QueryBuilder.BuildQuery``1(System.Collections.Generic.IList{``0},Castle.DynamicLinqQueryBuilder.FilterRule)">
+            <summary>
+            Gets the filtered collection after applying the provided filter rules.
+            </summary>
+            <typeparam name="T">The generic type.</typeparam>
+            <param name="queryable">The queryable.</param>
+            <param name="filterRule">The filter rule.</param>
+            <returns>Filtered IQueryable</returns>
+        </member>
+        <member name="M:Castle.DynamicLinqQueryBuilder.QueryBuilder.BuildQuery``1(System.Linq.IQueryable{``0},Castle.DynamicLinqQueryBuilder.FilterRule)">
+            <summary>
+            Gets the filtered collection after applying the provided filter rules.
+            </summary>
+            <typeparam name="T">The generic type.</typeparam>
+            <param name="queryable">The queryable.</param>
+            <param name="filterRule">The filter rule.</param>
+            <returns>Filtered IQueryable</returns>
+        </member>
+        <member name="M:Castle.DynamicLinqQueryBuilder.QueryBuilder.BuildQuery``1(System.Linq.IQueryable{``0},Castle.DynamicLinqQueryBuilder.FilterRule,System.String@)">
+            <summary>
+            Gets the filtered collection after applying the provided filter rules. 
+            Returns the string representation for diagnostic purposes.
+            </summary>
+            <typeparam name="T">The generic type.</typeparam>
+            <param name="queryable">The queryable.</param>
+            <param name="filterRule">The filter rule.</param>
+            <param name="parsedQuery">The parsed query.</param>
+            <returns>Filtered IQueryable.</returns>
+        </member>
+    </members>
+</doc>
