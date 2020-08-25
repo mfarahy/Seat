@@ -1,0 +1,37 @@
+<Bocrud ManagerFactoryType="Exir.Framework.Uie.Adapter.PresenterFactory, Exir.Framework.Uie.Adapter"
+                Style="classic"
+		AccessOperation="AspNtRl.A"
+		DirectAccessible="false"
+        DetailPosition="up"
+        Name="AspNetRole"
+        Caption="$AspNetRole"        
+        Height="480" Width="640"
+        ToStringFormat="" 
+        xmlns="http://exirtechsun.com/uie/2014/schema"
+       xmlns:yaxlib="http://yaxlib.codeplex.com/">
+
+	   		
+  <Groups>
+    <Group Title="جزئیات"  ColumnCount="2" Template="fluid">
+      <Controls>
+<TextBox  Caption="$Name" Name="Name"  /> 
+<Many2Many BocrudXml="AspNetUser"  Caption="AspNetUsers" Name="AspNetUsers"  />
+     </Controls>
+    </Group>
+  </Groups>
+
+<Grid Caption="$AspNetRole" 
+EnableSearch="false" ToolbarSearch="true" AutoWidth="false" Width="150"  
+MultiSelect="true" EnableColumnChooser="false">
+    <Columns>
+      <Column Width="150" Name="Name" Searchable="true" />
+
+    </Columns>
+</Grid>
+<Operations>All</Operations><!--All Create Update ViewDetail Search Delete Print CreateRoot CreateChild TreeCopy TreeMove None-->
+  <FactoryMethodArgsSpel>
+    <String>'AspNetRoleService'</String>
+      <String>T(SeatWebApp.Models.AspNetRoleViewModel, SeatWebApp)</String>
+  </FactoryMethodArgsSpel>
+</Bocrud>
+

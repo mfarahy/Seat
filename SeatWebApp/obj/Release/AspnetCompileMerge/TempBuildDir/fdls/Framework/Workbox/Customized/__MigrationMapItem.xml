@@ -1,0 +1,36 @@
+﻿<Bocrud PresenterType="Exir.Framework.Uie.Contracts.Support.VirtualPresenter, Exir.Framework.Uie"
+        IsFactoryMethodStatic="true"
+        Style="classic"
+        DetailPosition="up"
+        Name="__MigrationMapItem"
+        Caption="مپینگ"
+        Height="480" Width="640"
+DirectAccessible="false"
+AccessOperation="_MgrtnMpItm.A"
+        xmlns="http://exirtechsun.com/uie/2014/schema"
+       xmlns:yaxlib="http://yaxlib.codeplex.com/">
+
+  <Groups>
+    <Group Title="جزئیات"  ColumnCount="2" Template="fluid">
+      <Controls>
+        <TextBox  Caption="از" Name="From"  FontName="Courier New" Direction="Ltr" />
+        <TextBox  Caption="به" Name="To"  FontName="Courier New" Direction="Ltr" />
+      </Controls>   
+    </Group>
+  </Groups>
+
+  <Grid Caption="لیست هامش ها"
+  EnableSearch="false" ToolbarSearch="false" AutoWidth="false" Width="500"
+  MultiSelect="true"  HideHeader="true" EnablePager="false" EnableColumnChooser="false" EnableRefresh="false">
+    <Columns>
+      <Column Width="150" Name="From"  />
+      <Column Width="150" Name="To" />
+    </Columns>
+  </Grid>
+  <Operations>Create Delete</Operations>
+  <!--All Create Update ViewDetail Search Delete Print CreateRoot CreateChild TreeCopy TreeMove None-->
+  <FactoryMethodArgsSpel>
+    <String>T(Exir.Workbox.Models.MigrationMapItem, Exir.Workbox)</String>
+  </FactoryMethodArgsSpel>
+</Bocrud>
+

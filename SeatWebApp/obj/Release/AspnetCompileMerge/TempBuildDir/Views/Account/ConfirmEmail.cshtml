@@ -1,0 +1,23 @@
+﻿
+@using Exir.Framework.Common
+
+@model string
+@{
+    ViewBag.Title = "تایید آدرس ایمیل";
+    Layout = "~/Views/Shared/_CleanLayout.cshtml";
+
+}
+
+<div>
+    @{
+        WriteLiteral(Model);
+    }
+</div>
+
+<script language="javascript">
+    $(function () {
+        setTimeout(function () {
+            window.location = "/";
+        }, 10000);
+    });
+</script>

@@ -1,0 +1,115 @@
+﻿@using Exir.Framework.Uie.Bocrud;
+@using Exir.Framework.Uie.Adapter;
+@using System.Collections.Specialized;
+@using Exir.Framework.Common;
+@using System.Linq;
+@using Exir.Framework.Uie.Contracts;
+@{
+    bool clean = (bool)ViewData["clean"];
+    if (!clean)
+    {
+        bool.TryParse(Request.QueryString["clean"], out clean);
+    }
+    Layout = clean ? "~/Views/Shared/_CleanLayout.cshtml" : "~/Views/Shared/_Layout.cshtml";
+    Response.Cache.SetNoStore();
+    Response.CacheControl = "no-cache";
+}
+
+
+
+@if (!String.IsNullOrEmpty(Request.QueryString["_bl"]))
+{
+    string caption;
+    string link = Link.MakeBackLinkUrl(Request.QueryString["_bl"], out caption);
+<p style="text-align:left">
+    <a href="@link">
+        بازگشت به صفحه @caption
+        <i class="icon-arrow-left"></i>
+    </a>
+</p>
+}
+
+@{
+    FdlModel model = FdlModel.LoadFromXml((string)this.ViewData["xml"]);
+    if (!String.IsNullOrEmpty(Request.QueryString["tl"]))
+    {
+        model.Caption = Server.UrlDecode(Request.QueryString["tl"]);
+    }
+
+    BocrudControl bc = new BocrudControl()
+    .SetGridConfig(new Exir.Framework.Uie.Grid.GridConfig()
+    {
+        AutoWidth = true,
+        Width = 80,
+        HideHeader = false
+    })
+    .SetConfig(ViewData["Config"] as BocrudControlConfig)
+    .SetController("Bocrud");
+    bc.Config.DefaultValues.AddRange((IEnumerable<DefaultValue>
+    )(ViewData["dvs"]));
+
+    if (ViewData["Mode"] != null)
+    {
+    bc.Config.Mode = (Exir.Framework.Uie.Bocrud.ControlModes)ViewData["Mode"];
+    }
+    else
+    {
+    bc.Config.Mode = ControlModes.View;
+    }
+    bc.Config.ReportPath = ViewData["reportPath"] as string;
+
+    if ((bool)ViewData["singleView"])
+    {
+    bc.Config.HideGride = true;
+    bc.Config.Style = "ace";
+    bc.Config.ShowEmpty = true;
+    }
+    if (ViewData["style"] != null)
+    {
+    bc.Config.Style = (string)ViewData["style"];
+    }
+    if (ViewData["detailposition"] != null)
+    {
+    bc.Config.DetailPosition = (string)ViewData["detailposition"];
+    }
+    if (ViewData["parameters"] != null)
+    {
+    bc.Config.Parameters = ((ParameterItem[])ViewData["parameters"]);
+    }
+    bc.Config.IgnoreValidation = (bool)ViewData["IgnoreValidation"];
+
+    bc.Config.IsStandalone = true;
+    WriteLiteral(bc.RenderHtml());
+    }
+
+    @section Title{
+    @{WriteLiteral(model.Caption);}
+    }
+
+    @{
+    var startDt = (DateTime?)HttpContext.Current.Items["TimeLogHttpModule"];
+    }
+    <input type="hidden" id="elapsed-time" value="@((DateTime.Now - startDt.Value).TotalMilliseconds.ToString())" />
+
+    @foreach (Attach sc in model.AllControls.Where(x => x is Attach))
+    {
+    sc.JsBocrudId = bc.Config.ClientId;
+    WriteLiteral(sc.RawRender("onload"));
+    }
+
+    @*@if (BocrudControlSettings.Instance.ShowAccessOperations && !String.IsNullOrEmpty(model.AccessOperation))
+    {
+    var security = BocrudControlSettings.Instance.GetService<IAuthorizationChecker>
+        ();
+        if (security.IsAdmin(security.GetCurrentUsername()))
+        {
+        <br />
+        <p>
+            جهت باز شدن این صفحه عملگر دسترسی
+            <b>
+                @{WriteLiteral(model.AccessOperation);}
+            </b>
+            مورد نیاز است.
+        </p>
+        }
+        }*@

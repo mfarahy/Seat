@@ -1,0 +1,194 @@
+﻿<#@ template debug="true" hostspecific="true" language="C#" #>
+<#@ include file="EF.Utility.CS.ttinclude"#>
+<#@ import namespace="System.Collections.Generic" #>
+<#@ output extension=".cs" #>
+<#
+    CodeGenerationTools code = new CodeGenerationTools(this);
+    MetadataLoader loader = new MetadataLoader(this);
+    CodeRegion region = new CodeRegion(this, 1);
+    MetadataTools ef = new MetadataTools(this);
+	 
+    string inputFile = @"..\Dal\SeatWebDataModel.edmx";
+    MetadataWorkspace metadataWorkspace = null;
+    bool allMetadataLoaded =loader.TryLoadAllMetadata(inputFile, out metadataWorkspace);
+    EdmItemCollection ItemCollection = (EdmItemCollection)metadataWorkspace.GetItemCollection(DataSpace.CSpace);
+    string namespaceName = code.VsNamespaceSuggestion();
+
+    EntityFrameworkTemplateFileManager fileManager = EntityFrameworkTemplateFileManager.Create(this);
+    
+    EntityContainer container = ItemCollection.GetItems<EntityContainer>().FirstOrDefault();
+
+    foreach (EntityType entity in ItemCollection.GetItems<EntityType>().OrderBy(e => e.Name))
+    {        
+	if(entity.Abstract) continue;
+        string validator_name=entity.Name+"Validator";
+        string validator_file_name=validator_name+".cs";
+
+        string current_directory=Host.ResolvePath("");
+        string[] similars=Directory.GetFiles(current_directory,validator_file_name, SearchOption.AllDirectories);
+        if(similars.Length==0 ||
+            (similars.Length==1 && String.Compare(similars[0],current_directory+"\\"+ validator_file_name,true)==0))
+        {
+            fileManager.StartNewFile(validator_file_name);
+            WriteHeader(fileManager);
+            BeginNamespace(namespaceName, code);
+			List<string> fKeys=new List<String>();
+#>
+public class <#=validator_name #> : AzValidator<<#=code.Escape(entity) #>>
+    {
+        public <#=validator_name #>()
+        {
+RuleSet(Mode.Any,true, () =>{
+SecurityRuleFor().Allowed(AllFields());
+<#
+			foreach (NavigationProperty navProperty in entity.NavigationProperties.Where(np => np.DeclaringType == entity))
+			{
+				List<string> rules=new List<string>();
+				EdmProperty dpp=null;
+			
+				if(navProperty.ToEndMember.RelationshipMultiplicity != RelationshipMultiplicity.Many||
+					navProperty.FromEndMember.RelationshipMultiplicity != RelationshipMultiplicity.Many){
+					dpp= ef.GetDependentProperties(navProperty).FirstOrDefault();
+				}
+				if(navProperty.ToEndMember.RelationshipMultiplicity != RelationshipMultiplicity.Many && dpp!=null && !dpp.Nullable )
+				{
+					fKeys.Add(dpp.Name);
+					#>
+RuleFor(p => p.<#=code.Escape(dpp.Name)#>).NotNullOrEmptyIf(x=>x.<#=navProperty.Name#>, Operators.Equal,null);
+					<#            
+				}
+			} #>
+
+<#
+            foreach (EdmProperty edmProperty in entity.Properties.Where(p => p.DeclaringType == entity && !fKeys.Contains(p.Name)))
+			{
+                List<string> rules=new List<string>();
+				bool isIdentity=true;
+				if(ef.IsKey(edmProperty)){
+					var metaIdentity=edmProperty.MetadataProperties.Where(x=>x.Value.ToString().Equals("Identity") && x.Name.EndsWith("StoreGeneratedPattern")).FirstOrDefault();
+					if(metaIdentity==null){
+					isIdentity=false;
+						rules.Add("NotEqual(("+code.Escape(edmProperty.TypeUsage)+")Typing.GetDefaultValue(typeof("+code.Escape(edmProperty.TypeUsage)+")))");
+					}
+				}else{
+					if(!edmProperty.Nullable && edmProperty.TypeUsage.EdmType.Name=="String"){
+						rules.Add("NotNull()");
+					}
+
+					if(edmProperty.TypeUsage!=null && edmProperty.TypeUsage.EdmType.Name=="String" && 
+					edmProperty.TypeUsage.Facets.Contains("MaxLength") && edmProperty.TypeUsage.Facets["MaxLength"].Value!=null){
+						var size= edmProperty.TypeUsage.Facets["MaxLength"].Value.ToString();
+						if(size!="Max" && !String.IsNullOrEmpty(size)){
+							rules.Add("Length("+(edmProperty.Nullable?"0":"1")+","+size+")");
+						}
+					}
+
+					if(edmProperty.TypeUsage!=null && edmProperty.TypeUsage.EdmType.Name=="DateTime" && !edmProperty.Nullable){
+						 rules.Add("NotEmpty().NotNull()");
+					}
+				}
+
+				 if(edmProperty.TypeUsage!=null &&  (
+					 edmProperty.TypeUsage.EdmType.Name=="Byte" || 
+					 edmProperty.TypeUsage.EdmType.Name=="Int16"
+					 ) && (!ef.IsKey(edmProperty) || !isIdentity)){
+						 rules.Add("LessThanOrEqual("+edmProperty.TypeUsage.EdmType.Name+".MaxValue)");
+						 rules.Add("GreaterThanOrEqual("+edmProperty.TypeUsage.EdmType.Name+".MinValue)");
+						 if(!edmProperty.Nullable){
+							rules.Add("NotEmpty()");
+						 }
+					}
+
+                if(rules.Count>0){
+ #>
+RuleFor(p => p.<#=code.Escape(edmProperty.Name) #>).<#=String.Join(".",rules) #>;
+<#            
+                }
+			 } 
+			 #>
+        
+});
+setBusinessRules();
+        }
+		 private void setBusinessRules()
+        {
+            RuleSet(Mode.OnInsert | Mode.OnDelete | Mode.OnUpdate, () =>
+              {
+                  SecurityRuleFor().OperationRequired("<#=abbr(code.Escape(entity)) #>.A");
+              });
+        }
+	
+    }
+
+<#  
+            EndNamespace(namespaceName);       
+        } 
+    }
+    fileManager.Process();
+#>
+
+       
+
+<#+
+   string abbr(string text)
+        {
+            StringBuilder sb = new StringBuilder();
+            char[] ch = new char[] { 'e', 'a', 'i', 'o','u' };
+            for (int i = 0; i < text.Length; ++i)
+            {
+                if (ch.Contains(text[i])) continue;
+                if (i > 0 && text[i] == text[i -1]) continue;
+                sb.Append(text[i]);
+            }
+
+            return sb.ToString();
+        }
+
+    void WriteHeader(EntityFrameworkTemplateFileManager fileManager, params string[] extraUsings)
+    {
+#>
+//------------------------------------------------------------------------------
+// <auto-generated>
+//     This code was generated from a template.
+//
+//     Changes to this file may cause incorrect behavior and will be lost if
+//     the code is regenerated.
+// </auto-generated>
+//------------------------------------------------------------------------------
+
+using System;
+using SeatDomain.Models;
+using Exir.Framework.Common;
+using FluentValidation;
+using Exir.Framework.Security.DataSecurity.Support;
+using Exir.Framework.Security.ObjectValidation.Support;
+
+<#=        String.Join(String.Empty, extraUsings.Select(u => "using " + u + ";" + Environment.NewLine).ToArray())#>
+<#+
+    
+    }
+
+    void BeginNamespace(string namespaceName, CodeGenerationTools code)
+    {
+        CodeRegion region = new CodeRegion(this);
+        if (!String.IsNullOrEmpty(namespaceName))
+        {
+#>
+namespace <#=            code.EscapeNamespace(namespaceName)#>
+{
+<#+
+            PushIndent(CodeRegion.GetIndent(1));
+        }
+    }
+
+    void EndNamespace(string namespaceName)
+    {
+        if (!String.IsNullOrEmpty(namespaceName))
+        {
+            PopIndent();
+#>
+}
+<#+
+        }
+    }
+#>

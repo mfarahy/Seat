@@ -1,0 +1,35 @@
+﻿<Bocrud Style="classic"
+        DetailPosition="up"
+        Name="__TextboxList"
+        Caption="کنترل لیست متنی"
+        Height="500" Width="700"
+        ToStringFormat="{Caption}"
+        DirectAccessible="false"
+        xmlns="http://exirtechsun.com/uie/2014/schema"
+       xmlns:yaxlib="http://yaxlib.codeplex.com/">
+
+  <Groups>
+    <![CDATA[@{include:__FormControl#//uie:Groups/uie:Group[@Name='CommonSettings']}]]>
+
+    <Group Title="تنظیمات مخصوص" ColumnCount="3" Template="fluid">
+      <Controls>
+        <TextBox Name="FontName" Caption="فونت" Type="Code"/>
+        <TextBox Name="Mask" Caption="ماسک" Type="Code"/>
+        <TextBox Name="Splitter" Caption="کاراکتر جداکننده">
+          <Validators>
+            <TextValidator MinLength="0" MaxLength="1"/>
+          </Validators>
+        </TextBox>
+      </Controls>
+    </Group>
+
+    <![CDATA[@{include:__FormControl#//uie:Groups/uie:Group[@Name='AdvancedCommonSettings']}]]>
+    <![CDATA[@{include:__FormControl#//uie:Groups/uie:Group[@Name='GridColumnSettings']}]]>
+  </Groups>
+
+  <Operations>All</Operations>
+  <FactoryMethodArgsSpel>
+    <String>T(Exir.Framework.Uie.Bocrud.TextboxList, Exir.Framework.Uie)</String>
+  </FactoryMethodArgsSpel>
+</Bocrud>
+

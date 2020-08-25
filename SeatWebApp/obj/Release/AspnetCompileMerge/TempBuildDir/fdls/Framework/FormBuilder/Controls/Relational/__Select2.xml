@@ -1,0 +1,59 @@
+﻿<Bocrud Style="classic"
+        DetailPosition="up"
+        Name="__Select2"
+        Caption="> کنترل لیست"
+        Height="500" Width="700"
+        ToStringFormat="{Caption}"
+        DirectAccessible="false"
+        xmlns="http://exirtechsun.com/uie/2014/schema"
+       xmlns:yaxlib="http://yaxlib.codeplex.com/">
+
+  <Groups>
+    <![CDATA[@{include:__FormControl#//uie:Groups/uie:Group[@Name='CommonSettings']}]]>
+
+    <Group Name="SpecialSettings" Title="تنظیمات مخصوص" ColumnCount="3" Template="fluid">
+      <Controls>
+        <Select2  Caption="فرم مربوطه" Name="BocrudXml" SpringExpression="GetAllFdlNames()"  DataValueField="Name" DataTextField="Caption"/>
+        
+        <CheckBox Name="Remotely" Caption="قابلیت دورادور ؟" />
+        <CheckBox Name="AcceptOutOfRangeData" Caption="پذیرش مقادیر خارج از حیطه ؟" />
+        <CheckBox Name="HideIfEmpty" Caption="عدم نمایش در صورت خالی بودن ؟" />
+        <CheckBox Name="MultiSelect" Caption="انتخاب چندگانه ؟" />
+        <CheckBox Name="SelectFirstAsDefault" Caption="انتخاب اولین آیتم به شکل پیشفرض ؟" />
+
+        <TextBox Name="Separator" Caption="کاراکتر جدا کننده" >
+          <Validators>
+            <TextValidator MinLength="0" MaxLength="1"/>
+          </Validators>
+        </TextBox>
+        <TextBox Name="SpringExpression" Caption="اسکریپت مهیا کردن داده ها ؟" Type="Code" />
+        <TextBox Name="Format" Caption="فرمت"/>
+        <TextBox Name="DataTextField" Caption="فیلد متن" Type="Code"/>
+        <TextBox Name="DataValueField" Caption="فیلد مقدار" Type="Code"/>
+        <TextBox Name="PlaceHolder" Caption="متن جایگزین"/>
+        <TextBox Name="SearchOperations" Caption="عملگرهای جستجو" Type="Code"/>
+
+        <Select2 Name="NoChoiceOption" Caption="رفتار در زمان بدون انتخاب">
+          <Items>
+            <Add Value="Default" Text="پیشفرض"/>
+            <Add Value="AsLabel" Text="نمایش به شکل برچسب"/>
+            <Add Value="AsReadOnly" Text="نمایش به شکل فقط خواندنی"/>
+          </Items>
+        </Select2>
+      </Controls>
+    </Group>
+    <Group Name="StaticItems" Title="اقلام" ColumnCount="1" Template="fluid">
+      <Controls>
+        <One2Many Name="Items" BocrudXml="__ListPropertyItem" Caption="اقلام" InlineEdit="true"/>
+      </Controls>
+    </Group>
+
+    <![CDATA[@{include:__FormControl#//uie:Groups/uie:Group[@Name='AdvancedCommonSettings']}]]>
+  </Groups>
+
+  <Operations>All</Operations>
+  <FactoryMethodArgsSpel>
+    <String>T(Exir.Framework.Uie.Bocrud.Select2, Exir.Framework.Uie)</String>
+  </FactoryMethodArgsSpel>
+</Bocrud>
+

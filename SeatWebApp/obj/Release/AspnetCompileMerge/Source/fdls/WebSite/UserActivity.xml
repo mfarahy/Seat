@@ -1,0 +1,52 @@
+<Bocrud Style="classic"
+		    AccessOperation="UsrActvty.A"
+		    DirectAccessible="true"
+        DetailPosition="up"
+        Name="UserActivity"
+        Caption="لاگ فعالیت کاربر"
+        Height="480" Width="640"
+        ToStringFormat=""
+        SummaryXml="UserActivity-Summary"
+        FilterSpel="SetCommand('Search')"
+        xmlns="http://exirtechsun.com/uie/2014/schema"
+       xmlns:yaxlib="http://yaxlib.codeplex.com/">
+
+
+  <Groups>
+    <Group Title="جزئیات"  ColumnCount="2" Template="fluid">
+      <Controls>
+        <DateTimePicker  Caption="تاریخ فعالیت" Name="EntryDt" ShowTime="true"  />
+        <TextBox  Caption="نام کاربری" Name="UserName" Type="Code" />
+        <TextBox  Caption="آدرس IP" Name="IP" Type="Code"  />
+        <TextBox  Caption="توضیحات" Name="Message"  />
+        <TextBox  Caption="نام صفحه" Name="PageName"  />
+        <TextBox  Caption="اطلاعات افزوده" Name="Metadata"  />
+        <TextBox  Caption="شناسه جلسه" Name="Session" Type="Code" />
+        <TextBox  Caption="فعالیت" Name="Action"  />
+      </Controls>
+    </Group>
+  </Groups>
+
+  <Grid Caption="لیست فعالیت‌های کاربر"
+  EnableSearch="false" ToolbarSearch="true" AutoWidth="true" Width="100"
+  MultiSelect="true" EnableColumnChooser="false" SortName="EntryDt" SortOrder="desc">
+    <Columns>
+      <Column Width="400" Name="Message" Searchable="true"  />
+      <Column Width="150" Name="EntryDt" Searchable="true" />
+      <Column Width="150" Name="UserName" Searchable="true" />
+      <Column Width="150" Name="IP" Searchable="true" />
+      <Column Width="150" Name="PageName" Searchable="true" />
+      <Column Width="150" Name="Metadata" Searchable="true" Hidden="true" />
+      <Column Width="150" Name="Session" Searchable="true" Hidden="true" />
+      <Column Width="150" Name="Action" Searchable="true" Hidden="true" />
+
+    </Columns>
+  </Grid>
+  <Operations>All</Operations>
+  <!--All Create Update ViewDetail Search Delete Print CreateRoot CreateChild TreeCopy TreeMove None-->
+  <FactoryMethodArgsSpel>
+    <String>'UserActivityService'</String>
+    <String>T(SeatWebApp.Models.UserActivityViewModel, SeatWebApp)</String>
+  </FactoryMethodArgsSpel>
+</Bocrud>
+

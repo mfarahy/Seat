@@ -1,0 +1,76 @@
+﻿<Bocrud Style="classic"
+        DetailPosition="up"
+        Name="__ToolbarCommand"
+        Caption="دکمه جعبه ابزار"
+        Height="470" Width="700"
+        ToStringFormat="{Text}"
+        DirectAccessible="false"
+        xmlns="http://exirtechsun.com/uie/2014/schema"
+       xmlns:yaxlib="http://yaxlib.codeplex.com/">
+
+  
+  <Groups>
+    <Group Title="تنظیمات عمومی"  ColumnCount="3" Template="fluid">
+      <Controls>
+        <TextBox Name="Text" Caption="عنوان" />
+        <TextBox  Caption="کد" Name="Name" Type="Code" AutoComplete="true" AutoCompleteSpel="new string[]{'ExportExcell'}" EditableConditionSpel="Key.IsEmpty">
+          <Validators>
+            <RequiredFieldValidator Required="true"/>
+            <TextValidator MaxLength="50" MinLength="1"/>
+            <RegularExpressionValidator RegularExpression="[a-zA-Z0-9-]+" ErrorMessage="فقط کاراکترهای انگلیسی و اعداد قابل قبول هستند."/>
+          </Validators>
+        </TextBox>
+        <CheckBox Name="CheckSecurity" Caption="چک کردن سطح دسترسی ؟"/>
+        <CheckBox Name="ReloadGrid" Caption="بارگزاری مجدد گرید ؟"/>
+        <CheckBox Name="SearchDependency" Caption="وابسته به نتایج جستجو ؟"/>
+        <TextBox Name="Icon" Caption="آیکن" Type="Code"/>
+        <TextBox Name="Color" Caption="رنگ" Type="Code" AutoComplete="true" AutoCompleteSpel="new string[]{'btn-primary','btn-info','btn-success','btn-warning','btn-danger','btn-inverse','btn-pink','btn-purple','btn-yellow','btn-grey','btn-light','btn-link'}"/>
+        <TextBox Name="Tooltip" Caption="اطلاعات راهنما" MultiLine="true"/>
+        <TextBox Name="MaxRowCount" Caption="حداکثر رکوردهای قابل انتخاب"/>
+        <TextBox Name="MinRowCount" Caption="حداقل رکوردها جهت انتخاب"/>
+        <Select2 Name="Position" Caption="موقعیت">
+          <Items>
+            <Add Text="تولبار" Value="Toolbar"/>
+            <Add Text="ردیف" Value="InRow"/>
+          </Items>
+        </Select2>
+        <TextBox Name="ShowConditionSpel" Caption="شرط نمایش" Type="Code"/>
+        <CheckBox Name="ShowAsMain" Caption="نمایش همانند آیتم اصلی"/>
+        <CheckBox Name="UseQuery" Caption="استفاده از کوئری"/>
+        <TextBox Name="Confirm" Caption="متن تاییدیه" MultiLine="true"/>
+      </Controls>
+    </Group>
+    <Group Title="تنظیمات پیشرفته" ColumnCount="3" Template="fluid">
+      <Controls>
+        <CheckBox Name="GenJson" Caption="حالت خروجی JSON ?"/>
+        <TextBox Name="Context" Caption="مقدار Context" Type="Code"/>
+        <TextBox Name="Before" Caption="فرم قبل از اجرای دستور" Type="Code"/>
+        <TextBox Name="After" Caption="فرم نتیجه دستور" Type="Code"/>
+        <TextBox Name="LinkController" Caption="پارت اول لینک" Type="Code"/>
+        <TextBox Name="LinkAction" Caption="پارت دوم لینک" Type="Code"/>
+        <TextBox Name="LinkParams" Caption="پارامترهای لینک" Type="Code"/>
+        <TextBox Name="PassColumnsData" Caption="انتقال اطلاعات" Type="Code"/>
+        <CheckBox Name="Popup" Caption="نمایش پنجره"/>
+        <TextBox Name="Width" Caption="عرض"/>
+        <TextBox Name="Height" Caption="طول"/>
+        <CheckBox Name="NewPage" Caption="نمایش در پنجره جدید"/>
+      </Controls>
+    </Group>
+  </Groups>
+  <Grid Caption="لیست ستون ها"
+  EnableSearch="false" ToolbarSearch="false" AutoWidth="true" Width="100"
+  MultiSelect="true">
+    <Columns>
+      <Column Width="100" Name="Text" />
+      <Column Width="100" Name="Name" />
+      <Column Width="100" Name="Position" />
+      <Column Width="100" Name="ShowConditionSpel" />
+    </Columns>
+  </Grid>
+
+  <Operations>All</Operations>
+  <FactoryMethodArgsSpel>
+    <String>T(Exir.Framework.Uie.Adapter.FormBuilder.ToolbarCommandService, Exir.Framework.Uie.Adapter)</String>
+  </FactoryMethodArgsSpel>
+</Bocrud>
+

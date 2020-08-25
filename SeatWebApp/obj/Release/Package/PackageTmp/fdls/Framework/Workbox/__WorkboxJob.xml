@@ -1,0 +1,165 @@
+﻿<Bocrud                 Style="classic"
+        DetailPosition="replacement"
+        Name="__WorkboxJob"
+        Caption="WorkboxJob"        
+        Height="480" Width="640"
+        ToStringFormat="" 
+DirectAccessible="false"
+AccessOperation="_WrkbxJb.A"
+        xmlns="http://exirtechsun.com/uie/2014/schema"
+       xmlns:yaxlib="http://yaxlib.codeplex.com/">
+
+  <Groups>
+    <Group Title="جزئیات"  ColumnCount="2" Template="fluid">
+      <Controls>
+<TextBox  Name="Workbox_OwenerID" Caption="Workbox_OwenerID"  /> 
+<FileControl Viewers="IconViewer"  Name="Row_Version" Caption="Row_Version"  /> 
+<DateTimePicker  Name="EntryDt" Caption="EntryDt"  /> 
+<DateTimePicker  Name="ReadDt" Caption="ReadDt"  /> 
+<CheckBox  Name="IsRead" Caption="IsRead"  /> 
+<CheckBox  Name="IsDeleted" Caption="IsDeleted"  /> 
+<CheckBox  Name="IsRejected" Caption="IsRejected"  /> 
+<CheckBox  Name="IsReferRejected" Caption="IsReferRejected"  /> 
+<CheckBox  Name="IsLocked" Caption="IsLocked"  /> 
+<CheckBox  Name="IsReferred" Caption="IsReferred"  /> 
+<CheckBox  Name="IsSaver" Caption="IsSaver"  /> 
+<CheckBox  Name="Referable" Caption="Referable"  /> 
+<CheckBox  Name="Rejectable" Caption="Rejectable"  /> 
+<CheckBox  Name="Spinnable" Caption="Spinnable"  /> 
+<CheckBox  Name="Commentable" Caption="Commentable"  /> 
+<CheckBox  Name="Attachable" Caption="Attachable"  /> 
+<TextBox  Name="Labels" Caption="Labels"  /> 
+<TextBox  Name="SubsequentCount" Caption="SubsequentCount"  /> 
+<TextBox  Name="Deadline" Caption="Deadline"  /> 
+<TextBox  Name="ReferDesc" Caption="ReferDesc"  /> 
+<CheckBox  Name="IsRejectEntry" Caption="IsRejectEntry"  /> 
+<CheckBox  Name="IsHiddenRefer" Caption="IsHiddenRefer"  /> 
+<CheckBox  Name="IsHiddenDesc" Caption="IsHiddenDesc"  /> 
+<TextBox  Name="SenderName" Caption="SenderName"  /> 
+<TextBox  Name="RecieverName" Caption="RecieverName"  /> 
+<TextBox  Name="StopTime" Caption="StopTime"  /> 
+<CheckBox  Name="IsArchived" Caption="IsArchived"  /> 
+<CheckBox  Name="IsObsolete" Caption="IsObsolete"  /> 
+<TextBox  Name="RecieverId" Caption="RecieverId"  /> 
+<TextBox  Name="SenderId" Caption="SenderId"  /> 
+<TextBox  Name="PrevId" Caption="PrevId"  /> 
+<TextBox  Name="PersonWorkboxId" Caption="PersonWorkboxId"  /> 
+<TextBox  Name="JobId" Caption="JobId"  /> 
+<TextBox  Name="ExtendedId" Caption="ExtendedId"  /> 
+<TextBox  Name="InstanceId" Caption="InstanceId"  /> 
+<TextBox  Name="SystemId" Caption="SystemId"  /> 
+<TextBox  Name="Subject" Caption="Subject"  /> 
+<TextBox  Name="JDescription" Caption="JDescription"  /> 
+<CheckBox  Name="CustomSpinnable" Caption="CustomSpinnable"  /> 
+<CheckBox  Name="ReturnSpinnable" Caption="ReturnSpinnable"  /> 
+<TextBox  Name="FormCaption" Caption="FormCaption"  /> 
+<TextBox  Name="FormName" Caption="FormName"  /> 
+<DateTimePicker  Name="LastSaveDt" Caption="LastSaveDt"  /> 
+<TextBox  Name="Tags" Caption="Tags"  /> 
+<TextBox  Name="StrMetadata" Caption="StrMetadata"  /> 
+<TextBox  Name="CurrentStationCaption" Caption="CurrentStationCaption"  /> 
+<TextBox  Name="CurrentStationId" Caption="CurrentStationId"  /> 
+<TextBox  Name="CurrentTrackNodeUid" Caption="CurrentTrackNodeUid"  /> 
+<TextBox  Name="Group" Caption="Group"  /> 
+<TextBox  Name="SpinnerId" Caption="SpinnerId"  /> 
+<TextBox  Name="UrgencyId" Caption="UrgencyId"  /> 
+<CheckBox  Name="IsSaved" Caption="IsSaved"  /> 
+<TextBox  Name="LockAfterNthSave" Caption="LockAfterNthSave"  /> 
+<TextBox  Name="PlayerName" Caption="PlayerName"  /> 
+<TextBox  Name="EntityId" Caption="EntityId"  /> 
+<CheckBox  Name="IsAssistant" Caption="IsAssistant"  /> 
+<TextBox  Name="KindOfAssistance" Caption="KindOfAssistance"  /> 
+<CheckBox  Name="IsReadOnly" Caption="IsReadOnly"  /> 
+<CheckBox  Name="IsSpinned" Caption="IsSpinned"  /> 
+<DateTimePicker  Name="SpinDt" Caption="SpinDt"  /> 
+<TextBox  Name="PreviewId" Caption="PreviewId"  /> 
+<TextBox  Name="AssignmentId" Caption="AssignmentId"  /> 
+<CheckBox  Name="IsConfirmed" Caption="IsConfirmed"  /> 
+<TextBox  Name="Parameters" Caption="Parameters"  /> 
+<CheckBox  Name="HasAttachment" Caption="HasAttachment"  /> 
+<CheckBox  Name="HasComment" Caption="HasComment"  /> 
+<TextBox  Name="WorkReport" Caption="WorkReport"  /> 
+     </Controls>
+    </Group>
+  </Groups>
+
+<Grid Caption="لیست WorkboxJob" 
+EnableSearch="false" ToolbarSearch="false" AutoWidth="true" Width="100"  
+MultiSelect="true">
+    <Columns>
+      <Column Width="150" Name="Workbox_OwenerID" />
+      <Column Width="150" Name="Row_Version" />
+      <Column Width="150" Name="EntryDt" />
+      <Column Width="150" Name="ReadDt" />
+      <Column Width="150" Name="IsRead" />
+      <Column Width="150" Name="IsDeleted" />
+      <Column Width="150" Name="IsRejected" />
+      <Column Width="150" Name="IsReferRejected" />
+      <Column Width="150" Name="IsLocked" />
+      <Column Width="150" Name="IsReferred" />
+      <Column Width="150" Name="IsSaver" />
+      <Column Width="150" Name="Referable" />
+      <Column Width="150" Name="Rejectable" />
+      <Column Width="150" Name="Spinnable" />
+      <Column Width="150" Name="Commentable" />
+      <Column Width="150" Name="Attachable" />
+      <Column Width="150" Name="Labels" />
+      <Column Width="150" Name="SubsequentCount" />
+      <Column Width="150" Name="Deadline" />
+      <Column Width="150" Name="ReferDesc" />
+      <Column Width="150" Name="IsRejectEntry" />
+      <Column Width="150" Name="IsHiddenRefer" />
+      <Column Width="150" Name="IsHiddenDesc" />
+      <Column Width="150" Name="SenderName" />
+      <Column Width="150" Name="RecieverName" />
+      <Column Width="150" Name="StopTime" />
+      <Column Width="150" Name="IsArchived" />
+      <Column Width="150" Name="IsObsolete" />
+      <Column Width="150" Name="RecieverId" />
+      <Column Width="150" Name="SenderId" />
+      <Column Width="150" Name="PrevId" />
+      <Column Width="150" Name="PersonWorkboxId" />
+      <Column Width="150" Name="JobId" />
+      <Column Width="150" Name="ExtendedId" />
+      <Column Width="150" Name="InstanceId" />
+      <Column Width="150" Name="SystemId" />
+      <Column Width="150" Name="Subject" />
+      <Column Width="150" Name="JDescription" />
+      <Column Width="150" Name="CustomSpinnable" />
+      <Column Width="150" Name="ReturnSpinnable" />
+      <Column Width="150" Name="FormCaption" />
+      <Column Width="150" Name="FormName" />
+      <Column Width="150" Name="LastSaveDt" />
+      <Column Width="150" Name="Tags" />
+      <Column Width="150" Name="StrMetadata" />
+      <Column Width="150" Name="CurrentStationCaption" />
+      <Column Width="150" Name="CurrentStationId" />
+      <Column Width="150" Name="CurrentTrackNodeUid" />
+      <Column Width="150" Name="Group" />
+      <Column Width="150" Name="SpinnerId" />
+      <Column Width="150" Name="UrgencyId" />
+      <Column Width="150" Name="IsSaved" />
+      <Column Width="150" Name="LockAfterNthSave" />
+      <Column Width="150" Name="PlayerName" />
+      <Column Width="150" Name="EntityId" />
+      <Column Width="150" Name="IsAssistant" />
+      <Column Width="150" Name="KindOfAssistance" />
+      <Column Width="150" Name="IsReadOnly" />
+      <Column Width="150" Name="IsSpinned" />
+      <Column Width="150" Name="SpinDt" />
+      <Column Width="150" Name="PreviewId" />
+      <Column Width="150" Name="AssignmentId" />
+      <Column Width="150" Name="IsConfirmed" />
+      <Column Width="150" Name="Parameters" />
+      <Column Width="150" Name="HasAttachment" />
+      <Column Width="150" Name="HasComment" />
+      <Column Width="150" Name="WorkReport" />
+
+    </Columns>
+</Grid>
+<Operations>All</Operations><!--All Create Update ViewDetail Search Delete Print CreateRoot CreateChild TreeCopy TreeMove None-->
+  <FactoryMethodArgsSpel>
+      <String>T(Exir.Workbox.Services.WorkboxJobService, Exir.Workbox)</String>
+  </FactoryMethodArgsSpel>
+</Bocrud>
+

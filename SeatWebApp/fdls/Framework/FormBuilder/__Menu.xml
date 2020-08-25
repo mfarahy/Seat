@@ -1,0 +1,51 @@
+﻿<Bocrud Style="classic"
+        DetailPosition="up"
+        Name="__Menu"
+        Caption="منو"
+        Height="500" Width="720"
+        ToStringFormat="{Caption}"
+        DirectAccessible="false"
+        xmlns="http://exirtechsun.com/uie/2014/schema"
+       xmlns:yaxlib="http://yaxlib.codeplex.com/">
+  <DefaultValue>
+    <Add Property="ControllerName" Value="'Bocrud'"/>
+    <Add Property="ActionName" Value="'Index'"/>
+  </DefaultValue>
+  <TreeInfo
+     LeafProperty="IsLeaf"
+      ParentProperty="Parent"
+      ParentTidProperty="ParentID"
+      TidProperty="Id"
+      TreeView="true"
+      ExpanderProperty="Caption"      
+    />
+  <Groups>
+    <Group Name="CommonSettings" Title="تنظیمات عمومی"  ColumnCount="3" Template="fluid">
+      <Controls>
+        <TextBox  Caption="عنوان" Name="Caption"/>
+        <TextBox  Caption="نام کنترولر" Name="ControllerName" Type="Code"/>
+        <TextBox  Caption="نام اکشن" Name="ActionName" Type="Code"/>
+        <TextBox  Caption="آیکن" Name="Icon" Type="Code"/>
+        <TextBox  Caption="عملگر دسترسی" Name="Operation" Type="Code"/>
+      </Controls>
+    </Group>
+  </Groups>
+
+  <Grid Caption="منوها"
+  EnableSearch="false" ToolbarSearch="false" AutoWidth="true" Width="100"
+  MultiSelect="true">
+    <Columns>
+      <Column Width="150" Name="Caption" />
+      <Column Width="150" Name="ControllerName" />
+      <Column Width="150" Name="ActionName" />
+      <Column Width="150" Name="Code" />
+      <Column Width="150" Name="Operation" />
+    </Columns>
+  </Grid>
+  <Operations>All</Operations>
+  <!--All Create Update ViewDetail Search Delete Print CreateRoot CreateChild TreeCopy TreeMove None-->
+  <FactoryMethodArgsSpel>
+    <String>T(Exir.Framework.Uie.Adapter.FormBuilder.SystemMenuItemService, Exir.Framework.Uie.Adapter)</String>
+  </FactoryMethodArgsSpel>
+</Bocrud>
+

@@ -1,0 +1,279 @@
+﻿<Bocrud 
+        Style="workbox"
+				DetailPosition="replacement"
+				Name="__Box"
+				Caption="کارپوشه"
+				Height="480" Width="640"
+				DblClickAction="EditCurrent"
+				FilterSpel="String.Compare(#username,'anonymouse',true)==0 ? LoadNothing() : SetCommand('GetWorkboxItems')"
+				ToStringFormat="&lt;b&gt;{Subject}&lt;/b&gt; از طرف &lt;b&gt;{SenderName}&lt;/b&gt; &lt;br/&gt; {JDescription}"
+				VolatileClientId="false"
+        DirectAccessible="true"
+        AccessOperation="_Bx.A"
+        SearchXml="WorkboxSearch"
+        ShowSearchConditionSpel="!UserIs('merchant') or UserIs('admin')"
+				xmlns="http://exirtechsun.com/uie/2014/schema" 
+				xmlns:yaxlib="http://yaxlib.codeplex.com/"> 
+
+
+  <Help>
+    <![CDATA[
+    <ul class="quota-summary">
+      <li>@{ Service('RequestQuota').GetSummaryByCurrentUser().ToString('</li><li>') }</li>
+    </ul>
+    ]]>
+  </Help>
+
+  <ToolbarCommands>
+    <Add Name="Update" Text="باز کن" Position="Toolbar" ShowConditionSpel="false"  />
+    <Add Name="ViewDetail" Text="مشاهده کن" Position="Toolbar" ShowConditionSpel="false"/>
+    <Add Name="Refer" Text="ارجاع" Position="Toolbar" Before="__Refer" MaxRowCount="1" MinRowCount="1"
+				  Icon="icon-share" Color="btn-yellow" ShowConditionSpel="false"/>
+
+    <Add  Text="حذف جریان کاری" Name="RemoveAllWorkflow" Color="btn-danger" Icon="icon-trash" ShowConditionSpel="UserIs('MerchantUnitAdmin')" MaxRowCount="1"
+          Confirm="آیا از حذف جریان کاری اطمینان دارید ؟"
+         MinRowCount="1"/>
+    <Add  Text="تصحیح کار" Name="Repair" Color="btn-primary" Icon="icon-wrench" ShowConditionSpel="UserIs('MerchantUnitAdmin')" MaxRowCount="1" MinRowCount="1"/>
+    
+    <Add Name="ExportToExcel" Text="خروجی اکسل" Icon="icon-download" Color="btn-info" SearchDependency="true" UseQuery="true" />
+
+  </ToolbarCommands>
+
+  <Groups>
+    <Group Title="جزئیات" ColumnCount="2" Template="fluid">
+      <Controls>
+        <TextBox Caption="نام ایستگاه" ShowConditionSpel="#Container.InstanceId!=0" IsEditable="false"
+								 Name="CurrentStationCaption"/>
+
+        <TextBox Caption="فرستنده" ShowConditionSpel="#Container.InstanceId!=0" IsEditable="false"
+								 Name="SenderName"/>
+        
+
+        <TextBox Caption="موضوع" IsEditable="false" Name="Subject" />
+
+        <DateTimePicker Caption="تاریخ ارسال" Name="EntryDt" ShowTime="true" IsEditable="false" />
+
+        <Label Name="JDescription" ShowConditionSpel="!String.IsNullOrEmpty(#Container.JDescription) and #Container.PlayerName!='TextPlayer'">
+          <Styles>
+            <Add Name="color" Value="#000071"/>
+            <Add Name="border" Value="solid 1px"/>
+            <Add Name="padding" Value="10px"/>
+            <Add Name="background-color" Value="#f7ffff"/>
+          </Styles>
+        </Label>
+
+        <CheckBox Caption="شرح کار اجباری" Name="WorkReportIsRequired" ClientHide="true" ShowConditionSpel="#Mode=='GridView'" />
+
+        <TextBox Caption="شرح کار" Rows="4"
+								 EditableConditionSpel="#Container.WorkReportable"
+								 MultiLine="true"
+								 ShowConditionSpel="(#Container.WorkReportable or !String.IsNullOrEmpty(#Container.WorkReport)) and #Mode=='GridView'"
+								 Name="WorkReport" >
+          <Validators>
+            <RequiredFieldValidator Dependency="{WorkReportIsRequired}"/>
+          </Validators>
+        </TextBox>
+
+        <DateTimePicker Caption="تاریخ مشاهده" Name="ReadDt" ShowTime="true" IsEditable="false" ShowConditionSpel="#Mode=='GridView'" />
+
+        <RawValue Caption="پیشنمایش" AllowEditMode="false" AllowCreateMode="false"
+									Name="HtmlPreview" ShowConditionSpel="#Mode=='GridView'" />
+
+        <SimpleIcon AllowEditMode="false" AllowCreateMode="false" Name="Icons" ShowConditionSpel="#Mode=='GridView'" >
+          <Icons>
+            <Add IconCss="icon-share" Spel="#Container.IsReferred" Tooltip="ارجاع شده"/>
+            <Add IconCss="icon-undo" Spel="#Container.IsRejected" Tooltip="بازگشت داده شده"/>
+            <Add IconCss="icon-ban" Spel="#Container.IsReferRejected" Tooltip="بازگردانده شده"/>
+            <Add IconCss="icon-save" Spel="#Container.IsSaver" Tooltip="کار ذخیره شده"/>
+            <Add IconCss="icon-lock" Spel="#Container.IsLocked" Tooltip="قفل شده"/>
+            <Add IconCss="icon-user" Spel="CurrentWorkboxId != #Container.Workbox_OwenerID" Tooltip="مدرک کارپوشه فرد غایب"/>
+            <Add IconCss="icon-time" Spel="#Container.IsExpired" Tooltip="منقضی شده"/>
+            <Add IconCss="icon-archive" Spel="#Container.IsArchived" Tooltip="آرشیو شده"/>
+            <Add IconCss="icon-comment" Spel="!String.IsNullOrEmpty(#Container.JDescription)" Tooltip="توضیحات دارد"/>
+            <Add IconCss="fas icon-comments" Spel="#Container.HasComment" Tooltip="یادداشت دارد"/>
+            <Add IconCss="fas icon-paperclip" Spel="#Container.HasAttachment" Tooltip="ضمیمه دارد"/>
+          </Icons>
+        </SimpleIcon>
+      </Controls>
+      <Groups>
+        <Group Name="WorkTab" Template="Consecutive">
+          <Controls>
+            <Control Name="Job" yaxlib:realtype="Exir.Workbox.Web.JobContentControl, Exir.Workbox.Web" />
+          </Controls>
+        </Group>
+        <Group Name="CommandInfo" Template="fluid" ColumnCount="1">
+          <Controls>
+            <TextBox Name="SaveJob" ClientHide="true"/>
+            <TextBox Name="CurrentStationId" ClientHide="true"/>
+
+            <TextBox Name="JobCommand" ClientHide="true">
+              <Conditions>
+                <Add EvalScript="true">
+                  <Actions>
+                    <Add Action="Update" On="DefaultCommentKey" Send="JobCommand,CurrentStationId" NewState="true"/>
+                  </Actions>
+                </Add>
+              </Conditions>
+            </TextBox>
+
+            <Select2 Name="DefaultCommentKey" BocrudXml="RequestLogComment" HideIfEmpty="true"
+                                FilterSpel="SetCommand('GetComments',#Model.JobCommand,#Container.CurrentStationId)">
+              <Conditions>
+                <Add EvalScript="'{DefaultCommentKey}'!=''">
+                  <Actions>
+                    <Add Action="Update" On="CommandDescription" Send="DefaultCommentKey" NewState="true"/>
+                  </Actions>
+                </Add>
+              </Conditions>
+            </Select2>
+
+            <TextBox Name="CommandDescription" MultiLine="true" Caption="توضیحات"
+                     GetValueSpel="String.IsNullOrEmpty(#Container.DefaultCommentKey)?'' : Service('RequestLogComment').GetEntity(#Container.DefaultCommentKey,null).Comment"  />
+
+            <Select2 Name="CommandTargets" Caption="گیرنده گان" MultiSelect="true" AcceptOutOfRangeData="true" />
+
+          </Controls>
+        </Group>
+      </Groups>
+    </Group>
+
+    <Group Title="ضمائم" ColumnCount="1" Name="AttachmentsTab" Template="fluid" ShowConditionSpel="#Container.HasAttachment or #Container.Attachable" >
+      <Controls>
+        <Template Name="Attachments" BocrudXml="__Attachment" Caption="ضمائم"
+										 Operations="@{ #Container.Attachable and #Container.CanConfirm ? 'Create' : ''} ViewDetail"
+										 FilterSpel="In('InstanceId', #Container.GetRelatedInstanceIds())">
+          <DefaultValue>
+            <Add Property="InstanceId" Value="#Container.InstanceId"/>
+            <Add Property="Group" Value="#Container.GroupAttachmentsType=='PerForm' ? #Container.FormName : ( #Container.GroupAttachmentsType=='PerEntityId' ? #Container.EntityId : #Container.InstanceId.ToString() )"/>
+            <Add Property="WriterUserName" Value="#username"/>
+            <Add Property="WriterName" Value="GetName(#username)"/>
+          </DefaultValue>
+        </Template>
+      </Controls>
+    </Group>
+
+    <Group Title="یادداشت ها" Name="CommentsTab" ColumnCount="1" Template="fluid" ShowConditionSpel="#Container.HasComment or #Container.Commentable">
+      <Controls>
+        <Template Name="Comments" BocrudXml="__Comment-View" Caption="هامش ها" PageSize="10"
+										 Operations="@{ #Container.Commentable and #Container.CanConfirm ? 'Create' : ''} Update ViewDetail Delete"
+										 FilterSpel="SetCommand('GetComments', #Container.GetRelatedInstanceIds(),#Container.GroupCommentsType,#Container.FormName,#Container.EntityId)">
+          <DefaultValue>
+            <Add Property="InstanceId" Value="#Container.InstanceId"/>
+            <Add Property="Group" Value="#Container.GroupAttachmentsType=='PerForm' ? #Container.FormName : ( #Container.GroupAttachmentsType=='PerEntityId' ? #Container.EntityId : #Container.InstanceId.ToString() )"/>
+            <Add Property="EntryId" Value="#Container.Id"/>
+            <Add Property="Entry" Value="#Container.AsEntry()" EvalOnTime="true"/>
+          </DefaultValue>
+        </Template>
+      </Controls>
+    </Group>
+
+    <Group Title="گردش کار" Name="WorkCycleTab" ColumnCount="1" Template="fluid" ShowConditionSpel="#Container.InstanceId!=0">
+      <Controls>
+        <Lazy>
+          <Controls>
+            <Grid Name="WorkCycle" BocrudXml="__WorkCycleItem" Caption="گردش کار"
+                  GetValueSpel="GetManager('__Box').Service.GetWorkCycle(#Container.Id,null).Data"/>
+          </Controls>
+        </Lazy>
+      </Controls>
+    </Group>
+
+    <Group Title="گردش کار گرافیکی" ColumnCount="1" Template="fluid" ShowConditionSpel="#Container.InstanceId!=0">
+      <Controls>
+        <Lazy>
+          <Controls>
+            <MxGraphViewer Name="MxGraph" Caption="گردش کار"
+                  DataContext="GetManager('__Box').Service.GetWorkCycle(#Container.Id,#filters).Data"
+                  ConnectionProperty="Inputs" KeyProperty="Id" Layout="mxHierarchicalLayout"  CellHeight="80"
+                            ParentKeyProperty="ParentId" >
+              <EdgeText>
+                <![CDATA[
+                <div class="branch-caption">@{Source!=null ? Source.Action : ''}</div>
+                ]]>
+              </EdgeText>
+              <Template>
+                <![CDATA[
+                  <div class="station">@{ Station }</div><div class="comment">@{ActivityType!='SendMessageActivity'? Description:'' }</div>  
+                  <div class="sender">@{ Sender!=null ? Sender.Name : '' }</div>
+                  <div class="recievers" title="@{RecieverNames}">@{ Recievers!=null and Recievers.Length>0 ? Recievers.Length : '' }</div>
+                  <div class="stop-time" minuts="@{StopTime.TotalMinutes>1}">زمان توقف:<b> @{ StopTimeText() }</b></div>
+                  <div class="date">@{ ShamsiEntryDt() }</div>
+             ]]>
+              </Template>
+              <VertexStyles>
+                <Add Name="image" Value="/assets/img/workflow/@{ActivityType}.png"/>
+                <Add Name="imageWidth" Value="30"/>
+                <Add Name="imageHeight" Value="30"/>
+                <Add Name="autosize" Value="1"/>
+                <Add Name="shape" Value="label"/>
+                <Add Name="glass" Value="1"/>
+                <Add Name="spacing" Value="8"/>
+                <Add Name="spacingLeft" Value="54"/>
+                <Add Name="perimeter" Value="rectanglePerimeter"/>
+                <Add Name="strokeColor" Value="gray"/>
+                <Add Name="rounded" Value="true"/>
+                <Add Name="fillColor" Value="#EEEEEE"/>
+                <Add Name="gradientColor" Value="white"/>
+                <Add Name="align" Value="center"/>
+                <Add Name="verticalAlign" Value="middle"/>
+                <Add Name="fontSize" Value="13"/>
+                <Add Name="fontStyle" Value="1"/>
+                <Add Name="perimeterSpacing" Value="6"/>
+              </VertexStyles>
+              <EdgeStyles>
+                <Add Name="edgeStyle" Value="mxEdgeStyle.TopToBottom" />
+              </EdgeStyles>
+              <Filters>
+                STATION_QUOTA_BRANCH_ACCEPT
+                STATION_QUOTA_ZONE_REJECT
+                STATION_QUOTA_SADAD_REJECT
+                STATION_QUOTA_SADAD_REMOVE
+                STATION_QUOTA_ZONE_REMOVE
+                STATION_QUATA_DEC
+                STATION_QUATA_INC
+                STATION_QUATA_INC_DELETE
+              </Filters>
+            </MxGraphViewer>
+          </Controls>
+        </Lazy>
+      </Controls>
+    </Group>
+  </Groups>
+
+  <Grid Caption="کارپوشه" EnableColumnChooser="false" AutoLoadData="true"
+				EnableSearch="true" ToolbarSearch="true" AutoWidth="true" Width="100"  ForceFit="true"
+				MultiSelect="true" HideHeader="true" CssColumn="RowCss" ThumbnailColumn="HtmlPreview" PagingMode="NextBack">
+    <Columns>
+      <Column Width="70" Caption="شماره شناسه" Name="Id" Hidden="true" />
+      <Column Width="400" DataType="Text"  HidedInDialog="false"   Searchable="true" Resizable="true" Name="Subject"  IsThumbnailTrigger="true"  WordWrap="true" />
+      <Column Width="120" DataType="Text"  HidedInDialog="false"   Searchable="true"  Resizable="true" Name="SenderName"  WordWrap="true" Caption="فرستنده" />
+      <Column Width="70" DataType="Date"  HidedInDialog="false"   Searchable="true"  Resizable="true" Name="EntryDt" Caption="تاریخ" WordWrap="true" Sortable="true"/>
+      <Column Width="70" DataType="Date"  HidedInDialog="false"   Searchable="true"  Resizable="true" Name="ReadDt" Caption="تاریخ مشاهده" WordWrap="true" Sortable="true"/>
+      <Column Width="150" Name="Icons" Caption="وضعیت" HidedInDialog="false" Searchable="false" />
+
+      <Column Name="IsArchived"         DataType="Bool" Hidden="true" HidedInDialog="true"     />
+      <Column Name="CanSaveJob"         DataType="Bool" Hidden="true" HidedInDialog="true"     />
+      <Column Name="CanSpin"            DataType="Bool" Hidden="true" HidedInDialog="true"     />
+      <Column Name="CanRefer"           DataType="Bool" Hidden="true" HidedInDialog="true"     />
+      <Column Name="CanTakebackRefer"   DataType="Bool" Hidden="true" HidedInDialog="true"     />
+      <Column Name="CanReject"          DataType="Bool" Hidden="true" HidedInDialog="true"     />
+
+      <Column DataType="Text" Hidden="true" Name="RowCss" HidedInDialog="true"/>
+      <Column DataType="Text" Hidden="true" Name="Labels" HidedInDialog="true"/>
+      <Column DataType="Text" Hidden="true" Name="InstanceLabels" HidedInDialog="true"/>
+      <Column DataType="Text" Hidden="true" Name="HtmlPreview" HidedInDialog="true"/>
+      <Column DataType="Text" Hidden="true" Name="JDescription" HidedInDialog="true"/>
+      <Column DataType="Text" Hidden="true" Name="EntityId" HidedInDialog="true"/>
+      <Column DataType="Text" Hidden="true" Name="InstanceId" HidedInDialog="true"/>
+      <Column DataType="Text" Hidden="true" Name="AssignmentId" HidedInDialog="true"/>
+      <Column DataType="Text" Hidden="true" Name="HasComment" HidedInDialog="true"/>
+
+    </Columns>
+    <RowList>10 50</RowList>
+  </Grid>
+  <Operations>Update ViewDetail</Operations>
+  <!--All Create Update ViewDetail Search Delete Print CreateRoot CreateChild TreeCopy TreeMove None-->
+  <FactoryMethodArgsSpel>
+    <String>'BoxPresenter'</String>
+  </FactoryMethodArgsSpel>
+</Bocrud>

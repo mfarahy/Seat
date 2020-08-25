@@ -1,0 +1,181 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+    <objects xmlns="http://www.springframework.net"
+             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             xsi:schemaLocation="http://www.springframework.net http://www.springframework.net/xsd/spring-objects.xsd">
+    
+			<object id="AspNetRoleRepository" singleton="false" scope="request"  type="Exir.Framework.DataAccess.EntityFramework.EntityFrameworkRepository&lt;SeatDomain.Models.AspNetRole>, Exir.Framework.DataAccess"  >
+				<property name="ContextObjectId" value="SeatWeb-SeatDbContext"/>
+			</object>
+					<object id="AspNetRoleReadOnlyRepository" singleton="false" scope="request"  type="Exir.Framework.DataAccess.EntityFramework.EntityFrameworkRepository&lt;SeatDomain.Models.AspNetRole>, Exir.Framework.DataAccess"  >
+				<property name="ContextObjectId" value="SeatWeb-ReadOnlySeatDbContext"/>
+			</object>
+			 
+	<object id="AspNetRoleService" singleton="false" scope="request"  type="SeatDomain.Services.AspNetRoleService, SeatDomain" >
+		<constructor-arg name="repository" ref="AspNetRoleRepository" />
+		<constructor-arg name="readOnlyRepository" ref="AspNetRoleReadOnlyRepository" />
+	</object>
+
+			<object id="AspNetUserRepository" singleton="false" scope="request"  type="Exir.Framework.DataAccess.EntityFramework.EntityFrameworkRepository&lt;SeatDomain.Models.AspNetUser>, Exir.Framework.DataAccess"  >
+				<property name="ContextObjectId" value="SeatWeb-SeatDbContext"/>
+			</object>
+					<object id="AspNetUserReadOnlyRepository" singleton="false" scope="request"  type="Exir.Framework.DataAccess.EntityFramework.EntityFrameworkRepository&lt;SeatDomain.Models.AspNetUser>, Exir.Framework.DataAccess"  >
+				<property name="ContextObjectId" value="SeatWeb-ReadOnlySeatDbContext"/>
+			</object>
+			 
+	<object id="BackstageJobService" singleton="false" scope="request"  type="SeatDomain.Services.BackstageJobService, SeatDomain" >
+		<constructor-arg name="repository" ref="BackstageJobRepository" />
+		<constructor-arg name="readOnlyRepository" ref="BackstageJobReadOnlyRepository" />
+	</object>
+
+			<object id="DashboardNoteRepository" singleton="false" scope="request"  type="Exir.Framework.DataAccess.EntityFramework.EntityFrameworkRepository&lt;SeatDomain.Models.DashboardNote>, Exir.Framework.DataAccess"  >
+				<property name="ContextObjectId" value="SeatWeb-SeatDbContext"/>
+			</object>
+					<object id="DashboardNoteReadOnlyRepository" singleton="false" scope="request"  type="Exir.Framework.DataAccess.EntityFramework.EntityFrameworkRepository&lt;SeatDomain.Models.DashboardNote>, Exir.Framework.DataAccess"  >
+				<property name="ContextObjectId" value="SeatWeb-ReadOnlySeatDbContext"/>
+			</object>
+					<object id="DashboardUserNoteRepository" singleton="false" scope="request"  type="Exir.Framework.DataAccess.EntityFramework.EntityFrameworkRepository&lt;SeatDomain.Models.DashboardUserNote>, Exir.Framework.DataAccess"  >
+				<property name="ContextObjectId" value="SeatWeb-SeatDbContext"/>
+			</object>
+					<object id="DashboardUserNoteReadOnlyRepository" singleton="false" scope="request"  type="Exir.Framework.DataAccess.EntityFramework.EntityFrameworkRepository&lt;SeatDomain.Models.DashboardUserNote>, Exir.Framework.DataAccess"  >
+				<property name="ContextObjectId" value="SeatWeb-ReadOnlySeatDbContext"/>
+			</object>
+			 
+	<object id="DashboardUserNoteService" singleton="false" scope="request"  type="SeatDomain.Services.DashboardUserNoteService, SeatDomain" >
+		<constructor-arg name="repository" ref="DashboardUserNoteRepository" />
+		<constructor-arg name="readOnlyRepository" ref="DashboardUserNoteReadOnlyRepository" />
+	</object>
+
+			<object id="FeedBackRepository" singleton="false" scope="request"  type="Exir.Framework.DataAccess.EntityFramework.EntityFrameworkRepository&lt;SeatDomain.Models.FeedBack>, Exir.Framework.DataAccess"  >
+				<property name="ContextObjectId" value="SeatWeb-SeatDbContext"/>
+			</object>
+					<object id="FeedBackReadOnlyRepository" singleton="false" scope="request"  type="Exir.Framework.DataAccess.EntityFramework.EntityFrameworkRepository&lt;SeatDomain.Models.FeedBack>, Exir.Framework.DataAccess"  >
+				<property name="ContextObjectId" value="SeatWeb-ReadOnlySeatDbContext"/>
+			</object>
+			 
+	<object id="FeedBackService" singleton="false" scope="request"  type="SeatDomain.Services.FeedBackService, SeatDomain" >
+		<constructor-arg name="repository" ref="FeedBackRepository" />
+		<constructor-arg name="readOnlyRepository" ref="FeedBackReadOnlyRepository" />
+	</object>
+
+			<object id="HardLogRepository" singleton="false" scope="request"  type="Exir.Framework.DataAccess.EntityFramework.EntityFrameworkRepository&lt;SeatDomain.Models.HardLog>, Exir.Framework.DataAccess"  >
+				<property name="ContextObjectId" value="SeatWeb-SeatDbContext"/>
+			</object>
+					<object id="HardLogReadOnlyRepository" singleton="false" scope="request"  type="Exir.Framework.DataAccess.EntityFramework.EntityFrameworkRepository&lt;SeatDomain.Models.HardLog>, Exir.Framework.DataAccess"  >
+				<property name="ContextObjectId" value="SeatWeb-ReadOnlySeatDbContext"/>
+			</object>
+			 
+	<object id="HardLogService" singleton="false" scope="request"  type="SeatDomain.Services.HardLogService, SeatDomain" >
+		<constructor-arg name="repository" ref="HardLogRepository" />
+		<constructor-arg name="readOnlyRepository" ref="HardLogReadOnlyRepository" />
+	</object>
+
+			<object id="HelpInformationRepository" singleton="false" scope="request"  type="Exir.Framework.DataAccess.EntityFramework.EntityFrameworkRepository&lt;SeatDomain.Models.HelpInformation>, Exir.Framework.DataAccess"  >
+				<property name="ContextObjectId" value="SeatWeb-SeatDbContext"/>
+			</object>
+					<object id="HelpInformationReadOnlyRepository" singleton="false" scope="request"  type="Exir.Framework.DataAccess.EntityFramework.EntityFrameworkRepository&lt;SeatDomain.Models.HelpInformation>, Exir.Framework.DataAccess"  >
+				<property name="ContextObjectId" value="SeatWeb-ReadOnlySeatDbContext"/>
+			</object>
+			 
+	<object id="HelpInformationService" singleton="false" scope="request"  type="SeatDomain.Services.HelpInformationService, SeatDomain" >
+		<constructor-arg name="repository" ref="HelpInformationRepository" />
+		<constructor-arg name="readOnlyRepository" ref="HelpInformationReadOnlyRepository" />
+	</object>
+
+			<object id="HolidayRepository" singleton="false" scope="request"  type="Exir.Framework.DataAccess.EntityFramework.EntityFrameworkRepository&lt;SeatDomain.Models.Holiday>, Exir.Framework.DataAccess"  >
+				<property name="ContextObjectId" value="SeatWeb-SeatDbContext"/>
+			</object>
+					<object id="HolidayReadOnlyRepository" singleton="false" scope="request"  type="Exir.Framework.DataAccess.EntityFramework.EntityFrameworkRepository&lt;SeatDomain.Models.Holiday>, Exir.Framework.DataAccess"  >
+				<property name="ContextObjectId" value="SeatWeb-ReadOnlySeatDbContext"/>
+			</object>
+			 
+	<object id="HolidayService" singleton="false" scope="request"  type="SeatDomain.Services.HolidayService, SeatDomain" >
+		<constructor-arg name="repository" ref="HolidayRepository" />
+		<constructor-arg name="readOnlyRepository" ref="HolidayReadOnlyRepository" />
+	</object>
+
+			<object id="JobLogRepository" singleton="false" scope="request"  type="Exir.Framework.DataAccess.EntityFramework.EntityFrameworkRepository&lt;SeatDomain.Models.JobLog>, Exir.Framework.DataAccess"  >
+				<property name="ContextObjectId" value="SeatWeb-SeatDbContext"/>
+			</object>
+					<object id="JobLogReadOnlyRepository" singleton="false" scope="request"  type="Exir.Framework.DataAccess.EntityFramework.EntityFrameworkRepository&lt;SeatDomain.Models.JobLog>, Exir.Framework.DataAccess"  >
+				<property name="ContextObjectId" value="SeatWeb-ReadOnlySeatDbContext"/>
+			</object>
+			 
+	<object id="JobLogService" singleton="false" scope="request"  type="SeatDomain.Services.JobLogService, SeatDomain" >
+		<constructor-arg name="repository" ref="JobLogRepository" />
+		<constructor-arg name="readOnlyRepository" ref="JobLogReadOnlyRepository" />
+	</object>
+
+			<object id="KeyValueRepository" singleton="false" scope="request"  type="Exir.Framework.DataAccess.EntityFramework.EntityFrameworkRepository&lt;SeatDomain.Models.KeyValue>, Exir.Framework.DataAccess"  >
+				<property name="ContextObjectId" value="SeatWeb-SeatDbContext"/>
+			</object>
+					<object id="KeyValueReadOnlyRepository" singleton="false" scope="request"  type="Exir.Framework.DataAccess.EntityFramework.EntityFrameworkRepository&lt;SeatDomain.Models.KeyValue>, Exir.Framework.DataAccess"  >
+				<property name="ContextObjectId" value="SeatWeb-ReadOnlySeatDbContext"/>
+			</object>
+			 
+	<object id="KeyValueService" singleton="false" scope="request"  type="SeatDomain.Services.KeyValueService, SeatDomain" >
+		<constructor-arg name="repository" ref="KeyValueRepository" />
+		<constructor-arg name="readOnlyRepository" ref="KeyValueReadOnlyRepository" />
+	</object>
+
+			<object id="NewsRepository" singleton="false" scope="request"  type="Exir.Framework.DataAccess.EntityFramework.EntityFrameworkRepository&lt;SeatDomain.Models.News>, Exir.Framework.DataAccess"  >
+				<property name="ContextObjectId" value="SeatWeb-SeatDbContext"/>
+			</object>
+					<object id="NewsReadOnlyRepository" singleton="false" scope="request"  type="Exir.Framework.DataAccess.EntityFramework.EntityFrameworkRepository&lt;SeatDomain.Models.News>, Exir.Framework.DataAccess"  >
+				<property name="ContextObjectId" value="SeatWeb-ReadOnlySeatDbContext"/>
+			</object>
+			 
+	<object id="NewsService" singleton="false" scope="request"  type="SeatDomain.Services.NewsService, SeatDomain" >
+		<constructor-arg name="repository" ref="NewsRepository" />
+		<constructor-arg name="readOnlyRepository" ref="NewsReadOnlyRepository" />
+	</object>
+
+			<object id="NewsCategoryRepository" singleton="false" scope="request"  type="Exir.Framework.DataAccess.EntityFramework.EntityFrameworkRepository&lt;SeatDomain.Models.NewsCategory>, Exir.Framework.DataAccess"  >
+				<property name="ContextObjectId" value="SeatWeb-SeatDbContext"/>
+			</object>
+					<object id="NewsCategoryReadOnlyRepository" singleton="false" scope="request"  type="Exir.Framework.DataAccess.EntityFramework.EntityFrameworkRepository&lt;SeatDomain.Models.NewsCategory>, Exir.Framework.DataAccess"  >
+				<property name="ContextObjectId" value="SeatWeb-ReadOnlySeatDbContext"/>
+			</object>
+			 
+	<object id="NewsCategoryService" singleton="false" scope="request"  type="SeatDomain.Services.NewsCategoryService, SeatDomain" >
+		<constructor-arg name="repository" ref="NewsCategoryRepository" />
+		<constructor-arg name="readOnlyRepository" ref="NewsCategoryReadOnlyRepository" />
+	</object>
+
+			<object id="ShortLinkRepository" singleton="false" scope="request"  type="Exir.Framework.DataAccess.EntityFramework.EntityFrameworkRepository&lt;SeatDomain.Models.ShortLink>, Exir.Framework.DataAccess"  >
+				<property name="ContextObjectId" value="SeatWeb-SeatDbContext"/>
+			</object>
+					<object id="ShortLinkReadOnlyRepository" singleton="false" scope="request"  type="Exir.Framework.DataAccess.EntityFramework.EntityFrameworkRepository&lt;SeatDomain.Models.ShortLink>, Exir.Framework.DataAccess"  >
+				<property name="ContextObjectId" value="SeatWeb-ReadOnlySeatDbContext"/>
+			</object>
+					<object id="SystemMessageRepository" singleton="false" scope="request"  type="Exir.Framework.DataAccess.EntityFramework.EntityFrameworkRepository&lt;SeatDomain.Models.SystemMessage>, Exir.Framework.DataAccess"  >
+				<property name="ContextObjectId" value="SeatWeb-SeatDbContext"/>
+			</object>
+					<object id="SystemMessageReadOnlyRepository" singleton="false" scope="request"  type="Exir.Framework.DataAccess.EntityFramework.EntityFrameworkRepository&lt;SeatDomain.Models.SystemMessage>, Exir.Framework.DataAccess"  >
+				<property name="ContextObjectId" value="SeatWeb-ReadOnlySeatDbContext"/>
+			</object>
+			 
+	<object id="SystemMessageService" singleton="false" scope="request"  type="SeatDomain.Services.SystemMessageService, SeatDomain" >
+		<constructor-arg name="repository" ref="SystemMessageRepository" />
+		<constructor-arg name="readOnlyRepository" ref="SystemMessageReadOnlyRepository" />
+	</object>
+
+	 
+	<object id="UserActivityService" singleton="false" scope="request"  type="SeatDomain.Services.UserActivityService, SeatDomain" >
+		<constructor-arg name="repository" ref="UserActivityRepository" />
+		<constructor-arg name="readOnlyRepository" ref="UserActivityReadOnlyRepository" />
+	</object>
+
+			<object id="UserProfileRepository" singleton="false" scope="request"  type="Exir.Framework.DataAccess.EntityFramework.EntityFrameworkRepository&lt;SeatDomain.Models.UserProfile>, Exir.Framework.DataAccess"  >
+				<property name="ContextObjectId" value="SeatWeb-SeatDbContext"/>
+			</object>
+					<object id="UserProfileReadOnlyRepository" singleton="false" scope="request"  type="Exir.Framework.DataAccess.EntityFramework.EntityFrameworkRepository&lt;SeatDomain.Models.UserProfile>, Exir.Framework.DataAccess"  >
+				<property name="ContextObjectId" value="SeatWeb-ReadOnlySeatDbContext"/>
+			</object>
+			 
+	<object id="UserProfileService" singleton="false" scope="request"  type="SeatDomain.Services.UserProfileService, SeatDomain" >
+		<constructor-arg name="repository" ref="UserProfileRepository" />
+		<constructor-arg name="readOnlyRepository" ref="UserProfileReadOnlyRepository" />
+	</object>
+
+ </objects>
+

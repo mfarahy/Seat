@@ -1,0 +1,49 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<objects xmlns="http://www.springframework.net"
+             xmlns:db="http://www.springframework.net/database">
+
+ 
+  <object id="SecurityUiApiServiceFactory" singleton="true" scope="application" type="Exir.Framework.ApplicationService.SecurityUiApi.SecurityUiApiServiceFactory, Exir.Framework.ApplicationService" />
+
+  <object id="LogService" lazy-init="true" singleton="true" scope="application" type="Exir.Framework.ApplicationService.Logging.LogService, Exir.Framework.ApplicationService">
+    <constructor-arg value="LocalSqlServer"/>
+  </object>
+  <object id="ExceptionHandlingAdvicer" type="Exir.Framework.ApplicationService.ExceptionHandling.ExceptionHandlingAdvicer, Exir.Framework.ApplicationService" />
+
+  <object id="RepositoryChangeRecorderAdvice" type="Exir.Framework.ApplicationService.ChangeLogger.RepositoryChangeRecorderAdvice, Exir.Framework.ApplicationService">
+    <property name="IgnorePropertyRegex">
+      <list>
+        <value>Audit_.*</value>
+      </list>
+    </property>
+  </object>
+  <object id="InnerSaveChangesMethodPointcut" type="Spring.Aop.Support.NameMatchMethodPointcut, Spring.Aop">
+    <property name="MappedName" value="InnerSaveChanges" />
+  </object>
+  <object id="ChangeRecorderAdvisor" type="Spring.Aop.Support.DefaultPointcutAdvisor, Spring.Aop">
+    <property name="Advice" ref="RepositoryChangeRecorderAdvice" />
+    <property name="Pointcut" ref="InnerSaveChangesMethodPointcut" />
+  </object>
+
+  <object id="ExhExceptionLogService" singleton="false" scope="request"  type="Exir.Framework.ApplicationService.ExceptionHandling.ExhExceptionLogService, Exir.Framework.ApplicationService">
+    <constructor-arg value="LocalSqlServer"/>
+  </object>
+
+  <object id="ExhExtraLogInfoService" singleton="false" scope="request"  type="Exir.Framework.ApplicationService.ExceptionHandling.ExhExtraLogInfoService, Exir.Framework.ApplicationService">
+    <constructor-arg value="LocalSqlServer"/>
+  </object>
+
+  <object id="ExhResolverService" singleton="false" scope="request"  type="Exir.Framework.ApplicationService.ExceptionHandling.ExhResolverService, Exir.Framework.ApplicationService">
+    <constructor-arg value="LocalSqlServer"/>
+  </object>
+
+  <object id="ExhFriendlyExceptionService" singleton="false" scope="request"  type="Exir.Framework.ApplicationService.ExceptionHandling.ExhFriendlyExceptionService, Exir.Framework.ApplicationService">
+    <constructor-arg value="LocalSqlServer"/>
+  </object>
+
+  <object id="ExhExceptionService" singleton="false" scope="request"  type="Exir.Framework.ApplicationService.ExceptionHandling.ExhExceptionService, Exir.Framework.ApplicationService">
+    <constructor-arg value="LocalSqlServer"/>
+  </object>
+
+
+</objects>

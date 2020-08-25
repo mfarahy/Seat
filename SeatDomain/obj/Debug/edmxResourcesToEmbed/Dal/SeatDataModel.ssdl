@@ -1,0 +1,461 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="SeatDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="BestLimits">
+    <Key>
+      <PropertyRef Name="BestLimitPK" />
+    </Key>
+    <Property Name="BestLimitPK" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="InsCode" Type="bigint" Nullable="false" />
+    <Property Name="DateTime" Type="datetime" Nullable="false" />
+    <Property Name="Row" Type="int" Nullable="false" />
+    <Property Name="Buy_Count" Type="int" Nullable="false" />
+    <Property Name="Buy_Volume" Type="bigint" Nullable="false" />
+    <Property Name="Buy_Price" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="Sell_Price" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="Sell_Volume" Type="bigint" Nullable="false" />
+    <Property Name="Sell_Count" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="BigDeals">
+    <Key>
+      <PropertyRef Name="BigDealPK" />
+    </Key>
+    <Property Name="BigDealPK" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="DayDt" Type="datetime" Nullable="false" />
+    <Property Name="Count" Type="int" Nullable="false" />
+    <Property Name="Volume" Type="bigint" Nullable="false" />
+    <Property Name="DealType" Type="tinyint" Nullable="false" />
+    <Property Name="TraderType" Type="tinyint" Nullable="false" />
+    <Property Name="Price" Type="int" Nullable="false" />
+    <Property Name="InsCode" Type="bigint" Nullable="false" />
+    <Property Name="AmountAvg" Type="bigint" Nullable="false" />
+    <Property Name="CSecVal" Type="varchar" MaxLength="2" />
+    <Property Name="pc" Type="int" />
+    <Property Name="py" Type="int" />
+    <Property Name="plc" Type="float" />
+    <Property Name="plp" Type="float" />
+    <Property Name="pf" Type="int" />
+    <Property Name="pcc" Type="int" />
+    <Property Name="pcp" Type="float" />
+    <Property Name="tno" Type="int" />
+    <Property Name="tvol" Type="bigint" />
+    <Property Name="tval" Type="bigint" />
+    <Property Name="pmin" Type="int" />
+    <Property Name="pmax" Type="int" />
+    <Property Name="eps" Type="float" />
+    <Property Name="pe" Type="float" />
+    <Property Name="visitcount" Type="int" />
+    <Property Name="tmax" Type="int" />
+    <Property Name="tmin" Type="int" />
+    <Property Name="zd1" Type="int" />
+    <Property Name="pd1" Type="int" />
+    <Property Name="qd1" Type="bigint" />
+    <Property Name="po1" Type="int" />
+    <Property Name="qo1" Type="bigint" />
+    <Property Name="zo1" Type="int" />
+    <Property Name="bvol" Type="bigint" />
+  </EntityType>
+  <EntityType Name="ClientTypes">
+    <Key>
+      <PropertyRef Name="ClintTypePK" />
+    </Key>
+    <Property Name="ClintTypePK" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="DayDt" Type="datetime" Nullable="false" />
+    <Property Name="Buy_CountI" Type="int" Nullable="false" />
+    <Property Name="Buy_CountN" Type="int" Nullable="false" />
+    <Property Name="Buy_I_Volume" Type="bigint" Nullable="false" />
+    <Property Name="Buy_N_Volume" Type="bigint" Nullable="false" />
+    <Property Name="Sell_CountI" Type="int" Nullable="false" />
+    <Property Name="Sell_CountN" Type="int" Nullable="false" />
+    <Property Name="Sell_I_Volume" Type="bigint" Nullable="false" />
+    <Property Name="Sell_N_Volume" Type="bigint" Nullable="false" />
+    <Property Name="Pl" Type="int" Nullable="false" />
+    <Property Name="TVol" Type="bigint" Nullable="false" />
+    <Property Name="Prev_Buy_CountI" Type="int" Nullable="false" />
+    <Property Name="Prev_Buy_CountN" Type="int" Nullable="false" />
+    <Property Name="Prev_Buy_I_Volume" Type="bigint" Nullable="false" />
+    <Property Name="Prev_Buy_N_Volume" Type="bigint" Nullable="false" />
+    <Property Name="Prev_Sell_CountI" Type="int" Nullable="false" />
+    <Property Name="Prev_Sell_CountN" Type="int" Nullable="false" />
+    <Property Name="Prev_Sell_I_Volume" Type="bigint" Nullable="false" />
+    <Property Name="Prev_Sell_N_Volume" Type="bigint" Nullable="false" />
+    <Property Name="Prev_Pl" Type="int" Nullable="false" />
+    <Property Name="Prev_TVol" Type="bigint" Nullable="false" />
+    <Property Name="heven" Type="time" Precision="7" Nullable="false" />
+    <Property Name="InsCode" Type="bigint" Nullable="false" />
+    <Property Name="VisitCount" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ClosingPrices">
+    <Key>
+      <PropertyRef Name="ClosingPricePK" />
+    </Key>
+    <Property Name="ClosingPricePK" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="DateTime" Type="datetime" Nullable="false" />
+    <Property Name="InsCode" Type="bigint" Nullable="false" />
+    <Property Name="PdrCotVal" Type="int" Nullable="false" />
+    <Property Name="PClosing" Type="int" Nullable="false" />
+    <Property Name="First" Type="int" Nullable="false" />
+    <Property Name="Ystrdy" Type="int" Nullable="false" />
+    <Property Name="Max" Type="int" Nullable="false" />
+    <Property Name="Min" Type="int" Nullable="false" />
+    <Property Name="TradeCount" Type="int" Nullable="false" />
+    <Property Name="Vol" Type="bigint" Nullable="false" />
+    <Property Name="Val" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="BVal" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+  </EntityType>
+  <EntityType Name="CodalMessages">
+    <Key>
+      <PropertyRef Name="TracingNo" />
+    </Key>
+    <Property Name="TracingNo" Type="int" Nullable="false" />
+    <Property Name="Symbol" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="CompanyName" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="Title" Type="nvarchar" MaxLength="1500" Nullable="false" />
+    <Property Name="SentDateTime" Type="datetime" Nullable="false" />
+    <Property Name="PublishDateTime" Type="datetime" Nullable="false" />
+    <Property Name="InsCode" Type="bigint" />
+  </EntityType>
+  <EntityType Name="Histories">
+    <Key>
+      <PropertyRef Name="HistoryPK" />
+    </Key>
+    <Property Name="HistoryPK" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="InsCode" Type="bigint" Nullable="false" />
+    <Property Name="Date" Type="date" Nullable="false" />
+    <Property Name="DEven" Type="int" Nullable="false" />
+    <Property Name="PClosing" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="PDrCotVal" Type="int" Nullable="false" />
+    <Property Name="ZTotTran" Type="bigint" Nullable="false" />
+    <Property Name="QTotTran5J" Type="bigint" Nullable="false" />
+    <Property Name="QTotCap" Type="bigint" Nullable="false" />
+    <Property Name="PriceMin" Type="int" Nullable="false" />
+    <Property Name="PriceMax" Type="int" Nullable="false" />
+    <Property Name="PriceYesterday" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="PriceFirst" Type="int" Nullable="false" />
+    <Property Name="Heven" Type="int" Nullable="false" />
+    <Property Name="Eps" Type="float" Nullable="false" />
+    <Property Name="Pe" Type="float" Nullable="false" />
+    <Property Name="VisitCount" Type="int" Nullable="false" />
+    <Property Name="BigMoney" Type="bigint" Nullable="false" />
+    <Property Name="Buy_CountI" Type="int" Nullable="false" />
+    <Property Name="Buy_CountN" Type="int" Nullable="false" />
+    <Property Name="Buy_I_Volume" Type="bigint" Nullable="false" />
+    <Property Name="Buy_N_Volume" Type="bigint" Nullable="false" />
+    <Property Name="Sell_CountI" Type="int" Nullable="false" />
+    <Property Name="Sell_CountN" Type="int" Nullable="false" />
+    <Property Name="Sell_I_Volume" Type="bigint" Nullable="false" />
+    <Property Name="Sell_N_Volume" Type="bigint" Nullable="false" />
+    <Property Name="HasDetails" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="IndexLastDayTimeValue">
+    <Key>
+      <PropertyRef Name="IndexLastDayTimeValuePK" />
+    </Key>
+    <Property Name="IndexLastDayTimeValuePK" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="InsCode" Type="bigint" Nullable="false" />
+    <Property Name="Dt" Type="datetime" Nullable="false" />
+    <Property Name="Value" Type="float" Nullable="false" />
+    <Property Name="ChangeValue" Type="float" />
+    <Property Name="ChangePercent" Type="float" />
+  </EntityType>
+  <EntityType Name="InsMsgMap">
+    <Key>
+      <PropertyRef Name="MessagePK" />
+      <PropertyRef Name="InsCode" />
+    </Key>
+    <Property Name="MessagePK" Type="int" Nullable="false" />
+    <Property Name="InsCode" Type="bigint" Nullable="false" />
+  </EntityType>
+  <EntityType Name="InstrumentCategories">
+    <Key>
+      <PropertyRef Name="InstrumentCategoryPK" />
+    </Key>
+    <Property Name="InstrumentCategoryPK" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="200" Nullable="false" />
+    <Property Name="CSecVal" Type="varchar" MaxLength="2" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Instruments">
+    <Key>
+      <PropertyRef Name="InsCode" />
+    </Key>
+    <Property Name="InsCode" Type="bigint" Nullable="false" />
+    <Property Name="InstrumentID" Type="char" MaxLength="12" Nullable="false" />
+    <Property Name="LatinSymbol" Type="char" MaxLength="5" />
+    <Property Name="LatinName" Type="varchar" MaxLength="50" />
+    <Property Name="CompanyCode" Type="char" MaxLength="4" />
+    <Property Name="Symbol" Type="nvarchar" MaxLength="18" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="30" Nullable="false" />
+    <Property Name="CIsin" Type="char" MaxLength="12" />
+    <Property Name="DEven" Type="int" />
+    <Property Name="Flow" Type="tinyint" Nullable="false" />
+    <Property Name="LSoc30" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="CGdSVal" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="CGrValCot" Type="varchar" MaxLength="50" />
+    <Property Name="YMarNSC" Type="nvarchar" MaxLength="50" />
+    <Property Name="CComVal" Type="nvarchar" MaxLength="50" />
+    <Property Name="CSecVal" Type="varchar" MaxLength="2" />
+    <Property Name="CSoSecVal" Type="varchar" MaxLength="5" />
+    <Property Name="YVal" Type="varchar" MaxLength="5" />
+    <Property Name="Eps" Type="float" Nullable="false" />
+    <Property Name="Pe" Type="float" Nullable="false" />
+    <Property Name="Type" Type="tinyint" />
+    <Property Name="BVol" Type="bigint" Nullable="false" />
+    <Property Name="Cs" Type="int" Nullable="false" />
+    <Property Name="Z" Type="bigint" Nullable="false" />
+  </EntityType>
+  <EntityType Name="LiveInstData">
+    <Key>
+      <PropertyRef Name="LiveInstDataPK" />
+    </Key>
+    <Property Name="LiveInstDataPK" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="InsCode" Type="bigint" Nullable="false" />
+    <Property Name="EstimatedEPS" Type="float" Nullable="false" />
+    <Property Name="ZTitad" Type="bigint" Nullable="false" />
+    <Property Name="Flow" Type="tinyint" Nullable="false" />
+    <Property Name="MinYear" Type="int" Nullable="false" />
+    <Property Name="MaxYear" Type="int" Nullable="false" />
+    <Property Name="QTotTran5JAvg" Type="bigint" Nullable="false" />
+    <Property Name="SectorPE" Type="float" Nullable="false" />
+    <Property Name="KAjCapValCpsIdx" Type="float" Nullable="false" />
+    <Property Name="PriceMin" Type="int" Nullable="false" />
+    <Property Name="PriceMax" Type="int" Nullable="false" />
+    <Property Name="DEven" Type="date" Nullable="false" />
+    <Property Name="Status" Type="tinyint" Nullable="false" />
+    <Property Name="PriceYesterday" Type="int" Nullable="false" />
+    <Property Name="Last" Type="int" Nullable="false" />
+    <Property Name="Count" Type="int" Nullable="false" />
+    <Property Name="PdrCotVal" Type="int" Nullable="false" />
+    <Property Name="PClosing" Type="int" Nullable="false" />
+    <Property Name="Vol" Type="bigint" Nullable="false" />
+    <Property Name="Val" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="BVal" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="NAV" Type="float" />
+    <Property Name="NAVDate" Type="datetime" />
+    <Property Name="PSGelStaMin" Type="int" Nullable="false" />
+    <Property Name="PSGelStaMax" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Messages">
+    <Key>
+      <PropertyRef Name="MessagePK" />
+    </Key>
+    <Property Name="MessagePK" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Subject" Type="nvarchar" MaxLength="1000" Nullable="false" />
+    <Property Name="MessageDt" Type="datetime" Nullable="false" />
+    <Property Name="Description" Type="nvarchar" MaxLength="3000" Nullable="false" />
+    <Property Name="InsCode" Type="bigint" />
+  </EntityType>
+  <EntityType Name="NotificationLogs">
+    <Key>
+      <PropertyRef Name="NotificationLogPK" />
+    </Key>
+    <Property Name="NotificationLogPK" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="InsCode" Type="bigint" Nullable="false" />
+    <Property Name="PhoneNumber" Type="varchar" MaxLength="50" />
+    <Property Name="Email" Type="varchar" MaxLength="150" />
+    <Property Name="NotificationDt" Type="datetime" Nullable="false" />
+    <Property Name="MessageBody" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Status" Type="tinyint" />
+    <Property Name="NotificationPK" Type="int" Nullable="false" />
+    <Property Name="Owner" Type="varchar" MaxLength="100" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Notifications">
+    <Key>
+      <PropertyRef Name="NotificationPK" />
+    </Key>
+    <Property Name="NotificationPK" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="PortfolioPK" Type="int" Nullable="false" />
+    <Property Name="EventObjectId" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="SendSms" Type="bit" Nullable="false" />
+    <Property Name="SendEmail" Type="bit" Nullable="false" />
+    <Property Name="Calling" Type="bit" Nullable="false" />
+    <Property Name="Owner" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="Email" Type="varchar" MaxLength="150" Nullable="false" />
+    <Property Name="PhoneNo" Type="varchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Portfolios">
+    <Key>
+      <PropertyRef Name="PortfolioPK" />
+    </Key>
+    <Property Name="PortfolioPK" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="OrderIndex" Type="int" />
+    <Property Name="Audit_CreatorUserName" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Audit_CreatorIP" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Audit_CreateDate" Type="datetime" Nullable="false" />
+    <Property Name="Audit_LastModifyDate" Type="datetime" Nullable="false" />
+    <Property Name="Audit_LastModifierUserName" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Audit_LastModifierIP" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Owner" Type="varchar" MaxLength="100" Nullable="false" />
+  </EntityType>
+  <EntityType Name="PortInstMap">
+    <Key>
+      <PropertyRef Name="PortfolioPK" />
+      <PropertyRef Name="InsCode" />
+    </Key>
+    <Property Name="PortfolioPK" Type="int" Nullable="false" />
+    <Property Name="InsCode" Type="bigint" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ShareHolderChanges">
+    <Key>
+      <PropertyRef Name="ShareHolderChangePK" />
+    </Key>
+    <Property Name="ShareHolderChangePK" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="HolderPK" Type="int" Nullable="false" />
+    <Property Name="InstrumentID" Type="char" MaxLength="12" Nullable="false" />
+    <Property Name="Quoantity" Type="bigint" Nullable="false" />
+    <Property Name="Percent" Type="float" Nullable="false" />
+    <Property Name="Arrow" Type="char" MaxLength="1" />
+    <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="InsCode" Type="bigint" Nullable="false" />
+    <Property Name="DateTime" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Trades">
+    <Key>
+      <PropertyRef Name="TradePK" />
+    </Key>
+    <Property Name="TradePK" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="InsCode" Type="bigint" Nullable="false" />
+    <Property Name="DateTime" Type="datetime" Nullable="false" />
+    <Property Name="Number" Type="int" Nullable="false" />
+    <Property Name="Quantity" Type="int" Nullable="false" />
+    <Property Name="Price" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="Unknown1" Type="int" Nullable="false" />
+  </EntityType>
+  <Association Name="FK_IndexLastDayTimeValue_Instruments">
+    <End Role="Instruments" Type="Self.Instruments" Multiplicity="1" />
+    <End Role="IndexLastDayTimeValue" Type="Self.IndexLastDayTimeValue" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Instruments">
+        <PropertyRef Name="InsCode" />
+      </Principal>
+      <Dependent Role="IndexLastDayTimeValue">
+        <PropertyRef Name="InsCode" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_InsMsgMap_Messages">
+    <End Role="Messages" Type="Self.Messages" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="InsMsgMap" Type="Self.InsMsgMap" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Messages">
+        <PropertyRef Name="MessagePK" />
+      </Principal>
+      <Dependent Role="InsMsgMap">
+        <PropertyRef Name="MessagePK" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_NotificationLogs_Instruments">
+    <End Role="Instruments" Type="Self.Instruments" Multiplicity="1" />
+    <End Role="NotificationLogs" Type="Self.NotificationLogs" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Instruments">
+        <PropertyRef Name="InsCode" />
+      </Principal>
+      <Dependent Role="NotificationLogs">
+        <PropertyRef Name="InsCode" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_NotificationLogs_Notifications">
+    <End Role="Notifications" Type="Self.Notifications" Multiplicity="1" />
+    <End Role="NotificationLogs" Type="Self.NotificationLogs" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Notifications">
+        <PropertyRef Name="NotificationPK" />
+      </Principal>
+      <Dependent Role="NotificationLogs">
+        <PropertyRef Name="NotificationPK" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Notifications_Portfolios">
+    <End Role="Portfolios" Type="Self.Portfolios" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Notifications" Type="Self.Notifications" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Portfolios">
+        <PropertyRef Name="PortfolioPK" />
+      </Principal>
+      <Dependent Role="Notifications">
+        <PropertyRef Name="PortfolioPK" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PortInstMap_Instruments">
+    <End Role="Instruments" Type="Self.Instruments" Multiplicity="1" />
+    <End Role="PortInstMap" Type="Self.PortInstMap" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Instruments">
+        <PropertyRef Name="InsCode" />
+      </Principal>
+      <Dependent Role="PortInstMap">
+        <PropertyRef Name="InsCode" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PortInstMap_Portfolios">
+    <End Role="Portfolios" Type="Self.Portfolios" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="PortInstMap" Type="Self.PortInstMap" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Portfolios">
+        <PropertyRef Name="PortfolioPK" />
+      </Principal>
+      <Dependent Role="PortInstMap">
+        <PropertyRef Name="PortfolioPK" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="SeatDBModelStoreContainer">
+    <EntitySet Name="BestLimits" EntityType="Self.BestLimits" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="BigDeals" EntityType="Self.BigDeals" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ClientTypes" EntityType="Self.ClientTypes" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ClosingPrices" EntityType="Self.ClosingPrices" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="CodalMessages" EntityType="Self.CodalMessages" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Histories" EntityType="Self.Histories" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="IndexLastDayTimeValue" EntityType="Self.IndexLastDayTimeValue" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="InsMsgMap" EntityType="Self.InsMsgMap" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="InstrumentCategories" EntityType="Self.InstrumentCategories" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Instruments" EntityType="Self.Instruments" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="LiveInstData" EntityType="Self.LiveInstData" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Messages" EntityType="Self.Messages" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="NotificationLogs" EntityType="Self.NotificationLogs" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Notifications" EntityType="Self.Notifications" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Portfolios" EntityType="Self.Portfolios" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="PortInstMap" EntityType="Self.PortInstMap" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ShareHolderChanges" EntityType="Self.ShareHolderChanges" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Trades" EntityType="Self.Trades" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_IndexLastDayTimeValue_Instruments" Association="Self.FK_IndexLastDayTimeValue_Instruments">
+      <End Role="Instruments" EntitySet="Instruments" />
+      <End Role="IndexLastDayTimeValue" EntitySet="IndexLastDayTimeValue" />
+    </AssociationSet>
+    <AssociationSet Name="FK_InsMsgMap_Messages" Association="Self.FK_InsMsgMap_Messages">
+      <End Role="Messages" EntitySet="Messages" />
+      <End Role="InsMsgMap" EntitySet="InsMsgMap" />
+    </AssociationSet>
+    <AssociationSet Name="FK_NotificationLogs_Instruments" Association="Self.FK_NotificationLogs_Instruments">
+      <End Role="Instruments" EntitySet="Instruments" />
+      <End Role="NotificationLogs" EntitySet="NotificationLogs" />
+    </AssociationSet>
+    <AssociationSet Name="FK_NotificationLogs_Notifications" Association="Self.FK_NotificationLogs_Notifications">
+      <End Role="Notifications" EntitySet="Notifications" />
+      <End Role="NotificationLogs" EntitySet="NotificationLogs" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Notifications_Portfolios" Association="Self.FK_Notifications_Portfolios">
+      <End Role="Portfolios" EntitySet="Portfolios" />
+      <End Role="Notifications" EntitySet="Notifications" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PortInstMap_Instruments" Association="Self.FK_PortInstMap_Instruments">
+      <End Role="Instruments" EntitySet="Instruments" />
+      <End Role="PortInstMap" EntitySet="PortInstMap" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PortInstMap_Portfolios" Association="Self.FK_PortInstMap_Portfolios">
+      <End Role="Portfolios" EntitySet="Portfolios" />
+      <End Role="PortInstMap" EntitySet="PortInstMap" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

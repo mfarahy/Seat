@@ -1,0 +1,41 @@
+﻿<Bocrud Style="classic"
+        DetailPosition="up"
+        Name="BigDeal-Search"
+        Caption="فیلتر معاملات درشت"
+        Height="580" Width="840"
+        xmlns="http://exirtechsun.com/uie/2014/schema"
+       xmlns:yaxlib="http://yaxlib.codeplex.com/">
+
+
+  <Groups>
+    <Group Title="اطلاعات اصلی" ColumnCount="2" Template="fluid">
+      <Controls>
+        <Select2 BocrudXml="Instrument"  Caption="نمادها" Name="InsCode" Remotely="true" Format="{Symbol} - {Name}" DataTextField="Symbol" ShowConditionSpel="!#HasVar('InsCode')"/>
+        <Select2 BocrudXml="InstrumentCategory" Caption="صنعت" Name="CSecVal" DataValueField="CSecVal" DataTextField="Name" />
+        <TextBox Name="MinMoney" Caption="حداقل میانگین معامله" DigitalGroup="true"  DefaultValue="1000000000"/>
+        <DateTimePicker Name="FromDt" Caption="از تاریخ" ShowTime="true"/>
+        <DateTimePicker Name="ToDt" Caption="تا تاریخ" ShowTime="true"/>
+		  <Radio Name="TraderType" Caption="نوع معامله‌گر">
+			  <Items>
+				  <Add Value="0" Text="حقیقی و حقوقی"/>
+				  <Add Value="1" Text="فقط فرد حقیقی"/>
+				  <Add Value="2" Text="فقط حقوقی"/>
+			  </Items>
+		  </Radio>
+		  <Radio Name="DealType" Caption="نوع معامله">
+			  <Items>
+				  <Add Value="" Text="خرید و فروش"/>
+				  <Add Value="1" Text="فقط خرید"/>
+				  <Add Value="2" Text="فقط فروش"/>
+			  </Items>
+		  </Radio>
+      </Controls>
+    </Group>
+  </Groups>
+  <Operations>Create</Operations>
+  <!--All Create Update ViewDetail Search Delete Print CreateRoot CreateChild TreeCopy TreeMove None-->
+  <FactoryMethodArgsSpel>
+	  <String>T(SeatDomain.Models.BigDealSearchModel, SeatDomain)</String>
+	  <String>T(SeatWebApp.Models.BigDealSearchViewModel, SeatWebApp)</String>
+  </FactoryMethodArgsSpel>
+</Bocrud>

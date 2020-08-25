@@ -1,0 +1,155 @@
+<Bocrud                 Style="classic"
+		    AccessOperation="BckstgJb.A"
+		    DirectAccessible="true"
+        DetailPosition="up"
+        Name="BackstageJob"
+        SearchXml="BackstageJob-Search"
+        FilterSpel="SetCommand('Report')"
+        Caption="صف کار"
+        Height="480" Width="640"
+        SummaryXml="BackstageJob-Summary"
+        ToStringFormat=""
+        xmlns="http://exirtechsun.com/uie/2014/schema"
+       xmlns:yaxlib="http://yaxlib.codeplex.com/">
+
+  <ToolbarCommands>
+    <Add Icon="icon-refresh" Name="Restart" Color="btn-primary" ReloadGrid="true" Position="InRow" Tooltip="اجرای مجدد" ShowConditionSpel="#Container.Status!=1 or #Container.TimeToRun > DateTime.Now"/>
+
+    <Add Icon="icon-refresh" Name="RestartAll" Color="btn-primary" Position="Toolbar" Text="اجرای مجدد"  UseQuery="true"/>
+    <Add Icon="icon-trash" Name="RemoveAllDone" Color="btn-warning" Position="Toolbar" Text="حذف انجام شده‌ها" />
+    <Add Icon="icon-stop" Name="StopService" Color="btn-danger" Confirm="آیا از متوقف کردن سرویس اطمینان دارید؟" Text="توقف سرویس"/>
+  </ToolbarCommands>
+  <Groups>
+    <Group Title="جزئیات"  ColumnCount="2" Template="fluid">
+      <Controls>
+        <TextBox  Caption="شناسه" Name="BackstageJobPK" Type="Code" IsEditable="false"  />
+        <TextBox  Caption="کاربر" Name="RunAs" Type="Code" IsEditable="false"  />
+        <DateTimePicker  Caption="زمان درخواست" Name="TimeToRun" ShowTime="true"  IsEditable="false" />
+        <List  Caption="وضعیت" Name="Status" >
+          <Items>
+            <Add  Value="1" Text="جدید"/>
+            <Add  Value="2" Text="در حال پردازش"/>
+            <Add  Value="3" Text="تمام"/>
+            <Add  Value="4" Text="خطا"/>
+            <Add  Value="5" Text="حذف شده"/>
+          </Items>
+        </List>
+        <Select2  Caption="سرویس" Name="Service" AcceptOutOfRangeData="true" IsEditable="false">
+          <Items>
+            <Add Value="BackstageJobService" Text="کار پشت صحنه"/>
+            <Add Value="BatchRequestService" Text="ثبت درخواست گروهی"/>
+            <Add Value="ChargeTransactionService" Text="گزارش شارژ"/>
+            <Add Value="DepositService" Text="ودیعه"/>
+            <Add Value="EnamadCheckHistoryService" Text="اینماد"/>
+            <Add Value="IMerchantRequestService" Text="ثبت درخواست"/>
+            <Add Value="IMerchantService" Text="پذیرنده"/>
+            <Add Value="ImmigrateRequestService" Text="مهاجرت"/>
+            <Add Value="MerchantRequestService" Text="ثبت درخواست"/>
+            <Add Value="MerchantService" Text="پذیرنده"/>
+            <Add Value="MerchantTerminalService" Text="پایانه پذیرنده"/>
+            <Add Value="MerchantOrderTerminalImplementor" Text="افزایش پایانه"/>
+            <Add Value="MerchantOrderTerminalImplementorService" Text="افزایش پایانه"/>
+            <Add Value="SharedRequestMessageSender" Text="سرویس پیام"/>
+            <Add Value="SharedRequestMessageSenderService" Text="سرویس پیام"/>
+            <Add Value="MerchantOrderTerminalService" Text="سرویس درخواست افزایش پایانه"/>
+            <Add Value="RequestQuotaService" Text="سرویس سهمیه"/>
+            <Add Value="TerminalWarningService" Text="سرویس هشدار به پذیرنده"/>
+            <Add Value="MerchantTerminalShatootService" Text="سرویس شاتوت"/>
+            <Add Value="CollectTermCaseService" Text="سرویس ماژول جمع آوری پایانه"/>
+            <Add Value="BatchOrderTerminalService" Text="افزایش پایانه گروهی"/>
+          </Items>
+        </Select2>
+        <Select2  Caption="عملیات" Name="Action" IsEditable="false" AcceptOutOfRangeData="true">
+          <Items>
+            <Add Value="BatchInquiry" Text="استعلام گروهی"/>
+            <Add Value="CheckItems" Text="بررسی آیتم‌ها"/>
+            <Add Value="ConfirmModificationStation" Text="تایید ویرایش"/>
+            <Add Value="DeclareMerchantByRequestPk" Text="تعریف پذیرنده"/>
+            <Add Value="DeclareMerchants" Text="تعریف پذیرنده گروهی"/>
+            <Add Value="HeavyExport" Text="خروجی"/>
+            <Add Value="NotifyInstallation" Text="ارسال پیام نصب"/>
+            <Add Value="RawRun" Text="حرکت جریان کاری"/>
+            <Add Value="RetryInquiry" Text="استعلام مجدد"/>
+            <Add Value="SendMessage" Text="ارسال پیام"/>
+            <Add Value="StartWorkflowIfNoFlow" Text="ایجاد جریان کاری"/>
+            <Add Value="UpdateEvidences" Text="بروزرسانی مدارک"/>
+            <Add Value="Implement" Text="افزایش پایانه"/>
+            <Add Value="StartWorkflow" Text="ایجاد جریان کاری"/>
+            <Add Value="Change" Text="تغییر سهمیه"/>
+            <Add Value="LoadEWRegisteredTerminal" Text="بارگزاری لیست پایانه پذیرنده"/>
+            <Add Value="Notify" Text="اطلاع رسانی"/>
+            <Add Value="LogMerchantTransactionStatus" Text="لاگ وضعیت تراکنش‌های پذیرنده"/>
+            <Add Value="ConvertTerminalToDeposit" Text="تبدیل پایانه به ودیعه ای"/>
+            <Add Value="SendTermCollectMessages" Text="ارسال پیام ماژول جمع آوری پایانه"/>
+            <Add Value="SendTermCollectMessagesAgain" Text="ارسال پیام مجدد ماژول جمع آوری پایانه"/>
+            <Add Value="RemoveWorkflow" Text="حذف جریان کاری"/>
+            <Add Value="DeclareTerminals" Text="تعریف پایانه"/>
+          </Items>
+        </Select2>
+        <TextBox  Caption="اولویت" Type="Code" Name="Priority"  />
+        <CheckBox  Caption="حذفی" Name="RemoveIfSuccess" />
+        <CheckBox  Caption="دیباگ" Name="Debug" />
+        <TextBox  Caption="اجرا" Name="RetryCount"  IsEditable="false"/>
+        <DateTimePicker  Caption="زمان اجرا" Name="RunDt" ShowTime="true"  />
+        <TextBox  Caption="کد یکتا" Type="Code" Name="UniqueCode" IsEditable="false"/>
+        <TextBox  Caption="وابستگی" Type="Code" Name="Dependency" />
+        <TextBox  Caption="صف" Type="Code" Name="Queue" />
+        <TextBox  Caption="سرور" Type="Code" Name="Server" />
+        <TextBox  Caption="Tags" Type="Code" Name="Tags" />
+        <TextBox  Caption="مدت زمان"  Name="Duration" />
+        <TextBox  Caption="حداکثر CPU"  Name="MaxCpu" />
+        <TextBox  Caption="حداکثر رم"  Name="MaxMemory" />
+        <TextBox  Caption="متوسط CPU"  Name="MidCpu" />
+        <TextBox  Caption="متوسط رم"  Name="MidMemory" />
+      </Controls>
+      <Groups>
+        <Group ColumnCount="1">
+          <Controls>
+            <TextBox  Caption="آرگومان‌ها" Name="SerializedArgs" Type="Code" MultiLine="true" AllowEditMode="false"  />
+            <Label Name="Error" Caption="خطا"  AllowEditMode="false" Theme="console"  />
+            <Label Name="Log" Caption="لاگ"  AllowEditMode="false" Theme="console" >
+              <Text>
+                @{#Container.GetExecutionLog()}
+              </Text>
+            </Label>
+          </Controls>
+        </Group>
+      </Groups>
+    </Group>
+  </Groups>
+
+  <Grid Caption="لیست کارها"
+  EnableSearch="false" ToolbarSearch="false" AutoWidth="true" Width="100"
+  MultiSelect="true" EnableColumnChooser="true" SortName="RunDt" SortOrder="desc" CssColumn="Status">
+    <Columns>
+      <Column Width="50" Name="BackstageJobPK" Searchable="true"  Hidden="true"/>
+      <Column Width="150" Name="UniqueCode" Caption="کد" Searchable="true" Hidden="true" />
+      <Column Width="150" Name="RunAs" Searchable="true" />
+      <Column Width="100" Name="TimeToRun" Searchable="true" Sortable="true" />
+      <Column Width="80" Name="Status" Searchable="true" />
+      <Column Width="150" Name="Service" Searchable="true" />
+      <Column Width="150" Name="Action" Searchable="true" />
+      <Column Width="50" Name="Priority" Searchable="true" />
+      <Column Width="50" Name="RemoveIfSuccess" Searchable="true" />
+      <Column Width="50" Name="RetryCount" Searchable="true" />
+      <Column Width="100" Name="RunDt" Searchable="true"  Sortable="true" />
+      <Column Width="150" Name="Dependency" Searchable="true" Hidden="true" />
+      <Column Width="80" Name="Queue" Searchable="true" />
+      <Column Width="150" Name="Server" Searchable="true" Hidden="true" />
+      <Column Width="150" Name="Tags" Searchable="true" />
+      <Column Width="80" Name="Duration" Searchable="true"  Sortable="true"/>
+      <Column Width="80" Name="MaxCpu" Searchable="true" Hidden="true"  Sortable="true"/>
+      <Column Width="80" Name="MaxMemory" Searchable="true" Hidden="true"  Sortable="true"/>
+      <Column Width="80" Name="MidCpu" Searchable="true" Hidden="true"  Sortable="true"/>
+      <Column Width="80" Name="MidMemory" Searchable="true" Hidden="true"  Sortable="true"/>
+
+    </Columns>
+  </Grid>
+  <Operations>ViewDetail Update Search Delete</Operations>
+  <!--All Create Update ViewDetail Search Delete Print CreateRoot CreateChild TreeCopy TreeMove None-->
+  <FactoryMethodArgsSpel>
+    <String>'BackstageJobService'</String>
+    <String>T(SeatWebApp.Models.BackstageJobViewModel, SeatWebApp)</String>
+  </FactoryMethodArgsSpel>
+</Bocrud>
+

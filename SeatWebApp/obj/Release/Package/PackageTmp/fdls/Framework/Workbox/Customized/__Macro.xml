@@ -1,0 +1,43 @@
+﻿<Bocrud                 Style="classic"
+        DetailPosition="up"
+        Name="__Macro"
+        Caption="مجری ماکرو"
+        Height="480" Width="640"
+        ToStringFormat="{Name}"
+        DirectAccessible="true"
+        xmlns="http://exirtechsun.com/uie/2014/schema"
+       xmlns:yaxlib="http://yaxlib.codeplex.com/">
+
+  <Groups>
+    <Group Title="جزئیات"  ColumnCount="2" Template="fluid">
+      <Controls>
+        <TextBox  Caption="نام" Name="Name"  />
+        <TextBox  Caption="توضیحات" Name="Description"  MultiLine="true" />
+      </Controls>
+      <Groups>
+        <Group ColumnCount="1" Template="fluid">
+          <Controls>
+            <TextBox  Caption="نام نوع" Name="TypeName" Direction="Ltr" FontName="Courier"  />
+          </Controls>
+        </Group>
+      </Groups>
+    </Group>
+  </Groups>
+
+  <Grid Caption="لیست مجرهای ماکرو"
+  EnableSearch="false" ToolbarSearch="false" AutoWidth="false" Width="450"
+  MultiSelect="true">
+    <Columns>
+      <Column Width="150" Name="Name" />
+      <Column Width="200" Name="Description" />
+      <Column Width="300" Name="TypeName" />
+
+    </Columns>
+  </Grid>
+  <Operations>All</Operations>
+  <!--All Create Update ViewDetail Search Delete Print CreateRoot CreateChild TreeCopy TreeMove None-->
+  <FactoryMethodArgsSpel>
+    <String>T(Exir.Workbox.Services.MacroService, Exir.Workbox)</String>
+  </FactoryMethodArgsSpel>
+</Bocrud>
+

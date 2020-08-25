@@ -1,0 +1,49 @@
+﻿<Bocrud                 Style="classic"
+        DetailPosition="up"
+        Name="C__Dash_UserWidgets"
+        Caption="ویجت کاربر"
+        Height="480" Width="640"
+        ToStringFormat=""
+DirectAccessible="true"
+AccessOperation="C_Dsh_UsrWdgts.A"
+        xmlns="http://exirtechsun.com/uie/2014/schema"
+       xmlns:yaxlib="http://yaxlib.codeplex.com/">
+  <Categories>
+    <Add BocrudXml="C__Dash_WidgetInstances" Caption="ویجت‌ها"  Property="InstanceId" KeyProperty="InstanceId"/>
+  </Categories>
+  <Groups>
+    <Group Title="جزئیات"  ColumnCount="2" Template="fluid">
+      <Controls>
+        <TextBox  Name="UserName" Caption="نام کاربری"  />
+        <TextBox  Name="OtherSettings" Caption="OtherSettings"  />
+        <TextBox  Name="X" Caption="X"  />
+        <TextBox  Name="Y" Caption="Y"  />
+        <TextBox  Name="Width" Caption="عرض"  />
+        <TextBox  Name="Height" Caption="ارتفاع"  />
+        <Tagging Name="Roles" Caption="نقش‌ها"/>
+        <Tagging Name="UnLockRole" Caption="نقش‌های مجاز"/>
+      </Controls>
+    </Group>
+  </Groups>
+
+  <Grid Caption="لیست ویجت‌های کاربر"
+  EnableSearch="false" ToolbarSearch="false" AutoWidth="true" Width="100"
+  MultiSelect="true">
+    <Columns>
+      <Column Width="150" Name="UserName" />
+      <Column Width="150" Name="Roles" />
+      <Column Width="150" Name="UnLockRole" />
+      <Column Width="150" Name="OtherSettings" Hidden="true" />
+      <Column Width="150" Name="X" />
+      <Column Width="150" Name="Y" />
+      <Column Width="150" Name="Width" />
+      <Column Width="150" Name="Height" />
+    </Columns>
+  </Grid>
+  <Operations>All</Operations>
+  <!--All Create Update ViewDetail Search Delete Print CreateRoot CreateChild TreeCopy TreeMove None-->
+  <FactoryMethodArgsSpel>
+    <String>T(Exir.Framework.Uie.Adapter.Dashboard.UserWidgetService, Exir.Framework.Uie.Adapter)</String>
+  </FactoryMethodArgsSpel>
+</Bocrud>
+

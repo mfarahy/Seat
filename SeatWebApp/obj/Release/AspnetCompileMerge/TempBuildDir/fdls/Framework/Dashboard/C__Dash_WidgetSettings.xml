@@ -1,0 +1,51 @@
+﻿<Bocrud                 Style="classic"
+        DetailPosition="up"
+        Name="C__Dash_WidgetSettings"
+        Caption="تنظیمات ویجت"
+        Height="480" Width="640"
+        ToStringFormat=""
+DirectAccessible="false"
+AccessOperation="C_Dsh_WdgtStngs.A"
+        xmlns="http://exirtechsun.com/uie/2014/schema"
+       xmlns:yaxlib="http://yaxlib.codeplex.com/">
+
+  <Groups>
+    <Group Title="جزئیات"  ColumnCount="2" Template="fluid">
+      <Controls>
+
+        <Label >
+          <Text>
+            <![CDATA[
+            <div style="text-align: left;">
+            @{ #Container.Param.Caption } :
+            </div>
+            ]]>
+          </Text>
+        </Label>
+        
+        <RuntimeDefined Name="Value" MetadataSpel="#Container.Param.ControlSetting">
+          <Validators>
+            <RequiredFieldValidator Required="true"  />
+            <RegularExpressionValidator RegularExpression="@{ #Container.Param.ValidatorRegex}"/>
+          </Validators>
+        </RuntimeDefined>
+        
+      </Controls>
+    </Group>
+  </Groups>
+
+  <Grid Caption="تنظیمات ویجت"
+  EnableSearch="false" ToolbarSearch="false" AutoWidth="false" Width="150"
+  MultiSelect="true">
+    <Columns>
+      <Column Width="150" Name="Value" />
+
+    </Columns>
+  </Grid>
+  <Operations>All</Operations>
+  <!--All Create Update ViewDetail Search Delete Print CreateRoot CreateChild TreeCopy TreeMove None-->
+  <FactoryMethodArgsSpel>
+    <String>T(Exir.Framework.Uie.Adapter.Dashboard.WidgetSettingService, Exir.Framework.Uie.Adapter)</String>
+  </FactoryMethodArgsSpel>
+</Bocrud>
+

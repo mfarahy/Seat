@@ -1,0 +1,48 @@
+﻿<Bocrud Style="classic"
+        DetailPosition="up"
+        Name="__PropertyValidator"
+        Caption="اعتبارسنج"
+        Height="400" Width="500"
+        ToStringFormat="{Caption}"
+        DirectAccessible="false"
+        xmlns="http://exirtechsun.com/uie/2014/schema"
+       xmlns:yaxlib="http://yaxlib.codeplex.com/">
+  <SubTypes>
+    <Add Xml="__RequiredFieldValidator" TypeName="RequiredFieldValidator"/>
+    <Add Xml="__TextValidator" TypeName="TextValidator"/>
+    <Add Xml="__RemoteValidator" TypeName="RemoteValidator"/>
+    <Add Xml="__RegularExpressionValidator" TypeName="RegularExpressionValidator"/>
+    <Add Xml="__NumericValidator" TypeName="NumericValidator"/>
+    <Add Xml="__DateTimeValidator" TypeName="DateTimeValidator"/>
+    <Add Xml="__CustomValidator" TypeName="CustomValidator"/>
+    <Add Xml="__ConditionValiator" TypeName="ConditionValiator"/>
+    <Add Xml="__CompareValidator" TypeName="CompareValidator"/>
+  </SubTypes>
+  <Groups>
+    <Group Name="CommonSettings" Title="تنظیمات عمومی" ColumnCount="2" Template="fluid">
+      <Controls>
+        <CheckBox Name="AllowCreateMode" Caption="در زمان ایجاد ؟"/>
+        <CheckBox Name="AllowEditMode" Caption="در زمان ویرایش ؟"/>
+        <TextBox Name="ErrorMessage" Caption="پیغام خطا"/>
+        <TextBox Name="ApplyTo" Caption="مقصد" Type="Code"/>
+      </Controls>
+    </Group>
+  </Groups>
+  <Grid Caption="لیست اعتبار سنج‌ها"
+  EnableSearch="false" ToolbarSearch="false" AutoWidth="true" Width="100"
+  MultiSelect="true">
+    <Columns>
+      <Column Width="100" Name="Key" Caption="شناسه" Hidden="true" />
+      <Column Width="100" Name="Caption" Caption="نام اعتبارسنج" />
+      <Column Width="70" Name="AllowCreateMode" />
+      <Column Width="70" Name="AllowEditMode" />
+      <Column Width="180" Name="ErrorMessage" />
+    </Columns>
+  </Grid>
+
+  <Operations>All</Operations>
+  <FactoryMethodArgsSpel>
+    <String>T(Exir.Framework.Uie.Adapter.FormBuilder.ValidatorService, Exir.Framework.Uie.Adapter)</String>
+  </FactoryMethodArgsSpel>
+</Bocrud>
+

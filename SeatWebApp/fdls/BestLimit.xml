@@ -1,0 +1,52 @@
+<Bocrud ManagerFactoryType="Exir.Framework.Uie.Adapter.PresenterFactory, Exir.Framework.Uie.Adapter"
+                Style="classic"
+		AccessOperation="BstLmt.A"
+		DirectAccessible="false"
+        DetailPosition="up"
+        Name="BestLimit"
+        Caption="$BestLimit"        
+        Height="480" Width="640"
+        ToStringFormat="" 
+        xmlns="http://exirtechsun.com/uie/2014/schema"
+       xmlns:yaxlib="http://yaxlib.codeplex.com/">
+
+	   		
+  <Groups>
+    <Group Title="جزئیات"  ColumnCount="2" Template="fluid">
+      <Controls>
+<TextBox  Caption="$InsCode" Name="InsCode"  /> 
+<DateTimePicker  Caption="$DateTime" Name="DateTime"  /> 
+<TextBox  Caption="$Row" Name="Row"  /> 
+<TextBox  Caption="$Buy_Count" Name="Buy_Count"  /> 
+<TextBox  Caption="$Buy_Volume" Name="Buy_Volume"  /> 
+<TextBox  Caption="$Buy_Price" Name="Buy_Price"  /> 
+<TextBox  Caption="$Sell_Price" Name="Sell_Price"  /> 
+<TextBox  Caption="$Sell_Volume" Name="Sell_Volume"  /> 
+<TextBox  Caption="$Sell_Count" Name="Sell_Count"  /> 
+     </Controls>
+    </Group>
+  </Groups>
+
+<Grid Caption="$BestLimit" 
+EnableSearch="false" ToolbarSearch="true" AutoWidth="true" Width="100"  
+MultiSelect="true" EnableColumnChooser="false">
+    <Columns>
+      <Column Width="150" Name="InsCode" Searchable="true" />
+      <Column Width="150" Name="DateTime" Searchable="true" />
+      <Column Width="150" Name="Row" Searchable="true" />
+      <Column Width="150" Name="Buy_Count" Searchable="true" />
+      <Column Width="150" Name="Buy_Volume" Searchable="true" />
+      <Column Width="150" Name="Buy_Price" Searchable="true" />
+      <Column Width="150" Name="Sell_Price" Searchable="true" />
+      <Column Width="150" Name="Sell_Volume" Searchable="true" />
+      <Column Width="150" Name="Sell_Count" Searchable="true" />
+
+    </Columns>
+</Grid>
+<Operations>All</Operations><!--All Create Update ViewDetail Search Delete Print CreateRoot CreateChild TreeCopy TreeMove None-->
+  <FactoryMethodArgsSpel>
+    <String>'BestLimitService'</String>
+      <String>T(SeatWebApp.Models.BestLimitViewModel, SeatWebApp)</String>
+  </FactoryMethodArgsSpel>
+</Bocrud>
+

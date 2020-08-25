@@ -1,0 +1,95 @@
+﻿@using Exir.Framework.Common
+@using Exir.Framework.Security.SchemaSecurity
+@{
+    IResourceProvider resprovider = ObjectRegistry.GetObject<IResourceProvider>();
+    ISchemaSecurityProvider security = ObjectRegistry.GetObject<ISchemaSecurityProvider>();
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var appVersion = SeatDomain.ApplicationInfo.Version;
+    Response.Cache.SetNoStore();
+    Response.CacheControl = "no-cache";
+}
+
+@section Title{
+    داشبورد
+}
+
+@Exir.Framework.Uie.MyUrlHelper.RenderCssBundles("~/bundles/dashboard/css", appVersion)
+@Exir.Framework.Uie.MyUrlHelper.RenderJsBundles("~/bundles/dashboard/js", appVersion)
+
+<script src="~/assets-web/panel/js/dashboard-note.js"></script>
+
+<div class="dashboard-container">
+    <div id="dash-notes">
+    </div>
+    <div id="dash-note-template" class="alert alert-block alert-success" style="display:none">
+        <button type="button" class="close" data-dismiss="alert">
+            <i class="icon-remove"></i>
+        </button>
+        <span class="text"></span>
+    </div>
+
+    @if (security.CanDo(User.Identity.Name, "C_Dsh_WdgtInstncs.A", false))
+    {
+
+        var wSrv = new Exir.Framework.Uie.Adapter.Dashboard.WidgetInstanceService();
+        var widgets = wSrv.GetMyAvailableWidgets();
+        if (widgets.Length > 0)
+        {
+            <div>
+                <div class="btn-group">
+                    <button data-toggle="dropdown" class="btn btn-info dropdown-toggle" id="add-widget-btn" style="display:none">
+                        <span class="icon-plus icon-only"></span>
+                    </button>
+                    <ul class="dropdown-menu dropdown-info pull-right">
+
+                        @foreach (var widget in widgets)
+                        {
+                            <li id="menu-@widget.Id" class="widget-menu-item">
+
+                                <a href="javascript:window.dashboard.add_new_widget('@widget.Id')">
+                                    <span>
+                                        @widget.Name
+                                    </span>
+                                    <i class="@widget.Definition.Icon dashboard-widget-icon"></i>
+                                </a>
+                            </li>
+                        }
+                    </ul>
+                </div>
+            </div>
+        }
+
+    }
+
+    <div class="dashboard grid-stack">
+    </div>
+
+    <div class="widget-template">
+        <div class="widget">
+            <div class="widget-box transparent">
+                <div class="widget-header widget-header-flat">
+                    <h5 class="lighter">
+                        <i class="{icon} orange"></i>
+                        {caption}
+                    </h5>
+
+                    <div class="widget-toolbar">
+                        <a class="action-refresh" href="javascript:void(0)">
+                            <i class="icon-refresh"></i>
+                        </a>
+                        <a class="action-remove">
+                            <i class="icon-remove"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="widget-body">
+                    <div class="widget-main no-padding">
+                        {content}
+                    </div><!-- /widget-main -->
+                </div><!-- /widget-body -->
+            </div>
+        </div>
+    </div>
+
+</div>

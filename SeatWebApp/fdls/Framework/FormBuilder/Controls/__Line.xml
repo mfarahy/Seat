@@ -1,0 +1,22 @@
+﻿<Bocrud Style="classic"
+        DetailPosition="up"
+        Name="__Line"
+        Caption="کنترل خط"
+        Height="500" Width="700"
+        ToStringFormat="{Caption}"
+        DirectAccessible="false"
+        xmlns="http://exirtechsun.com/uie/2014/schema"
+       xmlns:yaxlib="http://yaxlib.codeplex.com/">
+
+  <Groups>
+    <![CDATA[@{include:__FormControl#//uie:Groups/uie:Group[@Name='CommonSettings']}]]>
+
+    <![CDATA[@{include:__FormControl#//uie:Groups/uie:Group[@Name='AdvancedCommonSettings']}]]>
+  </Groups>
+
+  <Operations>All</Operations>
+  <FactoryMethodArgsSpel>
+    <String>T(Exir.Framework.Uie.Bocrud.Line, Exir.Framework.Uie)</String>
+  </FactoryMethodArgsSpel>
+</Bocrud>
+

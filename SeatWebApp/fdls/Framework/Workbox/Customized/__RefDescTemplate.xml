@@ -1,0 +1,37 @@
+﻿<Bocrud                 Style="classic"
+        DetailPosition="up"
+        Name="__RefDescTemplate"
+        Caption="RefDescTemplate"        
+        Height="480" Width="640"
+        ToStringFormat="" 
+DirectAccessible="false"
+AccessOperation="_RfDscTmplt.A"
+        xmlns="http://exirtechsun.com/uie/2014/schema"
+       xmlns:yaxlib="http://yaxlib.codeplex.com/">
+
+  <Groups>
+    <Group Title="جزئیات"  ColumnCount="2" Template="fluid">
+      <Controls>
+<TextBox  Caption="Caption" Name="Caption"  /> 
+<TextBox  Caption="Description" Name="Description"  /> 
+<TextBox  Caption="OwenerId" Name="OwenerId"  /> 
+     </Controls>
+    </Group>
+  </Groups>
+
+<Grid Caption="لیست RefDescTemplate" 
+EnableSearch="false" ToolbarSearch="false" AutoWidth="false" Width="450"  
+MultiSelect="true">
+    <Columns>
+      <Column Width="150" Name="Caption" />
+      <Column Width="150" Name="Description" />
+      <Column Width="150" Name="OwenerId" />
+
+    </Columns>
+</Grid>
+<Operations>All</Operations><!--All Create Update ViewDetail Search Delete Print CreateRoot CreateChild TreeCopy TreeMove None-->
+  <FactoryMethodArgsSpel>
+    <String>T(Exir.Workbox.Services.RefDescTemplateService, Exir.Workbox)</String>
+  </FactoryMethodArgsSpel>
+</Bocrud>
+

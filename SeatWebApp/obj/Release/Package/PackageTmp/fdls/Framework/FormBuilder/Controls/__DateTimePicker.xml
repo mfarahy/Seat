@@ -1,0 +1,47 @@
+﻿<Bocrud Style="classic"
+        DetailPosition="up"
+        Name="__DateTimePicker"
+        Caption="کنترل تقویم"
+        Height="500" Width="700"
+        ToStringFormat="{Caption}"
+        DirectAccessible="false"
+        xmlns="http://exirtechsun.com/uie/2014/schema"
+       xmlns:yaxlib="http://yaxlib.codeplex.com/">
+
+  <Groups>
+    <![CDATA[@{include:__FormControl#//uie:Groups/uie:Group[@Name='CommonSettings']}]]>
+
+    <Group Title="تنظیمات مخصوص" ColumnCount="3" Template="fluid">
+      <Controls>
+        <CheckBox Name="MultiCulture" Caption="چند فرهنگی ؟"/>
+
+        <DateTimePicker Name="MinDate" MinDate="1921-03-21" Caption="حداقل تاریخ"/>
+        <DateTimePicker Name="MaxDate" MaxDate="2121-03-21" Caption="حداکثر تاریخ"/>
+        <DateTimePicker Name="DefaultDateTime" Caption="تاریخ پیشفرض"/>
+        <CheckBox Name="ShowTime" Caption="نمایش ساعت ؟" />
+        <Select2 Name="Culture" Caption="فرهنگ پیشفرض">
+          <Items>
+            <Add Value="Default" Text="متنی" />
+            <Add Value="Persian" Text="رنگ" />
+            <Add Value="Arabic" Text="آدرس ایمیل" />
+            <Add Value="Gregorian" Text="پنهان" />
+          </Items>
+        </Select2>
+        <TextBox  Name="MinDateSpel" Caption="اسکریپت حداقل تاریخ" Type="Code" />
+        <TextBox  Name="MaxDateSpel" Caption="اسکریپت حداکثر تاریخ" Type="Code" />
+
+
+      </Controls>
+    </Group>
+
+    <![CDATA[@{include:__FormControl#//uie:Groups/uie:Group[@Name='AdvancedCommonSettings']}]]>
+    <![CDATA[@{include:__FormControl#//uie:Groups/uie:Group[@Name='ValidatorsSection']}]]>
+    <![CDATA[@{include:__FormControl#//uie:Groups/uie:Group[@Name='GridColumnSettings']}]]>
+  </Groups>
+
+  <Operations>All</Operations>
+  <FactoryMethodArgsSpel>
+    <String>T(Exir.Framework.Uie.Bocrud.DateTimePicker, Exir.Framework.Uie)</String>
+  </FactoryMethodArgsSpel>
+</Bocrud>
+

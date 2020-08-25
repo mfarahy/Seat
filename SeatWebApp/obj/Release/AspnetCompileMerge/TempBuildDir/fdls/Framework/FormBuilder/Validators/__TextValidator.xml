@@ -1,0 +1,28 @@
+﻿<Bocrud Style="classic"
+        DetailPosition="up"
+        Name="__TextValidator"
+        Caption="اعتبارسنج موتون"
+        Height="400" Width="500"
+        ToStringFormat="{Caption}"
+        DirectAccessible="false"
+        xmlns="http://exirtechsun.com/uie/2014/schema"
+       xmlns:yaxlib="http://yaxlib.codeplex.com/">
+
+  <Groups>
+    <Group Title="تنظیمات مخصوص" ColumnCount="2" Template="fluid">
+      <Controls>
+        <TextBox Name="MinLength" Caption="حداقل طول رشته"/>
+        <TextBox Name="MaxLength" Caption="حداکثر طول رشته"/>
+        <TextBox Name="MinLengthErrorMessage" Caption="پیغام خطای حداقل طول رشته" />
+        <TextBox Name="MaxLengthErrorMessage" Caption="پیغام خطای حداکثر طول رشته" />
+      </Controls>
+    </Group>
+    <![CDATA[@{include:__PropertyValidator#//uie:Groups/uie:Group[@Name='CommonSettings']}]]>
+  </Groups>
+
+  <Operations>All</Operations>
+  <FactoryMethodArgsSpel>
+    <String>T(Exir.Framework.Uie.Bocrud.TextValidator, Exir.Framework.Uie)</String>
+  </FactoryMethodArgsSpel>
+</Bocrud>
+

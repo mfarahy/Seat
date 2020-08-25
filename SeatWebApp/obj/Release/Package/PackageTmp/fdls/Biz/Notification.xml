@@ -1,0 +1,73 @@
+<Bocrud Style="classic"
+		DirectAccessible="true"
+        DetailPosition="up"
+        AccessOperation="Ntfctn.A"
+        Name="Notification"
+        Caption="زنگ هشدار"
+        Height="480" Width="640"
+        ToStringFormat=""
+        xmlns="http://exirtechsun.com/uie/2014/schema"
+       xmlns:yaxlib="http://yaxlib.codeplex.com/">
+	<Help>
+		<![CDATA[
+		در صورتی که گزینه جدید برای شما در این صفحه فعال نمی باشد یا شماره موبایل و آدرس ایمیل شما فعال نمی باشد و یا اینکه برای تمام سبد های خود زنگ هشدار تعریف نموده اید. برای فعال کردن شماره موبایل و آدرس ایمیل لطفا به بخش <a href="/P/UserProfile"><i class="icon-user-circle"></i>پروفایل</a> مراجعه نمایید.
+		]]>
+	</Help>
+	<ToolbarCommands>
+		<Add Before="Notification" Name="CreateNew" ShowConditionSpel="Service('Notification').CanAddNotification()"
+			 Text="جدید" Icon="icon-plus-circle" Color="btn-success" ShowAsMain="true"/>
+	</ToolbarCommands>
+	<Groups>
+		<Group Title="جزئیات"  ColumnCount="2" Template="fluid">
+			<Controls>
+				<Select2 BocrudXml="Portfolio"  Caption="سبد دارایی" Name="PortfolioPK" NoChoiceOption="AsReadOnly"  />
+				<Select2  Caption="نوع واقعه" Name="EventObjectId" NoChoiceOption="AsReadOnly">
+					<Items>
+						<Add Text="انتشار هر پیام مرتبط با نماد" Value="AnyEventProvider"/>
+					</Items>
+				</Select2>
+				<Line/>
+				<CheckBox  Caption="تماس صوتی" Name="Calling" IsEditable="false"  />
+				<CheckBox  Caption="ارسال پیامک" Name="SendSms" EditableConditionSpel="#Model.PhoneNumberConfirmed"  />
+				<Label ShowConditionSpel="!#Model.PhoneNumberConfirmed">
+					<Text>
+						<![CDATA[
+				  شماره همراه شما تایید نشده است، جهت فعال سازی این گزینه می بایست پس از مراجعه به بخش <a href="/P/UserProfile">پروفایل</a> شماره تماس خود را فعال نمایید.
+				  ]]>
+					</Text>
+				</Label>
+				<TextBox  Caption="شماره تماس" Name="PhoneNo"  ReadOnly="true" />
+				<Break/>
+				<CheckBox  Caption="ارسال ایمیل" Name="SendEmail" EditableConditionSpel="#Model.EmailConfirmed" />
+				<Label ShowConditionSpel="!#Model.PhoneNumberConfirmed">
+					<Text>
+						<![CDATA[
+				  آدرس ایمیل شما تایید نشده است، جهت فعال سازی این گزینه می بایست پس از مراجعه به بخش <a href="/P/UserProfile">پروفایل</a> آدرس ایمیل خود را فعال نمایید.
+				  ]]>
+					</Text>
+				</Label>
+				<TextBox  Caption="آدرس ایمیل" Name="Email"  ReadOnly="true" />
+				<Break/>
+			</Controls>
+		</Group>
+	</Groups>
+
+	<Grid Caption="لیست هشدارهای فعال"
+	EnableSearch="false" ToolbarSearch="false" AutoWidth="false" Width="600"
+	MultiSelect="false" EnableColumnChooser="false">
+		<Columns>
+			<Column Width="150" Name="PortfolioPK" Searchable="true" />
+			<Column Width="150" Name="EventObjectId" Searchable="true" />
+			<Column Width="150" Name="SendSms" Searchable="true" />
+			<Column Width="150" Name="SendEmail" Searchable="true" />
+			<Column Width="150" Name="Calling" Searchable="true" />
+		</Columns>
+	</Grid>
+	<Operations>All</Operations>
+	<!--All Create Update ViewDetail Search Delete Print CreateRoot CreateChild TreeCopy TreeMove None-->
+	<FactoryMethodArgsSpel>
+		<String>'NotificationService'</String>
+		<String>T(SeatWebApp.Models.NotificationViewModel, SeatWebApp)</String>
+	</FactoryMethodArgsSpel>
+</Bocrud>
+

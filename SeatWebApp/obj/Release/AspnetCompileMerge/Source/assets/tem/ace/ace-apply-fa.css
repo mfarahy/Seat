@@ -1,0 +1,158 @@
+﻿@font-face {
+    font-family: 'Yekan';
+    src: url('/assets/tem/ace/assets/font/Far_Yekan.eot');
+    src: url('/assets/tem/ace/assets/font/Far_Yekan.otf') format('opentype');
+    src: local('☺'), local('Yekan'), url('/assets/tem/ace/assets/font/Far_Yekan.woff') format('woff'), url('/assets/tem/ace/assets/font/Far_Yekan.ttf') format('truetype'), url('/assets/tem/ace/assets/font/Far_Yekan.svg') format('svg');
+    font-weight: normal;
+    font-weight: 700;
+    font-style: normal;
+    font-smooth: always;
+    -webkit-backface-visibility: hidden;
+    -moz-backface-visibility: hidden;
+    -ms-backface-visibility: hidden;
+}
+
+body, h1, h2, h3, h4, h5, h6,text {
+    font-family: 'Yekan','Yekan','Yekan',Tahoma;
+}
+
+.ui-widget input, .ui-widget select, .ui-widget textarea, .ui-widget button,
+.ui-widget {
+    font-family: 'Yekan','Yekan','Yekan',Tahoma;
+}
+
+
+.ui-datepicker input[type=checkbox].ace.ace-switch.ace-switch-6:checked + .lbl::before {
+    font-family: 'Yekan';
+}
+
+.ui-datepicker input[type=checkbox].ace.ace-switch.ace-switch-6 + .lbl::before {
+    font-family: 'Yekan';
+}
+
+.wbx-help a {
+    font-size: 8pt;
+}
+
+.popover {
+    font-family: Yekan,BYekan,'B Yekan',Tahoma;
+}
+
+.inline {
+    display: inline-block;
+}
+
+    .inline.caption-last {
+        float: right;
+        padding-left: 10px;
+    }
+
+.bocrud-thumbnails .tooltip-inner {
+    font-family: 'Yekan','Yekan', tahoma;
+}
+
+.bootstrap-duallistbox-container button.removeall .glyphicon-arrow-left:before {
+    content: "\e092" !important;
+}
+
+.bootstrap-duallistbox-container button.moveall .glyphicon-arrow-right:before {
+    content: "\e091" !important;
+}
+
+.ui-jqgrid .jqgroup > td:first-child span.ui-icon.tree-wrap-rtl {
+    margin-right: -14px !important;
+    left: auto !important;
+}
+
+.ui-jqgrid .jqgroup > td:first-child {
+    padding-right: 19px;
+}
+
+.cke_reset_all, .cke_reset_all * {
+    font-family: Yekan,BYekan,'B Yekan',Tahoma !important;
+}
+
+.user-menu {
+    text-align: right;
+}
+
+.tooltip {
+    font-family: Yekan,BYekan,'B Yekan',Tahoma;
+    font-size: 10pt;
+}
+
+.bocrud-link .ui-icon {
+    display: inline-block;
+    left: auto;
+    position: relative;
+    margin-left: 5px;
+    float: right;
+    color: white;
+}
+
+
+.submenu li a {
+    font-size: 12px !important;
+}
+
+    .submenu li a i {
+        display: none !important;
+        margin-left: 5px;
+    }
+
+.bocrud-chart-pie {
+    direction: ltr;
+}
+
+.rtl input[type=checkbox].ace + .lbl::before, .rtl input[type=radio].ace + .lbl::before {
+    margin-left: 4px;
+}
+
+.rtl .ui-icon {
+    left: 0px;
+}
+
+
+
+.bocrud-soon{
+    direction:ltr;
+}
+
+/* fix bootstrap 4*/
+.dropdown-menu{
+    text-align:right;
+}
+
+.dropdown-menu > li > a{
+    display:block;
+}
+/* end fix bootstrap 4*/
+.rtl .radio, .rtl .checkbox {
+    padding-right: 0px;
+}
+
+.bocrud-subtype-menu {
+    right: 0px;
+}
+
+li.dropdown-hover:hover > ul.dropdown-menu {
+    right: 100%;
+    top: -2px;
+}
+
+.bocrud-subtype-menu a i {
+    float: left;
+}
+
+.bocrud-subtype-menu li.dropdown-hover a i:before {
+    content: "\f0d9";
+}
+
+.select2-container--default .select2-selection--multiple .select2-selection__choice{
+    float:right;
+}
+
+
+.rtl .ui-jqgrid .ui-icon {
+    left: 0px;
+}

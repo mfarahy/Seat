@@ -1,0 +1,50 @@
+﻿<Bocrud                 Style="classic"
+        DetailPosition="up"
+        Name="__Log"
+        Caption="لاگ"
+        Height="480" Width="640"
+        ToStringFormat="لاگ {Id}"
+        DblClickAction="ShowDetails"
+        DirectAccessible="true"
+        AccessOperation="_Lg.A"
+        xmlns="http://exirtechsun.com/uie/2014/schema"
+       xmlns:yaxlib="http://yaxlib.codeplex.com/">
+
+  <Groups>
+    <Group Title="جزئیات"  ColumnCount="2" Template="fluid">
+      <Controls>
+        <DateTimePicker  Caption="تاریخ" Name="Date" ShowTime="true"  />
+        <RawValue  Caption="سطح لاگ" Name="CssLevel" GetValueSpel="'bocrud-log-'+#Container.Level" ClientHide="true" />
+        <TextBox Caption="سطح لاگ" Name="Level" />
+        <TextBox  Caption="فاعل" Name="Logger" Direction="Ltr" FontName="Courier New" />
+      </Controls>
+      <Groups>
+        <Group ColumnCount="1" Template="fluid">
+          <Controls>
+            <TextBox  Caption="پیام" Name="Message" MultiLine="true" ShowConditionSpel="!String.IsNullOrEmpty(#Container.Message)"  />
+            <TextBox  Caption="خطا" Name="Exception" Direction="Ltr" MultiLine="true" FontName="Courier New" ShowConditionSpel="!String.IsNullOrEmpty(#Container.Exception)" />
+          </Controls>
+        </Group>
+      </Groups>
+    </Group>
+  </Groups>
+
+  <Grid Caption="لیست لاگ ها"
+  EnableSearch="false" ToolbarSearch="true" AutoWidth="true" Width="100"
+  MultiSelect="true" SortName="Date" SortOrder="desc" CssColumn="CssLevel">
+    <Columns>
+      <Column Width="100" Name="Date" Searchable="true" Sortable="false" />
+      <Column Width="150" Name="CssLevel" Searchable="true" Sortable="false" Hidden="true" HidedInDialog="true" />
+      <Column Width="200" Name="Logger" Searchable="true" Sortable="false" Align="Left" />
+      <Column Width="500" Name="Message" Searchable="true" Sortable="false" Hidden="false" />
+      <Column Width="150" Name="Exception" Searchable="true" Sortable="false" Hidden="true" />
+
+    </Columns>
+  </Grid>
+  <Operations>ViewDetail Search</Operations>
+  <!--All Create Update ViewDetail Search Delete Print CreateRoot CreateChild TreeCopy TreeMove None-->
+  <FactoryMethodArgsSpel>
+    <String>'LogService'</String>
+  </FactoryMethodArgsSpel>
+</Bocrud>
+

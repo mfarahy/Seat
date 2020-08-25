@@ -1,0 +1,34 @@
+﻿<Bocrud Style="classic"
+        DetailPosition="down"
+        Name="__Box-Summary"
+        Caption="فرم خلاصه وضعیت کارتابل"
+        DirectAccessible="false"
+        xmlns="http://exirtechsun.com/uie/2014/schema"
+       xmlns:yaxlib="http://yaxlib.codeplex.com/">
+
+  <Groups>
+    <Group Title="جزئیات"  ColumnCount="4" Template="fluid">
+      <Controls>
+        <DateTimePicker Name="FromDt" Caption="از تاریخ"/>
+        <DateTimePicker Name="ToDt" Caption="تا تاریخ"/> 
+        
+      </Controls>
+      <Groups>
+        <Group ColumnCount="2" Template="fluid">
+          <Controls>
+            <BarChart Name="CommandHistory" Caption="آمار روند بررسی" StackBar="true" DataTextField="CommandName" DataValueField="CountPerDay"/>
+            <PieChart Name="MostActivityStationData" Caption="سهم بررسی کار در فعال ترین ایستگاه" DataTextField="PersonName" DataValueField="Count" ShowConditionSpel="UserIs('SadadUser')"/>
+          </Controls>
+        </Group>
+      </Groups>
+    </Group>
+  </Groups>
+
+  <FactoryMethodArgsSpel>
+    <String>T(Exir.Workbox.Models.WorkboxJobSummaryDataModel, Exir.Workbox)</String>
+  </FactoryMethodArgsSpel>
+
+  <Operations>ViewDetail</Operations>
+  <!--All Create Update ViewDetail Search Delete Print CreateRoot CreateChild TreeCopy TreeMove None-->
+</Bocrud>
+

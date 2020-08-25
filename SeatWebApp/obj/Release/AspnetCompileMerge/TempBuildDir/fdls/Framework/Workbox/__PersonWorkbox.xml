@@ -1,0 +1,43 @@
+﻿<Bocrud                 Style="classic"
+        DetailPosition="replacement"
+        Name="__PersonWorkbox"
+        Caption="PersonWorkbox"        
+        Height="480" Width="640"
+        ToStringFormat="" 
+DirectAccessible="false"
+AccessOperation="_PrsnWrkbx.A"
+        xmlns="http://exirtechsun.com/uie/2014/schema"
+       xmlns:yaxlib="http://yaxlib.codeplex.com/">
+
+  <Groups>
+    <Group Title="جزئیات"  ColumnCount="2" Template="fluid">
+      <Controls>
+<CheckBox  Name="AllowViewSlaveWorkboxes" Caption="AllowViewSlaveWorkboxes"  /> 
+<TextBox  Name="PersonId" Caption="PersonId"  /> 
+<CheckBox  Name="ActiveDefaultSubstitution" Caption="ActiveDefaultSubstitution"  /> 
+<TextBox  Name="VisibleWorkboxMemIds" Caption="VisibleWorkboxMemIds"  /> 
+<TextBox  Name="OwenerId" Caption="OwenerId"  /> 
+<One2Many Name="Labels" BocrudXml="__Label"  Caption="Labels"  />
+<One2Many Name="Macroes" BocrudXml="__WorkboxMacro"  Caption="Macroes"  />
+     </Controls>
+    </Group>
+  </Groups>
+
+<Grid Caption="لیست PersonWorkbox" 
+EnableSearch="false" ToolbarSearch="false" AutoWidth="true" Width="100"  
+MultiSelect="true">
+    <Columns>
+      <Column Width="150" Name="AllowViewSlaveWorkboxes" />
+      <Column Width="150" Name="PersonId" />
+      <Column Width="150" Name="ActiveDefaultSubstitution" />
+      <Column Width="150" Name="VisibleWorkboxMemIds" />
+      <Column Width="150" Name="OwenerId" />
+
+    </Columns>
+</Grid>
+<Operations>All</Operations><!--All Create Update ViewDetail Search Delete Print CreateRoot CreateChild TreeCopy TreeMove None-->
+  <FactoryMethodArgsSpel>
+      <String>T(Exir.Workbox.Services.PersonWorkboxService, Exir.Workbox)</String>
+  </FactoryMethodArgsSpel>
+</Bocrud>
+

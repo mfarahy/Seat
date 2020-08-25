@@ -1,0 +1,545 @@
+﻿@using System.Web.Optimization;
+@using Exir.Framework.Uie.Bocrud;
+@using Exir.Framework.Uie;
+@using Exir.Framework.Common;
+@using SeatDomain.Services;
+@{
+    Layout = null;
+    string langCode = System.Globalization.CultureInfo.CurrentUICulture.IetfLanguageTag.Split('-')[0];
+    var auth = ObjectRegistry.GetObject<IAuthenticaterProvider>();
+    var security = ObjectRegistry.GetObject<Exir.Framework.Security.SchemaSecurity.ISchemaSecurityProvider>();
+    var rp = ObjectRegistry.GetObject<Exir.Framework.Common.IResourceProvider>();
+
+    var version = Exir.Framework.Common.FrameworkInfo.Version;
+    var appVersion = SeatDomain.ApplicationInfo.Version;
+
+    var ixSrv = StaticServiceFactory.Create<IIndexLastDayTimeValueService>();
+    var oixLastValue = ixSrv.GetOverallIndexLastValue();
+
+
+    var mSrv = StaticServiceFactory.Create<ISystemMessageService>();
+    var hSrv = StaticServiceFactory.Create<IHolidayService>();
+    var isActiveTime = hSrv.IsWorkingDay(DateTime.Now) && DateTime.Now.TimeOfDay.TotalHours > 8 && DateTime.Now.TimeOfDay.TotalHours < 17;
+
+    var username = "";
+    if (User.Identity.IsAuthenticated)
+    {
+        var user = User as System.Security.Claims.ClaimsPrincipal;
+        try
+        {
+            if (user != null && user.HasClaim(x => x.Type == "name"))
+            {
+                username = user.FindFirst("name").Value;
+            }
+        }
+        catch { }
+        if (String.IsNullOrEmpty(username))
+        {
+            username = User.Identity.Name;
+        }
+    }
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="user-scalable=no, width=device-width, initial-scale=1.0" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="" />
+    <!--[if IE]><meta http-equiv="X-UA-Compatible" content="IE=Standards"><![endif]-->
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+    <meta name="theme-color" content="#2C6AA0" />
+    <meta name="msapplication-navbutton-color" content="#2C6AA0" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="#2C6AA0" />
+    <link rel="icon" type="image/x-icon" href="/faveicon.ico">
+    <title>
+        @if (IsSectionDefined("Title"))
+        {
+            @RenderSection("Title")
+        } : سهام VIP
+    </title>
+
+    @MyUrlHelper.RenderCssBundles("~/bundles/jquery_bocrud_ace/css/rtl", appVersion)
+
+    @if (IsSectionDefined("header"))
+    {
+        @RenderSection("header")
+    }
+    @MyUrlHelper.RenderCssBundles("~/bundles/control-panel/css", appVersion)
+
+</head>
+<body class="rtl no-skin">
+    <script src="/assets/js/jquery-3.4.1.min.js"></script>
+
+    <div id="navbar" class="navbar navbar-default    navbar-collapse       h-navbar ace-save-state">
+        <div class="navbar-container ace-save-state" id="navbar-container">
+            <div class="navbar-header pull-left">
+                <a href="index.html" class="navbar-brand pull-left">
+                    <small>
+                        <i class="icon icon-chart-line"></i>
+                        سهام VIP
+                    </small>
+                </a>
+
+                @if (Request.IsAuthenticated && User.Identity.IsAuthenticated)
+                {
+                    <button class="pull-left navbar-toggle navbar-toggle-img collapsed" type="button" data-toggle="collapse" data-target=".navbar-buttons,.navbar-menu">
+                        <span class="sr-only">Toggle user menu</span>
+
+                        <span class="icon icon-user"></span>
+                    </button>
+                }
+
+                <button class="pull-left navbar-toggle collapsed" type="button" data-toggle="collapse" data-target="#sidebar">
+                    <span class="sr-only">Toggle sidebar</span>
+
+                    <span class="icon-bar"></span>
+
+                    <span class="icon-bar"></span>
+
+                    <span class="icon-bar"></span>
+                </button>
+
+                <div class="nav-index progress progress-mini progress-striped pull-left @(isActiveTime?"active":"")">
+                    <div class="pull-left progress-bar" style="width: 100%;background-color: @(oixLastValue?.GetColor())">
+                        شاخص کل :<span class="index-value"> @Html.NumberDecorator(oixLastValue?.Value ?? 0) </span>
+                        <span class="pull-left nav-date"> @(@langCode == "fa" ? DateTime.Now.ToPersian().GetShortDate() : DateTime.Now.GetDateTimeFormats()[10]) </span>
+                        <span class="pull-right"> @Html.ChangePercent(oixLastValue?.ChangePercent ?? 0)</span>
+                    </div>
+                </div>
+
+
+            </div>
+
+            <div class="navbar-buttons navbar-header pull-right  collapse navbar-collapse" role="navigation">
+                <ul class="nav ace-nav">
+                    @if (Request.IsAuthenticated && User.Identity.IsAuthenticated)
+                    {
+                        <li class="light-blue dropdown-modal user-min">
+                            <a data-toggle="dropdown" href="#" class="dropdown-toggle">
+                                <i class="ace-icon icon icon-caret-down"></i>
+                                <span class="icon icon-user"></span>
+                                <span class="user-info">
+                                    <small>خوش آمدی,</small>
+
+
+                                    @username
+                                </span>
+
+                            </a>
+
+                            <ul class="user-menu dropdown-menu-right dropdown-menu dropdown-yellow dropdown-caret dropdown-close">
+                                <li>
+                                    @Html.Partial("_FeedBackPartial")
+                                </li>
+                                @if (User.Identity.IsAuthenticated)
+                                {
+                                    <li>
+                                        <a href="@MyUrlHelper.GetUrl("Account", "ChangePassword")">
+                                            <i class="icon-lock"></i>
+                                            @rp.GetResource("Global", "change_password")
+                                        </a>
+                                    </li>
+                                }
+                                <li class="divider"></li>
+                                <li>
+                                    <a href="@MyUrlHelper.GetUrl("P", "UserProfile")">
+                                        <i class="icon-user-circle"></i>
+                                        پروفایل
+                                    </a>
+                                </li>
+                                <li class="divider"></li>
+                                <li>
+                                    <a href="javascript:document.getElementById('logoutForm').submit()">
+                                        <i class="icon-sign-out"></i>
+                                        @rp.GetResource("Global", "log_off")
+
+                                        @using (Html.BeginForm("SignOut", "Account", FormMethod.Post, new { id = "logoutForm", @class = "navbar-right" }))
+                                        {
+                                            @Html.AntiForgeryToken();
+                                        }
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                    }
+
+                </ul>
+            </div>
+        </div><!-- /.navbar-container -->
+    </div>
+
+
+    <div class="page-container">
+
+        @*<div class="navbar navbar-default" id="navbar">
+                <script type="text/javascript">
+                    try { ace.settings.check('navbar', 'fixed'); } catch (e) { }
+                </script>
+                <div class="navbar-container" id="navbar-container">
+
+                    <div class="navbar-header pull-left" role="navigation">
+                        <ul class="nav ace-nav">
+
+                            <li style="color:white; padding-left:5px" class="@(@langCode == "icon" ? "rightDirection" : "leftDirection")">
+                                @(@langCode == "icon" ? DateTime.Now.ToPersian().GetDescriptiveDate : DateTime.Now.GetDateTimeFormats()[10])
+                            </li>
+                            @if (Request.IsAuthenticated && User.Identity.IsAuthenticated)
+                            {
+                                <li>
+                                    <div class="session-timeout" style="width:100px">
+                                        <div class="soon soon-glow" id="soon-glow"
+                                             data-due="@DateTime.Now.AddMinutes(Session.Timeout).ToString("yyyy-MM-ddTHH:mm:ss", System.Globalization.CultureInfo.GetCultureInfo("en-US"))"
+                                             data-labels-days="@rp.GetResource("Global","day")"
+                                             data-labels-hours="@rp.GetResource("Global","hour")"
+                                             data-labels-minutes="@rp.GetResource("Global","minute")"
+                                             data-labels-seconds="@rp.GetResource("Global","second")"
+                                             data-layout="group"
+                                             data-face="slot slide down"
+                                             data-format="m,s"
+                                             data-padding="false"
+                                             data-scale-max="s">
+                                        </div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <a data-toggle="dropdown" href="#" class="dropdown-toggle">
+                                        <span class="">
+                                            <i class="icon-user"></i>
+                                            @{
+                                                var user = User as System.Security.Claims.ClaimsPrincipal;
+                                                var username = User.Identity.Name;
+                                                try
+                                                {
+                                                    if (user != null && user.HasClaim(x => x.Type == "name"))
+                                                    {
+                                                        username = user.FindFirst("name").Value;
+                                                    }
+                                                }
+                                                catch { }
+
+                                                @username
+
+                                            }
+                                        </span>
+
+                                        <i class="icon-caret-down"></i>
+
+                                    </a>
+
+                                    <ul class="user-menu pull-left dropdown-menu dropdown-yellow dropdown-caret dropdown-close">
+                                        <li>
+                                            @Html.Partial("_FeedBackPartial")
+                                        </li>
+                                        @if (User.Identity.IsAuthenticated)
+                                        {
+                                            <li>
+                                                <a href="@MyUrlHelper.GetUrl("Account", "ChangePassword")">
+                                                    <i class="icon-lock"></i>
+                                                    @rp.GetResource("Global", "change_password")
+                                                </a>
+                                            </li>
+                                        }
+                                        <li class="divider"></li>
+                                        <li>
+                                            <a href="@MyUrlHelper.GetUrl("P", "UserProfile")">
+                                                <i class="icon-user-circle"></i>
+                                                پروفایل
+                                            </a>
+                                        </li>
+                                        <li class="divider"></li>
+                                        <li>
+                                            <a href="javascript:document.getElementById('logoutForm').submit()">
+                                                <i class="icon-sign-out"></i>
+                                                @rp.GetResource("Global", "log_off")
+
+                                                @using (Html.BeginForm("SignOut", "Account", FormMethod.Post, new { id = "logoutForm", @class = "navbar-right" }))
+                                                {
+                                                    @Html.AntiForgeryToken();
+                                                }
+                                            </a>
+                                        </li>
+                                    </ul>
+
+
+                                </li>
+                            }
+                        </ul><!-- /.ace-nav -->
+                    </div><!-- /.navbar-header -->
+
+                    <div class="navbar-header pull-right">
+                        <a href="#" class="navbar-brand">
+                            <small>
+
+                                <img src="/assets-web/panel/img/header-logo.png" />
+                                @rp.GetResource("Global", "application_name")
+                            </small>
+                        </a><!-- /.brand -->
+                    </div><!-- /.navbar-header -->
+                </div><!-- /.container -->
+            </div>*@
+
+        <div class="main-container" id="main-container">
+            <script type="text/javascript">
+                try { ace.settings.check('main-container', 'fixed'); } catch (e) { }
+            </script>
+
+            <div id="sidebar" class="sidebar h-sidebar navbar-collapse collapse ace-save-state">
+                <script type="text/javascript">
+                    try { ace.settings.loadState('sidebar') } catch (e) { }
+                </script>
+
+                <div class="sidebar-shortcuts" id="sidebar-shortcuts">
+                    <div class="sidebar-shortcuts-large" id="sidebar-shortcuts-large">
+                        <button class="btn btn-success">
+                            <i class="ace-icon icon icon-signal"></i>
+                        </button>
+
+                        <button class="btn btn-info">
+                            <i class="ace-icon icon icon-pencil"></i>
+                        </button>
+
+                        <button class="btn btn-warning">
+                            <i class="ace-icon icon icon-users"></i>
+                        </button>
+
+                        <button class="btn btn-danger">
+                            <i class="ace-icon icon icon-cogs"></i>
+                        </button>
+                    </div>
+
+                    <div class="sidebar-shortcuts-mini" id="sidebar-shortcuts-mini">
+                        <span class="btn btn-success"></span>
+
+                        <span class="btn btn-info"></span>
+
+                        <span class="btn btn-warning"></span>
+
+                        <span class="btn btn-danger"></span>
+                    </div>
+                </div><!-- /.sidebar-shortcuts -->
+
+                @{Html.RenderPartial("_dynmenu");}
+
+            </div>
+
+            <div class="main-container-inner">
+
+                @*<div class="sidebar h-sidebar" id="sidebar">
+                        <script type="text/javascript">
+                            try { ace.settings.loadState('sidebar') } catch (e) { }
+                        </script>
+
+                        <script type="text/javascript">
+                            try {
+                                ace.settings.check('sidebar', 'fixed');
+                            } catch (e) { }
+                        </script>
+
+                        <div class="sidebar-shortcuts" id="sidebar-shortcuts" style="visibility:hidden;">
+                            <div class="sidebar-shortcuts-large" id="sidebar-shortcuts-large">
+                                <button class="btn btn-success">
+                                    <i class="icon-signal"></i>
+                                </button>
+
+                                <button class="btn btn-info">
+                                    <i class="icon-pencil"></i>
+                                </button>
+
+                                <button class="btn btn-warning">
+                                    <i class="icon-group"></i>
+                                </button>
+
+                                <button class="btn btn-danger">
+                                    <i class="icon-cogs"></i>
+                                </button>
+                            </div>
+
+                            <div class="sidebar-shortcuts-mini" id="sidebar-shortcuts-mini">
+                                <span class="btn btn-success"></span>
+
+                                <span class="btn btn-info"></span>
+
+                                <span class="btn btn-warning"></span>
+
+                                <span class="btn btn-danger"></span>
+                            </div>
+                        </div>
+
+                        <div id="mastreMenu">
+                            @{Html.RenderPartial("_dynmenu");}
+                        </div>
+
+
+                        <div class="sidebar-collapse" id="sidebar-collapse">
+                            <i class="icon-double-angle-left" data-icon1="icon-double-angle-left" data-icon2="icon-double-angle-right"></i>
+                        </div>
+
+                        <script type="text/javascript">
+                            try { ace.settings.check('sidebar', 'collapsed'); } catch (e) { }
+                        </script>
+
+
+                    </div>*@
+
+                <div class="main-content">
+                    <div class="breadcrumbs" id="breadcrumbs">
+                        <script type="text/javascript">
+                            try { ace.settings.check('breadcrumbs', 'fixed'); } catch (e) { }
+                        </script>
+
+                        <ul class="breadcrumb"></ul><!-- .breadcrumb -->
+                    </div>
+
+                    <div class="page-content">
+                        <div class="row">
+                            <div class="col-xs-12 col-md-12">
+                                <!-- PAGE CONTENT BEGINS -->
+
+                                <div class="container-fluid">
+                                    @{
+                                        var text = RenderBody().ToHtmlString();
+                                        if (text.StartsWith("s\r\n\r\n"))
+                                        {
+                                            text = text.Substring(4);
+                                        }
+                                        WriteLiteral(text);
+                                    }
+                                </div>
+
+                                <!-- PAGE CONTENT ENDS -->
+                            </div><!-- /.col -->
+                        </div><!-- /.row -->
+                    </div><!-- /.page-content -->
+
+                    <div class="footer">
+                        <div class="footer-inner">
+                            <div class="footer-content row">
+                                <div class="footer_info col-lg-11">
+                                    <hr style="width:40%" />
+                                    <div class="footer_copyright"> کلیه حقوق سایت برای <a class="blue bolder" href="http://exirtechsun.com/" target="_blank">@rp.GetResource("Global", "company_name")</a> محفوظ است. &copy;1399</div>
+                                    <br />
+                                    <span class="version">
+                                        <span>Framework   </span>
+                                        <span style="direction:ltr;font-family:'Courier New';">@version</span> |
+                                        <span>Application   </span>
+                                        <span style="direction:ltr;font-family:'Courier New';">@appVersion</span>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div><!-- /.main-content -->
+            </div><!-- /.main-container-inner -->
+
+            <a href="#" id="btn-scroll-up" class="btn-scroll-up btn btn-sm btn-inverse">
+                <i class="icon-arrow-up align-top bigger-125"></i>
+            </a>
+        </div><!-- /.main-container -->
+
+    </div>
+
+    @if (IsSectionDefined("Scripts"))
+    {
+        @RenderSection("Scripts")
+    }
+    @if (BocrudControlSettings.Instance.RedirectOnSessionTimeOut)
+    {
+        <script type="text/javascript">
+            $(function () {
+                setTimeout($.bocrud.checkSessionTimeOut, 10000);
+            });
+        </script>
+    }
+
+    @if (BocrudControlSettings.Instance.Debug)
+    {
+        <div class="bocrud-log-table-container">
+            <table id='logTable'></table>
+        </div>
+    }
+
+    <script type="text/javascript">
+        $(function () {
+            var $sidebar = $('.sidebar').eq(0);
+            if (!$sidebar.hasClass('h-sidebar')) return;
+
+            $(document).on('settings.ace.top_menu', function (ev, event_name, fixed) {
+                if (event_name !== 'sidebar_fixed') return;
+
+                var sidebar = $sidebar.get(0);
+                var $window = $(window);
+
+                //return if sidebar is not fixed or in mobile view mode
+                var sidebar_vars = $sidebar.ace_sidebar('vars');
+                if (!fixed || (sidebar_vars['mobile_view'] || sidebar_vars['collapsible'])) {
+                    $sidebar.removeClass('lower-highlight');
+                    //restore original, default marginTop
+                    sidebar.style.marginTop = '';
+
+                    $window.off('scroll.ace.top_menu')
+                    return;
+                }
+
+
+                var done = false;
+                $window.on('scroll.ace.top_menu', function (e) {
+
+                    var scroll = $window.scrollTop();
+                    scroll = parseInt(scroll / 4);//move the menu up 1px for every 4px of document scrolling
+                    if (scroll > 17) scroll = 17;
+
+
+                    if (scroll > 16) {
+                        if (!done) {
+                            $sidebar.addClass('lower-highlight');
+                            done = true;
+                        }
+                    }
+                    else {
+                        if (done) {
+                            $sidebar.removeClass('lower-highlight');
+                            done = false;
+                        }
+                    }
+
+                    sidebar.style['marginTop'] = (17 - scroll) + 'px';
+                }).triggerHandler('scroll.ace.top_menu');
+
+            }).triggerHandler('settings.ace.top_menu', ['sidebar_fixed', $sidebar.hasClass('sidebar-fixed')]);
+
+            $(window).on('resize.ace.top_menu', function () {
+                $(document).triggerHandler('settings.ace.top_menu', ['sidebar_fixed', $sidebar.hasClass('sidebar-fixed')]);
+            });
+
+
+        });
+    </script>
+
+    @*@if (User.Identity != null && User.Identity.IsAuthenticated && !System.Diagnostics.Debugger.IsAttached)
+        {
+            <div style="display:@(security.Is("admin") ? "block" : "none");font-size:8pt; font-family:Tahoma">
+
+                <script language="JavaScript" async>
+                    var fhs = document.createElement('script'); var fhs_id = "5561067";
+                    var ref = ('' + document.referrer + ''); var pn = window.location; var w_h = window.screen.width + " x " + window.screen.height;
+                    fhs.src = "//freehostedscripts.net/ocounter.php?site=" + fhs_id + "&e1=Online User&e2=Online Users&r=" + ref + "&wh=" + w_h + "&a=1&pn=" + pn + "";
+                    document.head.appendChild(fhs); document.write("<span id='o_" + fhs_id + "'></span>");
+                </script>
+            </div>
+        }*@
+    @MyUrlHelper.RenderJsBundles("~/bundles/jquery_bocrud_ace/js/" + langCode, appVersion)
+    @MyUrlHelper.RenderJsBundles("~/bundles/control-panel/js", appVersion)
+
+    @if (Request.Browser.IsMobileDevice)
+    {
+        <script src="/assets/js/jquery.ui.touch-punch.min.js"></script>
+    }
+
+</body>
+</html>

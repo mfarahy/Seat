@@ -1,0 +1,26 @@
+﻿<Bocrud Style="classic"
+        DetailPosition="up"
+        Name="__CustomValidator"
+        Caption="اعتبارسنج سمت کلاینت"
+        Height="400" Width="500"
+        ToStringFormat="{Caption}"
+        DirectAccessible="false"
+        xmlns="http://exirtechsun.com/uie/2014/schema"
+       xmlns:yaxlib="http://yaxlib.codeplex.com/">
+
+  <Groups>
+    <Group Title="تنظیمات مخصوص" ColumnCount="2" Template="fluid">
+      <Controls>
+        <TextBox Name="Method" Caption="Method" Type="Code"/>
+        <TextBox Name="Context" Caption="Context"/>
+      </Controls>
+    </Group>
+    <![CDATA[@{include:__PropertyValidator#//uie:Groups/uie:Group[@Name='CommonSettings']}]]>
+  </Groups>
+
+  <Operations>All</Operations>
+  <FactoryMethodArgsSpel>
+    <String>T(Exir.Framework.Uie.Bocrud.CustomValidator, Exir.Framework.Uie)</String>
+  </FactoryMethodArgsSpel>
+</Bocrud>
+

@@ -1,0 +1,71 @@
+<Bocrud Style="classic"
+		DirectAccessible="true"
+        DetailPosition="up"
+        Name="Instrument"
+        Caption="اطلاعات نماد"
+        Height="480" Width="640"
+        ToStringFormat="{Symbol} - {Name}"
+        xmlns="http://exirtechsun.com/uie/2014/schema"
+       xmlns:yaxlib="http://yaxlib.codeplex.com/">
+
+
+	<Groups>
+		<Group Title="جزئیات"  ColumnCount="2" Template="fluid">
+			<Groups>
+				<Group ColumnCount="1" Template="fluid" Title="نمودار قیمت">
+					<Controls>
+						<Control Name="TradingView" yaxlib:realtype="SeatWebApp.Controls.TradingView, SeatWebApp"/>
+					</Controls>
+				</Group>
+				<Group ColumnCount="3">
+					<Controls>
+						<Label  Name="Symbol"   />
+						<Label  Name="Name"  />
+						<Label  Caption="نوع نماد" Name="InstrumentText"  />
+						<Label  Caption="آخرین معامله" Name="DevenText"  />
+						<Label  Caption="EPS" Name="Eps"  />
+						<Label  Caption="P/E" Name="Pe"  />
+						<Label  Caption="حجم" Name="BVol"  />
+						<Label  Caption="$Cs" Name="Cs"  />
+						<Label  Caption="تعداد سهام" Name="Z"  />
+					</Controls>
+				</Group>
+			</Groups>
+		</Group>
+		<Group Title="معاملات درشت" Template="fluid">
+			<Controls>
+				<CrudControl Name="BigDeals" BocrudXml="BigDeal" SearchXml="BigDeal-Search" FilterSpel="SetCommand('SearchByInsCode',#Container.InsCode)"
+							 Operations="Search" Columns="Date,Time,Count,TraderType,Volume,Price,AmountAvg,DealType,pcp,plp,QueueState,DealTypeCss">
+					<Parameters>
+						<Add Name="InsCode" Value="@{#Container.InsCode}"/>
+					</Parameters>
+				</CrudControl>
+			</Controls>
+		</Group>
+		<Group Title="پیامهای ناظر" Template="fluid" >
+			<Controls>
+				<!--<CrudControl Name="Messages" BocrudXml="Message"/>-->
+			</Controls>
+		</Group>
+	</Groups>
+	<Grid Caption="لیست نمادها"
+	 EnableSearch="false" ToolbarSearch="false" AutoWidth="true" Width="100"
+	 MultiSelect="false" EnableColumnChooser="true" ShowRowNumber="true" >
+		<Columns>
+			<Column Width="100" Name="Symbol"  DisplayPriority="1" Caption="نماد" />
+			<Column Width="100" Name="Name"  DisplayPriority="2" Caption="نام نماد" />
+			<Column Width="100" Name="LatinName"  DisplayPriority="4" Caption="نام لاتین نماد" />
+			<Column Width="100" Name="LSoc30"  DisplayPriority="5" />
+			<Column Width="100" Name="Z"  DisplayPriority="3" />
+			<Column Width="100" Name="BVol"  DisplayPriority="3" />
+		</Columns>
+
+	</Grid>
+	<Operations>ViewDetail</Operations>
+	<!--All Create Update ViewDetail Search Delete Print CreateRoot CreateChild TreeCopy TreeMove None-->
+	<FactoryMethodArgsSpel>
+		<String>'InstrumentService'</String>
+		<String>T(SeatWebApp.Models.InstrumentViewModel, SeatWebApp)</String>
+	</FactoryMethodArgsSpel>
+</Bocrud>
+

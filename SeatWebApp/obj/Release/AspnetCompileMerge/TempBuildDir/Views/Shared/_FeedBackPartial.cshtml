@@ -1,0 +1,38 @@
+﻿@using Exir.Framework.Uie;
+
+<a href="javascript:void(0)" id="add-feedback">
+    <i class="icon-comment"></i>
+    ثبت بازخورد
+</a>
+<div id="feedBackForm"  style="display:none; ">
+    <form class="validation">
+        <div style="padding:20px;">
+            <div class="row">
+                <label for="Description">شماره همراه:</label>
+                <input type="tel" style="width:100%;font-family:'Courier New'; direction:ltr" rows="5"  name="Mobile" placeholder="09121111111"/>
+            </div>
+            <div class="row">
+                <label for="Description">آدرس ایمیل:</label>
+                <input type="email" style="width:100%;font-family:'Courier New'; direction:ltr" rows="5" name="Email" placeholder="آدرس ایمیل"/>
+            </div>
+            <div class="row">
+                <label for="Description">متن پیام:</label>
+                <textarea style="width:100%" rows="5" required name="Description" placeholder="متن پیام"></textarea>
+            </div>
+            <div class="row">
+                <label for="Bug">
+                    <input id="Bug" name="CategoryType" value="0" type="radio" />
+                    <span>
+                        گزارش خطا
+                    </span>
+                </label>
+                <label for="Offer">
+                    <input id="Offer" name="CategoryType" value="1" checked type="radio" />
+                    <span>
+                        پیشنهاد
+                    </span>
+                </label>
+            </div>
+        </div>
+    </form>
+</div>

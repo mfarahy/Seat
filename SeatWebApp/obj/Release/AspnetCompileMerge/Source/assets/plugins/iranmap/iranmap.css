@@ -1,0 +1,164 @@
+/*
+ * Iran Map - SVG and Responsive.
+ * Free and open source.
+ * Version 1.1.0
+ * By: MohammadReza Pourmohammad.
+ * Email: mohammadrpm@gmail.com
+ * Web: http://mrpm.ir
+ */
+
+.iranmap {
+    text-align: right;
+    padding: 0;
+}
+.iranmap title{
+    display: block;
+    text-align: center;
+}
+
+    .iranmap .show-title {
+        display: none;
+        position: absolute;
+        background-color: #333;
+        color: #fff;
+        margin: 0 !important;
+        padding: 0 5px;
+        text-align: center;
+        line-height: 26px;
+        border-radius: 2px;
+        -moz-border-radius: 2px;
+        -webkit-border-radius: 2px;
+        opacity: 0.8;
+    }
+
+    .iranmap .map {
+        display: block;
+        float: left;
+        text-align: left;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+   }
+
+        .iranmap .map svg {
+            width: 100%;
+            max-width:500px;
+        }
+
+        .iranmap .map .border path, .iranmap .map .island path {
+            fill: #fff;
+        }
+
+        .iranmap .map .province path {
+            fill: rgba(169, 169, 169, 0.23);
+        }
+
+        .iranmap .map .sea path, .iranmap .map .lake path {
+            fill: #6caed8;
+        }
+
+        .iranmap .map .province path:hover, .iranmap .map .island path:hover, .iranmap .map .province path.hover, .iranmap .map .island path.hover {
+            fill: #c33a2c !important;
+            cursor: pointer;
+        }
+
+    .iranmap .list {
+        display: block;
+        float: right;
+        width: 50%;
+    }
+
+        .iranmap .list ul {
+            padding: 0;
+        }
+
+        .iranmap .list > ul {
+            margin-left: 10px;
+        }
+
+        .iranmap .list li {
+            list-style: none;
+        }
+
+        .iranmap .list span {
+            background: #242424;
+            color: #ecf0f1;
+            display: block;
+            margin: 0 2px;
+            padding: 0 8px;
+            line-height: 26px;
+            margin-top: 10px;
+            margin-bottom: 2px;
+        }
+
+        .iranmap .list li ul li {
+            display: block;
+            float: right;
+            width: 33.33333333333333%;
+        }
+
+            .iranmap .list li ul li a {
+                background: #34495e;
+                color: #ecf0f1;
+                display: block;
+                padding: 0 8px;
+                line-height: 26px;
+                margin: 2px 2px;
+                text-decoration: none;
+            }
+
+                .iranmap .list li ul li a:hover, .iranmap .list li ul li a.hover {
+                    background: #c33a2c;
+                }
+
+        .iranmap .list ul:before, .iranmap .list ul:after {
+            display: table;
+            content: " ";
+        }
+
+        .iranmap .list ul, .iranmap .list ul:after {
+            clear: both;
+        }
+
+    .iranmap .city {
+        clear: both;
+        padding: 10px 0;
+    }
+
+@media(max-width: 930px) {
+    .iranmap .list {
+        width: 50%;
+    }
+}
+
+@media(max-width: 745px) {
+    .iranmap .list li ul li {
+        width: 50%;
+    }
+}
+
+@media(max-width: 515px) {
+    .iranmap .list, .iranmap .map {
+        width: 100%;
+    }
+
+        .iranmap .list li ul li {
+            width: 33.33333333333333%;
+        }
+
+            .iranmap .list li ul li a {
+                font-size: 10px !important;
+            }
+}
+
+@media(max-width: 515px) {
+    .iranmap .list li ul li {
+        width: 50%;
+    }
+}
+
+@media(max-width: 250px) {
+    .iranmap .list li ul li {
+        width: 100%;
+    }
+}

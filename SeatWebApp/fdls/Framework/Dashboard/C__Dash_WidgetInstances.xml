@@ -1,0 +1,64 @@
+﻿<Bocrud                 Style="classic"
+        DetailPosition="up"
+        Name="C__Dash_WidgetInstances"
+        Caption="ویجت"
+        Height="480" Width="640"
+        ToStringFormat="{Name}"
+DirectAccessible="true"
+AccessOperation="C_Dsh_WdgtInstncs.A"
+        xmlns="http://exirtechsun.com/uie/2014/schema"
+       xmlns:yaxlib="http://yaxlib.codeplex.com/">
+
+  <Groups>
+    <Group Title="جزئیات"  ColumnCount="2" Template="fluid">
+      <Controls>
+        <Select2 Name="DefId" BocrudXml="C__Dash_WidgetDefinitions" Caption="نوع ویجت" EditableConditionSpel="!Container.HasKey()" >
+          <Conditions>
+            <Add EvalScript="'{DefId}'!='{#DefId}'"  >
+              <Actions>
+                <Add Action="Update" On="Settings" Send="DefId" NewState="true"/>
+              </Actions>
+            </Add>
+          </Conditions>
+        </Select2>
+
+        <TextBox Name="Name" Caption="نام ویجت" />
+        <TextBox Name="Description" Caption="توضیحات" MultiLine="true" />
+        
+        <Select2  Name="AccessableRoleList" Caption="دسترسی" SpringExpression="GetRoles()"  MultiSelect="true" />
+        <TextBox  Name="RefreshRate" Caption="نرخ رفرش"  Help="بر حسب میلی ثانیه" />
+        <CheckBox  Name="Cacheable" Caption="قابلیت کَش"  />
+        <List  Name="CacheType" Caption="نوع کَش">
+          <Items>
+            <Add Text="" Value="0"/>
+            <Add Text="Session" Value="1"/>
+            <Add Text="Application" Value="2"/>
+            <Add Text="Specific Duration" Value="3"/>
+          </Items>
+        </List>
+        <TextBox  Name="DataProviderTypeName" Caption="Data provider type name" Direction="Ltr" FontName="Courier New" />
+
+        <Repeater Name="Settings" Caption="تنظیمات" BocrudXml="C__Dash_WidgetSettings"/>
+    
+      </Controls>
+    </Group>
+  </Groups>
+
+  <Grid Caption="لیست ویجت های قابل استفاده"
+  EnableSearch="false" ToolbarSearch="false" AutoWidth="true" Width="100"
+  MultiSelect="true">
+    <Columns>
+      <Column Width="150" Name="Name" />
+      <Column Width="150" Name="Description" />
+      <Column Width="150" Name="RefreshRate" />
+      <Column Width="150" Name="Cacheable" />
+      <Column Width="150" Name="CacheType" />
+    </Columns>
+  </Grid>
+  <Operations>All</Operations>
+  <FactoryMethodArgsSpel>
+    <String>T(Exir.Framework.Uie.Adapter.Dashboard.WidgetInstanceService, Exir.Framework.Uie.Adapter)</String>
+    <String>T(Exir.Framework.Uie.Adapter.Dashboard.WidgetInstanceViewModel, Exir.Framework.Uie.Adapter)</String>
+  </FactoryMethodArgsSpel>
+</Bocrud>
+

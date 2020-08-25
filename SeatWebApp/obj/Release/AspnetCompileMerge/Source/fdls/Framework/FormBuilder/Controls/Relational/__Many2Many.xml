@@ -1,0 +1,38 @@
+﻿<Bocrud Style="classic"
+        DetailPosition="up"
+        Name="__Many2Many"
+        Caption="> کنترل چند به چند"
+        Height="500" Width="700"
+        ToStringFormat="{Caption}"
+        DirectAccessible="false"
+        xmlns="http://exirtechsun.com/uie/2014/schema"
+       xmlns:yaxlib="http://yaxlib.codeplex.com/">
+
+  <Groups>
+    <![CDATA[@{include:__FormControl#//uie:Groups/uie:Group[@Name='CommonSettings']}]]>
+
+    <Group Title="تنظیمات مخصوص" ColumnCount="3" Template="fluid">
+      <Controls>
+        <Select2  Caption="فرم مربوطه" Name="BocrudXml" SpringExpression="GetAllFdlNames()"  DataValueField="Name" DataTextField="Caption">
+          <Validators>
+            <RequiredFieldValidator Required="true"/>
+          </Validators>
+        </Select2>
+        <TextBox Name="KeyProperty" Caption="خصوصیت کلیدی" Type="Code" />
+        <TextBox Name="ItemsFilterSpel" Caption="اسکریپت فیلتر اقلام" Type="Code"/>
+        <CheckBox Name="EnableNewButton" Caption="نمایش دکمه جدید ؟"/>
+        <CheckBox Name="EnableMultiSelect" Caption="قابلیت چند انتخاب ؟"/>
+        <TextBox Name="GridWindowWidth" Caption="عرض گرید"/>
+        <TextBox Name="GridWindowHeight" Caption="طول گرید"/>
+      </Controls>
+    </Group>
+
+    <![CDATA[@{include:__FormControl#//uie:Groups/uie:Group[@Name='AdvancedCommonSettings']}]]>
+  </Groups>
+
+  <Operations>All</Operations>
+  <FactoryMethodArgsSpel>
+    <String>T(Exir.Framework.Uie.Bocrud.Many2Many, Exir.Framework.Uie)</String>
+  </FactoryMethodArgsSpel>
+</Bocrud>
+

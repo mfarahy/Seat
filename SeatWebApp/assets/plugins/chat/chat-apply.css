@@ -1,0 +1,94 @@
+﻿.chat-window-template {
+    display: none;
+}
+
+.message-template {
+    display: none;
+}
+
+.chat-window .message-log {
+    height: 189px;
+    overflow: auto;
+    margin-right: 0px;
+}
+
+.chat-window .message-box {
+    height: 56px;
+    width: 100%;
+}
+
+.chat-window .icon-user {
+    display: inline;
+    float: left;
+    margin-left: 3px;
+    margin-right: 3px;
+}
+
+.chat-window .msg-body {
+    padding-right: 6px;
+}
+
+.chat-window .msg-time {
+    font-family: tahoma;
+    font-size: 7pt;
+}
+
+.chat-window .msg-sender {
+    display: inline;
+}
+
+.chat-window .msg-text {
+    clear: both;
+}
+
+.chat-window .msg-title {
+    color: #00;
+    float: left;
+}
+
+.chat-window .chat-me .msg-title {
+    color: #a1a1a1;
+}
+
+.chat-window .chat-me .icon-user {
+    float: right;
+}
+
+.chat-window .chat-me .msg-title {
+    float: right;
+}
+
+.chat-window .msg-text {
+    background-color: lightblue;
+    border-radius: 7px;
+    padding: 5px;
+}
+
+.chat-window.ui-dialog-content {
+    padding: 2px;
+}
+
+.chat-window .chat-me .msg-text {
+    background-color: lightyellow;
+}
+
+.chat-user-template{
+    display:none
+}
+
+.chat-user-description{
+    color: black;
+font-size: 8pt;
+display: block;
+text-align: right !important;
+}
+
+.chat-target-typing{
+    display:none;
+    font-size: 8pt;
+}
+
+.dropdown-navbar > li:last-child > a{
+    text-align:right !important;
+}
+

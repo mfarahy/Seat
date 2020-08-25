@@ -1,0 +1,58 @@
+﻿<Bocrud Style="classic"
+        DetailPosition="up"
+        Name="__Grid"
+        Caption="گرید"
+        Height="470" Width="700"
+        ToStringFormat="{Caption}"
+        DirectAccessible="false"
+        xmlns="http://exirtechsun.com/uie/2014/schema"
+       xmlns:yaxlib="http://yaxlib.codeplex.com/">
+
+  <DefaultValue>
+    <Add Property="Width" Value="100"/>
+    <Add Property="AutoWidth" Value="true"/>
+  </DefaultValue>
+  
+  <Groups>
+    <Group Title="تنظیمات عمومی"  ColumnCount="3" Template="fluid">
+      <Controls>
+        <TextBox Name="Caption" Caption="عنوان" />
+        <CheckBox Name="AutoLoadData" Caption="بارگزاری خودکار داده ها؟" />
+        <TextBox Name="Width" Caption="عرض" />
+        <CheckBox Name="ToolbarSearch" Caption="جستجو روی ستون ها ؟" />
+        <CheckBox Name="EnableColumnChooser" Caption="امکان انتخاب ستون ها؟" />
+        <CheckBox Name="EnablePager" Caption="فعال بودن صفحه بندی ؟" />
+        <CheckBox Name="AutoWidth" Caption="تنظیم عرض گرید به شکل خودکار ؟" />
+        <CheckBox Name="ShowRowNumber" Caption="نمایش شماره ردیف ؟" />
+        <CheckBox Name="EnableSearch" Caption="فعال بودن جستجو ؟" />
+        <CheckBox Name="EnableRefresh" Caption="فعال بودن دکمه به روزرسانی ؟" />
+      </Controls>
+    </Group>
+    <Group Title="تنظیمات پیشرفته"  ColumnCount="3" Template="fluid">
+      <Controls>
+        <TextBox Name="ThumbnailColumn"  Caption="ستون پیشنمایش" />
+        <CheckBox Name="OnlyColumnedByAdmin" Caption="ستونها فقط توسط ادمین ویرایش شوند؟"  />
+        <CheckBox Name="Frozen" Caption="حالت فروزن ستون ها ؟" />
+        <CheckBox Name="HideFooter" Caption="پنهان کردن پایین گرید ؟" />
+        <CheckBox Name="HideHeader" Caption="پنهان کردن بالای گرید ؟" />
+        <CheckBox Name="ViewRecords" Caption="فعال بودن حالت مشاهده رکورها ؟" />
+        <CheckBox Name="GridView" Caption="فعال بودن حالت مشاهده گرید ؟" />
+        <CheckBox Name="HoverRows" Caption="ردیف های شناور ؟" />
+        <CheckBox Name="PagerButtons" Caption="نمایش دکمه های صفحه بندی ؟" />
+        <CheckBox Name="PagerInput" Caption="نمایش ورودی صفحه بندی ؟" />
+        <TextBox Name="RowNum" Caption="تعداد رکورد ها" />
+        <TextboxList Name="RowList" Caption="اندازه صفحات" />
+        <TextBox Name="PagerText" Caption="متن صفحه بندی" />
+        <CheckBox Name="AltRows" Caption="رنگ کردن ردیف های متناوب ؟" />
+        <CheckBox Name="TopPager" Caption="صفحه بندی بالای گرید ؟" />
+        <TextBox Name="CssColumn" Caption="ستون استایل" />
+      </Controls>
+    </Group>
+  </Groups>
+
+  <Operations>All</Operations>
+  <FactoryMethodArgsSpel>
+    <String>T(Exir.Framework.Uie.Bocrud.FormGrid, Exir.Framework.Uie)</String>
+  </FactoryMethodArgsSpel>
+</Bocrud>
+

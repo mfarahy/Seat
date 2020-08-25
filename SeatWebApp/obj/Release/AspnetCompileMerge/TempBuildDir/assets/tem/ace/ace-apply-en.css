@@ -1,0 +1,18 @@
+﻿body, h1, h2, h3, h4, h5, h6 {
+    font-family: 'Open Sans';
+}
+
+ .ui-datepicker input[type=checkbox].ace.ace-switch.ace-switch-6:checked + .lbl::before {
+        font-family: 'Open Sans';
+    }
+
+    .ui-datepicker input[type=checkbox].ace.ace-switch.ace-switch-6 + .lbl::before {
+        font-family: 'Open Sans';
+    }
+
+    .bocrud-thumbnails .tooltip-inner {
+        font-family: 'Open Sans', tahoma;
+    }
+    .ui-jqgrid-title {
+    float: left !important;
+}

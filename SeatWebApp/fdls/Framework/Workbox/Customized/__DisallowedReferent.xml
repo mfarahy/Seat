@@ -1,0 +1,43 @@
+﻿<Bocrud                 Style="classic"
+        DetailPosition="up"
+        Name="__DisallowedReferent"
+        Caption="DisallowedReferent"
+        Height="480" Width="640"
+        ToStringFormat=""
+DirectAccessible="false"
+AccessOperation="_DslwdRfrnt.A"
+        xmlns="http://exirtechsun.com/uie/2014/schema"
+       xmlns:yaxlib="http://yaxlib.codeplex.com/">
+
+  <Groups>
+    <Group Title="جزئیات"  ColumnCount="2" Template="fluid">
+      <Controls>
+        <DateTimePicker  Caption="StartDt" Name="StartDt"  />
+        <DateTimePicker  Caption="EndDt" Name="EndDt"  />
+        <TextBox  Caption="DisallowedIds" Name="DisallowedIds"  />
+        <TextBox  Caption="OwenerUserId" Name="OwenerUserId"  />
+        <TextBox  Caption="OwenerUnitId" Name="OwenerUnitId"  />
+        <Many2One BocrudXml="WorkflowSystem" ForeignKey="SystemId"   Caption="System" Name="System"  />
+      </Controls>
+    </Group>
+  </Groups>
+
+  <Grid Caption="لیست DisallowedReferent"
+  EnableSearch="false" ToolbarSearch="false" AutoWidth="true" Width="100"
+  MultiSelect="true">
+    <Columns>
+      <Column Width="150" Name="StartDt" />
+      <Column Width="150" Name="EndDt" />
+      <Column Width="150" Name="DisallowedIds" />
+      <Column Width="150" Name="OwenerUserId" />
+      <Column Width="150" Name="OwenerUnitId" />
+
+    </Columns>
+  </Grid>
+  <Operations>All</Operations>
+  <!--All Create Update ViewDetail Search Delete Print CreateRoot CreateChild TreeCopy TreeMove None-->
+  <FactoryMethodArgsSpel>
+    <String>T(Exir.Workbox.Services.DisallowedReferentService, Exir.Workbox)</String>
+  </FactoryMethodArgsSpel>
+</Bocrud>
+

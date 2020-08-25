@@ -1,0 +1,82 @@
+<Bocrud ManagerFactoryType="Exir.Framework.Uie.Adapter.PresenterFactory, Exir.Framework.Uie.Adapter"
+                Style="classic"
+		AccessOperation="ClntTyp.A"
+		DirectAccessible="false"
+        DetailPosition="up"
+        Name="ClientType"
+        Caption="$ClientType"        
+        Height="480" Width="640"
+        ToStringFormat="" 
+        xmlns="http://exirtechsun.com/uie/2014/schema"
+       xmlns:yaxlib="http://yaxlib.codeplex.com/">
+
+	   		
+  <Groups>
+    <Group Title="جزئیات"  ColumnCount="2" Template="fluid">
+      <Controls>
+<DateTimePicker  Caption="$DayDt" Name="DayDt"  /> 
+<TextBox  Caption="$Buy_CountI" Name="Buy_CountI"  /> 
+<TextBox  Caption="$Buy_CountN" Name="Buy_CountN"  /> 
+<TextBox  Caption="$Buy_I_Volume" Name="Buy_I_Volume"  /> 
+<TextBox  Caption="$Buy_N_Volume" Name="Buy_N_Volume"  /> 
+<TextBox  Caption="$Sell_CountI" Name="Sell_CountI"  /> 
+<TextBox  Caption="$Sell_CountN" Name="Sell_CountN"  /> 
+<TextBox  Caption="$Sell_I_Volume" Name="Sell_I_Volume"  /> 
+<TextBox  Caption="$Sell_N_Volume" Name="Sell_N_Volume"  /> 
+<TextBox  Caption="$Pl" Name="Pl"  /> 
+<TextBox  Caption="$TVol" Name="TVol"  /> 
+<TextBox  Caption="$Prev_Buy_CountI" Name="Prev_Buy_CountI"  /> 
+<TextBox  Caption="$Prev_Buy_CountN" Name="Prev_Buy_CountN"  /> 
+<TextBox  Caption="$Prev_Buy_I_Volume" Name="Prev_Buy_I_Volume"  /> 
+<TextBox  Caption="$Prev_Buy_N_Volume" Name="Prev_Buy_N_Volume"  /> 
+<TextBox  Caption="$Prev_Sell_CountI" Name="Prev_Sell_CountI"  /> 
+<TextBox  Caption="$Prev_Sell_CountN" Name="Prev_Sell_CountN"  /> 
+<TextBox  Caption="$Prev_Sell_I_Volume" Name="Prev_Sell_I_Volume"  /> 
+<TextBox  Caption="$Prev_Sell_N_Volume" Name="Prev_Sell_N_Volume"  /> 
+<TextBox  Caption="$Prev_Pl" Name="Prev_Pl"  /> 
+<TextBox  Caption="$Prev_TVol" Name="Prev_TVol"  /> 
+<RawValue  Caption="$heven" Name="heven"  /> 
+<TextBox  Caption="$InsCode" Name="InsCode"  /> 
+<TextBox  Caption="$VisitCount" Name="VisitCount"  /> 
+     </Controls>
+    </Group>
+  </Groups>
+
+<Grid Caption="$ClientType" 
+EnableSearch="false" ToolbarSearch="true" AutoWidth="true" Width="100"  
+MultiSelect="true" EnableColumnChooser="false">
+    <Columns>
+      <Column Width="150" Name="DayDt" Searchable="true" />
+      <Column Width="150" Name="Buy_CountI" Searchable="true" />
+      <Column Width="150" Name="Buy_CountN" Searchable="true" />
+      <Column Width="150" Name="Buy_I_Volume" Searchable="true" />
+      <Column Width="150" Name="Buy_N_Volume" Searchable="true" />
+      <Column Width="150" Name="Sell_CountI" Searchable="true" />
+      <Column Width="150" Name="Sell_CountN" Searchable="true" />
+      <Column Width="150" Name="Sell_I_Volume" Searchable="true" />
+      <Column Width="150" Name="Sell_N_Volume" Searchable="true" />
+      <Column Width="150" Name="Pl" Searchable="true" />
+      <Column Width="150" Name="TVol" Searchable="true" />
+      <Column Width="150" Name="Prev_Buy_CountI" Searchable="true" />
+      <Column Width="150" Name="Prev_Buy_CountN" Searchable="true" />
+      <Column Width="150" Name="Prev_Buy_I_Volume" Searchable="true" />
+      <Column Width="150" Name="Prev_Buy_N_Volume" Searchable="true" />
+      <Column Width="150" Name="Prev_Sell_CountI" Searchable="true" />
+      <Column Width="150" Name="Prev_Sell_CountN" Searchable="true" />
+      <Column Width="150" Name="Prev_Sell_I_Volume" Searchable="true" />
+      <Column Width="150" Name="Prev_Sell_N_Volume" Searchable="true" />
+      <Column Width="150" Name="Prev_Pl" Searchable="true" />
+      <Column Width="150" Name="Prev_TVol" Searchable="true" />
+      <Column Width="150" Name="heven" Searchable="true" />
+      <Column Width="150" Name="InsCode" Searchable="true" />
+      <Column Width="150" Name="VisitCount" Searchable="true" />
+
+    </Columns>
+</Grid>
+<Operations>All</Operations><!--All Create Update ViewDetail Search Delete Print CreateRoot CreateChild TreeCopy TreeMove None-->
+  <FactoryMethodArgsSpel>
+    <String>'ClientTypeService'</String>
+      <String>T(SeatWebApp.Models.ClientTypeViewModel, SeatWebApp)</String>
+  </FactoryMethodArgsSpel>
+</Bocrud>
+

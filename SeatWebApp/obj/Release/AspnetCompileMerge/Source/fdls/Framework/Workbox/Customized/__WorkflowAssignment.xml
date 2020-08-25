@@ -1,0 +1,114 @@
+﻿<Bocrud                 Style="classic"
+        DetailPosition="replacement"
+        Name="__WorkflowAssignment"
+        Caption="جریان کاری"
+        Height="480" Width="640"
+        ToStringFormat="{Name}({Code})"
+        FilterSpel="NotEqual('IsDeleted',true)"
+DirectAccessible="true"
+AccessOperation="WORKBOX_DEFINE_WORKFLOW_ASSIGNMENT"
+        xmlns="http://exirtechsun.com/uie/2014/schema"
+       xmlns:yaxlib="http://yaxlib.codeplex.com/">
+
+
+  <DefaultValue>
+    <Add Property="AssignmentDt" Value="DateTime.Now" />
+  </DefaultValue>
+
+  <Categories>
+    <Add BocrudXml="__WorkflowSystem" Property="System" Required="false" KeyProperty="SystemId" />
+  </Categories>
+
+  <Groups>
+    <Group Title="جزئیات"  ColumnCount="2" Template="fluid">
+      <Controls>
+
+        <Label ShowConditionSpel="#Container.IsDeleted">
+          <Text>
+            <![CDATA[
+            <h1 style="color:red">
+              این آیتم حذف شده است.
+            </h1>
+            ]]>
+          </Text>
+        </Label>
+
+        <Select2 Name="SystemId" Caption="سیستم" BocrudXml="__WorkflowSystem"   />
+
+        <TextBox  Caption="نام جریان کاری" Name="Name" />
+        <TextBox  Caption="کد" Name="Code" Direction="Ltr" FontName="Courier New"  />
+        <DateTimePicker  Caption="تاریخ ایجاد" Name="AssignmentDt"  ShowTime="true" IsEditable="false" />
+
+        <TextBox  Caption="تعداد اجرا" Name="Count"  IsEditable="false" AllowCreateMode="false" />
+
+        <Select2 Name="SaveLogLevel" Caption="پاک سازی انتهای گردش" Help="مشخص می کند در هنگام پایان یافتن جریان کاری چه سطحی از اطلاعات حذف شود تا دیتابیس سبک شود.">
+          <Items>
+            <Add Value ="Nothing" Text="حدف همه اطلاعات"/>
+            <Add Value ="Minimal" Text="حذف اطلاعات غیر ضروری و گردش کار"/>
+            <Add Value ="Medium" Text="حذف اطلاعات گردش کار" Selected="true"/>
+            <Add Value ="Full" Text="نگه داری تمام اطلاعات"/>
+          </Items>
+        </Select2>
+
+        <TextBox Name="ModelTypeName" Caption="نام مدل" Type="Code"/>
+
+        <TextBox  Caption="نام فرم پیش فرض" Name="DefaultFormName" Direction="Ltr" FontName="Courier"   />
+
+        <Many2One Name="DefinitionFile" ForeignKey="DefinitionFileId" Caption="فایل جریان کاری" BocrudXml="__DefinitionFile" />
+
+        <TextBox  Caption="شرط اجرای جریان کاری" Name="ExecConditionSpel" Type="Code"  MultiLine="true" SafeMode="true" />
+        <TextBox  Caption="توضیحات" Name="Description" MultiLine="true"  />
+        <CheckBox  Caption="وضعیت" Name="IsActive" TrueText="on"  FalseText="off" DisplayMode="AsCheckBox" />
+
+        <Select2 Caption="هنگام خروج کار" Name="ActionWhenSpin">
+          <OuterStyles>
+            <Add Name="border" Value="solid 2px #00a8de"/>
+            <Add Name="padding" Value="8px"/>
+            <Add Name="background-color" Value="#dfeff5"/>
+            <Add Name="border-radius" Value="14px"/>
+          </OuterStyles>
+          <Items>
+            <Add Value="ReadOnly" Text="سایر کارها فقط خواندنی شوند"/>
+            <Add Value="HardDelete" Text="سایر کارها فیزیکی حذف شوند"/>
+            <Add Value="Lock" Text="سایر کارها قفل شوند"/>
+            <Add Value="ReadOnlyAndArchive" Text="سایر کارها فقط خواندنی و آرشیو شوند"/>
+            <Add Value="LockAndArchive" Text="سایر کارها قفل و آرشیو شوند"/>
+            <Add Value="ObsoleteRedandants" Text="قفل، آرشیو و حذف کارهای اضافی"/>
+          </Items>
+        </Select2>
+
+        <TextBox  Caption="شماره شناسه فرد مسئول" Name="Responsible"  />
+        <CheckBox  Caption="بازسازی مجدد عناوین کارها" Name="RevalSubject" TrueText="yes" FalseText="no" DisplayMode="AsCheckBox" />
+        <Select2  Caption="نام نمایش دهنده پیش فرض" Name="DefaultPlayerName" >
+          <Items>
+            <Add Value="CU" Text="ساخت و ویرایش" />
+            <Add Value="CRUD" Text="کراد کامل" />
+            <Add Value="TextPlayer" Text="نمایش متن"/>
+          </Items>
+        </Select2>
+
+
+      </Controls>
+    </Group>
+  </Groups>
+
+  <Grid Caption="لیست جریانات کاری"
+  EnableSearch="false" ToolbarSearch="false" AutoWidth="true" Width="100"
+  MultiSelect="true">
+    <Columns>
+      <Column Width="150" Name="Name" />
+      <Column Width="150" Name="Code" />
+      <Column Width="150" Name="AssignmentDt" />
+      <Column Width="150" Name="Count" />
+      <Column Width="150" Name="ModelTypeName" />
+      <Column Width="150" Name="Description" />
+      <Column Width="150" Name="IsActive" />
+    </Columns>
+  </Grid>
+  <Operations>All</Operations>
+  <!--All Create Update ViewDetail Search Delete Print CreateRoot CreateChild TreeCopy TreeMove None-->
+  <FactoryMethodArgsSpel>
+    <String>T(Exir.Workbox.Services.WorkflowAssignmentService, Exir.Workbox)</String>
+  </FactoryMethodArgsSpel>
+</Bocrud>
+

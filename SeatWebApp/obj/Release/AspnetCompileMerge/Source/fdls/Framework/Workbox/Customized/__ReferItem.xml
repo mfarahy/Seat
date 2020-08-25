@@ -1,0 +1,42 @@
+﻿<Bocrud PresenterType="Exir.Workbox.Web.ReferPresenter, Exir.Workbox.Web"
+        Style="classic"
+        DetailPosition="up"
+        Name="__ReferItem"
+        Caption="آیتم ارجاع"
+        Height="480" Width="640"
+        ToStringFormat=""
+DirectAccessible="false"
+AccessOperation="_RfrItm.A"
+        xmlns="http://exirtechsun.com/uie/2014/schema"
+       xmlns:yaxlib="http://yaxlib.codeplex.com/">
+
+  <Groups>
+    <Group Title="جزئیات"  ColumnCount="2" Template="fluid">
+      <Controls>
+        <TextBox Name="SelectedRows" Caption="SelectedRows"  ClientHide="true"/>
+        <!--<TextBox Name="TargetId" Caption="TargetId" />-->
+        <Many2One Name="Target" ForeignKey="TargetId" Caption="کاربر یا واحد گیرنده" 
+                  BocrudXml="__WbxUserAndUnit" Operations="Search" FilterSpel="SetCommand('GetAllowedReferentItems',#Container.SelectedRows)"  />
+        <Select2 BocrudXml="__ReferType" Caption="نوع ارجاع" Name="ReferType"  />
+        <!--<TextBox Name="ReferTypeId" Caption="ReferTypeId" />-->
+        <TextBox Name="Deadline" Caption="مهلت" />
+      </Controls>
+    </Group>
+  </Groups>
+
+  <Grid Caption="لیست آیتم های الگوی ارجاع"
+  EnableSearch="false" ToolbarSearch="false" AutoWidth="false" Width="600"
+  MultiSelect="true">
+    <Columns>
+      <Column Width="150" Name="Target" />
+      <Column Width="150" Name="ReferType" />
+      <Column Width="150" Name="Deadline" />
+    </Columns>
+  </Grid>
+  <Operations>All</Operations>
+  <!--All Create Update ViewDetail Search Delete Print CreateRoot CreateChild TreeCopy TreeMove None-->
+  <FactoryMethodArgsSpel>
+    <String>T(Exir.Workbox.Web.ReferItemModel, Exir.Workbox.Web)</String>
+  </FactoryMethodArgsSpel>
+</Bocrud>
+

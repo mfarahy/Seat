@@ -1,0 +1,346 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="SeatWebDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="BackstageJob">
+    <Key>
+      <PropertyRef Name="BackstageJobPK" />
+    </Key>
+    <Property Name="BackstageJobPK" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="RunAs" Type="String" MaxLength="70" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="TimeToRun" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="Status" Type="Int16" Nullable="false" />
+    <Property Name="Service" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Action" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="SerializedArgs" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="RemoveIfSuccess" Type="Boolean" Nullable="false" />
+    <Property Name="RetryCount" Type="Byte" Nullable="false" />
+    <Property Name="Priority" Type="Int16" Nullable="false" />
+    <Property Name="UniqueCode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Dependency" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Queue" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Server" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Tags" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Debug" Type="Boolean" Nullable="false" />
+    <Property Name="Error" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Duration" Type="Int64" />
+    <Property Name="RunDt" Type="DateTime" Precision="3" />
+    <Property Name="ExecutionLog" Type="Binary" MaxLength="Max" FixedLength="false" />
+    <Property Name="MaxCpu" Type="Byte" />
+    <Property Name="MaxMemory" Type="Byte" />
+    <Property Name="MidCpu" Type="Byte" />
+    <Property Name="MidMemory" Type="Byte" />
+  </EntityType>
+  <EntityType Name="HardLog">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="EntryDt" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="Level" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="Kind" Type="Byte" Nullable="false" />
+    <Property Name="UserName" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="TraceKey" Type="Int64" />
+    <Property Name="IP" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="Method" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Type" Type="String" MaxLength="150" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="ArgumentsCount" Type="Int32" Nullable="false" />
+    <Property Name="Arguments" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="ElapsedMilliseconds" Type="Int64" Nullable="false" />
+    <Property Name="Result" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Message" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Exception" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="Holiday">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Date" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="HolidayType" Type="Int16" Nullable="false" />
+    <Property Name="HolidayTitle" Type="String" MaxLength="200" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Audit_CreateDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="Audit_CreatorUserName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Audit_CreatorIP" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Audit_LastModifyDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="Audit_LastModifierUserName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Audit_LastModifierIP" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+  </EntityType>
+  <EntityType Name="UserActivity">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="EntryDt" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="UserName" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="IP" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="Message" Type="String" MaxLength="500" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="PageName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="Metadata" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="Session" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="Action" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="DashboardNote">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Text" Type="String" MaxLength="3000" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Color" Type="String" MaxLength="6" FixedLength="false" Unicode="false" />
+    <Property Name="Roles" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="StartDt" Type="DateTime" Precision="3" />
+    <Property Name="EndDt" Type="DateTime" Precision="3" />
+    <Property Name="Audit_CreatorUserName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Audit_CreatorIP" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Audit_CreateDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="Audit_LastModifyDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="Audit_LastModifierUserName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Audit_LastModifierIP" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="DashboardUserNotes" Relationship="Self.FK_DashboardUserNotes_DashboardNotes" FromRole="DashboardNotes" ToRole="DashboardUserNotes" />
+  </EntityType>
+  <EntityType Name="DashboardUserNote">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="UserName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="NoteId" Type="Int32" Nullable="false" />
+    <Property Name="SeenDt" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="DashboardNote" Relationship="Self.FK_DashboardUserNotes_DashboardNotes" FromRole="DashboardUserNotes" ToRole="DashboardNotes" />
+  </EntityType>
+  <EntityType Name="FeedBack">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="UserName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="CreateDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="Description" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="LinkAddresss" Type="String" MaxLength="500" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Status" Type="Int32" Nullable="false" />
+    <Property Name="CategoryType" Type="Int32" Nullable="false" />
+    <Property Name="Mobile" Type="String" MaxLength="13" FixedLength="false" Unicode="false" />
+    <Property Name="Email" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="Response" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="HelpInformation">
+    <Key>
+      <PropertyRef Name="HelpInfoPK" />
+    </Key>
+    <Property Name="HelpInfoPK" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="FormName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="FieldName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Text" Type="String" MaxLength="4000" FixedLength="false" Unicode="true" />
+    <Property Name="RoleName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="News">
+    <Key>
+      <PropertyRef Name="NewsPk" />
+    </Key>
+    <Property Name="NewsPk" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Subject" Type="String" MaxLength="250" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Abstract" Type="String" MaxLength="500" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Content" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="CategoryPk" Type="Int32" Nullable="false" />
+    <Property Name="IsDeleted" Type="Boolean" Nullable="false" />
+    <Property Name="IsArchived" Type="Boolean" Nullable="false" />
+    <Property Name="NewsArchiveDate" Type="DateTime" Precision="0" />
+    <Property Name="NewsExpireDate" Type="DateTime" Precision="0" />
+    <Property Name="Audit_CreateDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="Audit_CreatorUserName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Audit_CreatorIP" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Audit_LastModifyDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="Audit_LastModifierUserName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Audit_LastModifierIP" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="PageName" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="Image" Type="Binary" MaxLength="Max" FixedLength="false" />
+    <Property Name="Metadata" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="SortNumber" Type="Int32" />
+    <Property Name="ColSpan" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="NewsCategory" Relationship="Self.FK_News_Category" FromRole="News" ToRole="NewsCategory" />
+  </EntityType>
+  <EntityType Name="NewsCategory">
+    <Key>
+      <PropertyRef Name="CategoryPk" />
+    </Key>
+    <Property Name="CategoryPk" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CategoryTitle" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Audit_CreatorUserName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Audit_CreateDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="Audit_CreatorIP" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Audit_LastModifyDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="Audit_LastModifierUserName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Audit_LastModifierIP" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="IsListable" Type="Boolean" />
+    <Property Name="Code" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="News" Relationship="Self.FK_News_Category" FromRole="NewsCategory" ToRole="News" />
+  </EntityType>
+  <EntityType Name="UserProfile">
+    <Key>
+      <PropertyRef Name="ProfilePK" />
+    </Key>
+    <Property Name="ProfilePK" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="LastName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Avatar" Type="Binary" MaxLength="Max" FixedLength="false" />
+    <Property Name="Gender" Type="Boolean" />
+    <Property Name="Birthday" Type="DateTime" Precision="3" />
+    <Property Name="PreventAnonyRegRequest" Type="Boolean" Nullable="false" />
+    <Property Name="Username" Type="String" MaxLength="70" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Audit_CreatorUserName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Audit_CreatorIP" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Audit_CreateDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="Audit_LastModifyDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="Audit_LastModifierUserName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Audit_LastModifierIP" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="PhoneNumberHashedConfirmCode" Type="Int32" />
+    <Property Name="EmailConfirmSendDt" Type="DateTime" Precision="3" />
+    <Property Name="PhoneNumberConfirmSendDt" Type="DateTime" Precision="3" />
+    <Property Name="PhoneNumberConfirmSendCount" Type="Int32" Nullable="false" />
+    <Property Name="EmailConfirmSendCount" Type="Int32" Nullable="false" />
+  </EntityType>
+  <Association Name="FK_DashboardUserNotes_DashboardNotes">
+    <End Role="DashboardNotes" Type="Self.DashboardNote" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="DashboardUserNotes" Type="Self.DashboardUserNote" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="DashboardNotes">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="DashboardUserNotes">
+        <PropertyRef Name="NoteId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_News_Category">
+    <End Role="NewsCategory" Type="Self.NewsCategory" Multiplicity="1" />
+    <End Role="News" Type="Self.News" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="NewsCategory">
+        <PropertyRef Name="CategoryPk" />
+      </Principal>
+      <Dependent Role="News">
+        <PropertyRef Name="CategoryPk" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="SeatDBEntities1" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="BackstageJobs" EntityType="Self.BackstageJob" />
+    <EntitySet Name="HardLogs" EntityType="Self.HardLog" />
+    <EntitySet Name="Holidays" EntityType="Self.Holiday" />
+    <EntitySet Name="UserActivities" EntityType="Self.UserActivity" />
+    <EntitySet Name="DashboardNotes" EntityType="Self.DashboardNote" />
+    <EntitySet Name="DashboardUserNotes" EntityType="Self.DashboardUserNote" />
+    <EntitySet Name="FeedBacks" EntityType="Self.FeedBack" />
+    <EntitySet Name="HelpInformations" EntityType="Self.HelpInformation" />
+    <EntitySet Name="News" EntityType="Self.News" />
+    <EntitySet Name="NewsCategories" EntityType="Self.NewsCategory" />
+    <EntitySet Name="UserProfiles" EntityType="Self.UserProfile" />
+    <AssociationSet Name="FK_DashboardUserNotes_DashboardNotes" Association="Self.FK_DashboardUserNotes_DashboardNotes">
+      <End Role="DashboardNotes" EntitySet="DashboardNotes" />
+      <End Role="DashboardUserNotes" EntitySet="DashboardUserNotes" />
+    </AssociationSet>
+    <AssociationSet Name="FK_News_Category" Association="Self.FK_News_Category">
+      <End Role="NewsCategory" EntitySet="NewsCategories" />
+      <End Role="News" EntitySet="News" />
+    </AssociationSet>
+    <EntitySet Name="ShortLinks" EntityType="SeatWebDBModel.ShortLink" />
+    <EntitySet Name="KeyValues" EntityType="SeatWebDBModel.KeyValue" />
+    <EntitySet Name="SystemMessages" EntityType="SeatWebDBModel.SystemMessage" />
+    <EntitySet Name="AspNetRoles" EntityType="SeatWebDBModel.AspNetRole" />
+    <EntitySet Name="AspNetUsers" EntityType="SeatWebDBModel.AspNetUser" />
+    <AssociationSet Name="AspNetUserRoles" Association="SeatWebDBModel.AspNetUserRoles">
+      <End Role="AspNetRole" EntitySet="AspNetRoles" />
+      <End Role="AspNetUser" EntitySet="AspNetUsers" />
+    </AssociationSet>
+    <EntitySet Name="JobLogs" EntityType="SeatWebDBModel.JobLog" />
+  </EntityContainer>
+  <EntityType Name="ShortLink">
+    <Key>
+      <PropertyRef Name="ShortLinkPK" />
+    </Key>
+    <Property Name="ShortLinkPK" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="OrginalLink" Type="String" Nullable="false" MaxLength="1000" FixedLength="false" Unicode="true" />
+    <Property Name="Title" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Code" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="ReferCount" Type="Int32" Nullable="false" />
+    <Property Name="CreateDate" Type="DateTime" Nullable="false" Precision="3" />
+  </EntityType>
+  <EntityType Name="KeyValue">
+    <Key>
+      <PropertyRef Name="KeyValuePK" />
+    </Key>
+    <Property Name="KeyValuePK" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="SetKey" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="RowKey" Type="Guid" Nullable="false" />
+    <Property Name="Path" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+    <Property Name="Key" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Value" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Type" Type="Byte" Nullable="false" />
+  </EntityType>
+  <EntityType Name="SystemMessage">
+    <Key>
+      <PropertyRef Name="MessagePK" />
+    </Key>
+    <Property Name="MessagePK" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Code" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Subject" Type="String" Nullable="false" MaxLength="2000" FixedLength="false" Unicode="true" />
+    <Property Name="Text" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Media" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="Culture" Type="String" Nullable="false" MaxLength="5" FixedLength="true" Unicode="false" />
+    <Property Name="IsEnable" Type="Boolean" Nullable="false" />
+    <Property Name="Audit_CreatorUserName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Audit_CreatorIP" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Audit_CreateDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="Audit_LastModifyDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="Audit_LastModifierUserName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Audit_LastModifierIP" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="AspNetRole">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="AspNetUsers" Relationship="SeatWebDBModel.AspNetUserRoles" FromRole="AspNetRole" ToRole="AspNetUser" />
+  </EntityType>
+  <EntityType Name="AspNetUser">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Access" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Email" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+    <Property Name="EmailConfirmed" Type="Boolean" Nullable="false" />
+    <Property Name="PasswordHash" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="SecurityStamp" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="PhoneNumber" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="PhoneNumberConfirmed" Type="Boolean" Nullable="false" />
+    <Property Name="TwoFactorEnabled" Type="Boolean" Nullable="false" />
+    <Property Name="LockoutEndDateUtc" Type="DateTime" Precision="3" />
+    <Property Name="LockoutEnabled" Type="Boolean" Nullable="false" />
+    <Property Name="AccessFailedCount" Type="Int32" Nullable="false" />
+    <Property Name="UserName" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="AspNetRoles" Relationship="SeatWebDBModel.AspNetUserRoles" FromRole="AspNetUser" ToRole="AspNetRole" />
+  </EntityType>
+  <Association Name="AspNetUserRoles">
+    <End Type="SeatWebDBModel.AspNetRole" Role="AspNetRole" Multiplicity="*" />
+    <End Type="SeatWebDBModel.AspNetUser" Role="AspNetUser" Multiplicity="*" />
+  </Association>
+  <EntityType Name="JobLog">
+    <Key>
+      <PropertyRef Name="JobLogPK" />
+    </Key>
+    <Property Name="JobLogPK" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="RunDt" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="Status" Type="Int16" Nullable="false" />
+    <Property Name="JobName" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="Log" Type="Binary" Nullable="false" MaxLength="Max" FixedLength="false" />
+    <Property Name="Duration" Type="Time" Nullable="false" Precision="7" />
+    <Property Name="Audit_CreateDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="Audit_CreatorUserName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Audit_CreatorIP" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Audit_LastModifyDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="Audit_LastModifierUserName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Audit_LastModifierIP" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+  </EntityType>
+</Schema>

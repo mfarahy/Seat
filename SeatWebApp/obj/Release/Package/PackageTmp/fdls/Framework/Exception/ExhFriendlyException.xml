@@ -1,0 +1,42 @@
+﻿<Bocrud                 Style="classic"
+        DetailPosition="up"
+        Name="ExhFriendlyException"
+        Caption="خطای جایگزین"        
+        Height="480" Width="640"
+        ToStringFormat="{Message}" 
+        DirectAccessible="true"
+        AccessOperation="ExhFrndlyExcptn.A"
+        xmlns="http://exirtechsun.com/uie/2014/schema"
+       xmlns:yaxlib="http://yaxlib.codeplex.com/">
+  <DefaultValue>
+    <Add Property="CreatePerson" Value="#username" DisableProperty="true"/>
+    <Add Property="CreateDt" Value="DateTime.Now" DisableProperty="true"/>
+  </DefaultValue>
+  <Groups>
+    <Group Title="جزئیات"  ColumnCount="2" Template="fluid">
+      <Controls>
+        <TextBox  Caption="پیغام" Name="Message"  />
+        <TextBox  Caption="کد" Name="HResult"  Type="Code" />
+        <TextBox  Caption="منبع" Name="Source"  Type="Code" />
+        <TextBox  Caption="لینک" Name="HelperLink" Type="Code"  />
+        <TextBox  Caption="فرد ایجاد کننده" Name="CreatePerson"  />
+        <DateTimePicker  Caption="تاریخ ایجاد" Name="CreateDt" ShowTime="true"  />
+      </Controls>
+    </Group>
+  </Groups>
+
+<Grid Caption="لیست خطاهای جایگزین" 
+EnableSearch="false" ToolbarSearch="true" AutoWidth="true" Width="100"  
+MultiSelect="true">
+    <Columns>
+      <Column Width="500" Name="Message" Searchable="true"  />
+      <Column Width="100" Name="CreatePerson"  />
+      <Column Width="100" Name="CreateDt"  />
+    </Columns>
+</Grid>
+<Operations>All</Operations><!--All Create Update ViewDetail Search Delete Print CreateRoot CreateChild TreeCopy TreeMove None-->
+  <FactoryMethodArgsSpel>
+    <String>'ExhFriendlyExceptionService'</String>
+  </FactoryMethodArgsSpel>
+</Bocrud>
+

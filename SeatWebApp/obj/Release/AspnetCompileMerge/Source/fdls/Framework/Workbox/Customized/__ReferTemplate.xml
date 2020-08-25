@@ -1,0 +1,40 @@
+﻿<Bocrud                 Style="classic"
+        DetailPosition="up"
+        Name="__ReferTemplate"
+        Caption="الگوی ارجاع"
+        Height="480" Width="640"
+        ToStringFormat="{Name}"
+DirectAccessible="false"
+AccessOperation="_RfrTmplt.A"
+        xmlns="http://exirtechsun.com/uie/2014/schema"
+       xmlns:yaxlib="http://yaxlib.codeplex.com/">
+
+  <Groups>
+    <Group Title="جزئیات"  ColumnCount="2" Template="fluid">
+      <Controls>
+        <TextBox  Caption="Name" Name="Name"  />
+        <TextBox  Caption="OwenerId" Name="OwenerId"  />
+        <TextBox  Caption="Comment" Name="Comment"  />
+        <Many2One BocrudXml="WorkflowSystem" ForeignKey="SystemId"   Caption="System" Name="System"  />
+        <One2Many BocrudXml="ReferItemTemplate"  Caption="Items" Name="Items"  />
+      </Controls>
+    </Group>
+  </Groups>
+
+  <Grid Caption="لیست ReferTemplate"
+  EnableSearch="false" ToolbarSearch="false" AutoWidth="false" Width="450"
+  MultiSelect="true">
+    <Columns>
+      <Column Width="150" Name="Name" />
+      <Column Width="150" Name="OwenerId" />
+      <Column Width="150" Name="Comment" />
+
+    </Columns>
+  </Grid>
+  <Operations>All</Operations>
+  <!--All Create Update ViewDetail Search Delete Print CreateRoot CreateChild TreeCopy TreeMove None-->
+  <FactoryMethodArgsSpel>
+    <String>T(Exir.Workbox.Services.ReferTemplateService, Exir.Workbox)</String>
+  </FactoryMethodArgsSpel>
+</Bocrud>
+

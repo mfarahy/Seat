@@ -1,0 +1,86 @@
+<Bocrud ManagerFactoryType="Exir.Framework.Uie.Adapter.PresenterFactory, Exir.Framework.Uie.Adapter"
+                Style="classic"
+		AccessOperation="Hstry.A"
+		DirectAccessible="false"
+        DetailPosition="up"
+        Name="History"
+        Caption="$History"        
+        Height="480" Width="640"
+        ToStringFormat="" 
+        xmlns="http://exirtechsun.com/uie/2014/schema"
+       xmlns:yaxlib="http://yaxlib.codeplex.com/">
+
+	   		
+  <Groups>
+    <Group Title="جزئیات"  ColumnCount="2" Template="fluid">
+      <Controls>
+<TextBox  Caption="$InsCode" Name="InsCode"  /> 
+<DateTimePicker  Caption="$Date" Name="Date"  /> 
+<TextBox  Caption="$DEven" Name="DEven"  /> 
+<TextBox  Caption="$PClosing" Name="PClosing"  /> 
+<TextBox  Caption="$PDrCotVal" Name="PDrCotVal"  /> 
+<TextBox  Caption="$ZTotTran" Name="ZTotTran"  /> 
+<TextBox  Caption="$QTotTran5J" Name="QTotTran5J"  /> 
+<TextBox  Caption="$QTotCap" Name="QTotCap"  /> 
+<TextBox  Caption="$PriceMin" Name="PriceMin"  /> 
+<TextBox  Caption="$PriceMax" Name="PriceMax"  /> 
+<TextBox  Caption="$PriceYesterday" Name="PriceYesterday"  /> 
+<TextBox  Caption="$PriceFirst" Name="PriceFirst"  /> 
+<TextBox  Caption="$Heven" Name="Heven"  /> 
+<RawValue  Caption="$Eps" Name="Eps"  /> 
+<RawValue  Caption="$Pe" Name="Pe"  /> 
+<TextBox  Caption="$VisitCount" Name="VisitCount"  /> 
+<TextBox  Caption="$BigMoney" Name="BigMoney"  /> 
+<TextBox  Caption="$Buy_CountI" Name="Buy_CountI"  /> 
+<TextBox  Caption="$Buy_CountN" Name="Buy_CountN"  /> 
+<TextBox  Caption="$Buy_I_Volume" Name="Buy_I_Volume"  /> 
+<TextBox  Caption="$Buy_N_Volume" Name="Buy_N_Volume"  /> 
+<TextBox  Caption="$Sell_CountI" Name="Sell_CountI"  /> 
+<TextBox  Caption="$Sell_CountN" Name="Sell_CountN"  /> 
+<TextBox  Caption="$Sell_I_Volume" Name="Sell_I_Volume"  /> 
+<TextBox  Caption="$Sell_N_Volume" Name="Sell_N_Volume"  /> 
+<CheckBox  Caption="$HasDetails" Name="HasDetails"  /> 
+     </Controls>
+    </Group>
+  </Groups>
+
+<Grid Caption="$History" 
+EnableSearch="false" ToolbarSearch="true" AutoWidth="true" Width="100"  
+MultiSelect="true" EnableColumnChooser="false">
+    <Columns>
+      <Column Width="150" Name="InsCode" Searchable="true" />
+      <Column Width="150" Name="Date" Searchable="true" />
+      <Column Width="150" Name="DEven" Searchable="true" />
+      <Column Width="150" Name="PClosing" Searchable="true" />
+      <Column Width="150" Name="PDrCotVal" Searchable="true" />
+      <Column Width="150" Name="ZTotTran" Searchable="true" />
+      <Column Width="150" Name="QTotTran5J" Searchable="true" />
+      <Column Width="150" Name="QTotCap" Searchable="true" />
+      <Column Width="150" Name="PriceMin" Searchable="true" />
+      <Column Width="150" Name="PriceMax" Searchable="true" />
+      <Column Width="150" Name="PriceYesterday" Searchable="true" />
+      <Column Width="150" Name="PriceFirst" Searchable="true" />
+      <Column Width="150" Name="Heven" Searchable="true" />
+      <Column Width="150" Name="Eps" Searchable="true" />
+      <Column Width="150" Name="Pe" Searchable="true" />
+      <Column Width="150" Name="VisitCount" Searchable="true" />
+      <Column Width="150" Name="BigMoney" Searchable="true" />
+      <Column Width="150" Name="Buy_CountI" Searchable="true" />
+      <Column Width="150" Name="Buy_CountN" Searchable="true" />
+      <Column Width="150" Name="Buy_I_Volume" Searchable="true" />
+      <Column Width="150" Name="Buy_N_Volume" Searchable="true" />
+      <Column Width="150" Name="Sell_CountI" Searchable="true" />
+      <Column Width="150" Name="Sell_CountN" Searchable="true" />
+      <Column Width="150" Name="Sell_I_Volume" Searchable="true" />
+      <Column Width="150" Name="Sell_N_Volume" Searchable="true" />
+      <Column Width="150" Name="HasDetails" Searchable="true" />
+
+    </Columns>
+</Grid>
+<Operations>All</Operations><!--All Create Update ViewDetail Search Delete Print CreateRoot CreateChild TreeCopy TreeMove None-->
+  <FactoryMethodArgsSpel>
+    <String>'HistoryService'</String>
+      <String>T(SeatWebApp.Models.HistoryViewModel, SeatWebApp)</String>
+  </FactoryMethodArgsSpel>
+</Bocrud>
+

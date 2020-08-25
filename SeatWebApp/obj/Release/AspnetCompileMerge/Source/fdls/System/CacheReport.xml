@@ -1,0 +1,43 @@
+<Bocrud                 Style="classic"
+		    AccessOperation="CacheRpt.A" 
+        FilterSpel="SetCommand('GetMemoryCacheItems')" 
+        SearchXml="CacheReport-Search"
+		    DirectAccessible="true"
+        DetailPosition="up"
+        Name="CacheReport"
+        Caption="گزارش کش سامانه"
+        Height="480" Width="640"
+        ToStringFormat="گزارش کش سامانه"
+        xmlns="http://exirtechsun.com/uie/2014/schema"
+       xmlns:yaxlib="http://yaxlib.codeplex.com/">
+  <ToolbarCommands>
+    <Add  Text=" حذف همه" Name="DeleteAllCache" UseQuery="true" Color="btn-warning"/>
+  </ToolbarCommands>
+  <Groups>
+    <Group Title="جزئیات"  ColumnCount="2" Template="fluid">
+      <Controls>
+        <TextBox  Caption="کلید" Name="Key" Direction="Ltr"  />
+        <TextBox  Caption="تعداد ضربه" Name="HitCount" Direction="Ltr" Type="Code"  />
+        <TextBox  Caption="تاریخ انقضا" Name="ExpireDt" Direction="Ltr" Type="Code"  />
+        <TextBox  Caption="مقدار (json)" Name="Value" MultiLine="true" Type="Code"/>
+      </Controls>
+    </Group>
+  </Groups>
+
+  <Grid Caption="لیست آیتم های کش"
+  EnableSearch="false" ToolbarSearch="false" AutoWidth="true" Width="100"
+  MultiSelect="true" EnableColumnChooser="false" AutoLoadData="false">
+    <Columns>
+      <Column Name="Key" Searchable="true" />
+      <Column Name="HitCount" Searchable="true" />
+      <Column Name="ExpireDt" Searchable="true" />
+    </Columns>
+  </Grid>
+  <Operations>ViewDetail Search Delete</Operations>
+  <!--All Create Update ViewDetail Search Delete Print CreateRoot CreateChild TreeCopy TreeMove None-->
+  <FactoryMethodArgsSpel>
+    <String>'CacheReportService'</String>
+    <String>T(SeatWebApp.Models.CacheReportViewModel, SeatWebApp)</String>
+  </FactoryMethodArgsSpel>
+</Bocrud>
+

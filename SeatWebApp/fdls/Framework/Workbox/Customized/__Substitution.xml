@@ -1,0 +1,51 @@
+﻿<Bocrud Style="classic"
+        DetailPosition="up"
+        Name="__Substitution"
+        Caption="جانشین کارپوشه"
+        Height="480" Width="640"
+        ToStringFormat=""
+        DirectAccessible="true"
+        FilterSpel="SetCommand('Search')"
+        AccessOperation="WORKBOX_ALLOW_SUBSTITUTE"
+        xmlns="http://exirtechsun.com/uie/2014/schema"
+       xmlns:yaxlib="http://yaxlib.codeplex.com/">
+
+  <Groups>
+    <Group Title="جزئیات"  ColumnCount="4" Template="fluid">
+      <Controls>
+        <DateTimePicker  Name="StartDt" Caption="از تاریخ" ShowTime="true"  />
+        <DateTimePicker  Name="EndDt" Caption="تا تاریخ"  ShowTime="true" />
+        <TextBox Name="AbsentName" Caption="نام کاربری غایب" Type="Code">
+          <Validators>
+            <RequiredFieldValidator/>
+            <RemoteValidator Method="CheckUserName" Context="AbsentName"/>
+          </Validators>
+        </TextBox>
+        <TextBox Name="SubstituteName" Caption="نام کاربری جانشین" Type="Code">
+          <Validators>
+            <RequiredFieldValidator/>
+            <RemoteValidator Method="CheckUserName" Context="SubstituteName"/>
+          </Validators>
+        </TextBox>
+      </Controls>
+    </Group>
+  </Groups>
+
+  <Grid Caption="لیست جانشینان" EnableSearch="false" ToolbarSearch="false" AutoWidth="true" Width="100"
+  MultiSelect="true" EnableColumnChooser="false" CssColumn="Status" SortName="Id" SortOrder="desc">
+    <Columns>
+      <Column Width="150" Name="StartDt" />
+      <Column Width="150" Name="EndDt" />
+      <Column Width="150" Name="AbsentName" Caption="فرد غایب" />
+      <Column Width="150" Name="SubstituteName" Caption="فرد جانشین" />
+      <Column Width="150" Name="Status" Hidden="true" />
+    </Columns>
+  </Grid>
+  <Operations>Create Delete</Operations>
+  <!--All Create Update ViewDetail Search Delete Print CreateRoot CreateChild TreeCopy TreeMove None-->
+  <FactoryMethodArgsSpel>
+    <String>T(Exir.Workbox.Services.SubstitutionService, Exir.Workbox)</String>
+    <String>T(Exir.Workbox.Web.SubstitutionViewModel, Exir.Workbox.Web)</String>
+  </FactoryMethodArgsSpel>
+</Bocrud>
+

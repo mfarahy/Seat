@@ -1,0 +1,28 @@
+﻿<Bocrud PresenterType="Exir.Framework.Uie.Contracts.Support.VirtualPresenter, Exir.Framework.Uie"
+				DetailPosition="up"
+				Name="__SubFlowWorkCycle"
+				Caption="کارتابل"
+				Height="480" Width="640"
+				VolatileClientId="false"
+         Style="ace"
+DirectAccessible="false"
+AccessOperation="_SbFlwWrkCycl.A"
+				xmlns="http://exirtechsun.com/uie/2014/schema"
+				xmlns:yaxlib="http://yaxlib.codeplex.com/">
+
+	
+	<Groups>
+		<Group Title="گردش کار" ColumnCount="1" >
+			<Controls>
+				<Grid Name="WorkCycle" BocrudXml="__WorkCycleItem" Caption="گردش کار"
+							GetValueSpel="GetManager('__Box').Service.GetWorkCycleByInstanceId(Int64.Parse(#id))"/>
+			</Controls>
+		</Group>
+
+	</Groups>
+  <FactoryMethodArgsSpel>
+    <String>T(Exir.Framework.Uie.Contracts.Support.Model, Exir.Framework.Uie)</String>
+  </FactoryMethodArgsSpel>
+	<Operations>Update ViewDetail</Operations>
+	<!--All Create Update ViewDetail Search Delete Print CreateRoot CreateChild TreeCopy TreeMove None-->
+</Bocrud>

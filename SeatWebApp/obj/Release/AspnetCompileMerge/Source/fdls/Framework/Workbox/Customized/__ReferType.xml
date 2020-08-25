@@ -1,0 +1,60 @@
+﻿<Bocrud                 Style="classic"
+        DetailPosition="up"
+        Name="__ReferType"
+        Caption="نوع ارجاع"
+        Height="480" Width="640"
+        ToStringFormat="{Title}"
+DirectAccessible="false"
+AccessOperation="_RfrTyp.A"
+        xmlns="http://exirtechsun.com/uie/2014/schema"
+       xmlns:yaxlib="http://yaxlib.codeplex.com/">
+
+  <Categories>
+    <Add BocrudXml="__WorkflowSystem"  KeyProperty="SystemId" Property="System" />
+  </Categories>
+  <Groups>
+    <Group Title="جزئیات"  ColumnCount="2" Template="fluid">
+      <Controls>
+        
+        <Select2 BocrudXml="__WorkflowSystem" Caption="سیستم" Name="SystemId"  />
+
+        <TextBox   Caption="عنوان" Name="Title"  />
+        <Select2   Caption="برچسب" Name="LabelId" BocrudXml="__Label" FilterSpel="Equal('IsPublic',true)"/>
+        <CheckBox  Caption="قابل گردش ؟" Name="Spinnable" TrueText="Yes" FalseText="No" DisplayMode="AsCheckBox"  />
+        <CheckBox  Caption="قابل هامش نویسی ؟" Name="Commentable"  TrueText="Yes" FalseText="No" DisplayMode="AsCheckBox" />
+        <CheckBox  Caption="قابل ضمیمه کردن فایل ؟" Name="Attachable" TrueText="Yes" FalseText="No" DisplayMode="AsCheckBox"  />
+        <CheckBox  Caption="قابل ارجاع مجدد ؟" Name="Referable"  TrueText="Yes" FalseText="No" DisplayMode="AsCheckBox" />
+        <CheckBox  Caption="قابل بازگشت زدن ؟" Name="Rejectable"  TrueText="Yes" FalseText="No" DisplayMode="AsCheckBox" />
+        <CheckBox  Caption="ارجاع پنهان ؟" Name="IsHiddenRefer" TrueText="Yes" FalseText="No" DisplayMode="AsCheckBox"  />
+        <CheckBox  Caption="فقط خواندنی ؟" Name="IsLock" TrueText="Yes" FalseText="No" DisplayMode="AsCheckBox"  />
+        <CheckBox  Caption="نیاز به گزارش کار ؟" Name="RequireWorkReport"  TrueText="Yes" FalseText="No" DisplayMode="AsCheckBox" />
+        <TextBox   Caption="مهلت" Name="Deadline"  />
+      </Controls>
+    </Group>
+  </Groups>
+
+  <Grid Caption="لیست انواع ارجاع" EnableSearch="false" ToolbarSearch="false" AutoWidth="true" Width="100"
+  MultiSelect="true">
+    <Columns>
+      <Column Width="150" Name="Title" />
+      <Column Width="150" Name="Code" />
+      <Column Width="150" Name="ForegroundColor" />
+      <Column Width="150" Name="Spinnable" />
+      <Column Width="150" Name="Commentable" />
+      <Column Width="150" Name="Attachable" />
+      <Column Width="150" Name="Referable" />
+      <Column Width="150" Name="Rejectable" />
+      <Column Width="150" Name="IsHiddenRefer" />
+      <Column Width="150" Name="IsLock" />
+      <Column Width="150" Name="RequireWorkReport" />
+      <Column Width="150" Name="Deadline" />
+
+    </Columns>
+  </Grid>
+  <Operations>All</Operations>
+  <!--All Create Update ViewDetail Search Delete Print CreateRoot CreateChild TreeCopy TreeMove None-->
+  <FactoryMethodArgsSpel>
+    <String>T(Exir.Workbox.Services.ReferTypeService, Exir.Workbox)</String>
+  </FactoryMethodArgsSpel>
+</Bocrud>
+

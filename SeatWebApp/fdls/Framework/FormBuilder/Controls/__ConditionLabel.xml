@@ -1,0 +1,29 @@
+﻿<Bocrud Style="classic"
+        DetailPosition="up"
+        Name="__ConditionLabel"
+        Caption="کنترل برچسب شرطی"
+        Height="500" Width="700"
+        ToStringFormat="{Caption}"
+        DirectAccessible="false"
+        xmlns="http://exirtechsun.com/uie/2014/schema"
+       xmlns:yaxlib="http://yaxlib.codeplex.com/">
+
+  <Groups>
+    <![CDATA[@{include:__FormControl#//uie:Groups/uie:Group[@Name='CommonSettings']}]]>
+
+    <Group Name="StaticItems" Title="تنظیمات مخصوص" ColumnCount="1" Template="fluid">
+      <Controls>
+        <One2Many Name="Items" BocrudXml="__ConditionItem" Caption="اقلام" InlineEdit="true"/>
+      </Controls>
+    </Group>
+
+    <![CDATA[@{include:__FormControl#//uie:Groups/uie:Group[@Name='AdvancedCommonSettings']}]]>
+    <![CDATA[@{include:__FormControl#//uie:Groups/uie:Group[@Name='GridColumnSettings']}]]>
+  </Groups>
+
+  <Operations>All</Operations>
+  <FactoryMethodArgsSpel>
+    <String>T(Exir.Framework.Uie.Bocrud.ConditionLabel, Exir.Framework.Uie)</String>
+  </FactoryMethodArgsSpel>
+</Bocrud>
+

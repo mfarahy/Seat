@@ -1,0 +1,39 @@
+﻿<Bocrud                 Style="classic"
+        DetailPosition="up"
+        Name="C__Dash_WidgetDefinitions"
+        Caption="تعریف ویجت"
+        Height="480" Width="640"
+        ToStringFormat="{Name}"
+DirectAccessible="true"
+AccessOperation="C_Dsh_WdgtDfntns.A"
+        xmlns="http://exirtechsun.com/uie/2014/schema"
+       xmlns:yaxlib="http://yaxlib.codeplex.com/">
+
+  <Groups>
+    <Group Title="جزئیات"  ColumnCount="2" Template="fluid">
+      <Controls>
+        <TextBox  Name="Name" Caption="نام"  />
+        <TextBox  Name="Description" Caption="توضیحات" MultiLine="true" />
+        <TextBox  Name="TypeName" Caption="Type name" Direction="Ltr" FontName="Courier New"  />
+        <TextBox  Name="DataProviderContract" Caption="Data provider contract type name"  Direction="Ltr" FontName="Courier New" />
+        <TextBox Name="Icon" Caption="آیکُن" Direction="Ltr" FontName="Courier New"/>
+        <One2Many Name="WidgetParams" BocrudXml="C__Dash_WidgetParams" Caption="پارامترها"  />
+      </Controls>
+    </Group>
+  </Groups>
+
+  <Grid Caption="لیست انواع ویجت های تعریف شده"
+  EnableSearch="false" ToolbarSearch="false" AutoWidth="true" Width="100"
+  MultiSelect="true">
+    <Columns>
+      <Column Width="150" Name="Name" />
+      <Column Width="150" Name="Description" />
+    </Columns>
+  </Grid>
+  <Operations>All</Operations>
+  <!--All Create Update ViewDetail Search Delete Print CreateRoot CreateChild TreeCopy TreeMove None-->
+  <FactoryMethodArgsSpel>
+    <String>T(Exir.Framework.Uie.Adapter.Dashboard.WidgetDefinitionService, Exir.Framework.Uie.Adapter)</String>
+  </FactoryMethodArgsSpel>
+</Bocrud>
+

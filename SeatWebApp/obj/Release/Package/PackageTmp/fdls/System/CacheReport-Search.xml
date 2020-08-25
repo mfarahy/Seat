@@ -1,0 +1,30 @@
+<Bocrud                 Style="classic"
+        DetailPosition="up"
+        Name="CacheReport-Search"
+        Caption="گزارش کش سامانه"
+        Height="480" Width="640"
+        ToStringFormat=""
+        xmlns="http://exirtechsun.com/uie/2014/schema"
+       xmlns:yaxlib="http://yaxlib.codeplex.com/">
+
+
+  <Groups>
+
+    <Group Title="جزئیات"  ColumnCount="1" Template="fluid">
+      <Groups>
+        <Group Template="fluid">
+          <Controls>
+            <TextBox Name="Key" Caption="کلید کش" Type="Code" />
+          </Controls>
+        </Group>
+
+      </Groups>
+    </Group>
+  </Groups>
+  <Operations>Create</Operations>
+  <!--All Create Update ViewDetail Search Delete Print CreateRoot CreateChild TreeCopy TreeMove None-->
+  <FactoryMethodArgsSpel>
+    <String>T(SeatDomain.Models.SearchModels.CacheReportSearchModel, SeatDomain)</String>
+  </FactoryMethodArgsSpel>
+</Bocrud>
+

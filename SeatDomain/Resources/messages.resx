@@ -1,0 +1,571 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="feedback_has_no_email_and_mobile" xml:space="preserve">
+    <value>برای بازخورد شماره موبایل و یا آدرس ایمیل ثبت نشده است!</value>
+  </data>
+  <data name="feedback_okay_message" xml:space="preserve">
+    <value>مشکلی که مطرح کرده بودید مرتفع گردید.</value>
+  </data>
+  <data name="feed_back_response_body_template" xml:space="preserve">
+    <value>&lt;!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional //EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"&gt;
+
+&lt;html xmlns="http://www.w3.org/1999/xhtml" xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:v="urn:schemas-microsoft-com:vml"&gt;
+&lt;head&gt;
+&lt;!--[if gte mso9]&gt;&lt;xml&gt;&lt;o:OfficeDocumentSettings&gt;&lt;o:AllowPNG/&gt;&lt;o:PixelsPerInch&gt;96&lt;/o:PixelsPerInch&gt;&lt;/o:OfficeDocumentSettings&gt;&lt;/xml&gt;&lt;![endifSeatDomain--&gt;
+&lt;meta content="text/html; charset=utf-8" http-equiv="Content-Type"/&gt;
+&lt;meta content="width=device-width" name="viewport"/&gt;
+&lt;!--[if !mso]&gt;&lt;!--&gt;
+&lt;meta content="IE=edge" http-equiv="X-UA-Compatible"/&gt;
+&lt;!--&lt;![endifSeatDomain--&gt;
+&lt;title&gt;&lt;/title&gt;
+&lt;!--[if !mso]&gt;&lt;!--&gt;
+&lt;link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet" type="text/css"/&gt;
+&lt;!--&lt;![endifSeatDomain--&gt;
+&lt;style type="text/css"&gt;
+		body {
+			margin: 0;
+			padding: 0;
+		}
+
+		table,
+		td,
+		tr {
+			vertical-align: top;
+			border-collapse: collapse;
+		}
+
+		* {
+			line-height: inherit;
+		}
+
+		a[x-apple-data-detectors=true] {
+			color: inherit !important;
+			text-decoration: none !important;
+		}
+	&lt;/style&gt;
+&lt;style id="media-query" type="text/css"&gt;
+		@media (max-width: 640px) {
+
+			.block-grid,
+			.col {
+				min-width: 320px !important;
+				max-width: 100% !important;
+				display: block !important;
+			}
+
+			.block-grid {
+				width: 100% !important;
+			}
+
+			.col {
+				width: 100% !important;
+			}
+
+			.col&gt;div {
+				margin: 0 auto;
+			}
+
+			img.fullwidth,
+			img.fullwidthOnMobile {
+				max-width: 100% !important;
+			}
+
+			.no-stack .col {
+				min-width: 0 !important;
+				display: table-cell !important;
+			}
+
+			.no-stack.two-up .col {
+				width: 50% !important;
+			}
+
+			.no-stack .col.num4 {
+				width: 33% !important;
+			}
+
+			.no-stack .col.num8 {
+				width: 66% !important;
+			}
+
+			.no-stack .col.num4 {
+				width: 33% !important;
+			}
+
+			.no-stack .col.num3 {
+				width: 25% !important;
+			}
+
+			.no-stack .col.num6 {
+				width: 50% !important;
+			}
+
+			.no-stack .col.num9 {
+				width: 75% !important;
+			}
+
+			.video-block {
+				max-width: none !important;
+			}
+
+			.mobile_hide {
+				min-height: 0px;
+				max-height: 0px;
+				max-width: 0px;
+				display: none;
+				overflow: hidden;
+				font-size: 0px;
+			}
+
+			.desktop_hide {
+				display: block !important;
+				max-height: none !important;
+			}
+		}
+	&lt;/style&gt;
+&lt;/head&gt;
+&lt;body class="clean-body" style="margin: 0; padding: 0; -webkit-text-size-adjust: 100%; background-color: #FFFFFF;"&gt;
+&lt;!--[if IE]&gt;&lt;div class="ie-browser"&gt;&lt;![endifSeatDomain--&gt;
+&lt;table bgcolor="#FFFFFF" cellpadding="0" cellspacing="0" class="nl-container" role="presentation" style="table-layout: fixed; vertical-align: top; min-width: 320px; Margin: 0 auto; border-spacing: 0; border-collapse: collapse; mso-table-lspace: 0pt; mso-table-rspace: 0pt; background-color: #FFFFFF; width: 100%;" valign="top" width="100%"&gt;
+&lt;tbody&gt;
+&lt;tr style="vertical-align: top;" valign="top"&gt;
+&lt;td style="word-break: break-word; vertical-align: top;" valign="top"&gt;
+&lt;!--[if (mso)|(IE)]&gt;&lt;table width="100%" cellpadding="0" cellspacing="0" border="0"&gt;&lt;tr&gt;&lt;td align="center" style="background-color:#FFFFFF"&gt;&lt;![endifSeatDomain--&gt;
+&lt;div style="background-color:transparent;"&gt;
+&lt;div class="block-grid two-up" style="Margin: 0 auto; min-width: 320px; max-width: 620px; overflow-wrap: break-word; word-wrap: break-word; word-break: break-word; background-color: transparent;"&gt;
+&lt;div style="border-collapse: collapse;display: table;width: 100%;background-color:transparent;"&gt;
+&lt;!--[if (mso)|(IE)]&gt;&lt;table width="100%" cellpadding="0" cellspacing="0" border="0" style="background-color:transparent;"&gt;&lt;tr&gt;&lt;td align="center"&gt;&lt;table cellpadding="0" cellspacing="0" border="0" style="width:620px"&gt;&lt;tr class="layout-full-width" style="background-color:transparent"&gt;&lt;![endifSeatDomain--&gt;
+&lt;!--[if (mso)|(IE)]&gt;&lt;td align="center" width="310" style="background-color:transparent;width:310px; border-top: 0px solid transparent; border-left: 0px solid transparent; border-bottom: 0px solid transparent; border-right: 0px solid transparent;" valign="top"&gt;&lt;table width="100%" cellpadding="0" cellspacing="0" border="0"&gt;&lt;tr&gt;&lt;td style="padding-right: 10px; padding-left: 10px; padding-top:5px; padding-bottom:5px;"&gt;&lt;![endifSeatDomain--&gt;
+&lt;div class="col num6" style="max-width: 320px; min-width: 310px; display: table-cell; vertical-align: top; width: 310px;"&gt;
+&lt;div style="width:100% !important;"&gt;
+&lt;!--[if (!mso)&amp;(!IE)]&gt;&lt;!--&gt;
+&lt;div style="border-top:0px solid transparent; border-left:0px solid transparent; border-bottom:0px solid transparent; border-right:0px solid transparent; padding-top:5px; padding-bottom:5px; padding-right: 10px; padding-left: 10px;"&gt;
+&lt;!--&lt;![endifSeatDomain--&gt;
+&lt;div&gt;&lt;/div&gt;
+&lt;!--[if (!mso)&amp;(!IE)]&gt;&lt;!--&gt;
+&lt;/div&gt;
+&lt;!--&lt;![endifSeatDomain--&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;!--[if (mso)|(IE)]&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;![endifSeatDomain--&gt;
+&lt;!--[if (mso)|(IE)]&gt;&lt;/td&gt;&lt;td align="center" width="310" style="background-color:transparent;width:310px; border-top: 0px solid transparent; border-left: 0px solid transparent; border-bottom: 0px solid transparent; border-right: 0px solid transparent;" valign="top"&gt;&lt;table width="100%" cellpadding="0" cellspacing="0" border="0"&gt;&lt;tr&gt;&lt;td style="padding-right: 10px; padding-left: 10px; padding-top:5px; padding-bottom:5px;"&gt;&lt;![endifSeatDomain--&gt;
+&lt;div class="col num6" style="max-width: 320px; min-width: 310px; display: table-cell; vertical-align: top; width: 310px;"&gt;
+&lt;div style="width:100% !important;"&gt;
+&lt;!--[if (!mso)&amp;(!IE)]&gt;&lt;!--&gt;
+&lt;div style="border-top:0px solid transparent; border-left:0px solid transparent; border-bottom:0px solid transparent; border-right:0px solid transparent; padding-top:5px; padding-bottom:5px; padding-right: 10px; padding-left: 10px;"&gt;
+&lt;!--&lt;![endifSeatDomain--&gt;
+&lt;div align="right" class="img-container right" style="padding-right: 0px;padding-left: 0px;"&gt;
+&lt;!--[if mso]&gt;&lt;table width="100%" cellpadding="0" cellspacing="0" border="0"&gt;&lt;tr style="line-height:0px"&gt;&lt;td style="padding-right: 0px;padding-left: 0px;" align="right"&gt;&lt;![endifSeatDomain--&gt;&lt;img align="right" alt="Image" border="0" class="right" src="https://sadadpsp.ir/view1017/template/sadadpsp/img/logo.png" style="text-decoration: none; -ms-interpolation-mode: bicubic; border: 0; height: auto; width: 100%; max-width: 94px; float: none; display: block;" title="Image" width="94"/&gt;
+&lt;!--[if mso]&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;![endifSeatDomain--&gt;
+&lt;/div&gt;
+&lt;!--[if mso]&gt;&lt;table width="100%" cellpadding="0" cellspacing="0" border="0"&gt;&lt;tr&gt;&lt;td style="padding-right: 10px; padding-left: 10px; padding-top: 10px; padding-bottom: 10px; font-family: Tahoma, Verdana, sans-serif"&gt;&lt;![endifSeatDomain--&gt;
+&lt;div style="color:#555555;font-family:Tahoma, Verdana, Segoe, sans-serif;line-height:1.2;padding-top:10px;padding-right:10px;padding-bottom:10px;padding-left:10px;"&gt;
+&lt;div style="line-height: 1.2; font-size: 12px; font-family: Tahoma, Verdana, Segoe, sans-serif; color: #555555; mso-line-height-alt: 14px;"&gt;
+&lt;p style="font-size: 14px; line-height: 1.2; text-align: right; font-family: Tahoma, Verdana, Segoe, sans-serif; word-break: break-word; mso-line-height-alt: 17px; margin: 0;"&gt;&lt;span style="color: #000000;"&gt;&lt;strong&gt;شرکت اکسیر تکسان&lt;/strong&gt;&lt;/span&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;!--[if mso]&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;![endifSeatDomain--&gt;
+&lt;!--[if (!mso)&amp;(!IE)]&gt;&lt;!--&gt;
+&lt;/div&gt;
+&lt;!--&lt;![endifSeatDomain--&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;!--[if (mso)|(IE)]&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;![endifSeatDomain--&gt;
+&lt;!--[if (mso)|(IE)]&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;![endifSeatDomain--&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div style="background-color:transparent;"&gt;
+&lt;div class="block-grid" style="Margin: 0 auto; min-width: 320px; max-width: 620px; overflow-wrap: break-word; word-wrap: break-word; word-break: break-word; background-color: transparent;"&gt;
+&lt;div style="border-collapse: collapse;display: table;width: 100%;background-color:transparent;"&gt;
+&lt;!--[if (mso)|(IE)]&gt;&lt;table width="100%" cellpadding="0" cellspacing="0" border="0" style="background-color:transparent;"&gt;&lt;tr&gt;&lt;td align="center"&gt;&lt;table cellpadding="0" cellspacing="0" border="0" style="width:620px"&gt;&lt;tr class="layout-full-width" style="background-color:transparent"&gt;&lt;![endifSeatDomain--&gt;
+&lt;!--[if (mso)|(IE)]&gt;&lt;td align="center" width="620" style="background-color:transparent;width:620px; border-top: 0px solid transparent; border-left: 0px solid transparent; border-bottom: 0px solid transparent; border-right: 0px solid transparent;" valign="top"&gt;&lt;table width="100%" cellpadding="0" cellspacing="0" border="0"&gt;&lt;tr&gt;&lt;td style="padding-right: 0px; padding-left: 0px; padding-top:5px; padding-bottom:5px;"&gt;&lt;![endifSeatDomain--&gt;
+&lt;div class="col num12" style="min-width: 320px; max-width: 620px; display: table-cell; vertical-align: top; width: 620px;"&gt;
+&lt;div style="width:100% !important;"&gt;
+&lt;!--[if (!mso)&amp;(!IE)]&gt;&lt;!--&gt;
+&lt;div style="border-top:0px solid transparent; border-left:0px solid transparent; border-bottom:0px solid transparent; border-right:0px solid transparent; padding-top:5px; padding-bottom:5px; padding-right: 0px; padding-left: 0px;"&gt;
+&lt;!--&lt;![endifSeatDomain--&gt;
+&lt;table border="0" cellpadding="0" cellspacing="0" class="divider" role="presentation" style="table-layout: fixed; vertical-align: top; border-spacing: 0; border-collapse: collapse; mso-table-lspace: 0pt; mso-table-rspace: 0pt; min-width: 100%; -ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%;" valign="top" width="100%"&gt;
+&lt;tbody&gt;
+&lt;tr style="vertical-align: top;" valign="top"&gt;
+&lt;td class="divider_inner" style="word-break: break-word; vertical-align: top; min-width: 100%; -ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%; padding-top: 10px; padding-right: 10px; padding-bottom: 15px; padding-left: 10px;" valign="top"&gt;
+&lt;table align="center" border="0" cellpadding="0" cellspacing="0" class="divider_content" role="presentation" style="table-layout: fixed; vertical-align: top; border-spacing: 0; border-collapse: collapse; mso-table-lspace: 0pt; mso-table-rspace: 0pt; border-top: 1px solid #222222; width: 100%;" valign="top" width="100%"&gt;
+&lt;tbody&gt;
+&lt;tr style="vertical-align: top;" valign="top"&gt;
+&lt;td style="word-break: break-word; vertical-align: top; -ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%;" valign="top"&gt;&lt;span&gt;&lt;/span&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;!--[if (!mso)&amp;(!IE)]&gt;&lt;!--&gt;
+&lt;/div&gt;
+&lt;!--&lt;![endifSeatDomain--&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;!--[if (mso)|(IE)]&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;![endifSeatDomain--&gt;
+&lt;!--[if (mso)|(IE)]&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;![endifSeatDomain--&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div style="background-color:transparent;"&gt;
+&lt;div class="block-grid" style="Margin: 0 auto; min-width: 320px; max-width: 620px; overflow-wrap: break-word; word-wrap: break-word; word-break: break-word; background-color: transparent;"&gt;
+&lt;div style="border-collapse: collapse;display: table;width: 100%;background-color:transparent;"&gt;
+&lt;!--[if (mso)|(IE)]&gt;&lt;table width="100%" cellpadding="0" cellspacing="0" border="0" style="background-color:transparent;"&gt;&lt;tr&gt;&lt;td align="center"&gt;&lt;table cellpadding="0" cellspacing="0" border="0" style="width:620px"&gt;&lt;tr class="layout-full-width" style="background-color:transparent"&gt;&lt;![endifSeatDomain--&gt;
+&lt;!--[if (mso)|(IE)]&gt;&lt;td align="center" width="620" style="background-color:transparent;width:620px; border-top: 0px solid transparent; border-left: 0px solid transparent; border-bottom: 0px solid transparent; border-right: 0px solid transparent;" valign="top"&gt;&lt;table width="100%" cellpadding="0" cellspacing="0" border="0"&gt;&lt;tr&gt;&lt;td style="padding-right: 0px; padding-left: 0px; padding-top:5px; padding-bottom:5px;"&gt;&lt;![endifSeatDomain--&gt;
+&lt;div class="col num12" style="min-width: 320px; max-width: 620px; display: table-cell; vertical-align: top; width: 620px;"&gt;
+&lt;div style="width:100% !important;"&gt;
+&lt;!--[if (!mso)&amp;(!IE)]&gt;&lt;!--&gt;
+&lt;div style="border-top:0px solid transparent; border-left:0px solid transparent; border-bottom:0px solid transparent; border-right:0px solid transparent; padding-top:5px; padding-bottom:5px; padding-right: 0px; padding-left: 0px;"&gt;
+&lt;!--&lt;![endifSeatDomain--&gt;
+&lt;!--[if mso]&gt;&lt;table width="100%" cellpadding="0" cellspacing="0" border="0"&gt;&lt;tr&gt;&lt;td style="padding-right: 10px; padding-left: 10px; padding-top: 10px; padding-bottom: 30px; font-family: Tahoma, Verdana, sans-serif"&gt;&lt;![endifSeatDomain--&gt;
+&lt;div style="color:#71777D;font-family:Tahoma, Verdana, Segoe, sans-serif;line-height:1.5;padding-top:10px;padding-right:10px;padding-bottom:30px;padding-left:10px;"&gt;
+&lt;div style="font-size: 12px; line-height: 1.5; font-family: Tahoma, Verdana, Segoe, sans-serif; color: #71777D; mso-line-height-alt: 18px;"&gt;
+&lt;p dir="rtl" style="font-size: 13px; line-height: 1.5; word-break: break-word; font-family: Tahoma, Verdana, Segoe, sans-serif; mso-line-height-alt: 20px; mso-ansi-font-size: 14px; margin: 0;"&gt;&lt;span style="font-size: 13px; mso-ansi-font-size: 14px;"&gt;جناب آقا/خانم [[UserName]SeatDomain&lt;/span&gt;&lt;/p&gt;
+&lt;p dir="rtl" style="font-size: 14px; line-height: 1.5; word-break: break-word; font-family: Tahoma, Verdana, Segoe, sans-serif; mso-line-height-alt: 21px; margin: 0;"&gt; &lt;/p&gt;
+&lt;p dir="rtl" style="line-height: 1.5; font-family: Tahoma, Verdana, Segoe, sans-serif; word-break: break-word; mso-line-height-alt: NaNpx; margin: 0;"&gt;با سلام و وقت بخیر&lt;br/&gt;ضمن تشکر از ارجاع نقطه نظر خود در خصوص سهام VIP شرکت اکسیر تکسان، به استحضار می رساند بازخورد شما توسط کارشناسان بررسی و پاسخ ذیل حاصل شد.&lt;/p&gt;
+&lt;p dir="rtl" style="line-height: 1.5; font-family: Tahoma, Verdana, Segoe, sans-serif; word-break: break-word; mso-line-height-alt: NaNpx; margin: 0;"&gt; &lt;/p&gt;
+&lt;p dir="rtl" style="line-height: 1.5; font-family: Tahoma, Verdana, Segoe, sans-serif; word-break: break-word; mso-line-height-alt: NaNpx; margin: 0;"&gt;&amp;gt; مطلب ارسالی:&lt;/p&gt;
+&lt;p dir="rtl" style="line-height: 1.5; font-family: Tahoma, Verdana, Segoe, sans-serif; word-break: break-word; mso-line-height-alt: NaNpx; margin: 0;"&gt;&lt;em&gt;[[Description]SeatDomain&lt;/em&gt;&lt;/p&gt;
+&lt;p dir="rtl" style="line-height: 1.5; font-family: Tahoma, Verdana, Segoe, sans-serif; word-break: break-word; mso-line-height-alt: NaNpx; margin: 0;"&gt; &lt;/p&gt;
+&lt;p dir="rtl" style="line-height: 1.5; font-family: Tahoma, Verdana, Segoe, sans-serif; word-break: break-word; mso-line-height-alt: NaNpx; margin: 0;"&gt;&lt;span style="color: #808080;"&gt;&amp;gt; پاسخ کارشناس:&lt;/span&gt;&lt;/p&gt;
+&lt;p dir="rtl" style="line-height: 1.5; font-family: Tahoma, Verdana, Segoe, sans-serif; word-break: break-word; mso-line-height-alt: NaNpx; margin: 0;"&gt;&lt;span style="color: #000000;"&gt;[[Response]SeatDomain&lt;/span&gt;&lt;/p&gt;
+&lt;p dir="rtl" style="line-height: 1.5; font-family: Tahoma, Verdana, Segoe, sans-serif; word-break: break-word; mso-line-height-alt: NaNpx; margin: 0;"&gt; &lt;/p&gt;
+&lt;p dir="rtl" style="line-height: 1.5; font-family: Tahoma, Verdana, Segoe, sans-serif; word-break: break-word; mso-line-height-alt: NaNpx; margin: 0;"&gt; &lt;/p&gt;
+&lt;p dir="rtl" style="line-height: 1.5; font-family: Tahoma, Verdana, Segoe, sans-serif; word-break: break-word; mso-line-height-alt: NaNpx; margin: 0;"&gt;امید است این پاسخ راهنمای موثری در ارتباط با مسئله مطرح شده شما باشد. در صورت نیاز به دریافت اطلاعات و راهنمایی بیشتر می توانید با شماره تلفن ۰۲۱۲۲۵۹۸۰۰۹ و یا آدرس &lt;a href="mailto:info@sadadpsp.ir" rel="noopener" style="text-decoration: underline; color: #71777D;" target="_blank"&gt;info@sadadpsp.ir&lt;/a&gt; مکاتبه فرمایید.&lt;/p&gt;
+&lt;p dir="rtl" style="line-height: 1.5; font-family: Tahoma, Verdana, Segoe, sans-serif; word-break: break-word; mso-line-height-alt: NaNpx; margin: 0;"&gt;
+    در صورتی که شما چنین نقطه نظری در سامانه ثبت نکرده اید و این ایمیل به اشتباه برای شما ارسال شده است لطفا بر روی &lt;a href="[[BaseUrl]SeatDomain/FeedBack/UnsubscribeMe?signature=[[Signature]SeatDomain" rel="noopener"&gt;این قسمت&lt;/a&gt; کلیک نمایید.
+    &lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;!--[if mso]&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;![endifSeatDomain--&gt;
+&lt;!--[if (!mso)&amp;(!IE)]&gt;&lt;!--&gt;
+&lt;/div&gt;
+&lt;!--&lt;![endifSeatDomain--&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;!--[if (mso)|(IE)]&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;![endifSeatDomain--&gt;
+&lt;!--[if (mso)|(IE)]&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;![endifSeatDomain--&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div style="background-color:transparent;"&gt;
+&lt;div class="block-grid" style="Margin: 0 auto; min-width: 320px; max-width: 620px; overflow-wrap: break-word; word-wrap: break-word; word-break: break-word; background-color: transparent;"&gt;
+&lt;div style="border-collapse: collapse;display: table;width: 100%;background-color:transparent;"&gt;
+&lt;!--[if (mso)|(IE)]&gt;&lt;table width="100%" cellpadding="0" cellspacing="0" border="0" style="background-color:transparent;"&gt;&lt;tr&gt;&lt;td align="center"&gt;&lt;table cellpadding="0" cellspacing="0" border="0" style="width:620px"&gt;&lt;tr class="layout-full-width" style="background-color:transparent"&gt;&lt;![endifSeatDomain--&gt;
+&lt;!--[if (mso)|(IE)]&gt;&lt;td align="center" width="620" style="background-color:transparent;width:620px; border-top: 0px solid transparent; border-left: 0px solid transparent; border-bottom: 0px solid transparent; border-right: 0px solid transparent;" valign="top"&gt;&lt;table width="100%" cellpadding="0" cellspacing="0" border="0"&gt;&lt;tr&gt;&lt;td style="padding-right: 0px; padding-left: 0px; padding-top:5px; padding-bottom:5px;"&gt;&lt;![endifSeatDomain--&gt;
+&lt;div class="col num12" style="min-width: 320px; max-width: 620px; display: table-cell; vertical-align: top; width: 620px;"&gt;
+&lt;div style="width:100% !important;"&gt;
+&lt;!--[if (!mso)&amp;(!IE)]&gt;&lt;!--&gt;
+&lt;div style="border-top:0px solid transparent; border-left:0px solid transparent; border-bottom:0px solid transparent; border-right:0px solid transparent; padding-top:5px; padding-bottom:5px; padding-right: 0px; padding-left: 0px;"&gt;
+&lt;!--&lt;![endifSeatDomain--&gt;
+&lt;table border="0" cellpadding="0" cellspacing="0" class="divider" role="presentation" style="table-layout: fixed; vertical-align: top; border-spacing: 0; border-collapse: collapse; mso-table-lspace: 0pt; mso-table-rspace: 0pt; min-width: 100%; -ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%;" valign="top" width="100%"&gt;
+&lt;tbody&gt;
+&lt;tr style="vertical-align: top;" valign="top"&gt;
+&lt;td class="divider_inner" style="word-break: break-word; vertical-align: top; min-width: 100%; -ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%; padding-top: 20px; padding-right: 10px; padding-bottom: 20px; padding-left: 10px;" valign="top"&gt;
+&lt;table align="center" border="0" cellpadding="0" cellspacing="0" class="divider_content" role="presentation" style="table-layout: fixed; vertical-align: top; border-spacing: 0; border-collapse: collapse; mso-table-lspace: 0pt; mso-table-rspace: 0pt; border-top: 1px dotted #CCCCCC; width: 100%;" valign="top" width="100%"&gt;
+&lt;tbody&gt;
+&lt;tr style="vertical-align: top;" valign="top"&gt;
+&lt;td style="word-break: break-word; vertical-align: top; -ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%;" valign="top"&gt;&lt;span&gt;&lt;/span&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;!--[if (!mso)&amp;(!IE)]&gt;&lt;!--&gt;
+&lt;/div&gt;
+&lt;!--&lt;![endifSeatDomain--&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;!--[if (mso)|(IE)]&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;![endifSeatDomain--&gt;
+&lt;!--[if (mso)|(IE)]&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;![endifSeatDomain--&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div style="background-color:transparent;"&gt;
+&lt;div class="block-grid four-up" style="Margin: 0 auto; min-width: 320px; max-width: 620px; overflow-wrap: break-word; word-wrap: break-word; word-break: break-word; background-color: transparent;"&gt;
+&lt;div style="border-collapse: collapse;display: table;width: 100%;background-color:transparent;"&gt;
+&lt;!--[if (mso)|(IE)]&gt;&lt;table width="100%" cellpadding="0" cellspacing="0" border="0" style="background-color:transparent;"&gt;&lt;tr&gt;&lt;td align="center"&gt;&lt;table cellpadding="0" cellspacing="0" border="0" style="width:620px"&gt;&lt;tr class="layout-full-width" style="background-color:transparent"&gt;&lt;![endifSeatDomain--&gt;
+&lt;!--[if (mso)|(IE)]&gt;&lt;td align="center" width="155" style="background-color:transparent;width:155px; border-top: 0px solid transparent; border-left: 0px solid transparent; border-bottom: 0px solid transparent; border-right: 0px solid transparent;" valign="top"&gt;&lt;table width="100%" cellpadding="0" cellspacing="0" border="0"&gt;&lt;tr&gt;&lt;td style="padding-right: 0px; padding-left: 0px; padding-top:5px; padding-bottom:5px;"&gt;&lt;![endifSeatDomain--&gt;
+&lt;div class="col num3" style="max-width: 320px; min-width: 155px; display: table-cell; vertical-align: top; width: 155px;"&gt;
+&lt;div style="width:100% !important;"&gt;
+&lt;!--[if (!mso)&amp;(!IE)]&gt;&lt;!--&gt;
+&lt;div style="border-top:0px solid transparent; border-left:0px solid transparent; border-bottom:0px solid transparent; border-right:0px solid transparent; padding-top:5px; padding-bottom:5px; padding-right: 0px; padding-left: 0px;"&gt;
+&lt;!--&lt;![endifSeatDomain--&gt;
+&lt;!--[if mso]&gt;&lt;table width="100%" cellpadding="0" cellspacing="0" border="0"&gt;&lt;tr&gt;&lt;td style="padding-right: 5px; padding-left: 5px; padding-top: 5px; padding-bottom: 5px; font-family: Tahoma, Verdana, sans-serif"&gt;&lt;![endifSeatDomain--&gt;
+&lt;div style="color:#000000;font-family:Tahoma, Verdana, Segoe, sans-serif;line-height:1.2;padding-top:5px;padding-right:5px;padding-bottom:5px;padding-left:5px;"&gt;
+&lt;div style="line-height: 1.2; font-size: 12px; color: #000000; font-family: Tahoma, Verdana, Segoe, sans-serif; mso-line-height-alt: 14px;"&gt;
+&lt;p style="text-align: center; line-height: 1.2; word-break: break-word; mso-line-height-alt: NaNpx; margin: 0;"&gt;&lt;a href="https://mmp.sadadpsp.ir/" rel="noopener" style="text-decoration: underline; color: #000000;" target="_blank"&gt;سهام VIP&lt;/a&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;!--[if mso]&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;![endifSeatDomain--&gt;
+&lt;!--[if (!mso)&amp;(!IE)]&gt;&lt;!--&gt;
+&lt;/div&gt;
+&lt;!--&lt;![endifSeatDomain--&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;!--[if (mso)|(IE)]&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;![endifSeatDomain--&gt;
+&lt;!--[if (mso)|(IE)]&gt;&lt;/td&gt;&lt;td align="center" width="155" style="background-color:transparent;width:155px; border-top: 0px solid transparent; border-left: 0px solid transparent; border-bottom: 0px solid transparent; border-right: 0px solid transparent;" valign="top"&gt;&lt;table width="100%" cellpadding="0" cellspacing="0" border="0"&gt;&lt;tr&gt;&lt;td style="padding-right: 0px; padding-left: 0px; padding-top:5px; padding-bottom:5px;"&gt;&lt;![endifSeatDomain--&gt;
+&lt;div class="col num3" style="max-width: 320px; min-width: 155px; display: table-cell; vertical-align: top; width: 155px;"&gt;
+&lt;div style="width:100% !important;"&gt;
+&lt;!--[if (!mso)&amp;(!IE)]&gt;&lt;!--&gt;
+&lt;div style="border-top:0px solid transparent; border-left:0px solid transparent; border-bottom:0px solid transparent; border-right:0px solid transparent; padding-top:5px; padding-bottom:5px; padding-right: 0px; padding-left: 0px;"&gt;
+&lt;!--&lt;![endifSeatDomain--&gt;
+&lt;!--[if mso]&gt;&lt;table width="100%" cellpadding="0" cellspacing="0" border="0"&gt;&lt;tr&gt;&lt;td style="padding-right: 5px; padding-left: 5px; padding-top: 5px; padding-bottom: 5px; font-family: Tahoma, Verdana, sans-serif"&gt;&lt;![endifSeatDomain--&gt;
+&lt;div style="color:#000000;font-family:Tahoma, Verdana, Segoe, sans-serif;line-height:1.2;padding-top:5px;padding-right:5px;padding-bottom:5px;padding-left:5px;"&gt;
+&lt;div style="font-size: 12px; line-height: 1.2; font-family: Tahoma, Verdana, Segoe, sans-serif; color: #000000; mso-line-height-alt: 14px;"&gt;
+&lt;p style="font-size: 12px; line-height: 1.2; text-align: center; word-break: break-word; font-family: Tahoma, Verdana, Segoe, sans-serif; mso-line-height-alt: 14px; margin: 0;"&gt;&lt;span style="font-size: 12px;"&gt;&lt;a href="https://sadadpsp.ir/" rel="noopener" style="text-decoration: underline; color: #000000;" target="_blank"&gt;اکسیر تکسان&lt;/a&gt;&lt;/span&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;!--[if mso]&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;![endifSeatDomain--&gt;
+&lt;!--[if (!mso)&amp;(!IE)]&gt;&lt;!--&gt;
+&lt;/div&gt;
+&lt;!--&lt;![endifSeatDomain--&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;!--[if (mso)|(IE)]&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;![endifSeatDomain--&gt;
+&lt;!--[if (mso)|(IE)]&gt;&lt;/td&gt;&lt;td align="center" width="155" style="background-color:transparent;width:155px; border-top: 0px solid transparent; border-left: 0px solid transparent; border-bottom: 0px solid transparent; border-right: 0px solid transparent;" valign="top"&gt;&lt;table width="100%" cellpadding="0" cellspacing="0" border="0"&gt;&lt;tr&gt;&lt;td style="padding-right: 0px; padding-left: 0px; padding-top:5px; padding-bottom:5px;"&gt;&lt;![endifSeatDomain--&gt;
+&lt;div class="col num3" style="max-width: 320px; min-width: 155px; display: table-cell; vertical-align: top; width: 155px;"&gt;
+&lt;div style="width:100% !important;"&gt;
+&lt;!--[if (!mso)&amp;(!IE)]&gt;&lt;!--&gt;
+&lt;div style="border-top:0px solid transparent; border-left:0px solid transparent; border-bottom:0px solid transparent; border-right:0px solid transparent; padding-top:5px; padding-bottom:5px; padding-right: 0px; padding-left: 0px;"&gt;
+&lt;!--&lt;![endifSeatDomain--&gt;
+&lt;!--[if mso]&gt;&lt;table width="100%" cellpadding="0" cellspacing="0" border="0"&gt;&lt;tr&gt;&lt;td style="padding-right: 5px; padding-left: 5px; padding-top: 5px; padding-bottom: 5px; font-family: Tahoma, Verdana, sans-serif"&gt;&lt;![endifSeatDomain--&gt;
+&lt;div style="color:#000000;font-family:Tahoma, Verdana, Segoe, sans-serif;line-height:1.2;padding-top:5px;padding-right:5px;padding-bottom:5px;padding-left:5px;"&gt;
+&lt;div style="font-size: 12px; line-height: 1.2; font-family: Tahoma, Verdana, Segoe, sans-serif; color: #000000; mso-line-height-alt: 14px;"&gt;
+&lt;p style="font-size: 12px; line-height: 1.2; text-align: center; word-break: break-word; font-family: Tahoma, Verdana, Segoe, sans-serif; mso-line-height-alt: 14px; margin: 0;"&gt;&lt;span style="font-size: 12px;"&gt;&lt;a href="https://sadad.co.ir/" rel="noopener" style="text-decoration: underline; color: #000000;" target="_blank"&gt;داده ورزی سداد&lt;/a&gt;&lt;/span&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;!--[if mso]&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;![endifSeatDomain--&gt;
+&lt;!--[if (!mso)&amp;(!IE)]&gt;&lt;!--&gt;
+&lt;/div&gt;
+&lt;!--&lt;![endifSeatDomain--&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;!--[if (mso)|(IE)]&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;![endifSeatDomain--&gt;
+&lt;!--[if (mso)|(IE)]&gt;&lt;/td&gt;&lt;td align="center" width="155" style="background-color:transparent;width:155px; border-top: 0px solid transparent; border-left: 0px solid transparent; border-bottom: 0px solid transparent; border-right: 0px solid transparent;" valign="top"&gt;&lt;table width="100%" cellpadding="0" cellspacing="0" border="0"&gt;&lt;tr&gt;&lt;td style="padding-right: 0px; padding-left: 0px; padding-top:5px; padding-bottom:5px;"&gt;&lt;![endifSeatDomain--&gt;
+&lt;div class="col num3" style="max-width: 320px; min-width: 155px; display: table-cell; vertical-align: top; width: 155px;"&gt;
+&lt;div style="width:100% !important;"&gt;
+&lt;!--[if (!mso)&amp;(!IE)]&gt;&lt;!--&gt;
+&lt;div style="border-top:0px solid transparent; border-left:0px solid transparent; border-bottom:0px solid transparent; border-right:0px solid transparent; padding-top:5px; padding-bottom:5px; padding-right: 0px; padding-left: 0px;"&gt;
+&lt;!--&lt;![endifSeatDomain--&gt;
+&lt;!--[if mso]&gt;&lt;table width="100%" cellpadding="0" cellspacing="0" border="0"&gt;&lt;tr&gt;&lt;td style="padding-right: 5px; padding-left: 5px; padding-top: 5px; padding-bottom: 5px; font-family: Tahoma, Verdana, sans-serif"&gt;&lt;![endifSeatDomain--&gt;
+&lt;div style="color:#000000;font-family:Tahoma, Verdana, Segoe, sans-serif;line-height:1.2;padding-top:5px;padding-right:5px;padding-bottom:5px;padding-left:5px;"&gt;
+&lt;div style="font-size: 12px; line-height: 1.2; font-family: Tahoma, Verdana, Segoe, sans-serif; color: #000000; mso-line-height-alt: 14px;"&gt;
+&lt;p style="font-size: 12px; line-height: 1.2; text-align: center; word-break: break-word; font-family: Tahoma, Verdana, Segoe, sans-serif; mso-line-height-alt: 14px; margin: 0;"&gt;&lt;span style="font-size: 12px;"&gt;&lt;a href="https://bmi.ir/" rel="noopener" style="text-decoration: underline; color: #000000;" target="_blank"&gt;بانک ملی&lt;/a&gt;&lt;/span&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;!--[if mso]&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;![endifSeatDomain--&gt;
+&lt;!--[if (!mso)&amp;(!IE)]&gt;&lt;!--&gt;
+&lt;/div&gt;
+&lt;!--&lt;![endifSeatDomain--&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;!--[if (mso)|(IE)]&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;![endifSeatDomain--&gt;
+&lt;!--[if (mso)|(IE)]&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;![endifSeatDomain--&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div style="background-color:transparent;"&gt;
+&lt;div class="block-grid" style="Margin: 0 auto; min-width: 320px; max-width: 620px; overflow-wrap: break-word; word-wrap: break-word; word-break: break-word; background-color: transparent;"&gt;
+&lt;div style="border-collapse: collapse;display: table;width: 100%;background-color:transparent;"&gt;
+&lt;!--[if (mso)|(IE)]&gt;&lt;table width="100%" cellpadding="0" cellspacing="0" border="0" style="background-color:transparent;"&gt;&lt;tr&gt;&lt;td align="center"&gt;&lt;table cellpadding="0" cellspacing="0" border="0" style="width:620px"&gt;&lt;tr class="layout-full-width" style="background-color:transparent"&gt;&lt;![endifSeatDomain--&gt;
+&lt;!--[if (mso)|(IE)]&gt;&lt;td align="center" width="620" style="background-color:transparent;width:620px; border-top: 0px solid transparent; border-left: 0px solid transparent; border-bottom: 0px solid transparent; border-right: 0px solid transparent;" valign="top"&gt;&lt;table width="100%" cellpadding="0" cellspacing="0" border="0"&gt;&lt;tr&gt;&lt;td style="padding-right: 0px; padding-left: 0px; padding-top:5px; padding-bottom:5px;"&gt;&lt;![endifSeatDomain--&gt;
+&lt;div class="col num12" style="min-width: 320px; max-width: 620px; display: table-cell; vertical-align: top; width: 620px;"&gt;
+&lt;div style="width:100% !important;"&gt;
+&lt;!--[if (!mso)&amp;(!IE)]&gt;&lt;!--&gt;
+&lt;div style="border-top:0px solid transparent; border-left:0px solid transparent; border-bottom:0px solid transparent; border-right:0px solid transparent; padding-top:5px; padding-bottom:5px; padding-right: 0px; padding-left: 0px;"&gt;
+&lt;!--&lt;![endifSeatDomain--&gt;
+&lt;table border="0" cellpadding="0" cellspacing="0" class="divider" role="presentation" style="table-layout: fixed; vertical-align: top; border-spacing: 0; border-collapse: collapse; mso-table-lspace: 0pt; mso-table-rspace: 0pt; min-width: 100%; -ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%;" valign="top" width="100%"&gt;
+&lt;tbody&gt;
+&lt;tr style="vertical-align: top;" valign="top"&gt;
+&lt;td class="divider_inner" style="word-break: break-word; vertical-align: top; min-width: 100%; -ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%; padding-top: 20px; padding-right: 10px; padding-bottom: 20px; padding-left: 10px;" valign="top"&gt;
+&lt;table align="center" border="0" cellpadding="0" cellspacing="0" class="divider_content" role="presentation" style="table-layout: fixed; vertical-align: top; border-spacing: 0; border-collapse: collapse; mso-table-lspace: 0pt; mso-table-rspace: 0pt; border-top: 1px dotted #CCCCCC; width: 100%;" valign="top" width="100%"&gt;
+&lt;tbody&gt;
+&lt;tr style="vertical-align: top;" valign="top"&gt;
+&lt;td style="word-break: break-word; vertical-align: top; -ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%;" valign="top"&gt;&lt;span&gt;&lt;/span&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;!--[if (!mso)&amp;(!IE)]&gt;&lt;!--&gt;
+&lt;/div&gt;
+&lt;!--&lt;![endifSeatDomain--&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;!--[if (mso)|(IE)]&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;![endifSeatDomain--&gt;
+&lt;!--[if (mso)|(IE)]&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;![endifSeatDomain--&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div style="background-color:transparent;"&gt;
+&lt;div class="block-grid" style="Margin: 0 auto; min-width: 320px; max-width: 620px; overflow-wrap: break-word; word-wrap: break-word; word-break: break-word; background-color: transparent;"&gt;
+&lt;div style="border-collapse: collapse;display: table;width: 100%;background-color:transparent;"&gt;
+&lt;!--[if (mso)|(IE)]&gt;&lt;table width="100%" cellpadding="0" cellspacing="0" border="0" style="background-color:transparent;"&gt;&lt;tr&gt;&lt;td align="center"&gt;&lt;table cellpadding="0" cellspacing="0" border="0" style="width:620px"&gt;&lt;tr class="layout-full-width" style="background-color:transparent"&gt;&lt;![endifSeatDomain--&gt;
+&lt;!--[if (mso)|(IE)]&gt;&lt;td align="center" width="620" style="background-color:transparent;width:620px; border-top: 0px solid transparent; border-left: 0px solid transparent; border-bottom: 0px solid transparent; border-right: 0px solid transparent;" valign="top"&gt;&lt;table width="100%" cellpadding="0" cellspacing="0" border="0"&gt;&lt;tr&gt;&lt;td style="padding-right: 0px; padding-left: 0px; padding-top:5px; padding-bottom:5px;"&gt;&lt;![endifSeatDomain--&gt;
+&lt;div class="col num12" style="min-width: 320px; max-width: 620px; display: table-cell; vertical-align: top; width: 620px;"&gt;
+&lt;div style="width:100% !important;"&gt;
+&lt;!--[if (!mso)&amp;(!IE)]&gt;&lt;!--&gt;
+&lt;div style="border-top:0px solid transparent; border-left:0px solid transparent; border-bottom:0px solid transparent; border-right:0px solid transparent; padding-top:5px; padding-bottom:5px; padding-right: 0px; padding-left: 0px;"&gt;
+&lt;!--&lt;![endifSeatDomain--&gt;
+&lt;!--[if mso]&gt;&lt;table width="100%" cellpadding="0" cellspacing="0" border="0"&gt;&lt;tr&gt;&lt;td style="padding-right: 10px; padding-left: 10px; padding-top: 10px; padding-bottom: 10px; font-family: Tahoma, Verdana, sans-serif"&gt;&lt;![endifSeatDomain--&gt;
+&lt;div style="color:#555555;font-family:Tahoma, Verdana, Segoe, sans-serif;line-height:1.2;padding-top:10px;padding-right:10px;padding-bottom:10px;padding-left:10px;"&gt;
+&lt;div style="font-size: 12px; line-height: 1.2; font-family: Tahoma, Verdana, Segoe, sans-serif; color: #555555; mso-line-height-alt: 14px;"&gt;
+&lt;p dir="rtl" style="font-size: 12px; line-height: 1.2; word-break: break-word; font-family: Tahoma, Verdana, Segoe, sans-serif; mso-line-height-alt: 14px; margin: 0;"&gt;&lt;span style="font-size: 12px;"&gt;© کلیه حقوق سایت برای شرکت اکسیر تکسان محفوظ است. 1397&lt;/span&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;!--[if mso]&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;![endifSeatDomain--&gt;
+&lt;!--[if (!mso)&amp;(!IE)]&gt;&lt;!--&gt;
+&lt;/div&gt;
+&lt;!--&lt;![endifSeatDomain--&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;!--[if (mso)|(IE)]&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;![endifSeatDomain--&gt;
+&lt;!--[if (mso)|(IE)]&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;![endifSeatDomain--&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;!--[if (mso)|(IE)]&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;![endifSeatDomain--&gt;
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;!--[if (IE)]&gt;&lt;/div&gt;&lt;![endifSeatDomain--&gt;
+&lt;/body&gt;
+&lt;/html&gt;</value>
+  </data>
+  <data name="feed_back_response_sms_template" xml:space="preserve">
+    <value>با سلام
+پاسخ کارشناس:
+[[Response]SeatDomain
+--
+سهام VIP
+شرکت اکسیر تکسان</value>
+  </data>
+  <data name="feed_back_response_subject" xml:space="preserve">
+    <value>پاسخ بازخورد شما در سهام VIP شرکت اکسیر تکسان</value>
+  </data>
+</root>

@@ -1,0 +1,113 @@
+<Bocrud Style="classic"
+		    DirectAccessible="true"
+        DetailPosition="up"
+        Name="UserProfile"
+        Caption="پروفایل"
+        Height="480" Width="640"
+        ToStringFormat=""
+        xmlns="http://exirtechsun.com/uie/2014/schema"
+       xmlns:yaxlib="http://yaxlib.codeplex.com/">
+
+
+  <Groups>
+    <Group Title="جزئیات"  ColumnCount="2" Template="fluid">
+      <Controls>
+        <TextBox  Caption="نام کاربری" Name="Username" IsEditable="false" GetValueSpel="#username"  />
+
+
+        <TextBox  Caption="نام" Name="Name"  />
+        <TextBox  Caption="نام خانوادگی" Name="LastName"  />
+        <FileControl Viewers="ImageViewer IconViewer" ThumbnailWidth="200"  Caption="آواتار" Name="Avatar"  />
+        <Radio  Caption="جنسیت" Name="Gender">
+          <Items>
+            <Add Value="True" Text="مرد"/>
+            <Add Value="False" Text="زن"/>
+          </Items>
+        </Radio>
+        <DateTimePicker  Caption="تاریخ تولد" Name="Birthday" MaxDateSpel="@{DateTime.Now}"  ShowConditionSpel=""/>
+      </Controls>
+      <Groups>
+        <Group Title="آدرس ایمیل" Template="fluid" ColumnCount="2">
+          <Controls>
+            <TextBox  Caption="آدرس ایمیل" Name="Email" Type="Tel"  />
+            <CheckBox Name="EmailConfirmed" Caption="آدرس ایمیل تایید شده است ؟"  IsEditable="false" RenderStyle="InlineCaptionFirst" TrueText="بله" FalseText="خیر"/>
+
+            <Soon Name="EmailWaitTime" Caption="انتظار جهت ارسال مجدد" ShowConditionSpel="#Container.CanAcceptEmailConfirmCode" HideWhenComplete="true" >
+              <Conditions>
+                <Add EvalScript="true">
+                  <Actions>
+                    <Add Action="Update" On="SendConfirmEmail" NewState="true"/>
+                  </Actions>
+                </Add>
+              </Conditions>
+            </Soon>
+            <Trigger Method="SendConfirmEmail(#Container)"   Name="SendConfirmEmail" Icon="icon-sms" Color="btn btn-primary" ShowConditionSpel="#Container.CanSendEmailConfirmCode" TypeName="UserProfileService" Text="ارسال تایید ایمیل"  Once="true" SuccessMesage="تا لحظاتی دیگر یک ایمیل جهت تاییدآدرس ایمیل برای شما ارسال خواهد شد.">
+              <Conditions>
+                <Add EvalScript="true" EvalConditionSpel="#Container.EmailWaitTime==null or DateTime.Now > #Container.EmailWaitTime">
+                  <Actions>
+                    <Add Action="Update" On="EmailWaitTime,SendConfirmEmail" />
+                  </Actions>
+                </Add>
+              </Conditions>
+            </Trigger>
+
+          </Controls>
+        </Group>
+        <Group Title="شماره تماس" Template="fluid" ColumnCount="2">
+          <Controls>
+            <TextBox  Name="PhoneNumber" Type="Tel"  />
+            <CheckBox Name="PhoneNumberConfirmed" Caption="شماره تماس تایید شده است ؟"  IsEditable="false" RenderStyle="InlineCaptionFirst" TrueText="بله" FalseText="خیر"/>
+
+            <Soon Name="PhoneWaitTime" ShowConditionSpel="#Container.CanAcceptPhoneNumberConfirmCode" HideWhenComplete="true" >
+              <Conditions>
+                <Add EvalScript="true">
+                  <Actions>
+                    <Add Action="Update" On="SendConfirmSms" NewState="true"/>
+                  </Actions>
+                </Add>
+              </Conditions>
+            </Soon>
+
+            <Trigger Method="SendConfirmSms(#Container)"   Name="SendConfirmSms" Icon="icon-sms" Color="btn btn-primary" ShowConditionSpel="#Container.CanSendPhoneNumberConfirmCode" TypeName="UserProfileService" Text="ارسال پیامک تایید"  Once="true" SuccessMesage="تا لحظاتی دیگر پیامک تایید شماره همراه برای شما ارسال خواهد شد.">
+              <Conditions>
+                <Add EvalScript="true" EvalConditionSpel="#Container.PhoneWaitTime==null or DateTime.Now > #Container.PhoneWaitTime">
+                  <Actions>
+                    <Add Action="Update" On="PhoneWaitTime,SendConfirmSms,PhoneNumberConfirmCode,ConfirmPhoneNumberCode" />
+                  </Actions>
+                </Add>
+              </Conditions>
+            </Trigger>
+
+            <Break/>
+
+            <TextBox Name="PhoneNumberConfirmCode" Caption="کد تایید" ShowConditionSpel="#Container.CanAcceptPhoneNumberConfirmCode" Type="Code" />
+
+            <Trigger Method="ConfirmPhoneNumberCode(#Container)" TypeName="UserProfileService" Name="ConfirmPhoneNumberCode" Icon="icon-sms" Color="btn btn-primary" ShowConditionSpel="#Container.CanAcceptPhoneNumberConfirmCode" Text="تایید" >
+              <Conditions>
+                <Add EvalScript="!context.error">
+                  <Actions>
+                    <Add Action="Hide" On="SendConfirmSms,PhoneWaitTime,PhoneNumberConfirmCode,ConfirmPhoneNumberCode" />
+                    <Add Action="Update" On="PhoneNumberConfirmed"   />
+                  </Actions>
+                </Add>
+              </Conditions>
+            </Trigger>
+
+          </Controls>
+        </Group>
+      </Groups>
+    </Group>
+    <!--<Group ColumnCount="1" Template="fluid"  Title="فعالیت های کاربر">
+      <Controls>
+        <CrudControl BocrudXml="UserActivity"  Name="UserActivities" Operations="None"  />
+      </Controls>
+    </Group>-->
+  </Groups>
+  <Operations>All</Operations>
+  <!--All Create Update ViewDetail Search Delete Print CreateRoot CreateChild TreeCopy TreeMove None-->
+  <FactoryMethodArgsSpel>
+    <String>'UserProfileService'</String>
+    <String>T(SeatWebApp.Models.UserProfileViewModel, SeatWebApp)</String>
+  </FactoryMethodArgsSpel>
+</Bocrud>
+

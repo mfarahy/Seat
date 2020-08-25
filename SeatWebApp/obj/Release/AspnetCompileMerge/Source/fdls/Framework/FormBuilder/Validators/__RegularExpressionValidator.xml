@@ -1,0 +1,36 @@
+﻿<Bocrud Style="classic"
+        DetailPosition="up"
+        Name="__RegularExpressionValidator"
+        Caption="اعتبارسنج عبارت باقاعده"
+        Height="400" Width="500"
+        ToStringFormat="{Caption}"
+        DirectAccessible="false"
+        xmlns="http://exirtechsun.com/uie/2014/schema"
+       xmlns:yaxlib="http://yaxlib.codeplex.com/">
+
+  <Groups>
+    <Group Title="تنظیمات مخصوص" ColumnCount="2" Template="fluid">
+      <Controls>
+        <TextBox Name="RegularExpression" Caption="عبارت باقاعده" Type="Code" SafeMode="true"/>
+        <Select2 Name="BuiltInValidation" Caption="عبارات پیش ساخته">
+          <Items>
+            <Add Value="Email" Text="آدرس ایمیل"/>
+            <Add Value="Url" Text="آدرس URL"/>
+            <Add Value="Date" Text="تاریخ"/>
+            <Add Value="DateISO" Text="تاریخ استاندارد"/>
+            <Add Value="Number" Text="عدد"/>
+            <Add Value="Digits" Text="رقم"/>
+            <Add Value="Creditcard" Text="کارت اعتباری"/>
+          </Items>
+        </Select2>
+      </Controls>
+    </Group>
+    <![CDATA[@{include:__PropertyValidator#//uie:Groups/uie:Group[@Name='CommonSettings']}]]>
+  </Groups>
+
+  <Operations>All</Operations>
+  <FactoryMethodArgsSpel>
+    <String>T(Exir.Framework.Uie.Bocrud.RegularExpressionValidator, Exir.Framework.Uie)</String>
+  </FactoryMethodArgsSpel>
+</Bocrud>
+

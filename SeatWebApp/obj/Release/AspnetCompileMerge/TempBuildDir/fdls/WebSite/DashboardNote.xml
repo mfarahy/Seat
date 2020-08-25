@@ -1,0 +1,57 @@
+<Bocrud                 Style="classic"
+		AccessOperation="DshbrdNt.A"
+		DirectAccessible="true"
+        DetailPosition="up"
+        Name="DashboardNote"
+        Caption="یادداشت داشبورد"
+        Height="480" Width="640"
+        ToStringFormat="{Text}"
+        xmlns="http://exirtechsun.com/uie/2014/schema"
+       xmlns:yaxlib="http://yaxlib.codeplex.com/">
+  
+  <!---->
+
+  <Groups>
+    <Group Title="جزئیات"  ColumnCount="2" Template="fluid">
+      <Controls>
+        <ColorPicker  Caption="رنگ" Name="Color"  />
+        <Select2  Caption="نام نقش" Name="RoleList"  SpringExpression="GetRoles()" MultiSelect="true" />
+        <DateTimePicker  Caption="تاریخ شروع نمایش" Name="StartDt"  />
+        <DateTimePicker  Caption="تاریخ پایان نمایش" Name="EndDt"  />
+      </Controls>
+      <Groups>
+        <Group ColumnCount="1">
+          <Controls>
+            <CKEditor  Caption="متن" Name="Text" />
+          </Controls>
+        </Group>
+      </Groups>
+    </Group>    
+  </Groups>
+
+  <Grid Caption="لیست یادداشت‌های داشبورد"
+  EnableSearch="false" ToolbarSearch="true" AutoWidth="true" Width="100"
+  MultiSelect="true" EnableColumnChooser="false">
+    <Columns>
+      <Column Width="150" Name="Text" Searchable="true" />
+      <Column Width="150" Name="Color" Searchable="false" />
+      <Column Width="150" Name="Roles" Caption="نقش‌ها" Searchable="false" />
+      <Column Width="150" Name="StartDt" Searchable="true" />
+      <Column Width="150" Name="EndDt" Searchable="true" />
+      <Column Width="150" Name="Audit_CreatorUserName" Caption="درج کننده" Hidden="true" Searchable="true"/>
+      <Column Width="150" Name="Audit_CreatorIP" Caption="IP درج کننده" Hidden="true" Searchable="true"/>
+      <Column Width="150" Name="Audit_CreateDate" Caption="تاریخ درج" Hidden="true" Searchable="true"/>
+      <Column Width="150" Name="Audit_LastModifyDate" Caption="تاریخ ویرایش" Hidden="true" Searchable="true"/>
+      <Column Width="150" Name="Audit_LastModifierUserName" Caption="ویرایش کننده" Hidden="true" Searchable="true"/>
+      <Column Width="150" Name="Audit_LastModifierIP" Caption="IP ویرایش کننده" Hidden="true" Searchable="true"/>
+
+    </Columns>
+  </Grid>
+  <Operations>All</Operations>
+  <!--All Create Update ViewDetail Search Delete Print CreateRoot CreateChild TreeCopy TreeMove None-->
+  <FactoryMethodArgsSpel>
+    <String>'DashboardNoteService'</String>
+    <String>T(SeatWebApp.Models.DashboardNoteViewModel, SeatWebApp)</String>
+  </FactoryMethodArgsSpel>
+</Bocrud>
+

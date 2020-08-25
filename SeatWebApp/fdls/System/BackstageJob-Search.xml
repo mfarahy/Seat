@@ -1,0 +1,97 @@
+<Bocrud                 Style="classic"
+        DetailPosition="up"
+        Name="BackstageJob-Search"
+        Caption="کارهای پشت صحنه"
+        Height="480" Width="640"
+        ToStringFormat=""
+        xmlns="http://exirtechsun.com/uie/2014/schema"
+       xmlns:yaxlib="http://yaxlib.codeplex.com/">
+
+
+  <Groups>
+
+    <Group Title="جزئیات"  ColumnCount="3" Template="fluid">
+      <Controls>
+        <TextBox  Caption="شناسه" Name="BackstageJobPK" Type="Code"  />
+        <TextBox  Caption="کد" Name="Code"  Type="Code" />
+        <TextBox  Caption="شماره پیگیری درخواست" Name="TraceNo"  Type="Code" />
+        <TextBox  Caption="کاربر" Name="RunAs" Type="Code"  />
+        <Select2  Caption="وضعیت" Name="Status">
+          <Items>
+            <Add  Value="1" Text="جدید"/>
+            <Add  Value="2" Text="در حال پردازش"/>
+            <Add  Value="3" Text="تمام"/>
+            <Add  Value="4" Text="خطا"/>
+            <Add  Value="5" Text="حذف شده"/>
+            <Add  Value="6" Text="آماده پردازش"/>
+          </Items>
+        </Select2>
+        <Select2  Caption="سرویس" Name="Service" AcceptOutOfRangeData="true">
+          <Items>
+            <Add Value="BackstageJobService" Text="کار پشت صحنه"/>
+            <Add Value="BatchRequestService" Text="ثبت درخواست گروهی"/>
+            <Add Value="ChargeTransactionService" Text="گزارش شارژ"/>
+            <Add Value="DepositService" Text="ودیعه"/>
+            <Add Value="EnamadCheckHistoryService" Text="اینماد"/>
+            <Add Value="IMerchantRequestService" Text="ثبت درخواست"/>
+            <Add Value="IMerchantService" Text="پذیرنده"/>
+            <Add Value="ImmigrateRequestService" Text="مهاجرت"/>
+            <Add Value="MerchantRequestService" Text="ثبت درخواست"/>
+            <Add Value="MerchantService" Text="پذیرنده"/>
+            <Add Value="MerchantTerminalService" Text="پایانه پذیرنده"/>
+            <Add Value="MerchantOrderTerminalImplementor" Text="افزایش پایانه"/>
+            <Add Value="MerchantOrderTerminalImplementorService" Text="افزایش پایانه"/>
+            <Add Value="SharedRequestMessageSender" Text="سرویس پیام"/>
+            <Add Value="SharedRequestMessageSenderService" Text="سرویس پیام"/>
+            <Add Value="MerchantOrderTerminalService" Text="سرویس درخواست افزایش پایانه"/>
+            <Add Value="RequestQuotaService" Text="سرویس سهمیه"/>
+            <Add Value="TerminalWarningService" Text="سرویس هشدار به پذیرنده"/>
+            <Add Value="MerchantTerminalShatootService" Text="سرویس شاتوت"/>
+            <Add Value="CollectTermCaseService" Text="سرویس ماژول جمع آوری پایانه"/>
+          </Items>
+        </Select2>
+        <Select2  Caption="عملیات" Name="Action"  AcceptOutOfRangeData="true">
+          <Items>
+            <Add Value="BatchInquiry" Text="استعلام گروهی"/>
+            <Add Value="CheckItems" Text="بررسی آیتم‌ها"/>
+            <Add Value="ConfirmModificationStation" Text="تایید ویرایش"/>
+            <Add Value="DeclareMerchantByRequestPk" Text="تعریف پذیرنده"/>
+            <Add Value="DeclareMerchants" Text="تعریف پذیرنده گروهی"/>
+            <Add Value="HeavyExport" Text="خروجی"/>
+            <Add Value="NotifyInstallation" Text="ارسال پیام نصب"/>
+            <Add Value="RawRun" Text="حرکت جریان کاری"/>
+            <Add Value="RetryInquiry" Text="استعلام مجدد"/>
+            <Add Value="SendMessage" Text="ارسال پیام"/>
+            <Add Value="StartWorkflowIfNoFlow" Text="ایجاد جریان کاری"/>
+            <Add Value="UpdateEvidences" Text="بروزرسانی مدارک"/>
+            <Add Value="Implement" Text="افزایش پایانه"/>
+            <Add Value="StartWorkflow" Text="ایجاد جریان کاری - افزایش پایانه"/>
+            <Add Value="Change" Text="تغییر سهمیه"/>
+            <Add Value="LoadEWRegisteredTerminal" Text="بارگزاری لیست پایانه پذیرنده"/>
+            <Add Value="Notify" Text="اطلاع رسانی"/>
+            <Add Value="LogMerchantTransactionStatus" Text="لاگ وضعیت تراکنش‌های پذیرنده"/>
+            <Add Value="ConvertTerminalToDeposit" Text="تبدیل پایانه به ودیعه ای"/>
+            <Add Value="SendTermCollectMessages" Text="ارسال پیام ماژول جمع آوری پایانه"/>
+          </Items>
+        </Select2>
+        <TextBox  Caption="اولویت" Name="Priority"  />
+        <TextBox  Caption="تلاش جهت اجرا" Name="RetryCount"  />
+        <TextBox  Caption="صف" Name="Queue"   Type="Code"/>
+        <TextBox  Caption="سرور" Name="Server"   Type="Code"/>
+        <DateTimePicker  Caption="تاریخ اجرا از" Name="RunDtFrom" ShowTime="true"  />
+        <DateTimePicker  Caption="تاریخ اجرا تا" Name="RunDtTo"  ShowTime="true" />
+        <DateTimePicker  Caption="تاریخ درخواست از" Name="TimeToRunFrom" ShowTime="true"  />
+        <DateTimePicker  Caption="تاریخ درخواست تا" Name="TimeToRunTo"  ShowTime="true" />
+        <TextBox  Caption="خطا" Name="Error"   Type="Code"/>
+        <TextBox  Caption="Tags" Name="Tags"   Type="Code"/>
+      </Controls>
+
+    </Group>
+  </Groups>
+  <Operations>Create</Operations>
+  <!--All Create Update ViewDetail Search Delete Print CreateRoot CreateChild TreeCopy TreeMove None-->
+  <FactoryMethodArgsSpel>
+    <String>T(SeatDomain.Models.SearchModels.BackstageJobSearchModel, SeatDomain)</String>
+  </FactoryMethodArgsSpel>
+</Bocrud>
+

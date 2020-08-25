@@ -1,0 +1,96 @@
+﻿@using Exir.Framework.Uie.Bocrud
+@RenderGroup(Model)
+@helper RenderGroup(Exir.Framework.Uie.Bocrud.GroupResultModel group)
+{
+int columnCount = group.ColumnCount > 0 ? group.ColumnCount : 2;
+bool hasBreak = group.Controls.Any(x => x.SkipToNextColumn);
+int visibleControlCount = group.Controls.Count(x => !x.Hidden);
+int columnSize = (int)Math.Floor(12.0 / columnCount);
+var cInColumn = visibleControlCount * 1.0 / columnCount;
+    <div class="container-fluid">
+        <div class="row bocrud-group" name="@group.Name">
+            @for (int cc = 0, ctrlc = 0;
+(hasBreak || cc < columnCount) && ctrlc < group.Controls.Count; ++cc)
+            {
+                // cc : column counter
+                // ctrlc : control counter
+                // cpc : control per column
+
+                <div class="col-md-@columnSize col-sm-@columnSize col-xs-12 col-lg-@columnSize container-fluid">
+                    @for (int cpc = 0; (cpc < Math.Ceiling(cInColumn) || hasBreak || cc == columnCount - 1) && ctrlc < group.Controls.Count; ++cpc, ++ctrlc)
+                    {
+                        ControlResultModel control = group.Controls[ctrlc];
+                        if (control.SkipToNextColumn)
+                        {
+                            ++ctrlc;
+                            break;
+                        }
+                        if (control.Hidden)
+                        {
+                            continue;
+                        }
+
+                        @RenderControl(control)
+                    }
+                    @if (ctrlc > visibleControlCount)
+                    {
+                        foreach (ControlResultModel c in group.Controls.Where(x => x.Hidden))
+                        {
+                            @RenderControl(c)
+                        }
+                    }
+                    @{
+                        //cInColumn =(visibleControlCount - ctrlc + 1) * 1.0 / (columnCount - cc + 1);
+                    }
+                </div>
+                        }
+
+        </div>
+    </div>
+                        foreach (GroupResultModel subgroup in group.Groups)
+                        {
+                            <fieldset name='@subgroup.Name' class='bocrud-subgroup'>
+                                @if (!string.IsNullOrEmpty(subgroup.Title))
+                                {
+                                    <legend>@subgroup.Title</legend>
+                                }
+                                @RenderGroup(subgroup)
+                            </fieldset>
+                        }
+}
+@helper RenderControl(Exir.Framework.Uie.Bocrud.ControlResultModel control)
+{
+if (control.Hidden) { control.OuterStyle += ";display:none"; }
+if (control.Focusable)
+{
+        <a name='@control.UniqueID-anchor'></a>
+}
+
+    <div style='@control.OuterStyle' name='@control.HolderPrefix@control.Name' type="@control.ControlType" affecton="@control.AffectedItems" uidprefix="@control.UidPrefix" id='@control.UniqueID-holder' class='bocrud-control @(String.IsNullOrEmpty(control.DebugInfo) ? "" : "bocrud-debug-mode") @(control.Hidden?"bocrud-server-hide":"")' @if (!String.IsNullOrEmpty(control.DebugInfo)) { WriteLiteral("title='" + control.DebugInfo + "'"); }>
+        @if (!String.IsNullOrEmpty(control.Caption))
+        {
+            <label for='@control.UniqueID' class='bocrud-control-caption control-label no-padding-right'>
+                <span class="caption-text">
+                    @control.Caption
+                </span>
+                @if (!control.Caption.EndsWith("?") &&
+(!control.Inline || control.CaptionFirst))
+                {
+                    <span>:</span>
+                }
+                @if (control.IsRequired)
+                {
+                    <span class="bocrud-req-star">*</span>
+                }
+            </label>
+        }
+        @if (!String.IsNullOrEmpty(control.Help))
+        {
+            <span title="" data-html="true" data-content="@{WriteLiteral(control.Help);}" data-placement="auto" data-trigger="hover"
+                  data-rel="popover" class="help-button" data-original-title="اطلاعات بیشتر">?</span>
+    }
+        <div class='bocrud-control-content @(control.Inline?"inline":"") @(control.CaptionFirst ? "" : "caption-last")'>
+            @{WriteLiteral(control.Content);}
+        </div>
+    </div>
+}

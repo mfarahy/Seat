@@ -1,0 +1,48 @@
+<Bocrud Style="classic"
+		    AccessOperation="ShrtLnk.A"
+		    DirectAccessible="true"
+        DetailPosition="up"
+        Name="ShortLink"
+        Caption="لینک کوتاه"
+        Height="480" Width="640"
+        ToStringFormat=""
+        xmlns="http://exirtechsun.com/uie/2014/schema"
+       xmlns:yaxlib="http://yaxlib.codeplex.com/">
+
+
+  <Groups>
+    <Group Title="جزئیات"  ColumnCount="2" Template="fluid">
+      <Controls>
+        <TextBox  Caption="لینک اصلی" Name="OrginalLink" Type="Code" SafeMode="true"  />
+        <TextBox  Caption="عنوان لینک" Name="Title"   />
+        <TextBox  Caption="کد لینک" Name="Code" AllowCreateMode="false" IsEditable="false"  Type="Code" />
+        <TextBox  Caption="تعداد مراجعات" Name="ReferCount" AllowCreateMode="false" IsEditable="false"  />
+        <DateTimePicker  Caption="زمان ساخت لینک" Name="CreateDate" AllowCreateMode="false" IsEditable="false"  />
+        <TextBox Caption="لینک کوتاه" GetValueSpel="'https://mmp.sadadpsp.ir/R?' + #Container.Code" Type="Code" AllowCreateMode="false" IsEditable="false" />
+        <TextBox Caption="لینک کوتاهتر" GetValueSpel="'mmp.sadadpsp.ir/R?' + #Container.Code" Type="Code" AllowCreateMode="false" IsEditable="false" />
+        <Link Caption="لینک کوتاه شده" Name="ShortLinkAnchore" Uri="/R?@{#Container.Code}" NewPage="true" AllowCreateMode="false" Text="لینک کوتاه شده"/>
+      </Controls>
+    </Group>
+  </Groups>
+
+  <Grid Caption="لیست لینک‌های کوتاه شده"
+  EnableSearch="false" ToolbarSearch="true" AutoWidth="true" Width="100"
+  MultiSelect="false" EnableColumnChooser="false">
+    <Columns>
+      <Column Width="300" Name="OrginalLink" Searchable="true"  Align="Left"/>
+      <Column Width="200" Name="Title" Searchable="true" />
+      <Column Width="100" Name="Code" Searchable="true" Align="Left" />
+      <Column Width="80" Name="ReferCount" Searchable="true" />
+      <Column Width="80" Name="CreateDate" Searchable="true" />
+      <Column Width="80" Name="ShortLinkAnchore" Searchable="true" />
+
+    </Columns>
+  </Grid>
+  <Operations>All</Operations>
+  <!--All Create Update ViewDetail Search Delete Print CreateRoot CreateChild TreeCopy TreeMove None-->
+  <FactoryMethodArgsSpel>
+    <String>'ShortLinkService'</String>
+    <String>T(SeatWebApp.Models.ShortLinkViewModel, SeatWebApp)</String>
+  </FactoryMethodArgsSpel>
+</Bocrud>
+

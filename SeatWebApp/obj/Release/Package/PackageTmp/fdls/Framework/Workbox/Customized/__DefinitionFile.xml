@@ -1,0 +1,74 @@
+﻿<Bocrud                 Style="classic"
+        DetailPosition="up"
+        Name="__DefinitionFile"
+        Caption="فایل جریان کاری"
+        Height="480" Width="640"
+        ToStringFormat="{Name}"
+DirectAccessible="true"
+AccessOperation="_DfntnFl.A"
+        xmlns="http://exirtechsun.com/uie/2014/schema"
+       xmlns:yaxlib="http://yaxlib.codeplex.com/">
+
+  <Groups>
+    <Group Title="جزئیات"  ColumnCount="2" Template="fluid">
+      <Controls>
+        <DateTimePicker Name="Audit_CreateDate" Caption="تاریخ درج" ShowTime="true" IsEditable="false" AllowCreateMode="false"/>
+        <DateTimePicker Name="Audit_LastModifyDate" Caption="تاریخ ویرایش" ShowTime="true" IsEditable="false" AllowCreateMode="false"/>
+        
+        <FileControl Name="Xml" Caption="فایل" Downloadable="true" Filter="xml" MaxFile="1"
+                     MinFile="1" Viewers="IconViewer"  GridViewThumbnailWidth="30" ThumbnailWidth="100"/>
+        
+        <CheckBox Name="Migrate" Caption="انتقال جریان‌های جاری ؟" ShowConditionSpel="#Container.HasKey()">
+          <Conditions>
+            <Add EvalScript="{Migrate}">
+              <Actions>
+                <Add Action="Show" On="migration"/>
+              </Actions>
+              <ElseActions>
+                <Add Action="Hide" On="migration"/>
+              </ElseActions>
+            </Add>
+          </Conditions>
+        </CheckBox>
+      </Controls>
+      <Groups>
+        <Group Name="migration" ColumnCount="1">
+          <Controls>
+            <Trigger Text="به روزرسانی مپینگ 👇" Name="Update">
+              <Conditions>
+                <Add>
+                  <Actions>
+                    <Add Action="Update" On="Mapping" Send="Xml"/>
+                  </Actions>
+                </Add>
+              </Conditions>
+            </Trigger>
+            <One2Many Name="Mapping" Caption="مپینگ" BocrudXml="__MigrationMapItem"  ShowConditionSpel="#Container.HasKey()" InlineEdit="true"/>
+          </Controls>
+        </Group>
+      </Groups>
+    </Group>
+  </Groups>
+
+  <Grid Caption="لیست فایل های جریان کاری"
+  EnableSearch="false" ToolbarSearch="false" AutoWidth="true" Width="100"
+  MultiSelect="false">
+    <Columns>
+      <Column Width="150" Name="Name" Caption="نام فایل" />
+      <Column Width="150" Name="Xml" />
+      <Column Width="150" Name="Audit_CreatorUserName" Caption="درج کننده" Hidden="true" Searchable="true"/>
+      <Column Width="150" Name="Audit_CreatorIP" Caption="IP درج کننده" Hidden="true" Searchable="true"/>
+      <Column Width="150" Name="Audit_CreateDate" Caption="" Hidden="true" Searchable="true"/>
+      <Column Width="150" Name="Audit_LastModifyDate" Hidden="false" Searchable="true"/>
+      <Column Width="150" Name="Audit_LastModifierUserName" Caption="ویرایش کننده" Hidden="false" Searchable="true"/>
+      <Column Width="150" Name="Audit_LastModifierIP" Caption="IP ویرایش کننده" Hidden="false" Searchable="true"/>
+    </Columns>
+  </Grid>
+  <Operations>All</Operations>
+  <!--All Create Update ViewDetail Search Delete Print CreateRoot CreateChild TreeCopy TreeMove None-->
+  <FactoryMethodArgsSpel>
+    <String>T(Exir.Workbox.Services.DefinitionFileService, Exir.Workbox)</String>
+    <String>T(Exir.Workbox.Web.DefinitionFileModel, Exir.Workbox.Web)</String>
+  </FactoryMethodArgsSpel>
+</Bocrud>
+

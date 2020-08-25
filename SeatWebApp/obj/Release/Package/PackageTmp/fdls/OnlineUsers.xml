@@ -1,0 +1,48 @@
+﻿<Bocrud Style="classic"
+		    AccessOperation="AspNtUsr.A"
+        FilterSpel="SetCommand('GetOnlineUsers')"
+		    DirectAccessible="true"
+        DetailPosition="up"
+        Name="OnlineUsers"
+        Caption="لیست کاربران آنلاین"
+        Height="480" Width="640"
+        ToStringFormat="لیست کاربران آنلاین"
+        xmlns="http://exirtechsun.com/uie/2014/schema"
+       xmlns:yaxlib="http://yaxlib.codeplex.com/">
+
+  <ToolbarCommands>
+    <Add Confirm="آیا مایل به خروج کاربر انتخابی می باشید؟" Position="InRow" Text="منقضی نمودن" Color="grid-view-btn" Icon="trash" Name="ExpireSession" ReloadGrid="true"/>
+    <Add Confirm="آیا مایل به خروج همه کاربران از سیستم می باشید؟" Position="Toolbar" Text="منقضی نمودن تمام کاربران" Color="grid-view-btn" Icon="trash" Name="ExpireAllSession" ReloadGrid="true" />
+  </ToolbarCommands>
+  <Groups>
+    <Group Title="جزئیات"  ColumnCount="2" Template="fluid">
+      <Controls>
+        <TextBox  Caption="کلید" Name="SessionId" Direction="Ltr"  />
+        <TextBox  Caption="نام کاربری" Name="UserName" Direction="Ltr" />
+        <TextBox  Caption="IP" Name="IPAddress" Direction="Ltr" />
+        <DateTimePicker Name="SessionStartedDate" Caption="تاریخ شروع جلسه کاری" ShowTime="true" />
+        <DateTimePicker Name="LastActionDate" Caption="تاریخ آخرین اقدام کاری" ShowTime="true" />
+        <CheckBox Caption="منقضی شده" Name="IsExpired"></CheckBox>
+      </Controls>
+    </Group>
+  </Groups>
+  
+  <Grid Caption="لیست کاربران آنلاین"
+  EnableSearch="false" ToolbarSearch="true" AutoWidth="true" Width="100" EnableColumnChooser="false">
+    <Columns>
+      <Column Name="SessionId" Searchable="false" />
+      <Column Name="UserName" Searchable="false" />
+      <Column Name="IPAddress" Searchable="false" />
+      <Column Name="SessionStartedDate" Searchable="false" />
+      <Column Name="LastActionDate" Searchable="false" />
+      <Column Name="IsExpired" Searchable="false" />
+    </Columns>
+  </Grid>
+  <Operations>Search</Operations>
+  <!--All Create Update ViewDetail Search Delete Print CreateRoot CreateChild TreeCopy TreeMove None-->
+  <FactoryMethodArgsSpel>
+    <String>'OnlineUserService'</String>
+    <String>T(SeatWebApp.Models.Sso.OnlineUserViewModel, SeatWebApp)</String>
+  </FactoryMethodArgsSpel>
+</Bocrud>
+

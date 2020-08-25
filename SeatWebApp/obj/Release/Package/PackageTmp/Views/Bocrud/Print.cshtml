@@ -1,0 +1,37 @@
+﻿@{
+    ViewBag.Title = "Print";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@using Stimulsoft;
+@using Stimulsoft.Report.Mvc;
+@using System.Web.UI.WebControls;
+
+<h2>چاپ</h2>
+
+<div style="direction:ltr; text-align:left">
+    @Html.Stimulsoft().StiMvcViewer(new StiMvcViewerOptions()
+{
+    Actions = new StiMvcViewerOptions.ActionOptions
+    {
+        ViewerEvent = "ViewerEvent",
+        GetReportSnapshot = "GetReportSnapshot",
+        ExportReport = "ExportReport",
+    },
+    Width = Unit.Percentage(100),
+    Appearance = new StiMvcViewerOptions.AppearanceOptions
+    {
+        RightToLeft = true,
+          
+    },
+    Toolbar = new StiMvcViewerOptions.ToolbarOptions
+    {
+        FontFamily = "B Yekan",
+         ShowFullScreenButton=false
+    },
+    Server = new StiMvcViewerOptions.ServerOptions
+    {
+        RequestTimeout = 10 * 60
+    }
+})
+</div>

@@ -1,0 +1,306 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="SeatWebDBModelStoreContainer" CdmEntityContainer="SeatDBEntities1">
+    <EntitySetMapping Name="BackstageJobs">
+      <EntityTypeMapping TypeName="SeatWebDBModel.BackstageJob">
+        <MappingFragment StoreEntitySet="BackstageJobs">
+          <ScalarProperty Name="BackstageJobPK" ColumnName="BackstageJobPK" />
+          <ScalarProperty Name="RunAs" ColumnName="RunAs" />
+          <ScalarProperty Name="TimeToRun" ColumnName="TimeToRun" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="Service" ColumnName="Service" />
+          <ScalarProperty Name="Action" ColumnName="Action" />
+          <ScalarProperty Name="SerializedArgs" ColumnName="SerializedArgs" />
+          <ScalarProperty Name="RemoveIfSuccess" ColumnName="RemoveIfSuccess" />
+          <ScalarProperty Name="RetryCount" ColumnName="RetryCount" />
+          <ScalarProperty Name="Priority" ColumnName="Priority" />
+          <ScalarProperty Name="UniqueCode" ColumnName="UniqueCode" />
+          <ScalarProperty Name="Dependency" ColumnName="Dependency" />
+          <ScalarProperty Name="Queue" ColumnName="Queue" />
+          <ScalarProperty Name="Server" ColumnName="Server" />
+          <ScalarProperty Name="Tags" ColumnName="Tags" />
+          <ScalarProperty Name="Debug" ColumnName="Debug" />
+          <ScalarProperty Name="Error" ColumnName="Error" />
+          <ScalarProperty Name="Duration" ColumnName="Duration" />
+          <ScalarProperty Name="RunDt" ColumnName="RunDt" />
+          <ScalarProperty Name="ExecutionLog" ColumnName="ExecutionLog" />
+          <ScalarProperty Name="MaxCpu" ColumnName="MaxCpu" />
+          <ScalarProperty Name="MaxMemory" ColumnName="MaxMemory" />
+          <ScalarProperty Name="MidCpu" ColumnName="MidCpu" />
+          <ScalarProperty Name="MidMemory" ColumnName="MidMemory" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="HardLogs">
+      <EntityTypeMapping TypeName="SeatWebDBModel.HardLog">
+        <MappingFragment StoreEntitySet="HardLog">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="EntryDt" ColumnName="EntryDt" />
+          <ScalarProperty Name="Level" ColumnName="Level" />
+          <ScalarProperty Name="Kind" ColumnName="Kind" />
+          <ScalarProperty Name="UserName" ColumnName="UserName" />
+          <ScalarProperty Name="TraceKey" ColumnName="TraceKey" />
+          <ScalarProperty Name="IP" ColumnName="IP" />
+          <ScalarProperty Name="Method" ColumnName="Method" />
+          <ScalarProperty Name="Type" ColumnName="Type" />
+          <ScalarProperty Name="ArgumentsCount" ColumnName="ArgumentsCount" />
+          <ScalarProperty Name="Arguments" ColumnName="Arguments" />
+          <ScalarProperty Name="ElapsedMilliseconds" ColumnName="ElapsedMilliseconds" />
+          <ScalarProperty Name="Result" ColumnName="Result" />
+          <ScalarProperty Name="Message" ColumnName="Message" />
+          <ScalarProperty Name="Exception" ColumnName="Exception" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Holidays">
+      <EntityTypeMapping TypeName="SeatWebDBModel.Holiday">
+        <MappingFragment StoreEntitySet="Holidays">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Date" ColumnName="Date" />
+          <ScalarProperty Name="HolidayType" ColumnName="HolidayType" />
+          <ScalarProperty Name="HolidayTitle" ColumnName="HolidayTitle" />
+          <ScalarProperty Name="Audit_CreateDate" ColumnName="Audit_CreateDate" />
+          <ScalarProperty Name="Audit_CreatorUserName" ColumnName="Audit_CreatorUserName" />
+          <ScalarProperty Name="Audit_CreatorIP" ColumnName="Audit_CreatorIP" />
+          <ScalarProperty Name="Audit_LastModifyDate" ColumnName="Audit_LastModifyDate" />
+          <ScalarProperty Name="Audit_LastModifierUserName" ColumnName="Audit_LastModifierUserName" />
+          <ScalarProperty Name="Audit_LastModifierIP" ColumnName="Audit_LastModifierIP" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="UserActivities">
+      <EntityTypeMapping TypeName="SeatWebDBModel.UserActivity">
+        <MappingFragment StoreEntitySet="UserActivities">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="EntryDt" ColumnName="EntryDt" />
+          <ScalarProperty Name="UserName" ColumnName="UserName" />
+          <ScalarProperty Name="IP" ColumnName="IP" />
+          <ScalarProperty Name="Message" ColumnName="Message" />
+          <ScalarProperty Name="PageName" ColumnName="PageName" />
+          <ScalarProperty Name="Metadata" ColumnName="Metadata" />
+          <ScalarProperty Name="Session" ColumnName="Session" />
+          <ScalarProperty Name="Action" ColumnName="Action" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DashboardNotes">
+      <EntityTypeMapping TypeName="SeatWebDBModel.DashboardNote">
+        <MappingFragment StoreEntitySet="DashboardNotes">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Text" ColumnName="Text" />
+          <ScalarProperty Name="Color" ColumnName="Color" />
+          <ScalarProperty Name="Roles" ColumnName="Roles" />
+          <ScalarProperty Name="StartDt" ColumnName="StartDt" />
+          <ScalarProperty Name="EndDt" ColumnName="EndDt" />
+          <ScalarProperty Name="Audit_CreatorUserName" ColumnName="Audit_CreatorUserName" />
+          <ScalarProperty Name="Audit_CreatorIP" ColumnName="Audit_CreatorIP" />
+          <ScalarProperty Name="Audit_CreateDate" ColumnName="Audit_CreateDate" />
+          <ScalarProperty Name="Audit_LastModifyDate" ColumnName="Audit_LastModifyDate" />
+          <ScalarProperty Name="Audit_LastModifierUserName" ColumnName="Audit_LastModifierUserName" />
+          <ScalarProperty Name="Audit_LastModifierIP" ColumnName="Audit_LastModifierIP" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DashboardUserNotes">
+      <EntityTypeMapping TypeName="SeatWebDBModel.DashboardUserNote">
+        <MappingFragment StoreEntitySet="DashboardUserNotes">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="UserName" ColumnName="UserName" />
+          <ScalarProperty Name="NoteId" ColumnName="NoteId" />
+          <ScalarProperty Name="SeenDt" ColumnName="SeenDt" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="FeedBacks">
+      <EntityTypeMapping TypeName="SeatWebDBModel.FeedBack">
+        <MappingFragment StoreEntitySet="FeedBacks">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="UserName" ColumnName="UserName" />
+          <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="LinkAddresss" ColumnName="LinkAddresss" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="CategoryType" ColumnName="CategoryType" />
+          <ScalarProperty Name="Mobile" ColumnName="Mobile" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Response" ColumnName="Response" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="HelpInformations">
+      <EntityTypeMapping TypeName="SeatWebDBModel.HelpInformation">
+        <MappingFragment StoreEntitySet="HelpInformation">
+          <ScalarProperty Name="HelpInfoPK" ColumnName="HelpInfoPK" />
+          <ScalarProperty Name="FormName" ColumnName="FormName" />
+          <ScalarProperty Name="FieldName" ColumnName="FieldName" />
+          <ScalarProperty Name="Text" ColumnName="Text" />
+          <ScalarProperty Name="RoleName" ColumnName="RoleName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="News">
+      <EntityTypeMapping TypeName="SeatWebDBModel.News">
+        <MappingFragment StoreEntitySet="News">
+          <ScalarProperty Name="NewsPk" ColumnName="NewsPk" />
+          <ScalarProperty Name="Subject" ColumnName="Subject" />
+          <ScalarProperty Name="Abstract" ColumnName="Abstract" />
+          <ScalarProperty Name="Content" ColumnName="Content" />
+          <ScalarProperty Name="CategoryPk" ColumnName="CategoryPk" />
+          <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+          <ScalarProperty Name="IsArchived" ColumnName="IsArchived" />
+          <ScalarProperty Name="NewsArchiveDate" ColumnName="NewsArchiveDate" />
+          <ScalarProperty Name="NewsExpireDate" ColumnName="NewsExpireDate" />
+          <ScalarProperty Name="Audit_CreateDate" ColumnName="Audit_CreateDate" />
+          <ScalarProperty Name="Audit_CreatorUserName" ColumnName="Audit_CreatorUserName" />
+          <ScalarProperty Name="Audit_CreatorIP" ColumnName="Audit_CreatorIP" />
+          <ScalarProperty Name="Audit_LastModifyDate" ColumnName="Audit_LastModifyDate" />
+          <ScalarProperty Name="Audit_LastModifierUserName" ColumnName="Audit_LastModifierUserName" />
+          <ScalarProperty Name="Audit_LastModifierIP" ColumnName="Audit_LastModifierIP" />
+          <ScalarProperty Name="PageName" ColumnName="PageName" />
+          <ScalarProperty Name="Image" ColumnName="Image" />
+          <ScalarProperty Name="Metadata" ColumnName="Metadata" />
+          <ScalarProperty Name="SortNumber" ColumnName="SortNumber" />
+          <ScalarProperty Name="ColSpan" ColumnName="ColSpan" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="NewsCategories">
+      <EntityTypeMapping TypeName="SeatWebDBModel.NewsCategory">
+        <MappingFragment StoreEntitySet="NewsCategory">
+          <ScalarProperty Name="CategoryPk" ColumnName="CategoryPk" />
+          <ScalarProperty Name="CategoryTitle" ColumnName="CategoryTitle" />
+          <ScalarProperty Name="Audit_CreatorUserName" ColumnName="Audit_CreatorUserName" />
+          <ScalarProperty Name="Audit_CreateDate" ColumnName="Audit_CreateDate" />
+          <ScalarProperty Name="Audit_CreatorIP" ColumnName="Audit_CreatorIP" />
+          <ScalarProperty Name="Audit_LastModifyDate" ColumnName="Audit_LastModifyDate" />
+          <ScalarProperty Name="Audit_LastModifierUserName" ColumnName="Audit_LastModifierUserName" />
+          <ScalarProperty Name="Audit_LastModifierIP" ColumnName="Audit_LastModifierIP" />
+          <ScalarProperty Name="IsListable" ColumnName="IsListable" />
+          <ScalarProperty Name="Code" ColumnName="Code" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="UserProfiles">
+      <EntityTypeMapping TypeName="SeatWebDBModel.UserProfile">
+        <MappingFragment StoreEntitySet="UserProfile">
+          <ScalarProperty Name="EmailConfirmSendCount" ColumnName="EmailConfirmSendCount" />
+          <ScalarProperty Name="PhoneNumberConfirmSendCount" ColumnName="PhoneNumberConfirmSendCount" />
+          <ScalarProperty Name="PhoneNumberConfirmSendDt" ColumnName="PhoneNumberConfirmSendDt" />
+          <ScalarProperty Name="EmailConfirmSendDt" ColumnName="EmailConfirmSendDt" />
+          <ScalarProperty Name="PhoneNumberHashedConfirmCode" ColumnName="PhoneNumberHashedConfirmCode" />
+          <ScalarProperty Name="ProfilePK" ColumnName="ProfilePK" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="LastName" ColumnName="LastName" />
+          <ScalarProperty Name="Avatar" ColumnName="Avatar" />
+          <ScalarProperty Name="Gender" ColumnName="Gender" />
+          <ScalarProperty Name="Birthday" ColumnName="Birthday" />
+          <ScalarProperty Name="PreventAnonyRegRequest" ColumnName="PreventAnonyRegRequest" />
+          <ScalarProperty Name="Username" ColumnName="Username" />
+          <ScalarProperty Name="Audit_CreatorUserName" ColumnName="Audit_CreatorUserName" />
+          <ScalarProperty Name="Audit_CreatorIP" ColumnName="Audit_CreatorIP" />
+          <ScalarProperty Name="Audit_CreateDate" ColumnName="Audit_CreateDate" />
+          <ScalarProperty Name="Audit_LastModifyDate" ColumnName="Audit_LastModifyDate" />
+          <ScalarProperty Name="Audit_LastModifierUserName" ColumnName="Audit_LastModifierUserName" />
+          <ScalarProperty Name="Audit_LastModifierIP" ColumnName="Audit_LastModifierIP" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ShortLinks">
+      <EntityTypeMapping TypeName="SeatWebDBModel.ShortLink">
+        <MappingFragment StoreEntitySet="ShortLinks">
+          <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+          <ScalarProperty Name="ReferCount" ColumnName="ReferCount" />
+          <ScalarProperty Name="Code" ColumnName="Code" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
+          <ScalarProperty Name="OrginalLink" ColumnName="OrginalLink" />
+          <ScalarProperty Name="ShortLinkPK" ColumnName="ShortLinkPK" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="KeyValues">
+      <EntityTypeMapping TypeName="SeatWebDBModel.KeyValue">
+        <MappingFragment StoreEntitySet="KeyValues">
+          <ScalarProperty Name="Type" ColumnName="Type" />
+          <ScalarProperty Name="Value" ColumnName="Value" />
+          <ScalarProperty Name="Key" ColumnName="Key" />
+          <ScalarProperty Name="Path" ColumnName="Path" />
+          <ScalarProperty Name="RowKey" ColumnName="RowKey" />
+          <ScalarProperty Name="SetKey" ColumnName="SetKey" />
+          <ScalarProperty Name="KeyValuePK" ColumnName="KeyValuePK" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SystemMessages">
+      <EntityTypeMapping TypeName="SeatWebDBModel.SystemMessage">
+        <MappingFragment StoreEntitySet="SystemMessages">
+          <ScalarProperty Name="Audit_LastModifierIP" ColumnName="Audit_LastModifierIP" />
+          <ScalarProperty Name="Audit_LastModifierUserName" ColumnName="Audit_LastModifierUserName" />
+          <ScalarProperty Name="Audit_LastModifyDate" ColumnName="Audit_LastModifyDate" />
+          <ScalarProperty Name="Audit_CreateDate" ColumnName="Audit_CreateDate" />
+          <ScalarProperty Name="Audit_CreatorIP" ColumnName="Audit_CreatorIP" />
+          <ScalarProperty Name="Audit_CreatorUserName" ColumnName="Audit_CreatorUserName" />
+          <ScalarProperty Name="IsEnable" ColumnName="IsEnable" />
+          <ScalarProperty Name="Culture" ColumnName="Culture" />
+          <ScalarProperty Name="Media" ColumnName="Media" />
+          <ScalarProperty Name="Text" ColumnName="Text" />
+          <ScalarProperty Name="Subject" ColumnName="Subject" />
+          <ScalarProperty Name="Code" ColumnName="Code" />
+          <ScalarProperty Name="MessagePK" ColumnName="MessagePK" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="AspNetRoles">
+      <EntityTypeMapping TypeName="SeatWebDBModel.AspNetRole">
+        <MappingFragment StoreEntitySet="AspNetRoles">
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="AspNetUsers">
+      <EntityTypeMapping TypeName="SeatWebDBModel.AspNetUser">
+        <MappingFragment StoreEntitySet="AspNetUsers">
+          <ScalarProperty Name="UserName" ColumnName="UserName" />
+          <ScalarProperty Name="AccessFailedCount" ColumnName="AccessFailedCount" />
+          <ScalarProperty Name="LockoutEnabled" ColumnName="LockoutEnabled" />
+          <ScalarProperty Name="LockoutEndDateUtc" ColumnName="LockoutEndDateUtc" />
+          <ScalarProperty Name="TwoFactorEnabled" ColumnName="TwoFactorEnabled" />
+          <ScalarProperty Name="PhoneNumberConfirmed" ColumnName="PhoneNumberConfirmed" />
+          <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+          <ScalarProperty Name="SecurityStamp" ColumnName="SecurityStamp" />
+          <ScalarProperty Name="PasswordHash" ColumnName="PasswordHash" />
+          <ScalarProperty Name="EmailConfirmed" ColumnName="EmailConfirmed" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Access" ColumnName="Access" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <AssociationSetMapping Name="AspNetUserRoles" TypeName="SeatWebDBModel.AspNetUserRoles" StoreEntitySet="AspNetUserRoles">
+      <EndProperty Name="AspNetUser">
+        <ScalarProperty Name="Id" ColumnName="UserId" />
+      </EndProperty>
+      <EndProperty Name="AspNetRole">
+        <ScalarProperty Name="Id" ColumnName="RoleId" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <EntitySetMapping Name="JobLogs">
+      <EntityTypeMapping TypeName="SeatWebDBModel.JobLog">
+        <MappingFragment StoreEntitySet="JobLogs">
+          <ScalarProperty Name="Audit_LastModifierIP" ColumnName="Audit_LastModifierIP" />
+          <ScalarProperty Name="Audit_LastModifierUserName" ColumnName="Audit_LastModifierUserName" />
+          <ScalarProperty Name="Audit_LastModifyDate" ColumnName="Audit_LastModifyDate" />
+          <ScalarProperty Name="Audit_CreatorIP" ColumnName="Audit_CreatorIP" />
+          <ScalarProperty Name="Audit_CreatorUserName" ColumnName="Audit_CreatorUserName" />
+          <ScalarProperty Name="Audit_CreateDate" ColumnName="Audit_CreateDate" />
+          <ScalarProperty Name="Duration" ColumnName="Duration" />
+          <ScalarProperty Name="Log" ColumnName="Log" />
+          <ScalarProperty Name="JobName" ColumnName="JobName" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="RunDt" ColumnName="RunDt" />
+          <ScalarProperty Name="JobLogPK" ColumnName="JobLogPK" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

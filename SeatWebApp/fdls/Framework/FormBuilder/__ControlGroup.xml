@@ -1,0 +1,56 @@
+﻿<Bocrud Style="classic"
+        DetailPosition="up"
+        Name="__ControlGroup"
+        Caption="بخش"
+        Height="650" Width="750"
+        ToStringFormat="{Title}"
+        DirectAccessible="false"
+        xmlns="http://exirtechsun.com/uie/2014/schema"
+       xmlns:yaxlib="http://yaxlib.codeplex.com/">
+  <DefaultValue>
+    <Add Property="Template" Value="'fluid'"/>
+    <Add Property="Title" Value="''"/>
+  </DefaultValue>
+  <Groups>
+    <Group Title="جزئیات"  ColumnCount="2" Template="fluid" ShowConditionSpel="">
+      <Controls>
+        <TextBox  Caption="کد" Name="Name" Type="Code" EditableConditionSpel="Key.IsEmpty">
+          <Validators>
+            <RequiredFieldValidator Required="true"/>
+            <TextValidator MaxLength="50" MinLength="1"/>
+            <RegularExpressionValidator RegularExpression="[a-zA-Z0-9-]+" ErrorMessage="فقط کاراکترهای انگلیسی و اعداد قابل قبول هستند."/>
+          </Validators>
+        </TextBox>
+        <TextBox  Caption="عنوان" Name="Title"  />
+        <TextBox  Caption="تعداد ستون" Name="ColumnCount"  />
+        <TextBox Name="ShowConditionSpel" Caption="اسکریپت نمایش بخش" Type="Code"/>
+        <TextBox Name="Template" Caption="الگو" Type="Code"/>
+      </Controls>
+      <Groups>
+        <Group Template="fluid" ColumnCount="1">
+          <Controls>
+            <One2Many Name="Controls" Caption="کنترل ها" BocrudXml="__FormControl" Sortable="true"/>
+          </Controls>
+        </Group>
+      </Groups>
+    </Group>
+  </Groups>
+
+  <Grid Caption="لیست بخش ها"
+  EnableSearch="false" ToolbarSearch="false" AutoWidth="true" Width="100"
+  MultiSelect="true">
+    <Columns>
+      <Column Width="150" Name="Name" />
+      <Column Width="150" Name="Title" />
+      <Column Width="150" Name="ColumnCount" />
+      <Column Width="150" Name="Template" />
+      <Column Width="150" Name="ShowConditionSpel" />
+    </Columns>
+  </Grid>
+  <Operations>All</Operations>
+  <!--All Create Update ViewDetail Search Delete Print CreateRoot CreateChild TreeCopy TreeMove None-->
+  <FactoryMethodArgsSpel>
+    <String>T(Exir.Framework.Uie.Adapter.FormBuilder.ControlGroupService, Exir.Framework.Uie.Adapter)</String>
+  </FactoryMethodArgsSpel>
+</Bocrud>
+

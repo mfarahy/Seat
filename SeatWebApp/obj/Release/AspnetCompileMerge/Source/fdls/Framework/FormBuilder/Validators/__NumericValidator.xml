@@ -1,0 +1,28 @@
+﻿<Bocrud Style="classic"
+        DetailPosition="up"
+        Name="__NumericValidator"
+        Caption="اعتبارسنج عددی"
+        Height="400" Width="500"
+        ToStringFormat="{Caption}"
+        DirectAccessible="false"
+        xmlns="http://exirtechsun.com/uie/2014/schema"
+       xmlns:yaxlib="http://yaxlib.codeplex.com/">
+
+  <Groups>
+    <Group Title="تنظیمات مخصوص" ColumnCount="2" Template="fluid">
+      <Controls>
+        <TextBox Name="Min" Caption="مقدار حداقل" />
+        <TextBox Name="Max" Caption="مقدار حداکثر" />
+        <TextBox Name="MinErrorMessage" Caption="پیغام خطای مقدار حداقل" />
+        <TextBox Name="MaxErrorMessage" Caption="پیغام خطای مقدار حداکثر" />
+      </Controls>
+    </Group>
+    <![CDATA[@{include:__PropertyValidator#//uie:Groups/uie:Group[@Name='CommonSettings']}]]>
+  </Groups>
+
+  <Operations>All</Operations>
+  <FactoryMethodArgsSpel>
+    <String>T(Exir.Framework.Uie.Bocrud.NumericValidator, Exir.Framework.Uie)</String>
+  </FactoryMethodArgsSpel>
+</Bocrud>
+

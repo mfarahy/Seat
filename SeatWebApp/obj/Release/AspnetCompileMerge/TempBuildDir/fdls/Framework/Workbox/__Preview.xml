@@ -1,0 +1,37 @@
+﻿<Bocrud                 Style="classic"
+        DetailPosition="replacement"
+        Name="__Preview"
+        Caption="Preview"        
+        Height="480" Width="640"
+        ToStringFormat="" 
+DirectAccessible="false"
+AccessOperation="_Prvw.A"
+        xmlns="http://exirtechsun.com/uie/2014/schema"
+       xmlns:yaxlib="http://yaxlib.codeplex.com/">
+
+  <Groups>
+    <Group Title="جزئیات"  ColumnCount="2" Template="fluid">
+      <Controls>
+<TextBox  Name="TypeName" Caption="TypeName"  /> 
+<TextBox  Name="EntityId" Caption="EntityId"  /> 
+<TextBox  Name="HtmlPreview" Caption="HtmlPreview"  /> 
+     </Controls>
+    </Group>
+  </Groups>
+
+<Grid Caption="لیست Preview" 
+EnableSearch="false" ToolbarSearch="false" AutoWidth="false" Width="450"  
+MultiSelect="true">
+    <Columns>
+      <Column Width="150" Name="TypeName" />
+      <Column Width="150" Name="EntityId" />
+      <Column Width="150" Name="HtmlPreview" />
+
+    </Columns>
+</Grid>
+<Operations>All</Operations><!--All Create Update ViewDetail Search Delete Print CreateRoot CreateChild TreeCopy TreeMove None-->
+  <FactoryMethodArgsSpel>
+      <String>T(Exir.Workbox.Services.PreviewService, Exir.Workbox)</String>
+  </FactoryMethodArgsSpel>
+</Bocrud>
+

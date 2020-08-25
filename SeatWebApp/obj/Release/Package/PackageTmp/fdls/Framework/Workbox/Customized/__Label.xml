@@ -1,0 +1,55 @@
+﻿<Bocrud                 Style="classic"
+        DetailPosition="up"
+        Name="__Label"
+        Caption="برچسب"
+        Height="480" Width="640"
+        ToStringFormat="{Name}({LatinName})"
+        FilterSpel="AsRule('OnDelete').Equal('ParentId',null)"
+        DirectAccessible="true"
+        AccessOperation="_Lbl.A"
+        xmlns="http://exirtechsun.com/uie/2014/schema"
+       xmlns:yaxlib="http://yaxlib.codeplex.com/">
+
+
+  <TreeInfo TidProperty="Id"
+            ExpanderProperty="Childs"
+            ParentProperty="Parent"
+            ParentTidProperty="ParentId"
+            TreeView="true" LeafProperty="IsLeaf"
+            TreeExpandColumn="Name"/>
+
+  <Groups>
+    <Group Title="جزئیات"  ColumnCount="2" Template="fluid">
+      <Controls>
+        <TextBox  Caption="نام برچسب" Name="Name"  />
+        <TextBox  Caption="کد برچسب" Name="LatinName" Direction="Ltr" FontName="Courier New" Help="نام لاتین برچسب">
+          <Validators>
+            <RequiredFieldValidator Required="true"/>
+          </Validators>
+        </TextBox>
+        <TextBox  Caption="اولویت ترتیب" Name="LevelOrder"  />
+        <CheckBox  Caption="عمومی ؟" ShowConditionSpel="#Mode=='GridView' or #Container.ParentId==null" Name="IsPublic" AccessDeniedAction="Hide"  />
+        <TextColor Name="ForegroundColor" BackgroundProperty="BackgroundColor" Caption="رنگ" Text="نام برچسب" />
+        <TextBox Name="VitibleForRoles"  Caption="قابل مشاهده برای" AccessDeniedAction="Hide" Type="Code" />
+        <TextBox Name="NotVisibleForRoles"  Caption="غیر قابل مشاهده برای" AccessDeniedAction="Hide" Type="Code"/>
+        <CheckBox  Caption="غیر فعال ؟" Name="IsInactive" TrueText="Yes" FalseText="No" DisplayMode="AsCheckBox"  />
+      </Controls>
+    </Group>
+  </Groups>
+
+  <Grid Caption="لیست برچسب ها" EnableSearch="false" ToolbarSearch="false" AutoWidth="true" Width="100"
+  MultiSelect="true" SortName="LevelOrder" SortOrder="asc" >
+    <Columns>
+      <Column Width="300" Name="Name" />
+      <Column Width="50" Name="LatinName" />
+      <Column Width="50" Name="ForegroundColor" />
+      <Column Width="50" Name="IsInactive" />
+    </Columns>
+  </Grid>
+  <Operations>All</Operations>
+  <!--All Create Update ViewDetail Search Delete Print CreateRoot CreateChild TreeCopy TreeMove None-->
+  <FactoryMethodArgsSpel>
+    <String>T(Exir.Workbox.Services.LabelService, Exir.Workbox)</String>
+  </FactoryMethodArgsSpel>
+</Bocrud>
+

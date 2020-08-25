@@ -1,0 +1,137 @@
+﻿<Bocrud Style="classic"
+        DetailPosition="up"
+        Name="__FormControl"
+        Caption="کنترل"
+        Height="500" Width="720"
+        ToStringFormat="{Caption}"
+        DirectAccessible="false"
+        xmlns="http://exirtechsun.com/uie/2014/schema"
+       xmlns:yaxlib="http://yaxlib.codeplex.com/">
+  <SubTypes>
+    <Add Caption="کنترل‌های ساده">
+      <SubTypes>
+        <Add TypeName="TextBox" Xml ="__TextBox"></Add>
+        <Add TypeName="CheckBox" Xml ="__CheckBox"></Add>
+        <Add TypeName="CKEditor" Xml ="__CKEditor"></Add>
+        <Add TypeName="ClockPicker" Xml ="__ClockPicker"></Add>
+        <Add TypeName="ColorPicker" Xml ="__ColorPicker"></Add>
+        <Add TypeName="DateTimePicker" Xml ="__DateTimePicker"></Add>
+        <Add TypeName="Label" Xml ="___Label"></Add>
+        <Add TypeName="Line" Xml ="__Line"></Add>
+        <Add TypeName="Link" Xml ="__Link"></Add>
+        <Add TypeName="Break" Xml ="__Break"></Add>
+        <Add TypeName="QrCode" Xml ="__QrCode"></Add>
+        <Add TypeName="Soon" Xml ="__Soon"></Add>
+        <Add TypeName="Tagging" Xml ="__Tagging"></Add>
+        <Add TypeName="TextboxList" Xml ="__TextboxList"></Add>
+        <Add TypeName="ConditionLabel" Xml ="__ConditionLabel"></Add>
+        <Add TypeName="ImageBox" Xml ="__ImageBox"></Add>
+        <Add TypeName="FileControl" Xml ="__FileControl"></Add>
+      </SubTypes>
+    </Add>
+    <Add Caption="کنترل‌های رابطه‌ای">
+      <SubTypes>
+        <Add TypeName="Many2One" Xml ="__Many2One"></Add>
+        <Add TypeName="One2Many" Xml ="__One2Many"></Add>
+        <Add TypeName="Many2Many" Xml ="__Many2Many"></Add>
+        <Add TypeName="Select2" Xml ="__Select2"></Add>
+        <Add TypeName="Radio" Xml ="__Radio"></Add>
+        <Add TypeName="Repeater" Xml ="__Repeater"></Add>
+        <Add TypeName="Single" Xml ="__Single"></Add>
+        <Add TypeName="Template" Xml ="__Template"></Add>
+      </SubTypes>
+    </Add>
+  </SubTypes>
+  <Groups>
+    <Group Name="CommonSettings" Title="تنظیمات عمومی"  ColumnCount="3" Template="fluid">
+      <Controls>
+        <TextBox  Caption="کد" Name="Name" Type="Code" EditableConditionSpel="Key.IsEmpty">
+          <Validators>
+            <RequiredFieldValidator Required="true"/>
+            <TextValidator MaxLength="50" MinLength="1"/>
+            <RegularExpressionValidator RegularExpression="[a-zA-Z0-9-]+" ErrorMessage="فقط کاراکترهای انگلیسی و اعداد قابل قبول هستند."/>
+          </Validators>
+        </TextBox>
+        <TextBox  Caption="عنوان" Name="Caption"/>
+        <CheckBox Name="AllowCreateMode" Caption="نمایش در زمان جدید ؟"/>
+        <CheckBox Name="AllowEditMode" Caption="نمایش در زمان ویرایش ؟"/>
+        <CheckBox Name="AllowViewMode" Caption="نمایش در زمان مشاهده ؟"/>
+        <TextBox  Name="Height" Caption="ارتفاع" />
+        <TextBox  Name="Width" Caption="عرض" />
+        <TextBox  Name="Help" Caption="راهنما" MultiLine="true" />
+        <CheckBox Name="IsEditable" Caption="قابل ویرایش ؟"/>
+        <Select2 Name="RenderStyle" Caption="شیوه رندر">
+          <Items>
+            <Add  Text="خودکار" Value="Auto"/>
+            <Add  Text="عنوان ابتدا" Value="InlineCaptionFirst"/>
+            <Add  Text="عنوان انتها" Value="InlineCaptionLast"/>
+          </Items>
+        </Select2>
+        <CheckBox Name="ShowIfNotEmpty" Caption="نمایش درصورت داشتن مقدار ؟"/>
+      </Controls>
+    </Group>
+    <Group Name="AdvancedCommonSettings" Title="تنظیمات پیشرفته" ColumnCount="2" Template="fluid">
+      <Controls>
+        <TextBox  Name="ShowConditionSpel" Caption="اسکریپت نمایش"  Type="Code"/>
+        <CheckBox Name="IgnorePartialUpdate" Caption="عدم شرکت در بروزرسانی ؟"/>
+        <TextBox  Name="GetValueSpel" Caption="اسکریپت خواندن مقدار"  Type="Code"/>
+        <TextBox  Name="SetValueSpel" Caption="اسکریپت تنظیم مقدار"  Type="Code"/>
+        <TextBox  Name="EditableConditionSpel" Caption="اسکریپت قابلیت ویرایش"  Type="Code"/>
+        <CheckBox Name="ClientHide" Caption="پنهان در سمت کلاینت ؟"/>
+        <CheckBox Name="AlwaysEditable" Caption="همیشه در حالت ویرایش ؟"/>
+        <TextBox  Name="AccessOperation" Caption="عملگر دسترسی" Type="Code"   />
+        <Select2 Name="AccessDeniedAction" Caption="عملیات دسترسی غیر مجاز">
+          <Items>
+            <Add  Text="هیچ کار" Value="None"/>
+            <Add  Text="پنهان کردن" Value="Hide"/>
+            <Add  Text="غیر فعال کردن" Value="Disable"/>
+            <Add  Text="نمایش پیام" Value="Message"/>
+          </Items>
+        </Select2>
+      </Controls>
+    </Group>
+    <Group Name="ValidatorsSection" Title="اعتبار سنج‌ها" ColumnCount="1" Template="fluid">
+      <Controls>
+        <One2Many Name="Validators" BocrudXml="__PropertyValidator"/>
+      </Controls>
+    </Group>
+    <Group Name="GridColumnSettings" Title="نمایش در گرید" ColumnCount="1" Template="fluid">
+      <Controls>
+        <CheckBox Name="ShowInGrid" Caption="نمایش در گرید ؟">
+          <Conditions>
+            <Add EvalScript="{ShowInGrid}">
+              <Actions>
+                <Add Action="Show" On="GridItem"/>
+              </Actions>
+              <ElseActions>
+                <Add Action="Hide" On="GridItem"/>
+              </ElseActions>
+            </Add>
+          </Conditions>
+        </CheckBox>
+        <Single Name="GridItem" BocrudXml="__FormGridItem" UseDialog="false"/>
+      </Controls>
+    </Group>
+  </Groups>
+
+  <Grid Caption="لیست فرم ها"
+  EnableSearch="false" ToolbarSearch="false" AutoWidth="true" Width="100"
+  MultiSelect="true">
+    <Columns>
+      <Column Width="150" Name="Name" />
+      <Column Width="150" Name="Caption" />
+      <Column Width="150" Name="AllowCreateMode" />
+      <Column Width="150" Name="AllowEditMode" />
+      <Column Width="150" Name="AllowViewMode" />
+      <Column Width="150" Name="ShowIfNotEmpty" />
+      <Column Width="150" Name="EditableConditionSpel" />
+      <Column Width="150" Name="ShowConditionSpel" />
+    </Columns>
+  </Grid>
+  <Operations>All</Operations>
+  <!--All Create Update ViewDetail Search Delete Print CreateRoot CreateChild TreeCopy TreeMove None-->
+  <FactoryMethodArgsSpel>
+    <String>T(Exir.Framework.Uie.Adapter.FormBuilder.FormControlService, Exir.Framework.Uie.Adapter)</String>
+  </FactoryMethodArgsSpel>
+</Bocrud>
+

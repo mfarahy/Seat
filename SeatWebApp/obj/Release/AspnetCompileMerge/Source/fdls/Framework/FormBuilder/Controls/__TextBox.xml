@@ -1,0 +1,65 @@
+﻿<Bocrud Style="classic"
+        DetailPosition="up"
+        Name="__TextBox"
+        Caption="کنترل متن"
+        Height="500" Width="700"
+        ToStringFormat="{Caption}"
+        DirectAccessible="false"
+        xmlns="http://exirtechsun.com/uie/2014/schema"
+       xmlns:yaxlib="http://yaxlib.codeplex.com/">
+
+  <Groups>
+    <![CDATA[@{include:__FormControl#//uie:Groups/uie:Group[@Name='CommonSettings']}]]>
+
+    <Group Title="تنظیمات مخصوص" ColumnCount="3" Template="fluid">
+      <Controls>
+        <CheckBox Name="AutoComplete" Caption="حالت تکمیل خودکار ؟"/>
+        <TextBox  Name="Cols" Caption="تعداد ستون" />
+        <TextBox  Name="Rows" Caption="تعداد ردیف" />
+        <TextBox  Name="DefaultValue" Caption="مقدار پیشفرض" />
+        <CheckBox Name="DigitalGroup" Caption="جدا سازی ارقام ؟"/>
+        <Radio Name="Direction" Caption="جهت">
+          <Items>
+            <Add Text="چپ به راست" Value="Ltr"/>
+            <Add Text="راست به چپ" Value="Rtl"/>
+          </Items>
+        </Radio>
+        <TextBox  Name="FontName" Caption="فونت"  />
+        <TextBox  Name="Mask" Caption="ماسک" />
+        <CheckBox Name="MultiLine" Caption="چند خطی ؟"/>
+        <CheckBox Name="Password" Caption="کلمه عبور؟"/>
+        <CheckBox Name="IncludePasswordConfirm" Caption="شامل تایید کلمه عبور ؟"/>
+        <TextBox  Name="PlaceHolder" Caption="عبارت جای خالی" />
+        <CheckBox Name="ReadOnly" Caption="فقط خواندنی ؟"/>
+        <CheckBox Name="SafeMode" Caption="حالت مطمئن ؟"/>
+        <Select2 Name="Type" Caption="نوع">
+          <Items>
+            <Add Value="Text" Text="متنی" />
+            <Add Value="Color" Text="رنگ" />
+            <Add Value="Email" Text="آدرس ایمیل" />
+            <Add Value="Hidden" Text="پنهان" />
+            <Add Value="Month" Text="ماه" />
+            <Add Value="Number" Text="عددی" />
+            <Add Value="Search" Text="جستجو" />
+            <Add Value="Tel" Text="تلفن" />
+            <Add Value="Time" Text="زمان" />
+            <Add Value="Url"  Text="آدرس URL"/>
+            <Add Value="Week" Text="هفته" />
+            <Add Value="Code" Text="کد" />
+          </Items>
+        </Select2>
+          <TextBox  Name="AutoCompleteSpel" Caption="اسکریپت تکمیل خودکار"  Type="Code"/>
+    </Controls>
+    </Group>
+
+    <![CDATA[@{include:__FormControl#//uie:Groups/uie:Group[@Name='AdvancedCommonSettings']}]]>
+    <![CDATA[@{include:__FormControl#//uie:Groups/uie:Group[@Name='ValidatorsSection']}]]>
+    <![CDATA[@{include:__FormControl#//uie:Groups/uie:Group[@Name='GridColumnSettings']}]]>
+  </Groups>
+
+  <Operations>All</Operations>
+  <FactoryMethodArgsSpel>
+    <String>T(Exir.Framework.Uie.Bocrud.TextBox, Exir.Framework.Uie)</String>
+  </FactoryMethodArgsSpel>
+</Bocrud>
+

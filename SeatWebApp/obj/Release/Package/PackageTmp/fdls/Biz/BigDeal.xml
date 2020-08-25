@@ -1,0 +1,80 @@
+<Bocrud  Style="classic"
+		   DirectAccessible="true"
+        DetailPosition="up"
+        Name="BigDeal"
+        Caption="معاملات درشت"
+        Height="480" Width="640"
+          SearchXml="BigDeal-Search"
+          FilterSpel="SetCommand('Search')"
+        ToStringFormat=""
+        xmlns="http://exirtechsun.com/uie/2014/schema"
+       xmlns:yaxlib="http://yaxlib.codeplex.com/">
+
+
+	<Groups>
+		<Group Title="جزئیات"  ColumnCount="2" Template="fluid">
+			<Controls>
+				<DateTimePicker  Caption="تاریخ معامله" Name="Date"  />
+				<Time  Caption="زمان معامله" Name="Time"   />
+
+				<TextBox  Caption="تعداد" Name="Count"  />
+				<TextBox  Caption="حجم" Name="Volume"  DigitalGroup="true" />
+				<Radio Name="TraderType" Caption="نوع معامله‌گر">
+					<Items>
+						<Add Value="1" Text="فرد حقیقی"/>
+						<Add Value="2" Text="حقوقی"/>
+					</Items>
+				</Radio>
+				<Radio Name="DealTypeCss" GetValueSpel="#Container.DealType">
+					<Items>
+						<Add Value="1" Text="buy"/>
+						<Add Value="2" Text="sell"/>
+					</Items>
+				</Radio>
+				<Radio Name="DealType" Caption="نوع معامله">
+					<Items>
+						<Add Value="1" Text="خرید"/>
+						<Add Value="2" Text="فروش"/>
+					</Items>
+				</Radio>
+				<TextBox  Caption="قیمت" Name="Price" DigitalGroup="true" />
+				<TextBox  Caption="میانگین معامله" Name="AmountAvg" DigitalGroup="true" Style="font-weight:bold" />
+				<ChangePercent  Caption="پایانی" Name="pcp" Format="\%0"  />
+				<ChangePercent  Caption="آخرین" Name="plp" Format="\%0"  />
+				<TextBox  Caption="وضعیت صف" Name="QueueState"  />
+				<TextBox  Caption="نماد" Name="Symbol"  />
+				<Select2 BocrudXml="InstrumentCategory" Caption="صنعت" Name="CSecVal" DataValueField="CSecVal" DataTextField="Name" />
+
+			</Controls>
+		</Group>
+	</Groups>
+
+	<Grid Caption="لیست معاملات درشت"
+	EnableSearch="false" ToolbarSearch="false" AutoWidth="true" Width="100"  ForceFit="false" ShrinkToFit="false"
+	MultiSelect="false" EnableColumnChooser="true" SortName="DayDt" SortOrder="desc"  CssColumn="DealTypeCss" ShowRowNumber="true" >
+		<Columns>
+			<Column Width="100" Name="Date"  Sortable="true" Hidden="true" />
+			<Column Width="70"  Name="Time"  Sortable="true" />
+			<Column Width="50"  Name="Count"   Sortable="false"  Align="Left" />
+			<Column Width="80"  Name="TraderType"   Sortable="true" Align="Center" />
+			<Column Width="100" Name="Volume"   Sortable="true" Align="Left" />
+			<Column Width="100" Name="Price"   Sortable="true" Align="Left" />
+			<Column Width="140" Name="AmountAvg"  Sortable="true"  Align="Left"/>
+			<Column Width="70"  Name="DealType"   Sortable="true" Hidden="false" />
+			<Column Width="60"  Name="pcp"  Sortable="false"  Align="Center"/>
+			<Column Width="60"  Name="plp"  Sortable="false"  Align="Center" />
+			<Column Width="100" Name="QueueState"  Sortable="false" DisplayPriority="5" />
+			<Column Width="150" Name="CSecVal"  Hidden="true" />
+			<Column Width="100" Name="DealTypeCss"   Sortable="true" Hidden="true" HidedInDialog="true"/>
+			<Column Width="100" Name="Symbol"   Sortable="false" Hidden="false"  />
+		</Columns>
+		
+	</Grid>
+	<Operations>Search</Operations>
+	<!--All Create Update ViewDetail Search Delete Print CreateRoot CreateChild TreeCopy TreeMove None-->
+	<FactoryMethodArgsSpel>
+		<String>'BigDealService'</String>
+		<String>T(SeatWebApp.Models.BigDealViewModel, SeatWebApp)</String>
+	</FactoryMethodArgsSpel>
+</Bocrud>
+

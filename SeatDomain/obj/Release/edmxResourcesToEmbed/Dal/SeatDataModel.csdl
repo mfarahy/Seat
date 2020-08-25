@@ -1,0 +1,419 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="SeatDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityContainer Name="SeatDBEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="BestLimits" EntityType="SeatDBModel.BestLimit" />
+    <EntitySet Name="ClientTypes" EntityType="SeatDBModel.ClientType" />
+    <EntitySet Name="CodalMessages" EntityType="SeatDBModel.CodalMessage" />
+    <EntitySet Name="Histories" EntityType="SeatDBModel.History" />
+    <EntitySet Name="Instruments" EntityType="SeatDBModel.Instrument" />
+    <EntitySet Name="Messages" EntityType="SeatDBModel.Message" />
+    <EntitySet Name="ShareHolderChanges1" EntityType="SeatDBModel.ShareHolderChange" />
+    <EntitySet Name="Trades" EntityType="SeatDBModel.Trade" />
+    <AssociationSet Name="InsMsgMap" Association="SeatDBModel.InsMsgMap">
+      <End Role="Instrument" EntitySet="Instruments" />
+      <End Role="Message" EntitySet="Messages" />
+    </AssociationSet>
+    <EntitySet Name="ClosingPrices" EntityType="SeatDBModel.ClosingPrice" />
+    <EntitySet Name="LiveInstDatas" EntityType="SeatDBModel.LiveInstData" />
+    <EntitySet Name="IndexLastDayTimeValues" EntityType="SeatDBModel.IndexLastDayTimeValue" />
+    <AssociationSet Name="FK_IndexLastDayTimeValue_Instruments" Association="SeatDBModel.FK_IndexLastDayTimeValue_Instruments">
+      <End Role="Instrument" EntitySet="Instruments" />
+      <End Role="IndexLastDayTimeValue" EntitySet="IndexLastDayTimeValues" />
+    </AssociationSet>
+    <EntitySet Name="InstrumentCategories" EntityType="SeatDBModel.InstrumentCategory" />
+    <EntitySet Name="BigDeals" EntityType="SeatDBModel.BigDeal" />
+    <EntitySet Name="NotificationLogs" EntityType="SeatDBModel.NotificationLog" />
+    <EntitySet Name="Portfolios" EntityType="SeatDBModel.Portfolio" />
+    <AssociationSet Name="FK_NotificationLogs_Instruments" Association="SeatDBModel.FK_NotificationLogs_Instruments">
+      <End Role="Instrument" EntitySet="Instruments" />
+      <End Role="NotificationLog" EntitySet="NotificationLogs" />
+    </AssociationSet>
+    <AssociationSet Name="PortInstMap" Association="SeatDBModel.PortInstMap">
+      <End Role="Instrument" EntitySet="Instruments" />
+      <End Role="Portfolio" EntitySet="Portfolios" />
+    </AssociationSet>
+    <EntitySet Name="Notifications" EntityType="SeatDBModel.Notification" />
+    <AssociationSet Name="FK_NotificationLogs_Notifications" Association="SeatDBModel.FK_NotificationLogs_Notifications">
+      <End Role="Notification" EntitySet="Notifications" />
+      <End Role="NotificationLog" EntitySet="NotificationLogs" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Notifications_Portfolios" Association="SeatDBModel.FK_Notifications_Portfolios">
+      <End Role="Portfolio" EntitySet="Portfolios" />
+      <End Role="Notification" EntitySet="Notifications" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="BestLimit">
+    <Key>
+      <PropertyRef Name="BestLimitPK" />
+    </Key>
+    <Property Name="BestLimitPK" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="InsCode" Type="Int64" Nullable="false" />
+    <Property Name="DateTime" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="Row" Type="Int32" Nullable="false" />
+    <Property Name="Buy_Count" Type="Int32" Nullable="false" />
+    <Property Name="Buy_Volume" Type="Int64" Nullable="false" />
+    <Property Name="Buy_Price" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+    <Property Name="Sell_Price" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+    <Property Name="Sell_Volume" Type="Int64" Nullable="false" />
+    <Property Name="Sell_Count" Type="Int32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ClientType">
+    <Key>
+      <PropertyRef Name="ClintTypePK" />
+    </Key>
+    <Property Name="ClintTypePK" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="DayDt" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="Buy_CountI" Type="Int32" Nullable="false" />
+    <Property Name="Buy_CountN" Type="Int32" Nullable="false" />
+    <Property Name="Buy_I_Volume" Type="Int64" Nullable="false" />
+    <Property Name="Buy_N_Volume" Type="Int64" Nullable="false" />
+    <Property Name="Sell_CountI" Type="Int32" Nullable="false" />
+    <Property Name="Sell_CountN" Type="Int32" Nullable="false" />
+    <Property Name="Sell_I_Volume" Type="Int64" Nullable="false" />
+    <Property Name="Sell_N_Volume" Type="Int64" Nullable="false" />
+    <Property Name="Pl" Type="Int32" Nullable="false" />
+    <Property Name="TVol" Type="Int64" Nullable="false" />
+    <Property Name="Prev_Buy_CountI" Type="Int32" Nullable="false" />
+    <Property Name="Prev_Buy_CountN" Type="Int32" Nullable="false" />
+    <Property Name="Prev_Buy_I_Volume" Type="Int64" Nullable="false" />
+    <Property Name="Prev_Buy_N_Volume" Type="Int64" Nullable="false" />
+    <Property Name="Prev_Sell_CountI" Type="Int32" Nullable="false" />
+    <Property Name="Prev_Sell_CountN" Type="Int32" Nullable="false" />
+    <Property Name="Prev_Sell_I_Volume" Type="Int64" Nullable="false" />
+    <Property Name="Prev_Sell_N_Volume" Type="Int64" Nullable="false" />
+    <Property Name="Prev_Pl" Type="Int32" Nullable="false" />
+    <Property Name="Prev_TVol" Type="Int64" Nullable="false" />
+    <Property Name="heven" Type="Time" Nullable="false" Precision="7" />
+    <Property Name="InsCode" Type="Int64" Nullable="false" />
+    <Property Name="VisitCount" Type="Int32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="CodalMessage">
+    <Key>
+      <PropertyRef Name="TracingNo" />
+    </Key>
+    <Property Name="TracingNo" Type="Int32" Nullable="false" />
+    <Property Name="Symbol" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="CompanyName" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Title" Type="String" Nullable="false" MaxLength="1500" FixedLength="false" Unicode="true" />
+    <Property Name="SentDateTime" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="PublishDateTime" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="InsCode" Type="Int64" />
+  </EntityType>
+  <EntityType Name="History">
+    <Key>
+      <PropertyRef Name="HistoryPK" />
+    </Key>
+    <Property Name="HistoryPK" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="InsCode" Type="Int64" Nullable="false" />
+    <Property Name="Date" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="DEven" Type="Int32" Nullable="false" />
+    <Property Name="PClosing" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+    <Property Name="PDrCotVal" Type="Int32" Nullable="false" />
+    <Property Name="ZTotTran" Type="Int64" Nullable="false" />
+    <Property Name="QTotTran5J" Type="Int64" Nullable="false" />
+    <Property Name="QTotCap" Type="Int64" Nullable="false" />
+    <Property Name="PriceMin" Type="Int32" Nullable="false" />
+    <Property Name="PriceMax" Type="Int32" Nullable="false" />
+    <Property Name="PriceYesterday" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+    <Property Name="PriceFirst" Type="Int32" Nullable="false" />
+    <Property Name="Heven" Type="Int32" Nullable="false" />
+    <Property Name="Eps" Type="Double" Nullable="false" />
+    <Property Name="Pe" Type="Double" Nullable="false" />
+    <Property Name="VisitCount" Type="Int32" Nullable="false" />
+    <Property Name="BigMoney" Type="Int64" Nullable="false" />
+    <Property Name="Buy_CountI" Type="Int32" Nullable="false" />
+    <Property Name="Buy_CountN" Type="Int32" Nullable="false" />
+    <Property Name="Buy_I_Volume" Type="Int64" Nullable="false" />
+    <Property Name="Buy_N_Volume" Type="Int64" Nullable="false" />
+    <Property Name="Sell_CountI" Type="Int32" Nullable="false" />
+    <Property Name="Sell_CountN" Type="Int32" Nullable="false" />
+    <Property Name="Sell_I_Volume" Type="Int64" Nullable="false" />
+    <Property Name="Sell_N_Volume" Type="Int64" Nullable="false" />
+    <Property Name="HasDetails" Type="Boolean" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Instrument">
+    <Key>
+      <PropertyRef Name="InsCode" />
+    </Key>
+    <Property Name="InsCode" Type="Int64" Nullable="false" />
+    <Property Name="InstrumentID" Type="String" Nullable="false" MaxLength="12" FixedLength="true" Unicode="false" />
+    <Property Name="LatinSymbol" Type="String" MaxLength="5" FixedLength="true" Unicode="false" />
+    <Property Name="LatinName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="CompanyCode" Type="String" MaxLength="4" FixedLength="true" Unicode="false" />
+    <Property Name="Symbol" Type="String" Nullable="false" MaxLength="18" FixedLength="false" Unicode="true" />
+    <Property Name="Name" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="CIsin" Type="String" MaxLength="12" FixedLength="true" Unicode="false" />
+    <Property Name="DEven" Type="Int32" Nullable="true" />
+    <Property Name="Flow" Type="Byte" Nullable="false" />
+    <Property Name="LSoc30" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="CGdSVal" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="CGrValCot" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="YMarNSC" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="CComVal" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="CSecVal" Type="String" MaxLength="2" FixedLength="false" Unicode="false" />
+    <Property Name="CSoSecVal" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
+    <Property Name="YVal" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
+    <Property Name="Eps" Type="Double" Nullable="false" />
+    <Property Name="Pe" Type="Double" Nullable="false" />
+    <Property Name="Type" Type="Byte" Nullable="true" />
+    <Property Name="BVol" Type="Int64" Nullable="false" />
+    <Property Name="Cs" Type="Int32" Nullable="false" />
+    <Property Name="Z" Type="Int64" Nullable="false" />
+    <NavigationProperty Name="Messages" Relationship="SeatDBModel.InsMsgMap" FromRole="Instrument" ToRole="Message" />
+    <NavigationProperty Name="IndexValues" Relationship="SeatDBModel.FK_IndexLastDayTimeValue_Instruments" FromRole="Instrument" ToRole="IndexLastDayTimeValue" />
+    <NavigationProperty Name="NotificationLogs" Relationship="SeatDBModel.FK_NotificationLogs_Instruments" FromRole="Instrument" ToRole="NotificationLog" />
+    <NavigationProperty Name="Portfolios" Relationship="SeatDBModel.PortInstMap" FromRole="Instrument" ToRole="Portfolio" />
+  </EntityType>
+  <EntityType Name="Message">
+    <Key>
+      <PropertyRef Name="MessagePK" />
+    </Key>
+    <Property Name="MessagePK" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Subject" Type="String" Nullable="false" MaxLength="1000" FixedLength="false" Unicode="true" />
+    <Property Name="MessageDt" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="Description" Type="String" Nullable="false" MaxLength="3000" FixedLength="false" Unicode="true" />
+    <Property Name="InsCode" Type="Int64" />
+    <NavigationProperty Name="Instruments" Relationship="SeatDBModel.InsMsgMap" FromRole="Message" ToRole="Instrument" />
+  </EntityType>
+  <EntityType Name="ShareHolderChange">
+    <Key>
+      <PropertyRef Name="ShareHolderChangePK" />
+    </Key>
+    <Property Name="ShareHolderChangePK" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="HolderPK" Type="Int32" Nullable="false" />
+    <Property Name="InstrumentID" Type="String" Nullable="false" MaxLength="12" FixedLength="true" Unicode="false" />
+    <Property Name="Quoantity" Type="Int64" Nullable="false" />
+    <Property Name="Percent" Type="Double" Nullable="false" />
+    <Property Name="Arrow" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+    <Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="InsCode" Type="Int64" Nullable="false" />
+    <Property Name="DateTime" Type="DateTime" Nullable="false" Precision="3" />
+  </EntityType>
+  <EntityType Name="Trade">
+    <Key>
+      <PropertyRef Name="TradePK" />
+    </Key>
+    <Property Name="TradePK" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="InsCode" Type="Int64" Nullable="false" />
+    <Property Name="DateTime" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="Number" Type="Int32" Nullable="false" />
+    <Property Name="Quantity" Type="Int32" Nullable="false" />
+    <Property Name="Price" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+    <Property Name="Unknown1" Type="Int32" Nullable="false" />
+  </EntityType>
+  <Association Name="InsMsgMap">
+    <End Type="SeatDBModel.Instrument" Role="Instrument" Multiplicity="*" />
+    <End Type="SeatDBModel.Message" Role="Message" Multiplicity="*" />
+  </Association>
+  <EntityType Name="ClosingPrice">
+    <Key>
+      <PropertyRef Name="ClosingPricePK" />
+    </Key>
+    <Property Name="ClosingPricePK" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="DateTime" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="InsCode" Type="Int64" Nullable="false" />
+    <Property Name="PdrCotVal" Type="Int32" Nullable="false" />
+    <Property Name="PClosing" Type="Int32" Nullable="false" />
+    <Property Name="First" Type="Int32" Nullable="false" />
+    <Property Name="Ystrdy" Type="Int32" Nullable="false" />
+    <Property Name="Max" Type="Int32" Nullable="false" />
+    <Property Name="Min" Type="Int32" Nullable="false" />
+    <Property Name="TradeCount" Type="Int32" Nullable="false" />
+    <Property Name="Vol" Type="Int64" Nullable="false" />
+    <Property Name="Val" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+    <Property Name="BVal" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+  </EntityType>
+  <EntityType Name="LiveInstData">
+    <Key>
+      <PropertyRef Name="LiveInstDataPK" />
+    </Key>
+    <Property Name="LiveInstDataPK" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="InsCode" Type="Int64" Nullable="false" />
+    <Property Name="EstimatedEPS" Type="Double" Nullable="false" />
+    <Property Name="ZTitad" Type="Int64" Nullable="false" />
+    <Property Name="Flow" Type="Byte" Nullable="false" />
+    <Property Name="MinYear" Type="Int32" Nullable="false" />
+    <Property Name="MaxYear" Type="Int32" Nullable="false" />
+    <Property Name="QTotTran5JAvg" Type="Int64" Nullable="false" />
+    <Property Name="SectorPE" Type="Double" Nullable="false" />
+    <Property Name="KAjCapValCpsIdx" Type="Double" Nullable="false" />
+    <Property Name="PriceMin" Type="Int32" Nullable="false" />
+    <Property Name="PriceMax" Type="Int32" Nullable="false" />
+    <Property Name="DEven" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="Status" Type="Byte" Nullable="false" />
+    <Property Name="PriceYesterday" Type="Int32" Nullable="false" />
+    <Property Name="Last" Type="Int32" Nullable="false" />
+    <Property Name="Count" Type="Int32" Nullable="false" />
+    <Property Name="PdrCotVal" Type="Int32" Nullable="false" />
+    <Property Name="PClosing" Type="Int32" Nullable="false" />
+    <Property Name="Vol" Type="Int64" Nullable="false" />
+    <Property Name="Val" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+    <Property Name="BVal" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+    <Property Name="NAV" Type="Double" Nullable="true" />
+    <Property Name="NAVDate" Type="DateTime" Precision="3" Nullable="true" />
+    <Property Name="PSGelStaMin" Type="Int32" Nullable="false" />
+    <Property Name="PSGelStaMax" Type="Int32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="IndexLastDayTimeValue">
+    <Key>
+      <PropertyRef Name="IndexLastDayTimeValuePK" />
+    </Key>
+    <Property Name="IndexLastDayTimeValuePK" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="InsCode" Type="Int64" Nullable="false" />
+    <Property Name="Dt" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="Value" Type="Double" Nullable="false" />
+    <NavigationProperty Name="Instrument" Relationship="SeatDBModel.FK_IndexLastDayTimeValue_Instruments" FromRole="IndexLastDayTimeValue" ToRole="Instrument" />
+    <Property Name="ChangeValue" Type="Double" />
+    <Property Name="ChangePercent" Type="Double" />
+  </EntityType>
+  <Association Name="FK_IndexLastDayTimeValue_Instruments">
+    <End Type="SeatDBModel.Instrument" Role="Instrument" Multiplicity="1" />
+    <End Type="SeatDBModel.IndexLastDayTimeValue" Role="IndexLastDayTimeValue" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Instrument">
+        <PropertyRef Name="InsCode" />
+      </Principal>
+      <Dependent Role="IndexLastDayTimeValue">
+        <PropertyRef Name="InsCode" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="InstrumentCategory">
+    <Key>
+      <PropertyRef Name="InstrumentCategoryPK" />
+    </Key>
+    <Property Name="InstrumentCategoryPK" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="CSecVal" Type="String" Nullable="false" MaxLength="2" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="BigDeal">
+    <Key>
+      <PropertyRef Name="BigDealPK" />
+    </Key>
+    <Property Name="BigDealPK" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="DayDt" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="Count" Type="Int32" Nullable="false" />
+    <Property Name="Volume" Type="Int64" Nullable="false" />
+    <Property Name="DealType" Type="Byte" Nullable="false" />
+    <Property Name="TraderType" Type="Byte" Nullable="false" />
+    <Property Name="Price" Type="Int32" Nullable="false" />
+    <Property Name="InsCode" Type="Int64" Nullable="false" />
+    <Property Name="AmountAvg" Type="Int64" Nullable="false" />
+    <Property Name="CSecVal" Type="String" MaxLength="2" FixedLength="false" Unicode="false" />
+    <Property Name="pc" Type="Int32" />
+    <Property Name="py" Type="Int32" />
+    <Property Name="plc" Type="Double" />
+    <Property Name="plp" Type="Double" />
+    <Property Name="pf" Type="Int32" />
+    <Property Name="pcc" Type="Int32" />
+    <Property Name="pcp" Type="Double" />
+    <Property Name="tno" Type="Int32" />
+    <Property Name="tvol" Type="Int64" />
+    <Property Name="tval" Type="Int64" />
+    <Property Name="pmin" Type="Int32" />
+    <Property Name="pmax" Type="Int32" />
+    <Property Name="eps" Type="Double" />
+    <Property Name="pe" Type="Double" />
+    <Property Name="visitcount" Type="Int32" />
+    <Property Name="tmax" Type="Int32" />
+    <Property Name="tmin" Type="Int32" />
+    <Property Name="zd1" Type="Int32" />
+    <Property Name="pd1" Type="Int32" />
+    <Property Name="qd1" Type="Int64" />
+    <Property Name="po1" Type="Int32" />
+    <Property Name="qo1" Type="Int64" />
+    <Property Name="zo1" Type="Int32" />
+    <Property Name="bvol" Type="Int64" />
+  </EntityType>
+  <EntityType Name="NotificationLog">
+    <Key>
+      <PropertyRef Name="NotificationLogPK" />
+    </Key>
+    <Property Name="NotificationLogPK" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="InsCode" Type="Int64" Nullable="false" />
+    <Property Name="PhoneNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Email" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+    <Property Name="NotificationDt" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="MessageBody" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Status" Type="Byte" />
+    <Property Name="NotificationPK" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Instrument" Relationship="SeatDBModel.FK_NotificationLogs_Instruments" FromRole="NotificationLog" ToRole="Instrument" />
+    <Property Name="Owner" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Notification" Relationship="SeatDBModel.FK_NotificationLogs_Notifications" FromRole="NotificationLog" ToRole="Notification" />
+  </EntityType>
+  <EntityType Name="Portfolio">
+    <Key>
+      <PropertyRef Name="PortfolioPK" />
+    </Key>
+    <Property Name="PortfolioPK" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="OrderIndex" Type="Int32" />
+    <Property Name="Audit_CreatorUserName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Audit_CreatorIP" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Audit_CreateDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="Audit_LastModifyDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="Audit_LastModifierUserName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Audit_LastModifierIP" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Instruments" Relationship="SeatDBModel.PortInstMap" FromRole="Portfolio" ToRole="Instrument" />
+    <Property Name="Owner" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Notifications" Relationship="SeatDBModel.FK_Notifications_Portfolios" FromRole="Portfolio" ToRole="Notification" />
+  </EntityType>
+  <Association Name="FK_NotificationLogs_Instruments">
+    <End Type="SeatDBModel.Instrument" Role="Instrument" Multiplicity="1" />
+    <End Type="SeatDBModel.NotificationLog" Role="NotificationLog" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Instrument">
+        <PropertyRef Name="InsCode" />
+      </Principal>
+      <Dependent Role="NotificationLog">
+        <PropertyRef Name="InsCode" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="PortInstMap">
+    <End Type="SeatDBModel.Instrument" Role="Instrument" Multiplicity="*" />
+    <End Type="SeatDBModel.Portfolio" Role="Portfolio" Multiplicity="*" />
+  </Association>
+  <EntityType Name="Notification">
+    <Key>
+      <PropertyRef Name="NotificationPK" />
+    </Key>
+    <Property Name="NotificationPK" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="PortfolioPK" Type="Int32" Nullable="false" />
+    <Property Name="EventObjectId" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="SendSms" Type="Boolean" Nullable="false" />
+    <Property Name="SendEmail" Type="Boolean" Nullable="false" />
+    <Property Name="Calling" Type="Boolean" Nullable="false" />
+    <Property Name="Owner" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="Email" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="false" />
+    <Property Name="PhoneNo" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="NotificationLogs" Relationship="SeatDBModel.FK_NotificationLogs_Notifications" FromRole="Notification" ToRole="NotificationLog" />
+    <NavigationProperty Name="Portfolio" Relationship="SeatDBModel.FK_Notifications_Portfolios" FromRole="Notification" ToRole="Portfolio" />
+  </EntityType>
+  <Association Name="FK_NotificationLogs_Notifications">
+    <End Type="SeatDBModel.Notification" Role="Notification" Multiplicity="1" />
+    <End Type="SeatDBModel.NotificationLog" Role="NotificationLog" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Notification">
+        <PropertyRef Name="NotificationPK" />
+      </Principal>
+      <Dependent Role="NotificationLog">
+        <PropertyRef Name="NotificationPK" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Notifications_Portfolios">
+    <End Type="SeatDBModel.Portfolio" Role="Portfolio" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Type="SeatDBModel.Notification" Role="Notification" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Portfolio">
+        <PropertyRef Name="PortfolioPK" />
+      </Principal>
+      <Dependent Role="Notification">
+        <PropertyRef Name="PortfolioPK" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>

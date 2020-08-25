@@ -1,0 +1,94 @@
+﻿<Bocrud                 Style="classic"
+        DetailPosition="replacement"
+        Name="__Job"
+        Caption="Job"        
+        Height="480" Width="640"
+        ToStringFormat="" 
+DirectAccessible="false"
+AccessOperation="_Jb.A"
+        xmlns="http://exirtechsun.com/uie/2014/schema"
+       xmlns:yaxlib="http://yaxlib.codeplex.com/">
+
+  <Groups>
+    <Group Title="جزئیات"  ColumnCount="2" Template="fluid">
+      <Controls>
+<TextBox  Name="RefSettings" Caption="RefSettings"  /> 
+<TextBox  Name="WorkReport" Caption="WorkReport"  /> 
+<TextBox  Name="Parameters" Caption="Parameters"  /> 
+<TextBox  Name="VisibleFields" Caption="VisibleFields"  /> 
+<TextBox  Name="EditableFields" Caption="EditableFields"  /> 
+<TextBox  Name="HiddenFields" Caption="HiddenFields"  /> 
+<TextBox  Name="DefaultValues" Caption="DefaultValues"  /> 
+<TextBox  Name="FormName" Caption="FormName"  /> 
+<TextBox  Name="FormCaption" Caption="FormCaption"  /> 
+<TextBox  Name="PlayerName" Caption="PlayerName"  /> 
+<TextBox  Name="Description" Caption="Description"  /> 
+<TextBox  Name="Subject" Caption="Subject"  /> 
+<TextBox  Name="EntityId" Caption="EntityId"  /> 
+<TextBox  Name="LockAfterNthSave" Caption="LockAfterNthSave"  /> 
+<DateTimePicker  Name="LastSaveDt" Caption="LastSaveDt"  /> 
+<TextBox  Name="StrMetadata" Caption="StrMetadata"  /> 
+<TextBox  Name="Tags" Caption="Tags"  /> 
+<TextBox  Name="CurrentStationCaption" Caption="CurrentStationCaption"  /> 
+<TextBox  Name="CurrentStationId" Caption="CurrentStationId"  /> 
+<TextBox  Name="Group" Caption="Group"  /> 
+<DateTimePicker  Name="SpinDt" Caption="SpinDt"  /> 
+<CheckBox  Name="CustomSpinnable" Caption="CustomSpinnable"  /> 
+<CheckBox  Name="ReturnSpinnable" Caption="ReturnSpinnable"  /> 
+<TextBox  Name="SpinnerId" Caption="SpinnerId"  /> 
+<CheckBox  Name="IsSaved" Caption="IsSaved"  /> 
+<CheckBox  Name="IsSpinned" Caption="IsSpinned"  /> 
+<CheckBox  Name="IsReadOnly" Caption="IsReadOnly"  /> 
+<CheckBox  Name="IsAssistant" Caption="IsAssistant"  /> 
+<TextBox  Name="CurrentTrackNodeUid" Caption="CurrentTrackNodeUid"  /> 
+<Many2One Name="Instance" BocrudXml="__AssignmentInstance" ForeignKey="InstanceId"   Caption="Instance"  />
+<Many2One Name="Urgency" BocrudXml="__Urgency" ForeignKey="UrgencyId"   Caption="Urgency"  />
+<Many2One Name="System" BocrudXml="__WorkflowSystem" ForeignKey="SystemId"   Caption="System"  />
+<Many2One Name="Assignment" BocrudXml="__WorkflowAssignment" ForeignKey="AssignmentId"   Caption="Assignment"  />
+<Many2One Name="Preview" BocrudXml="__Preview" ForeignKey="PreviewId"   Caption="Preview"  />
+     </Controls>
+    </Group>
+  </Groups>
+
+<Grid Caption="لیست Job" 
+EnableSearch="false" ToolbarSearch="false" AutoWidth="true" Width="100"  
+MultiSelect="true">
+    <Columns>
+      <Column Width="150" Name="RefSettings" />
+      <Column Width="150" Name="WorkReport" />
+      <Column Width="150" Name="Parameters" />
+      <Column Width="150" Name="VisibleFields" />
+      <Column Width="150" Name="EditableFields" />
+      <Column Width="150" Name="HiddenFields" />
+      <Column Width="150" Name="DefaultValues" />
+      <Column Width="150" Name="FormName" />
+      <Column Width="150" Name="FormCaption" />
+      <Column Width="150" Name="PlayerName" />
+      <Column Width="150" Name="Description" />
+      <Column Width="150" Name="Subject" />
+      <Column Width="150" Name="EntityId" />
+      <Column Width="150" Name="LockAfterNthSave" />
+      <Column Width="150" Name="LastSaveDt" />
+      <Column Width="150" Name="StrMetadata" />
+      <Column Width="150" Name="Tags" />
+      <Column Width="150" Name="CurrentStationCaption" />
+      <Column Width="150" Name="CurrentStationId" />
+      <Column Width="150" Name="Group" />
+      <Column Width="150" Name="SpinDt" />
+      <Column Width="150" Name="CustomSpinnable" />
+      <Column Width="150" Name="ReturnSpinnable" />
+      <Column Width="150" Name="SpinnerId" />
+      <Column Width="150" Name="IsSaved" />
+      <Column Width="150" Name="IsSpinned" />
+      <Column Width="150" Name="IsReadOnly" />
+      <Column Width="150" Name="IsAssistant" />
+      <Column Width="150" Name="CurrentTrackNodeUid" />
+
+    </Columns>
+</Grid>
+<Operations>All</Operations><!--All Create Update ViewDetail Search Delete Print CreateRoot CreateChild TreeCopy TreeMove None-->
+  <FactoryMethodArgsSpel>
+      <String>T(Exir.Workbox.Services.JobService, Exir.Workbox)</String>
+  </FactoryMethodArgsSpel>
+</Bocrud>
+

@@ -1,0 +1,75 @@
+﻿<Bocrud                 Style="classic"
+        DetailPosition="up"
+        Name="SystemMessage"
+        Caption="پیغام های سیستمی"
+        Height="480" Width="640"
+        ToStringFormat="پیغام {Code}"
+        DirectAccessible="true"
+        AccessOperation="SystmMsg.A"
+        xmlns="http://exirtechsun.com/uie/2014/schema"
+       xmlns:yaxlib="http://yaxlib.codeplex.com/">
+  <DefaultValue>
+    <Add Property="Culture" Value="'fa-ir'"/>
+  </DefaultValue>
+
+  <Groups>
+    <Group Title="جزئیات"  ColumnCount="2" Template="fluid">
+      <Controls>
+        <TextBox  Caption="موضوع" Name="Subject"  MultiLine="true" AccessDeniedAction="Disable" />
+        <TextBox  Caption="کد پیغام" Name="Code" Direction="Ltr" FontName="Courier New" AccessDeniedAction="Disable"  />
+        <Radio  Caption="نوع رسانه" Name="Media" AccessDeniedAction="Disable">
+          <Items>
+            <Add Text="SMS" Value="sms"  Selected="true"/>
+            <Add Text="Email" Value="email"/>
+          </Items>
+        </Radio>
+        <Radio  Caption="زبان" Name="Culture" AccessDeniedAction="Disable">
+          <Items>
+            <Add Text="فارسی" Value="fa-ir"/>
+            <Add Text="انگلیسی" Value="en-us"/>
+          </Items>
+        </Radio>
+        <CheckBox Name="IsEnable" Caption="فعال است؟" TrueText="yes" FalseText="no" DisplayMode="AsCheckBox" AccessDeniedAction="Disable"/>
+      </Controls>
+      <Groups>
+        <Group ColumnCount="1" >
+          <Controls>
+            <CKEditor  Caption="متن" Name="Text" Config="Template" AccessDeniedAction="Disable">
+              <Items>
+				  <Add Text="نام کاربری" Value="username"/>
+				  <Add Text="کد تایید ایمیل" Value="code"/>
+			  </Items>
+            </CKEditor>
+          </Controls>
+        </Group>
+      </Groups>
+    </Group>
+  </Groups>
+
+  <Grid Caption="لیست پیغام‌های سیستمی" EnableSearch="false" 
+        ToolbarSearch="true" AutoWidth="true" Width="100" MultiSelect="false" EnableColumnChooser="true" SortName="MessagePK" SortOrder="desc">
+    <Columns>
+      <Column Width="200" Name="Code" Searchable="true" Align="Left" />
+      <Column Width="300" Name="Subject" Searchable="true" />
+      <Column Width="50" Name="Media" Searchable="true" />
+      <Column Width="50" Name="Culture" Searchable="true" />
+      <Column Width="50" Name="IsEnable" Searchable="true" />
+      <Column Width="80" Name="Audit_CreatorUserName" Caption="درج کننده" Hidden="true" Searchable="true"/>
+      <Column Width="80" Name="Audit_CreatorIP" Caption="IP درج کننده" Hidden="true" Searchable="true"/>
+      <Column Width="80" Name="Audit_CreateDate" Caption="تاریخ درج" Hidden="true" Searchable="true" DataType="Date"/>
+      <Column Width="80" Name="Audit_LastModifyDate" Caption="تاریخ ویرایش" Hidden="true" Searchable="true" DataType="Date"/>
+      <Column Width="80" Name="Audit_LastModifierUserName" Caption="ویرایش کننده" Hidden="true" Searchable="true"/>
+      <Column Width="80" Name="Audit_LastModifierIP" Caption="IP ویرایش کننده" Hidden="true" Searchable="true"/>
+
+
+    </Columns>
+  </Grid>
+  <Operations>All</Operations>
+  <!--All Create Update ViewDetail Search Delete Print CreateRoot CreateChild TreeCopy TreeMove None-->
+  <FactoryMethodArgsSpel>
+    <String>'SystemMessageService'</String>
+    <String>T(SeatWebApp.Models.SystemMessageViewModel, SeatWebApp)</String>
+      <String>'FullCacheMode=true'</String>
+</FactoryMethodArgsSpel>
+</Bocrud>
+

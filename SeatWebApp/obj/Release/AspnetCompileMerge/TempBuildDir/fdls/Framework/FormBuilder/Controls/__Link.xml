@@ -1,0 +1,57 @@
+﻿<Bocrud Style="classic"
+        DetailPosition="up"
+        Name="__Link"
+        Caption="کنترل  هایپر لینک"
+        Height="500" Width="700"
+        ToStringFormat="{Caption}"
+        DirectAccessible="false"
+        xmlns="http://exirtechsun.com/uie/2014/schema"
+       xmlns:yaxlib="http://yaxlib.codeplex.com/">
+
+  <Groups>
+    <![CDATA[@{include:__FormControl#//uie:Groups/uie:Group[@Name='CommonSettings']}]]>
+
+    <Group Title="تنظیمات مخصوص" ColumnCount="2" Template="fluid">
+      <Controls>
+        <TextBox Name="Uri" Caption="لینک" Type="Code"/>
+        <TextBox Name="Text" Caption="متن لینک" />
+        <TextBox Name="Icon" Caption="آیکن" Type="Code" />
+        <CheckBox Name="Popup" Caption="پاپ آپ ؟"/>
+        <TextBox Name="Popup_Width" Caption="عرض پاپ آپ" />
+        <TextBox Name="Popup_Height" Caption="ارتفاع پاپ آپ" />
+        <Select2 Name="Color" Caption="رنگ">
+          <Items>
+            <Add Value="label-purple" Text="بنفش" />
+            <Add Value="label-yellow" Text="زرد" />
+            <Add Value="label-pink" Text="صورتی" />
+            <Add Value="label-light" Text="خاکستری روشن" />
+            <Add Value="label-grey" Text="خاکستری" />
+            <Add Value="label-primary" Text="آبی" />
+            <Add Value="label-warning" Text="نارنجی" />
+            <Add Value="label-success" Text="سبز" />
+            <Add Value="label-inverse" Text="مشکی" />
+            <Add Value="label-danger" Text="قرمز" />
+          </Items>
+        </Select2>
+        <Select2 Name="Style" Caption="استایل" AcceptOutOfRangeData="true">
+          <Items>
+            <Add Text="جهت دار به خارج از سمت چپ" Value="arrowed"/>
+            <Add Text="جهت دار به داخل از دو طرف" Value="arrowed-in arrowed-in-right"/>
+            <Add Text="جهت دار به خارج از سمت راست" Value="arrowed-right"/>
+            <Add Text="جهت دار به داخل از سمت راست" Value="arrowed-in-right"/>
+            <Add Text="جهت دار به خارج از دو طرف" Value="arrowed arrowed-right"/>
+            <Add Text="جهت دار به داخل از سمت چپ" Value="arrowed-in"/>
+          </Items>
+        </Select2>
+      </Controls>
+    </Group>
+
+    <![CDATA[@{include:__FormControl#//uie:Groups/uie:Group[@Name='AdvancedCommonSettings']}]]>
+  </Groups>
+
+  <Operations>All</Operations>
+  <FactoryMethodArgsSpel>
+    <String>T(Exir.Framework.Uie.Bocrud.Link, Exir.Framework.Uie)</String>
+  </FactoryMethodArgsSpel>
+</Bocrud>
+

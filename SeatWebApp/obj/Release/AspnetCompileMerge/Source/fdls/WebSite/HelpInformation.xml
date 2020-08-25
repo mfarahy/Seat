@@ -1,0 +1,65 @@
+﻿<Bocrud                 Style="classic"
+        DetailPosition="up"
+        Name="HelpInformation"
+        Caption="اطلاعات راهنما"
+        Height="480" Width="640"
+        ToStringFormat="{FormName} - {FieldName}"
+DirectAccessible="true"
+AccessOperation="HlpInfrmtn.A"
+        xmlns="http://exirtechsun.com/uie/2014/schema"
+       xmlns:yaxlib="http://yaxlib.codeplex.com/">
+
+  <ToolbarCommands>
+    <Add Name="Test" Text="Test"/>
+  </ToolbarCommands>
+
+  <Groups>
+    <Group Title="جزئیات"  ColumnCount="3" Template="fluid">
+      <Controls>
+        <Lazy AsNew="false">
+          <Controls>
+            <Select2  Caption="نام فرم" Name="FormName" SpringExpression="GetAllFdlNames()"  DataValueField="Name" DataTextField="Caption">
+              <Conditions>
+                <Add EvalScript="true" EvalConditionSpel="#Mode=='DataEntry'">
+                  <Actions>
+                    <Add Action="Update" On="FieldName" Send="FormName,FieldName" NewState="true"/>
+                  </Actions>
+                </Add>
+              </Conditions>
+            </Select2>
+
+          </Controls>
+        </Lazy>
+        <Select2  Caption="نام فیلد" Name="FieldName" SpringExpression="GetFields(#Container.FormName)" DataValueField="Key" DataTextField="Value" KeepMissingItems="true"/>
+        <Select2  Caption="نام نقش" Name="RoleNames"  SpringExpression="GetRoles()" MultiSelect="true" />
+      </Controls>
+      <Groups>
+        <Group ColumnCount="1">
+          <Controls>
+            <CKEditor  Caption="متن راهنما" Name="Text"  />
+          </Controls>
+        </Group>
+      </Groups>
+    </Group>
+  </Groups>
+
+  <Grid Caption="لیست اطلاعات راهنما"
+  EnableSearch="false" ToolbarSearch="true" AutoWidth="true" Width="100"
+  MultiSelect="true" EnableColumnChooser="false">
+    <Columns>
+      <Column Width="150" Name="FormName" Searchable="true" />
+      <Column Width="150" Name="FieldName" Searchable="false" />
+      <Column Width="150" Name="Text" Searchable="true" />
+      <Column Width="150" Name="RoleName" Caption="نام نقش" Searchable="true" />
+
+    </Columns>
+  </Grid>
+  <Operations>All</Operations>
+  <!--All Create Update ViewDetail Search Delete Print CreateRoot CreateChild TreeCopy TreeMove None-->
+  <FactoryMethodArgsSpel>
+    <String>'HelpInformationService'</String>
+    <String>T(SeatWebApp.Models.HelpInformationViewModel, SeatWebApp)</String>
+     <String>'FullCacheMode=true'</String>
+ </FactoryMethodArgsSpel>
+</Bocrud>
+

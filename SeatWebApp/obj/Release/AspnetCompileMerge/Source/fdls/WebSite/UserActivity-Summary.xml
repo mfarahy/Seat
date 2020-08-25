@@ -1,0 +1,50 @@
+<Bocrud Style="classic"
+        DetailPosition="up"
+        Name="UserActivity-Summary"
+        Caption="خلاصه فعالیت های کاربر"
+        Height="300" Width="300"
+        ToStringFormat=""
+        xmlns="http://exirtechsun.com/uie/2014/schema"
+       xmlns:yaxlib="http://yaxlib.codeplex.com/">
+
+
+  <Groups>
+    <Group Title="جزئیات"  ColumnCount="2" Template="fluid">
+      <Controls>
+        <DateTimePicker Name="LastActivityDt" Caption="آخرین فعالیت کاربر" ShowTime="true"/>
+        <DateTimePicker Name="FirstActivityDt" Caption="آخرین فعالیت کاربر" ShowTime="true"/>
+                <TextBox Name="TotalActivityCount" Caption="تعداد کل فعالیت‌های ثبت شده"/>
+        <Break/>
+        <PieChart Name="MostVisitedPages" Caption="10 صفحه پر مراجعه" DataTextField="PageName" DataValueField="Count"  />      
+      </Controls>
+      <Groups>
+        <Group ColumnCount="1" Template="fluid">
+          <Controls>
+            <BarChart ChartType="spline" Name="HourActivities" Caption="نرخ تعامل ساعتی" Height="200" BlackList="Hour">
+              <Axis>
+                <x name="HourCaption" type="category">
+                  <tick format="%H:%M"></tick>
+                </x>
+              </Axis>
+            </BarChart>
+            <BarChart ChartType="spline" Name="DayActivities" Caption="نرخ تعامل روزانه" Height="200" BlackList="Date">
+              <Axis>
+                <x name="TimeCaption" type="timeseries">
+                  <tick format="%Y-%m-%d"></tick>
+                </x>
+              </Axis>
+            </BarChart>
+          </Controls>
+        </Group>
+      </Groups>
+    </Group>
+  </Groups>
+
+
+  <Operations>ViewDetail</Operations>
+  <!--All Create Update ViewDetail Search Delete Print CreateRoot CreateChild TreeCopy TreeMove None-->
+  <FactoryMethodArgsSpel>
+    <String>T(SeatDomain.Models.Service.UserActivitySummary, SeatDomain)</String>
+  </FactoryMethodArgsSpel>
+</Bocrud>
+

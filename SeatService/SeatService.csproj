@@ -1,0 +1,265 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{C233DE96-7A6A-4067-BA34-D9C731FA203D}</ProjectGuid>
+    <OutputType>Exe</OutputType>
+    <RootNamespace>SeatService</RootNamespace>
+    <AssemblyName>SeatService</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <Deterministic>true</Deterministic>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+    <TargetFrameworkProfile />
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <PublishUrl>ftp://185.252.28.50/sahamvip_ir/</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <WebPage>publish.htm</WebPage>
+    <AutorunEnabled>true</AutorunEnabled>
+    <ApplicationRevision>1</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <PublishWizardCompleted>true</PublishWizardCompleted>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject>SeatServiceService.Program</StartupObject>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ManifestCertificateThumbprint>30A8E6B2F77FA9FEFF39CF2F8A25E94EF0C49BE7</ManifestCertificateThumbprint>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ManifestKeyFile>SeatService_TemporaryKey.pfx</ManifestKeyFile>
+  </PropertyGroup>
+  <PropertyGroup>
+    <GenerateManifests>true</GenerateManifests>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignManifests>true</SignManifests>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="CommandLine, Version=2.8.0.0, Culture=neutral, PublicKeyToken=5a870481e358d379, processorArchitecture=MSIL">
+      <HintPath>..\packages\CommandLineParser.2.8.0\lib\net461\CommandLine.dll</HintPath>
+    </Reference>
+    <Reference Include="Common.Logging">
+      <HintPath>..\Lib\Common.Logging.dll</HintPath>
+    </Reference>
+    <Reference Include="Common.Logging.Core">
+      <HintPath>..\Lib\Common.Logging.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework">
+      <HintPath>..\Lib\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.Extended">
+      <HintPath>..\Lib\EntityFramework.Extended.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer">
+      <HintPath>..\Lib\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="ExcelLibrary">
+      <HintPath>..\Lib\ExcelLibrary.dll</HintPath>
+    </Reference>
+    <Reference Include="HtmlAgilityPack">
+      <HintPath>..\Lib\HtmlAgilityPack.dll</HintPath>
+    </Reference>
+    <Reference Include="Kavenegar, Version=1.2.4.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Kavenegar.1.2.4\lib\net35\Kavenegar.dll</HintPath>
+    </Reference>
+    <Reference Include="log4net, Version=2.0.8.0, Culture=neutral, PublicKeyToken=669e0ddf0bb1aa2a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Lib\log4net.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.12.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="Spring.Aop, Version=2.0.1.45000, Culture=neutral, PublicKeyToken=65e474d141e25e07, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Lib\Spring.Aop.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Configuration.Install" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Management" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.Threading.Tasks.Dataflow, Version=4.6.5.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Threading.Tasks.Dataflow.4.11.1\lib\net461\System.Threading.Tasks.Dataflow.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.ServiceProcess" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="ApplicationInfo.cs" />
+    <Compile Include="Dal\ITsetmcStorage.cs" />
+    <Compile Include="Dal\TsetmcStorage.cs" />
+    <Compile Include="JobServiceBroker.cs" />
+    <Compile Include="Jobs\SessionCleanerPeriodicallyService.cs" />
+    <Compile Include="LastUpdate.cs" />
+    <Compile Include="MemoryLogAdapter.cs" />
+    <Compile Include="NotiProviders\KavenegarNotiProvider.cs" />
+    <Compile Include="PerformanceCounterMonitor.cs" />
+    <Compile Include="Periods.cs" />
+    <Compile Include="Program.cs" />
+    <Compile Include="ProjectInstaller.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="ProjectInstaller.Designer.cs">
+      <DependentUpon>ProjectInstaller.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SeatEngine\DataProvider\Codal\CodalDataProvider.cs" />
+    <Compile Include="SeatEngine\DataProvider\Codal\CodalModels.cs" />
+    <Compile Include="SeatEngine\DataProvider\Codal\ICodalDataProvider.cs" />
+    <Compile Include="SeatEngine\DataProvider\DataProvider.cs" />
+    <Compile Include="SeatEngine\DataProvider\Tsetmc\cDate.cs" />
+    <Compile Include="SeatEngine\DataProvider\Tsetmc\ColumnInfo.cs" />
+    <Compile Include="SeatEngine\DataProvider\Tsetmc\ColumnType.cs" />
+    <Compile Include="SeatEngine\DataProvider\Tsetmc\EventArgs.cs" />
+    <Compile Include="SeatEngine\DataProvider\Tsetmc\FileService.cs" />
+    <Compile Include="SeatEngine\DataProvider\Tsetmc\FlowTypes.cs" />
+    <Compile Include="SeatEngine\DataProvider\Tsetmc\InstHistory.cs" />
+    <Compile Include="SeatEngine\DataProvider\Tsetmc\InstrumentLastInfo.cs" />
+    <Compile Include="SeatEngine\DataProvider\Tsetmc\ITsetmcOnlineDataProvider.cs" />
+    <Compile Include="SeatEngine\DataProvider\Tsetmc\ITsetmcWebServiceDataProvider.cs" />
+    <Compile Include="SeatEngine\DataProvider\Tsetmc\ObserverMessage.cs" />
+    <Compile Include="SeatEngine\DataProvider\Tsetmc\ServerMethods.cs" />
+    <Compile Include="SeatEngine\DataProvider\Tsetmc\Settings.cs" />
+    <Compile Include="SeatEngine\DataProvider\Tsetmc\StaticData.cs" />
+    <Compile Include="SeatEngine\DataProvider\Tsetmc\TseShareInfo.cs" />
+    <Compile Include="SeatEngine\DataProvider\Tsetmc\TsetmcDataRow.cs" />
+    <Compile Include="SeatEngine\DataProvider\Tsetmc\TsetmcOnlineDataProvider.cs" />
+    <Compile Include="SeatEngine\DataProvider\Tsetmc\TsetmcWebServiceDataProvider.cs" />
+    <Compile Include="SeatEngine\DataProvider\Tsetmc\Utility.cs" />
+    <Compile Include="SeatEngine\DataProvider\Tsetmc\WebServiceTseClient.cs" />
+    <Compile Include="SeatEngine\SeatMediatorEngine.cs" />
+    <Compile Include="SeatService.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="SeatService.Designer.cs">
+      <DependentUpon>SeatService.cs</DependentUpon>
+    </Compile>
+    <Compile Include="StringExFunc.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+    <None Include="files\Columns.csv">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="files\DeafultColumns.csv">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="files\Instruments.csv">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="files\SelectedInstruments.csv">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="files\TseShares.csv">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="install.bat">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="packages.config" />
+    <None Include="SeatService_TemporaryKey.pfx" />
+    <None Include="uninstall.bat">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\Orange\Cache\Exir.Framework.RedisCacheProvider\Exir.Framework.RedisCacheProvider.csproj">
+      <Project>{b1464ffc-238e-430d-aef2-9050c2cbf644}</Project>
+      <Name>Exir.Framework.RedisCacheProvider</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Orange\Common\45\Exir.Framework.Common.csproj">
+      <Project>{3626b579-34cb-4a97-b679-5982c75013dd}</Project>
+      <Name>Exir.Framework.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Orange\DataAccess\45\Exir.Framework.DataAccess.csproj">
+      <Project>{7a008d6e-f74d-47e8-b504-9ac382f1b1df}</Project>
+      <Name>Exir.Framework.DataAccess</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Orange\Security\45\Exir.Framework.Security.csproj">
+      <Project>{6e4b8a0a-2210-476f-8cc9-e8b08f63b729}</Project>
+      <Name>Exir.Framework.Security</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Orange\Service\45\Exir.Framework.Service.csproj">
+      <Project>{c42a3f8c-2fdd-4523-9616-6c57735d1194}</Project>
+      <Name>Exir.Framework.Service</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SeatDomain\SeatDomain.csproj">
+      <Project>{3e9fabe2-5320-412f-b0a9-e7d7d9490252}</Project>
+      <Name>SeatDomain</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Connected Services\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="files\Version.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.6.1">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4.6.1 %28x86 and x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="ProjectInstaller.resx">
+      <DependentUpon>ProjectInstaller.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SeatService.resx">
+      <DependentUpon>SeatService.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

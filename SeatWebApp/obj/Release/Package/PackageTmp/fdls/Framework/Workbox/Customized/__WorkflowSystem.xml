@@ -1,0 +1,37 @@
+﻿<Bocrud                 Style="classic"
+        DetailPosition="up"
+        Name="__WorkflowSystem"
+        Caption="سیستم جریان کاری"
+        Height="480" Width="640"
+        ToStringFormat="{Caption} ( {Code} )"
+DirectAccessible="true"
+AccessOperation="_WrkflwSystm.A"
+        xmlns="http://exirtechsun.com/uie/2014/schema"
+       xmlns:yaxlib="http://yaxlib.codeplex.com/">
+
+  <Groups>
+    <Group Title="جزئیات"  ColumnCount="2" Template="fluid">
+      <Controls>
+        <TextBox  Caption="عنوان سیستم" Name="Caption"  />
+        <TextBox  Caption="کد سیستم" Name="Code"  Direction="Ltr" />
+        <TextBox  Caption="توضیحات" Name="Description"  MultiLine="true"  />
+      </Controls>
+    </Group>
+  </Groups>
+
+  <Grid Caption="لیست سیستم های جریان کاری"
+  EnableSearch="false" ToolbarSearch="false" AutoWidth="false" Width="600"
+  MultiSelect="true">
+    <Columns>
+      <Column Width="150" Name="Caption" />
+      <Column Width="150" Name="Code" />
+      <Column Width="150" Name="Description" />
+    </Columns>
+  </Grid>
+  <Operations>All</Operations>
+  <!--All Create Update ViewDetail Search Delete Print CreateRoot CreateChild TreeCopy TreeMove None-->
+  <FactoryMethodArgsSpel>
+    <String>T(Exir.Workbox.Services.WorkflowSystemService)</String>
+  </FactoryMethodArgsSpel>
+</Bocrud>
+

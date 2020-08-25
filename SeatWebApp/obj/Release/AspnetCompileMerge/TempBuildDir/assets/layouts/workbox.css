@@ -1,0 +1,228 @@
+﻿fieldset[name=CommandInfo] {
+    display: none;
+}
+
+.wbx-current-user-info img {
+    width: 100% !important;
+    height: auto !important;
+}
+
+.wbx-grid tr.jqgrow {
+    cursor: pointer;
+}
+
+    .wbx-grid tr.jqgrow a {
+        color: black;
+    }
+
+.wbx-grid tr.wbx-read-job {
+    background-color: rgba(242, 242, 242, 1);
+    color: rgb(134, 134, 134);
+}
+
+    .wbx-grid tr.wbx-read-job.ui-state-hover {
+        background-color: rgba(223, 227, 229, 1) !important;
+        color: rgb(134, 134, 134) !important;
+    }
+
+    .wbx-grid tr.wbx-read-job.ui-state-highlight {
+        background-color: #C0C8AB !important;
+        color: rgb(134, 134, 134) !important;
+    }
+
+
+.wbx-grid tr.wbx-trb-job {
+    color: red !important;
+}
+
+    .wbx-grid tr.wbx-trb-job a {
+        color: red !important;
+    }
+
+.wbx-grid tr.wbx-arh-job {
+    background: url("") repeat-x scroll 50% bottom #EDEDED;
+}
+
+.wbx-grid tr.wbx-isobs {
+    text-decoration: line-through;
+}
+
+.bocrud-toolbar-form-op button {
+    margin-left: 4px;
+    margin-bottom: 4px;
+}
+
+.margin-left-12 {
+    margin-left: 12px !important;
+}
+
+
+.dropdown-submenu > .dropdown-menu {
+    top: 0;
+    right: 100%;
+    margin-top: -6px;
+    margin-right: -1px;
+    -webkit-border-radius: 0 6px 6px 6px;
+    -moz-border-radius: 0 6px 6px 6px;
+    border-radius: 0 6px 6px 6px;
+}
+
+.dropdown-submenu:hover > .dropdown-menu {
+    display: block;
+}
+
+.dropdown-submenu:hover > a:after,
+.dropdown-submenu > a:after {
+    display: block;
+    content: "\f053" !important;
+    font-family: 'FontAwesome';
+    float: left;
+    width: 0;
+    height: 0;
+    border-color: transparent;
+    border-style: solid;
+    border-width: 5px 0 5px 5px;
+    border-right-color: #cccccc;
+    margin-left: 0px;
+}
+
+/*.dropdown-submenu:hover > a:after {
+    border-left-color: #ffffff;
+}*/
+
+.dropdown-submenu.pull-left {
+    float: none;
+}
+
+    .dropdown-submenu.pull-left > .dropdown-menu {
+        left: -100%;
+        margin-left: 10px;
+        -webkit-border-radius: 6px 0 6px 6px;
+        -moz-border-radius: 6px 0 6px 6px;
+        border-radius: 6px 0 6px 6px;
+    }
+
+.sf-with-ul {
+    text-align: right;
+}
+
+.wbx-cmd-menu .ui-icon {
+    margin-left: 10px;
+    color: black;
+}
+
+.wbx-cmd-menu li {
+    text-align: right;
+}
+
+.wbx-label {
+    font-family: tahoma;
+    font-size: 6pt;
+    padding-bottom: 3px;
+    padding-top: 1px;
+    padding-left: 2px;
+    padding-right: 2px;
+    border: solid 1px;
+    border-radius: 5px;
+    /*box-shadow: 1px 1px 3px rgb(131, 131, 131);*/
+}
+
+#s2id_wbx-substitute {
+    width: 100%;
+}
+
+
+.bocrud-toolbar[jsbid=__Box] button.btn-inverse {
+    padding-bottom: 8px;
+}
+
+.bocrud-classic button.btn-sm {
+    float: left;
+    margin-left: 2px !important;
+    padding-top: 1px;
+    padding-bottom: 1px;
+    font-style: italic;
+}
+
+.bocrud-mxgraph-viewer .date,
+.bocrud-mxgraph-viewer .stop-time {
+    text-align: right;
+    color: #404040;
+    font-size: 7.5pt;
+    font-weight: normal;
+    font-family: tahoma;
+    padding: 0px;
+    margin: 0px;
+    line-height: 1;
+}
+
+.bocrud-mxgraph-viewer .date {
+}
+
+.bocrud-mxgraph-viewer .comment:empty {
+    display: none;
+}
+
+.bocrud-mxgraph-viewer .comment {
+    color: #d2290d;
+    font-style: italic;
+    line-height: 1;
+}
+
+.bocrud-mxgraph-viewer .station {
+    color: #337ab7;
+    font-weight: bold;
+}
+
+.bocrud-mxgraph-viewer .comment:before {
+    content: "\f075";
+    font-family: FontAwesome;
+    padding-left: 3px;
+}
+
+.bocrud-mxgraph-viewer .recievers {
+    color: blue;
+    cursor: pointer;
+    font-size: 8pt;
+    text-align: right;
+    line-height: 0px;
+    float: right;
+    display: inline;
+}
+
+.bocrud-mxgraph-viewer .sender {
+    color: #333;
+    font-size: 8pt;
+    text-align: right;
+    line-height: 0px;
+    float: right;
+    display: inline;
+}
+
+.bocrud-mxgraph-viewer .recievers[title=null] {
+    display: none;
+}
+
+.bocrud-mxgraph-viewer .recievers:before {
+    cursor: default;
+    color: #333;
+    content: 'گیرنده(گان):';
+}
+
+.bocrud-mxgraph-viewer .recievers:after {
+    cursor: default;
+    color: #333;
+    content: ' نفر';
+}
+
+.bocrud-mxgraph-viewer .stop-time[minuts="False"] {
+    display: none;
+}
+
+.bocrud-mxgraph-viewer .sender:empty {
+    display: none;
+}
+
+.bocrud-mxgraph-viewer .sender:before {
+    content: "فرستنده: ";
+}

@@ -1,0 +1,57 @@
+﻿@model SeatWebApp.Models.HomePageModel
+
+@using Exir.Framework.Uie
+@using Exir.Framework.Uie.Bocrud
+@using Exir.Framework.Uie.Bocrud.Models.Controls.Charts
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "صفحه اصلی";
+}
+@using (Html.BeginFormControl(null, "Find", "BigDeal-Search"))
+{
+    <div class="row">
+        <div class="col-md-offset-2"></div>
+
+        <div class="col-md-6">
+            @Html.RenderControl("InsCode")
+        </div>
+
+        <div class="col-md-offset-2"></div>
+    </div>
+    <div class="row">
+        @foreach (var index in Model.TopIndecies)
+        {
+            <div class="col-xs-12 col-sm-6 col-md-3">
+                @Html.RenderControl(new Exir.Framework.Uie.Bocrud.Chart
+           {
+               Colors = SeatDomain.Utility.GetColor((float)index.ChangePercent),
+               Point = new Point { show = false },
+               WhiteList = "Value,TimeText",
+               ChartType = "area-spline",
+               Caption = index.Name,
+               Axis = new Axis
+               {
+                   x = new AxisDirection { show = false },
+                   y = new AxisDirection { show = false }
+               },
+               Legend = new Legend
+               {
+                   show = false,
+                   hide = true
+               }
+           }, index.IndexValues)
+            </div>
+        }
+
+
+    </div>
+}
+<script language="javascript">
+    $(function () {
+        $('#InsCode').on('select2:select', function (e) {
+            var id = $('#InsCode').val();
+            $.bocrud.redirect("Instrument", { id: id,sv:1 }, null, false, null);
+        });
+    });
+</script>

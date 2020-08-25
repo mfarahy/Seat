@@ -1,0 +1,78 @@
+﻿<Bocrud                 Style="classic"
+        DetailPosition="up"
+        Name="News"
+        Caption="خبر"
+        Height="480" Width="640"
+        ToStringFormat="{Subject}"
+         FilterSpel="SetCommand('Report')"
+DirectAccessible="true"
+AccessOperation="Nws.A"
+        xmlns="http://exirtechsun.com/uie/2014/schema"
+       xmlns:yaxlib="http://yaxlib.codeplex.com/">
+
+
+  <Groups>
+    <Group Title="جزئیات"  ColumnCount="2" Template="fluid">
+      <Controls>
+        <Select2 BocrudXml="NewsCategory"  Caption="دسته خبر" Name="CategoryPk"  />
+        <TextBox  Caption="عنوان خبر" Name="Subject"  />
+        <TextBox  Caption="خلاصه خبر" Name="Abstract"  MultiLine="true"  />
+        <TextBox  Caption="ترتیب نمایش" Name="SortNumber"  Type="Number" AllowCreateMode="false"  />
+        <FileControl Viewers="ImageViewer IconViewer" Name="Image" AllowMultiple="false" Caption="تصویر" MaxFile="5"/>
+        <CheckBox  Caption="حذف شده" Name="IsDeleted" IsEditable="false"  ShowConditionSpel="#Container.HasKey()" />
+        <CheckBox  Caption="آرشیو شده" Name="IsArchived" IsEditable="false"  ShowConditionSpel="#Container.HasKey()"/>
+        <DateTimePicker  Caption="تاریخ آرشیو خبر" Name="NewsArchiveDate" IsEditable="false"  ShowConditionSpel="#Container.HasKey()"/>
+        <DateTimePicker  Caption="تاریخ حذف خبر" Name="NewsExpireDate" IsEditable="false"  ShowConditionSpel="#Container.HasKey()"/>
+        <Select2 Name="ColSpan" Caption="سایز(براساس تعداد ستون)" SelectFirstAsDefault="true">
+          <Items>
+            <Add Text="یک" Value="1"/>
+            <Add Text="دو" Value="2"/>
+            <Add Text="سه" Value="3"/>
+            <Add Text="چهار" Value="4"/>
+          </Items>
+        </Select2>
+      </Controls>
+      <Groups>
+        <Group ColumnCount="1">
+          <Controls>
+            <CKEditor  Caption="متن خبر" Name="Content"  />
+          </Controls>
+        </Group>
+      </Groups>
+    </Group>
+    <Group Title="SEO" ColumnCount="2">
+      <Controls>
+        <TextBox Caption="نام صفحه" Name="PageName"/>
+        <Tagging Name="Metadata" Caption="متادیتا"/>
+      </Controls>
+    </Group>
+  </Groups>
+
+  <Grid Caption="لیست اخبار"
+  EnableSearch="true" ToolbarSearch="true" AutoWidth="true" Width="100"
+  MultiSelect="true" EnableColumnChooser="false" AutoLoadData="true">
+    <Columns>
+      <Column Width="200" Name="Subject" Searchable="true" />
+      <Column Width="300" Name="CategoryTitle" Caption="دسته" Searchable="true" />
+      <Column Width="300" Name="Abstract" Searchable="true" />
+      <Column Width="30" Name="SortNumber" Searchable="true" Align="Center" />
+      <Column Width="20" Name="IsDeleted" Searchable="true" Align="Center" />
+      <Column Width="20" Name="IsArchived" Searchable="true" Align="Center" />
+      <Column Width="150" Name="NewsArchiveDate" Searchable="true" Hidden="true" />
+      <Column Width="150" Name="NewsExpireDate" Searchable="true" Hidden="true" />
+      <Column Width="150" Name="Audit_CreatorUserName" Caption="درج کننده" Hidden="true" Searchable="true"/>
+      <Column Width="150" Name="Audit_CreatorIP" Caption="IP درج کننده" Hidden="true" Searchable="true"/>
+      <Column Width="150" Name="Audit_CreateDate" Caption="تاریخ درج" Hidden="true" Searchable="true"/>
+      <Column Width="150" Name="Audit_LastModifyDate" Caption="تاریخ ویرایش" Hidden="true" Searchable="true"/>
+      <Column Width="150" Name="Audit_LastModifierUserName" Caption="ویرایش کننده" Hidden="true" Searchable="true"/>
+      <Column Width="150" Name="Audit_LastModifierIP" Caption="IP ویرایش کننده" Hidden="true" Searchable="true"/>
+    </Columns>
+  </Grid>
+  <Operations>All</Operations>
+  <!--All Create Update ViewDetail Search Delete Print CreateRoot CreateChild TreeCopy TreeMove None-->
+  <FactoryMethodArgsSpel>
+    <String>'NewsService'</String>
+    <String>T(SeatWebApp.Models.NewsViewModel, SeatWebApp)</String>
+  </FactoryMethodArgsSpel>
+</Bocrud>
+

@@ -1,0 +1,60 @@
+﻿<Bocrud Style="classic"
+        DetailPosition="up"
+        Name="__FileControl"
+        Caption="کنترل فایل"
+        Height="500" Width="700"
+        ToStringFormat="{Caption}"
+        DirectAccessible="false"
+        xmlns="http://exirtechsun.com/uie/2014/schema"
+       xmlns:yaxlib="http://yaxlib.codeplex.com/">
+  <DefaultValue>
+    <Add Property="Filter" Value="'.*'"/>
+    <Add Property="MaxFileSize" Value="20971520"/>
+    <Add Property="AllowMultiple" Value="false"/>
+    <Add Property="MaxFile" Value="1"/>
+    <Add Property="MinFile" Value="0"/>
+    <Add Property="ThumbnailWidth" Value="150"/>
+    <Add Property="GridViewThumbnailWidth" Value="50"/>
+    <Add Property="Viewers" Value="'ImageViewer IconViewer'"/>
+    <Add Property="Downloadable" Value="true"/>
+    <Add Property="OnlySaveAddress" Value="true"/>
+  </DefaultValue>
+  <Groups>
+    <![CDATA[@{include:__FormControl#//uie:Groups/uie:Group[@Name='CommonSettings']}]]>
+   
+    <Group Title="تنظیمات مخصوص" ColumnCount="3" Template="fluid">
+      <Controls>
+        <TextBox Name="MaxFileSize" Caption="حداکثر حجم فایل"/>
+        <CheckBox Name="AllowMultiple" Caption="چند فایلی ؟"/>
+        <TextBox Name="MaxFile" Caption="حداکثر تعداد فایل"/>
+        <TextBox Name="MinFile" Caption="حداقل تعداد فایل"/>
+        <TextBox Name="Filter" Caption="فیلتر فایل های قابل قبول" Type="Code"/>
+        <TextBox Name="ThumbnailWidth" Caption="عرض پیشنمایش"/>
+        <TextBox Name="ThumbnailHeight" Caption="ارتفاع پیشنمایش"/>
+        <TextBox Name="GridViewThumbnailWidth" Caption="عرض پیشنمایش در گرید"/>
+        <TextBox Name="GridViewThumbnailHeight" Caption="ارتفاع پیشنمایش در گرید"/>
+        <TextboxList Name="Viewers" Caption="نمایشگرها" Splitter=" "/>
+        <CheckBox Name="Downloadable" Caption="قابلیت دانلود ؟"/>
+      </Controls>
+    </Group>
+    <Group Template="fluid" Name="AdvancedSettings" Title="تنظیمات پیشرفته" ColumnCount="2">
+      <Controls>
+        <TextBox Name="AllowMultipleSpel" Caption="اسکریپت چند فایلی" Type="Code"/>
+        <TextBox Name="MaxFileSizeSpel" Caption="اسکریپت حداکثر حجم فایل" Type="Code"/>
+        <CheckBox Name="OnlySaveAddress" Caption="ذخیره فقط آدرس فایل ؟"/>
+        <TextBox Name="SavePath" Caption="آدرس ذخیره فایل" Type="Code" GetValueSpel="'tmp/user-forms/@{ Key.PrimaryKeyValue }'"/>
+        <TextBox Name="MaxFileSpel" Caption="اسکریپت حداکثر تعداد فایل" Type="Code"/>
+        <TextBox Name="FilterSpel" Caption="اسکریپت فیلتر فایل های قابل قبول" Type="Code"/>
+
+      </Controls>
+    </Group>
+
+    <![CDATA[@{include:__FormControl#//uie:Groups/uie:Group[@Name='AdvancedCommonSettings']}]]>
+  </Groups>
+
+  <Operations>All</Operations>
+  <FactoryMethodArgsSpel>
+    <String>T(Exir.Framework.Uie.Bocrud.FileControl, Exir.Framework.Uie)</String>
+  </FactoryMethodArgsSpel>
+</Bocrud>
+

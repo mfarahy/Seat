@@ -1,0 +1,45 @@
+﻿<Bocrud                 Style="classic"
+        DetailPosition="replacement"
+        Name="__Urgency"
+        Caption="Urgency"        
+        Height="480" Width="640"
+        ToStringFormat="" 
+DirectAccessible="false"
+AccessOperation="_Urgncy.A"
+        xmlns="http://exirtechsun.com/uie/2014/schema"
+       xmlns:yaxlib="http://yaxlib.codeplex.com/">
+
+  <Groups>
+    <Group Title="جزئیات"  ColumnCount="2" Template="fluid">
+      <Controls>
+<TextBox  Name="Name" Caption="Name"  /> 
+<TextBox  Name="Code" Caption="Code"  /> 
+<TextBox  Name="BgColor" Caption="BgColor"  /> 
+<TextBox  Name="FgColor" Caption="FgColor"  /> 
+<TextBox  Name="Level" Caption="Level"  /> 
+<CheckBox  Name="IsSystematic" Caption="IsSystematic"  /> 
+<CheckBox  Name="IsDeleted" Caption="IsDeleted"  /> 
+     </Controls>
+    </Group>
+  </Groups>
+
+<Grid Caption="لیست Urgency" 
+EnableSearch="false" ToolbarSearch="false" AutoWidth="true" Width="100"  
+MultiSelect="true">
+    <Columns>
+      <Column Width="150" Name="Name" />
+      <Column Width="150" Name="Code" />
+      <Column Width="150" Name="BgColor" />
+      <Column Width="150" Name="FgColor" />
+      <Column Width="150" Name="Level" />
+      <Column Width="150" Name="IsSystematic" />
+      <Column Width="150" Name="IsDeleted" />
+
+    </Columns>
+</Grid>
+<Operations>All</Operations><!--All Create Update ViewDetail Search Delete Print CreateRoot CreateChild TreeCopy TreeMove None-->
+  <FactoryMethodArgsSpel>
+      <String>T(Exir.Workbox.Services.UrgencyService, Exir.Workbox)</String>
+  </FactoryMethodArgsSpel>
+</Bocrud>
+

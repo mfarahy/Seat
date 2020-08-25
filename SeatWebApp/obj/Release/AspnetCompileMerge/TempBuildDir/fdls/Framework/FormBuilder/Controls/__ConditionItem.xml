@@ -1,0 +1,34 @@
+﻿<Bocrud Style="classic"
+        DetailPosition="up"
+        Name="__ConditionItem"
+        Caption="آیتم برچسب شرطی"
+        Height="500" Width="700"
+        ToStringFormat="{Caption}"
+        DirectAccessible="false"
+        xmlns="http://exirtechsun.com/uie/2014/schema"
+       xmlns:yaxlib="http://yaxlib.codeplex.com/">
+
+  <Groups>
+    <Group ColumnCount="1" Template="fluid" Title="جزییات">
+      <Controls>
+        <TextBox Name="Text" Caption="متن"/>
+        <TextBox Name="Condition" Caption="شرط نمایش" Type="Code"/>
+      </Controls>
+    </Group>
+  </Groups>
+  
+  <Grid Caption="لیست اقلام"
+  EnableSearch="false" ToolbarSearch="false" AutoWidth="true" Width="100"
+  MultiSelect="true">
+    <Columns>
+      <Column Width="150" Name="Text" />
+      <Column Width="150" Name="Condition" />
+    </Columns>
+  </Grid>
+
+  <Operations>All</Operations>
+  <FactoryMethodArgsSpel>
+    <String>T(Exir.Framework.Uie.Bocrud.ConditionLabel+ConditionItem, Exir.Framework.Uie)</String>
+  </FactoryMethodArgsSpel>
+</Bocrud>
+

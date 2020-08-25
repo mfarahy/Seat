@@ -1,0 +1,85 @@
+﻿<Bocrud PresenterType="Exir.Workbox.Web.BoxPresenter, Exir.Workbox.Web"
+        Style="classic"
+        DetailPosition="up"
+        Name="__Box-Search"
+        Caption="فرم جستجو کارتابل"
+        FilterSpel="SetCommand('GetWorkboxItems')"
+DirectAccessible="false"
+AccessOperation="_Bx-Srch.A"
+      xmlns="http://exirtechsun.com/uie/2014/schema"
+       xmlns:yaxlib="http://yaxlib.codeplex.com/">
+
+  <Groups>
+    <Group Title="جزئیات"  ColumnCount="4" Template="fluid">
+      <Controls>
+        <DateTimePicker  Caption="تاریخ نامه از" Name="EntryDt"   />
+        <DateTimePicker  Caption="تاریخ رویت نامه از" Name="ReadDt"   />
+
+        <CheckBox  Caption="خوانده شده ؟" Name="IsRead"  />
+        <CheckBox  Caption="حذف شده ؟" Name="IsDeleted"  />
+        <CheckBox  Caption="بازگشت داده شده ؟" Name="IsRejected"  Help="کاری که شما برای کسی ارسال کرده اید و او آن را به شما بازگردانده است." />
+        <CheckBox  Caption="بازگردانده شده ؟" Name="IsReferRejected"  Help="کاری که فرد دیگری برای شما ارسال کرده است و شما بنا به دلایلی آن را بازگشت زده اید." />
+        <CheckBox  Caption="قفل شده ؟" Name="IsLocked"  />
+        <CheckBox  Caption="ارجاع شده ؟" Name="IsReferred"  />
+        <TextBox  Caption="برچسب" Name="Labels"  />
+        <TextBox  Caption="مهلت" Name="Deadline"  />
+        <CheckBox  Caption="وارده بازگشتی" Name="IsRejectEntry"  />
+        <TextBox  Caption="فرستنده" Name="SenderName"  />
+        <TextBox  Caption="گیرنده" Name="RecieverName"  />
+        <TextBox  Caption="زمان حضور در کارتابل" Name="StopTime"  />
+        <CheckBox  Caption="آرشیو شده ؟" Name="IsArchived"  />
+        <CheckBox  Caption="منقضی شده ؟" Name="IsObsolete"  />
+        <TextBox  Caption="موضوع" Name="Subject"  />
+        <TextBox  Caption="توضیحات کار" Name="JDescription"  />
+        <TextBox  Caption="عنوان فرم کار" Name="FormCaption"  />
+        <TextBox  Caption="عنوان لاتین فرم کار" Name="FormName"  />
+        <TextBox  Caption="تگ" Name="Tags"  />
+        <TextBox  Caption="نام ایستگاه" Name="CurrentStationCaption"  />
+        <CheckBox  Caption="ذخیره شده ؟" Name="IsSaved"  />
+        <CheckBox  Caption="تایید شده ؟" Name="IsConfirmed"  />
+        <TextBox  Caption="شماره شناسه کار ارسال شده" Name="EntityId"  />
+        <CheckBox  Caption="فقط خواندنی ؟" Name="IsReadOnly"  />
+        <Select2 Caption="سیستم" Name="SystemId" BocrudXml="WorkflowSystem" />
+        <Select2  Caption="جریان کاری" Name="AssignmentId"  BocrudXml="WorkflowAssignment"  />
+      </Controls>
+    </Group>
+  </Groups>
+
+  <Grid Caption="لیست کارهای کارتابل به شکل خام" EnableSearch="true" ToolbarSearch="true" AutoWidth="true" Width="100"
+MultiSelect="true">
+    <Columns>
+      <Column Width="150" Name="Subject" Searchable="true" Hidden="false"/>
+      <Column Width="150" Name="SenderName" Searchable="true" Hidden="false"/>
+      <Column Width="150" Name="EntryDt" Searchable="true"  Hidden="false"/>
+
+      <Column Width="150" Name="ReadDt" Searchable="true" Hidden="true"/>
+      <Column Width="150" Name="IsRead" Searchable="true" Hidden="true"/>
+      <Column Width="150" Name="IsDeleted" Searchable="true" Hidden="true"/>
+      <Column Width="150" Name="IsRejected" Searchable="true" Hidden="true"/>
+      <Column Width="150" Name="IsReferRejected" Searchable="true" Hidden="true"/>
+      <Column Width="150" Name="IsLocked" Searchable="true" Hidden="true"/>
+      <Column Width="150" Name="IsReferred" Searchable="true" Hidden="true"/>
+      <Column Width="150" Name="Labels" Searchable="true" Hidden="true"/>
+      <Column Width="150" Name="Deadline" Searchable="true" Hidden="true"/>
+      <Column Width="150" Name="IsRejectEntry" Searchable="true" Hidden="true"/>
+      <Column Width="150" Name="RecieverName" Searchable="true" Hidden="true"/>
+      <Column Width="150" Name="StopTime" Searchable="true" Hidden="true"/>
+      <Column Width="150" Name="IsArchived" Searchable="true" Hidden="true"/>
+      <Column Width="150" Name="IsObsolete" Searchable="true" Hidden="true"/>
+      <Column Width="150" Name="JDescription" Searchable="true" Hidden="true"/>
+      <Column Width="150" Name="FormCaption" Searchable="true" Hidden="true"/>
+      <Column Width="150" Name="FormName" Searchable="true" Hidden="true"/>
+      <Column Width="150" Name="Tags" Searchable="true" Hidden="true"/>
+      <Column Width="150" Name="CurrentStationCaption" Searchable="true" Hidden="true"/>
+      <Column Width="150" Name="UrgencyId" Searchable="true" Hidden="true"/>
+      <Column Width="150" Name="IsSaved" Searchable="true" Hidden="true"/>
+      <Column Width="150" Name="EntityId" Searchable="true" Hidden="true"/>
+      <Column Width="150" Name="IsReadOnly" Searchable="true" Hidden="true"/>
+      <Column Width="150" Name="IsConfirmed" Searchable="true" Hidden="true"/>
+
+    </Columns>
+  </Grid>
+  <Operations>ViewDetail Search Print</Operations>
+  <!--All Create Update ViewDetail Search Delete Print CreateRoot CreateChild TreeCopy TreeMove None-->
+</Bocrud>
+

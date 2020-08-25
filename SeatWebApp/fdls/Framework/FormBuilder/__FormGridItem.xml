@@ -1,0 +1,92 @@
+﻿<Bocrud Style="classic"
+        DetailPosition="up"
+        Name="__FormGridItem"
+        Caption="ستون گرید"
+        Height="470" Width="700"
+        ToStringFormat="{Caption}"
+        DirectAccessible="false"
+        xmlns="http://exirtechsun.com/uie/2014/schema"
+       xmlns:yaxlib="http://yaxlib.codeplex.com/">
+
+  
+  <Groups>
+    <Group Title="تنظیمات عمومی"  ColumnCount="3" Template="fluid">
+      <Controls>
+        <TextBox Name="Caption" Caption="عنوان" />
+        <TextBox Name="Width" Caption="عرض" />
+        <CheckBox Name="WordWrap" Caption="حالت Word Wrap ?" />
+        <Select2 Name="Align" Caption="چیدمان" >
+          <Items>
+            <Add Value="NotSet" Text="بدون تنظیم"/>
+            <Add Value="Left" Text="چپ"/>
+            <Add Value="Center" Text="وسط"/>
+            <Add Value="Right" Text="راست"/>
+            <Add Value="Justify" Text="طراز"/>
+          </Items>
+        </Select2>
+        <CheckBox Name="HidedInDialog" Caption="پنهان در دیالوگ تنظیمات ستون ؟" />
+        <CheckBox Name="Hidden" Caption="پنهان ؟" />
+        <CheckBox Name="Resizable" Caption="امکان تغییر سایز ؟" />
+        <CheckBox Name="Searchable" Caption="قابل جستجو ؟" />
+        <CheckBox Name="Sortable" Caption="قابل مرتب سازی ؟" />
+      </Controls>
+    </Group>
+    <Group Title="تنظیمات پیشرفته" ColumnCount="3" Template="fluid">
+      <Controls>
+        <CheckBox Name="EnableAutoComplete" Caption="حالت تکمیل خودکار ؟" />
+        <CheckBox Name="IsThumbnailTrigger" Caption="ستون پیشنمایش ؟" />
+        <TextBox Name="DisplayPriority" Caption="اولویت نمایش" />
+        <TextBox Name="BocrudXml" Caption="فرم" />
+        <TextBox Name="Format" Caption="فرمت" />
+
+        <TextBox Name="Classes" Caption="استایل" />
+        <CheckBox Name="ShowTitle" Caption="نمایش عنوان" />
+        <TextBox Name="DateFormat" Caption="فرمت تاریخ" />
+        <TextBox Name="Metadata" Caption="متادیتا" />
+        <Select2 Name="DataType" Caption="نوع داده" >
+          <Items>
+            <Add Value="Integer" Text="عددی"/>
+            <Add Value="Float" Text="شناور"/>
+            <Add Value="Date" Text="تاریخ"/>
+            <Add Value="Text" Text="متن"/>
+            <Add Value="Bool" Text="منطقی"/>
+            <Add Value="Time" Text="زمان"/>
+          </Items>
+        </Select2>
+        <Select2 Name="SummaryType" Caption="نوع خلاصه" >
+          <Items>
+            <Add Value="None" Text="هیچ"/>
+            <Add Value="Sum" Text="جمع"/>
+            <Add Value="Count" Text="تعداد"/>
+            <Add Value="Avg" Text="میانگین"/>
+            <Add Value="Min" Text="کمترین"/>
+            <Add Value="Max" Text="بیشترین"/>
+            <Add Value="Func" Text="محاسباتی"/>
+          </Items>
+        </Select2>
+        <TextBox Name="SummaryTemplate" Caption="الگوی خلاصه" />
+        <TextBox Name="SummaryExpression" Caption="اسکریپت خلاصه" />
+        <TextBox Name="Grouping" Caption="گروه بندی" />
+        <CheckBox Name="Frozen" Caption="حالت فروزن ؟" />
+      </Controls>
+    </Group>
+  </Groups>
+  <Grid Caption="لیست ستون ها"
+  EnableSearch="false" ToolbarSearch="false" AutoWidth="true" Width="100"
+  MultiSelect="true">
+    <Columns>
+      <Column Width="150" Name="Name" />
+      <Column Width="150" Name="Caption" />
+      <Column Width="150" Name="Width" />
+      <Column Width="150" Name="Hidden" />
+      <Column Width="150" Name="Searchable" />
+      <Column Width="150" Name="Sortable" />
+    </Columns>
+  </Grid>
+
+  <Operations>All</Operations>
+  <FactoryMethodArgsSpel>
+    <String>T(Exir.Framework.Uie.Adapter.FormBuilder.FormGridItemService, Exir.Framework.Uie.Adapter)</String>
+  </FactoryMethodArgsSpel>
+</Bocrud>
+

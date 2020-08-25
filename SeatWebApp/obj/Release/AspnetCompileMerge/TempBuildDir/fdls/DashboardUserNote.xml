@@ -1,0 +1,39 @@
+<Bocrud ManagerFactoryType="Exir.Framework.Uie.Adapter.PresenterFactory, Exir.Framework.Uie.Adapter"
+                Style="classic"
+		AccessOperation="DshbrdUsrNt.A"
+		DirectAccessible="false"
+        DetailPosition="up"
+        Name="DashboardUserNote"
+        Caption="$DashboardUserNote"        
+        Height="480" Width="640"
+        ToStringFormat="" 
+        xmlns="http://exirtechsun.com/uie/2014/schema"
+       xmlns:yaxlib="http://yaxlib.codeplex.com/">
+
+	   		
+  <Groups>
+    <Group Title="جزئیات"  ColumnCount="2" Template="fluid">
+      <Controls>
+<TextBox  Caption="$UserName" Name="UserName"  /> 
+<DateTimePicker  Caption="$SeenDt" Name="SeenDt"  /> 
+<Many2One BocrudXml="DashboardNote" ForeignKey="NoteId"   Caption="DashboardNote" Name="DashboardNote"  />
+     </Controls>
+    </Group>
+  </Groups>
+
+<Grid Caption="$DashboardUserNote" 
+EnableSearch="false" ToolbarSearch="true" AutoWidth="false" Width="300"  
+MultiSelect="true" EnableColumnChooser="false">
+    <Columns>
+      <Column Width="150" Name="UserName" Searchable="true" />
+      <Column Width="150" Name="SeenDt" Searchable="true" />
+
+    </Columns>
+</Grid>
+<Operations>All</Operations><!--All Create Update ViewDetail Search Delete Print CreateRoot CreateChild TreeCopy TreeMove None-->
+  <FactoryMethodArgsSpel>
+    <String>'DashboardUserNoteService'</String>
+      <String>T(SeatWebApp.Models.DashboardUserNoteViewModel, SeatWebApp)</String>
+  </FactoryMethodArgsSpel>
+</Bocrud>
+

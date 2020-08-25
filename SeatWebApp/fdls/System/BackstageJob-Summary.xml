@@ -1,0 +1,35 @@
+<Bocrud                 Style="classic"
+        Name="BackstageJob-Summary"
+        Caption="خلاصه وضعیت صف کارها"
+        Height="480" Width="640"
+        ToStringFormat=""
+        xmlns="http://exirtechsun.com/uie/2014/schema"
+       xmlns:yaxlib="http://yaxlib.codeplex.com/">
+
+
+  <Groups>
+    <Group Title="جزئیات"  ColumnCount="2" Template="fluid">
+      <Controls>
+        <PieChart Name="JobGroups" Caption="گروه کارها" DataTextField="Action" DataValueField="Count" />
+        <Label Name="QueueState" Caption="وضعیت صفها"   Theme="console" />
+      </Controls>
+      <Groups>
+        <Group ColumnCount="3" Template="fluid">
+          <Controls>
+            <TextBox Name="AvailableThreads" Caption="تعداد کل تردها"   />
+            <TextBox Name="MaxThreads" Caption="حداکثر تردها"  />
+            <TextBox Name="MinThreads" Caption="حداقل تردها"  />
+          </Controls>
+        </Group>
+      </Groups>
+    </Group>
+  </Groups>
+
+
+  <Operations>ViewDetail Search Print</Operations>
+  <!--All Create Update ViewDetail Search Delete Print CreateRoot CreateChild TreeCopy TreeMove None-->
+  <FactoryMethodArgsSpel>
+    <String>T(SeatDomain.Models.Service.BackstageJobThreadState, SeatDomain)</String>
+  </FactoryMethodArgsSpel>
+</Bocrud>
+

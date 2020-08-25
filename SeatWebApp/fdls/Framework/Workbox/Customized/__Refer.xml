@@ -1,0 +1,62 @@
+﻿<Bocrud PresenterType="Exir.Workbox.Web.ReferPresenter, Exir.Workbox.Web"
+        Style="classic"
+        DetailPosition="up"
+        Name="__Refer"
+        Caption="ارجاع"
+        Height="580" Width="640"
+        ToStringFormat=""
+DirectAccessible="false"
+AccessOperation="_Rfr.A"
+        xmlns="http://exirtechsun.com/uie/2014/schema"
+       xmlns:yaxlib="http://yaxlib.codeplex.com/">
+
+  <Groups>
+    <Group Title="جزئیات"  ColumnCount="2" Template="fluid">
+      <Controls>
+        
+        <Select2 Caption="الگوی ارجاع" Name="Template"  SpringExpression="GetReferTemplates()"
+                  DataTextField="Name" DataValueField="Id">
+          <Conditions>
+            <Add EvalScript="true">
+              <Actions>
+                <Add Action="Update" On="TemplateName,Items,AllowRepetitive,IncludeSubUnits,ReferDesc" Send="SelectedRows,Template" />
+              </Actions>
+            </Add>
+          </Conditions>
+        </Select2>
+
+        <TextBox Name="TemplateName" Caption="نام الگو" />
+        <TextBox Name="SelectedRows" Caption="آیتم های انتخاب شده" ClientHide="true" />
+
+      </Controls>
+      <Groups>
+        <Group ColumnCount="2" Template="fluid">
+          <Controls>
+            
+            <TextBox  Caption="هامش" Name="ReferDesc"  MultiLine="true" />
+            <Break Name="br1"/>
+            <CheckBox  Caption="ارجاع تکراری ؟" Name="AllowRepetitive"  TrueText="Yes" FalseText="No" DisplayMode="AsCheckBox" />
+            <CheckBox  Caption="شامل زیر واحدها ؟" Name="IncludeSubUnits"  TrueText="Yes" FalseText="No" DisplayMode="AsCheckBox" />
+            
+          </Controls>
+        </Group>
+        <Group ColumnCount="1" Template="fluid">
+          <Controls>
+            <One2Many Name="Items" BocrudXml="__ReferItem" InlineEdit="true" >
+              <DefaultValue>
+                <Add Property="SelectedRows" Value="'$SelectedRows'"/>
+              </DefaultValue>
+            </One2Many>
+          </Controls>
+        </Group>
+      </Groups>
+    </Group>
+  </Groups>
+
+  <Operations>All</Operations>
+  <!--All Create Update ViewDetail Search Delete Print CreateRoot CreateChild TreeCopy TreeMove None-->
+  <FactoryMethodArgsSpel>
+    <String>T(Exir.Workbox.Web.ReferModel, Exir.Workbox.Web)</String>
+  </FactoryMethodArgsSpel>
+</Bocrud>
+

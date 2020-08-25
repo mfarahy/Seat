@@ -1,0 +1,451 @@
+﻿@using Exir.Framework.Uie;
+@using Exir.Framework.Uie.Contracts;
+@using Exir.Framework.Uie.Grid
+@using Exir.Framework.Uie.Bocrud;
+@using Exir.Workbox;
+@using Exir.Workbox.Services;
+@using Exir.Framework.Service;
+@using System.Web.Mvc;
+@using System.Web.Optimization
+@RenderBocrud(Model)
+@helper RenderBocrud(BocrudResultModel bocrud)
+{
+
+if (bocrud == null)
+{
+    return;
+}
+
+if (bocrud.Name != "__Box")
+{
+        <div id="b-@bocrud.ID" class="bocrud-container">
+            <div class="bocrud-form-container">
+            </div>
+            <div id="bc-@bocrud.ID">
+            </div>
+        </div>
+
+        <textarea id="dform-@bocrud.ID" style="display: none">
+            @{WriteLiteral(bocrud.Form.ToString().Replace("textarea", "textareaa"));}
+        </textarea>
+
+        <textarea class='bocrud-js' jsbid='@bocrud.ParentBocrudID' event='oncontrolplaced'>
+            window.bocruds['@bocrud.ID'].addEvent('onshowcontent', $.workbox_layout.onshowcontent)
+            .addEvent('onpreshowcontent', $.classic_layout.onpreshowcontent)
+            .addEvent('onsubmitsuccess', $.classic_layout.onsubmitsuccess)
+            .addEvent('onsubmiterror', $.classic_layout.onsubmiterror)
+            .addEvent('onaddnew', $.classic_layout.onaddnew)
+            .addEvent('onpregetcontent', $.classic_layout.onpregetcontent)
+            .addEvent('onshowcontentcomplete', $.classic_layout.onshowcontentcomplete)
+            .addEvent('ondeletesuccess', $.classic_layout.ondeletesuccess)
+            .addEvent('onviewcancel', $.classic_layout.onviewcancel);
+            $.classic_layout.onload('@bocrud.ID');
+
+            var d = $('#dform-@bocrud.ID:first');
+            if(d.length==1){
+            var dform = eval('(' + d.val().replace(RegExp('textareaa', 'gi'), 'textarea') + ')');
+            window.bocruds['@bocrud.ID'].show_form(dform, dform.mode, dform.xml);
+            $.bocrud.reg_form(dform);
+            d.remove()
+            }
+
+            $('#b-@bocrud.ID').keynav();
+        </textarea>
+                }
+                else
+                {
+
+                    <input type="hidden" id="currWbxID" name="currWbxID" value="@WorkboxServer.GetCurrentWorkbox().Id" />
+
+                    var hrm = WorkboxSettings.Instance.HrmConnector;
+                    long cuserid = hrm.GetCurrentUserId();
+                    var cusername = hrm.GetUserName(cuserid);
+
+                    <input type="hidden" id="currUser" name="currUser" value="@cusername" />
+
+                    bool hasParent = !String.IsNullOrEmpty(bocrud.ParentBocrudID);
+                    string icon_css = hasParent ? "align-top" : "";
+                    string root_css = hasParent ? "" : "bocrud-root";
+                    if (String.IsNullOrEmpty(bocrud.ParentBocrudID))
+                    {
+                        <div class="page-header bocrud-page-title">
+                            <h1>
+                                @bocrud.Title
+                                @if (!String.IsNullOrEmpty(bocrud.Help))
+                                {
+                                    <small class="bocrud-page-help">
+                                        <i class="icon-double-angle-left"></i>
+                                        @{WriteLiteral(bocrud.Help);}
+                                    </small>
+                                            }
+                            </h1>
+                        </div>
+                        <div class="bocrud-page-image">
+                            @foreach (string img in bocrud.Images ?? new List<string>())
+                            {
+                                <img src="@(MyUrlHelper.GetBaseUrlWithSlashTail() + "assets/img/mp/xml/" + img)" alt="@img" />
+                            }
+                        </div>
+                                            }
+
+
+                                            <div id="b-@bocrud.ID" class="bocrud-container">
+                                                <div class="bocrud-form-container">
+                                                </div>
+
+                                                @if (!String.IsNullOrEmpty(bocrud.SearchForm))
+                                                {
+                                                    <div class="accordion-style1 panel-group accordion-style2  bocrud-search-container">
+                                                        <div class="panel panel-default">
+                                                            <div class="panel-heading">
+                                                                <h4 class="panel-title">
+                                                                    <a href="#collapseOne" data-parent="#accordion" data-toggle="collapse" class="accordion-toggle collapsed">
+                                                                        <i data-icon-show="icon-angle-left" data-icon-hide="icon-angle-down" class="bigger-110 icon-angle-left"></i>
+                                                                        &nbsp;
+                                                                        @{
+                                                                            IResourceProvider resProvider = ServiceContainer.Instance.GetService<IResourceProvider>();
+                                                                            WriteLiteral(resProvider.GetResource(bocrud.Name, "search_title") ?? "جستجو");
+                                                                        }
+
+                                                                    </a>
+                                                                </h4>
+                                                            </div>
+                                                            <div id="collapseOne" class="panel-collapse collapse" style="height: 0px;">
+                                                                <div class="panel-body">
+                                                                    <textarea id="search-formObj-@bocrud.ID" style="display: none">
+                                                                        @{WriteLiteral(bocrud.SearchForm.Replace("textarea", "textareaa"));}
+                                                                    </textarea>
+                                                                    <div id="search-@bocrud.ID-container" class="bocrud-search-form">
+                                                                    </div>
+                                                                    <p id="search-btn-@bocrud.ID" class="bocrud-search-btn">
+                                                                    </p>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <hr />
+                                                                            }
+                                                <div class="bocrud-toolbar toolbar @root_css" jsbid="@bocrud.ID">
+                                                    @foreach (GridToolbarItemInfo b in bocrud.Toolbar)
+                                                    {
+                                                        if (b.ClientId == bocrud.ID + "addNew")
+                                                        {
+                                                            <div id="split-button" style="display: inline-block;">
+                                                                <div>
+                                                                    <button class="btn btn-success no-radius bocrud-focusable" id="@b.ClientId" type="button" title="@b.Title" onclick="@b.On_Click">
+                                                                        <i class="icon-plus @icon_css "></i>
+                                                                        @if (b.ShowText)
+                                                                        {
+                                                                            <span> @b.Caption</span>
+                                                                        }
+                                                                    </button>
+                                                                    @if (!String.IsNullOrEmpty(bocrud.SubtypeMenu))
+                                                                    {
+                                                                        <button></button>
+                                                                    }
+                                                                </div>
+                                                                @{WriteLiteral(bocrud.SubtypeMenu);}
+                                                            </div>
+
+                                                                        }
+                                                                    }
+                                                    <p class="grid-toolbar toolbar" jsbid="@bocrud.ID" style="display: inline-block;">
+                                                    </p>
+                                                    @{WriteLiteral(bocrud.PrintMenu);}
+                                                </div>
+                                                <p class="inline-edit-toolbar" style="display: inline-block;"></p>
+                                                <div id="bc-@bocrud.ID">
+                                                    @if (!String.IsNullOrEmpty(bocrud.Grid))
+                                                    {
+                                                        <div class="bocrud-grid-summary-container-up">
+                                                        </div>
+
+                                                        <div id="grid-@bocrud.ID" class="ui-widget-content ui-corner-all">
+
+                                                            <div class="row">
+
+                                                                <div class="col-lg-2 col-md-3 col-sm-3 col-xs-12 widget-container-span">
+                                                                    @{
+                                                                        bool hasCat = bocrud.Categories != null && bocrud.Categories.Count > 0;
+                                                                        if (hasCat)
+                                                                        {
+                                                                            <div id="@bocrud.ID-bctree-cats" class="bocrud-grid-categories">
+                                                                                @foreach (string c in bocrud.Categories)
+                                                                                {
+                                                                                    WriteLiteral(c);
+                                                                                }
+                                                                            </div>
+                                                                        }
+                                                                    }
+                                                                    <div class="widget-box wbx-current-user-info hidden-xs">
+                                                                        <div class="widget-header widget-header-small">
+                                                                            <h6 class="smaller">کاربر کنونی</h6>
+                                                                            <div class="widget-toolbar no-border">
+
+                                                                                <a href="#" data-action="collapse">
+                                                                                    <i class="icon-chevron-up"></i>
+                                                                                </a>
+
+                                                                                <a href="#" data-action="close">
+                                                                                    <i class="icon-remove"></i>
+                                                                                </a>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="widget-body">
+                                                                            <div class="widget-main">
+                                                                                @{
+                                                                                    var image = hrm.GetPersonImage(cuserid);
+                                                                                    if (image != null)
+                                                                                    {
+                                                                                        var now = DateTime.Now;
+                                                                                        ImageViewer imageViewer = new ImageViewer();
+                                                                                        var fvalue = FilePropertyValue.Deserialize(hrm.GetPersonImage(cuserid));
+                                                                                        WriteLiteral(imageViewer.GetThumbnail(fvalue.Files[0], 120, 0, false, false, String.Empty));
+                                                                                    }
+                                                                                }
+                                                                                @hrm.GetPersonName(cuserid)
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    @{
+                                                                        var ssrv = Exir.Framework.Common.StaticServiceFactory.Create<ISubstitutionService, SubstitutionService>();
+                                                                    }
+                                                                    @if (ssrv.GetSubstitutes(hrm.GetCurrentUserId(), DateTime.Now, WorkboxActions.View).Length > 0)
+                                                                    {
+                                                                        <div class="widget-box wbx-substituation widget-color-pink">
+                                                                            <div class="widget-header  widget-header-small">
+                                                                                <h6 class="smaller">کارپوشه‌های قابل مشاهده</h6>
+                                                                            </div>
+
+                                                                            <div class="widget-body">
+                                                                                <div class="widget-main">
+                                                                                    <p>
+                                                                                        در این قسمت می توانید با انتخاب کارپوشه های افراد و بخش های مرتبط سایر کارپوشه ها را مشاهده و بسته به دسترسی های مجاز تعریف شده برای شما عملیات مختلفی انجام دهید.
+                                                                                    </p>
+                                                                                    <p>
+                                                                                        <select id="wbx-substitute" style="width:100%" size="3" multiple="multiple" class="multiselect" data-separator=","></select>
+                                                                                    </p>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    }
+                                                                    @{
+                                                                        var cwbx = Exir.Workbox.WorkboxServer.GetCurrentWorkbox();
+                                                                    }
+                                                                    @if (cwbx.OwenerId != hrm.GetCurrentUserId())
+                                                                    {
+                                                                        <div class="widget-box wbx-visible-workboxes  hidden-xs">
+                                                                            <div class="widget-header  widget-header-small">
+                                                                                <h6 class="smaller">کارتابل‌های در حال مشاهده</h6>
+
+                                                                                <div class="widget-toolbar no-border">
+                                                                                    <a href="#" data-action="settings">
+                                                                                        <i class="icon-cog"></i>
+                                                                                    </a>
+
+                                                                                    <a href="#" data-action="reload">
+                                                                                        <i class="icon-refresh"></i>
+                                                                                    </a>
+
+                                                                                    <a href="#" data-action="collapse">
+                                                                                        <i class="icon-chevron-up"></i>
+                                                                                    </a>
+
+                                                                                    <a href="#" data-action="close">
+                                                                                        <i class="icon-remove"></i>
+                                                                                    </a>
+                                                                                </div>
+                                                                            </div>
+
+                                                                            <div class="widget-body">
+
+                                                                            </div>
+                                                                        </div>
+                                                                    }
+                                                                    <div class="widget-box wbx-folders">
+                                                                        <div class="widget-header  widget-header-small">
+                                                                            <h6 class="smaller">پوشه‌ها</h6>
+
+                                                                            <div class="widget-toolbar">
+                                                                                <a href="#" data-action="reload">
+                                                                                    <i class="icon-refresh"></i>
+                                                                                </a>
+
+                                                                                <a href="#" data-action="collapse">
+                                                                                    <i class="icon-chevron-up"></i>
+                                                                                </a>
+
+                                                                                <a href="#" data-action="close">
+                                                                                    <i class="icon-remove"></i>
+                                                                                </a>
+                                                                            </div>
+                                                                        </div>
+
+                                                                        <div class="widget-body">
+                                                                            <div class="widget-main padding-8 bocrud-grid-categories">
+                                                                                <span id="foldersContainer">
+                                                                                    @{WriteLiteral(Exir.Workbox.Web.WorkboxController.RenderFolders());}
+                                                                                </span>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+
+                                                                    <div class="widget-box wbx-help hidden-xs">
+                                                                        <div class="widget-header header-color-dark  widget-header-small">
+                                                                            <h6 class="smaller">راهنمای کارتابل</h6>
+
+                                                                            <div class="widget-toolbar">
+                                                                                <a href="#" data-action="collapse">
+                                                                                    <i class="icon-chevron-up"></i>
+                                                                                </a>
+
+                                                                            </div>
+                                                                        </div>
+
+                                                                        <div class="widget-body">
+                                                                            <div class="alert alert-info">
+                                                                                <div class="row">
+                                                                                    <div class="col-xs-10">
+                                                                                        <a href="javascript:void(0)" title="مشخص می کند که کار به فرد یا افرادی ارجاع شده است">ارجاع شده</a>
+                                                                                    </div>
+                                                                                    <div class="col-xs-2">
+                                                                                        <span class="icon-share"></span>
+                                                                                    </div>
+                                                                                </div>
+                                                                                <div class="row">
+                                                                                    <div class="col-xs-10">
+                                                                                        <a href="javascript:void(0)" title="">
+                                                                                            بازگشت داده شده
+                                                                                        </a>
+                                                                                    </div>
+                                                                                    <div class="col-xs-2"><span class="icon-undo"></span></div>
+                                                                                </div>
+
+                                                                                <div class="row">
+                                                                                    <div class="col-xs-10">
+                                                                                        <a href="javascript:void(0)" title="">
+                                                                                            تأیید و خارج شده
+                                                                                        </a>
+                                                                                    </div>
+                                                                                    <div class="col-xs-2"><span class="icon-archive"></span></div>
+                                                                                </div>
+                                                                                <div class="row">
+                                                                                    <div class="col-xs-10">
+                                                                                        <a href="javascript:void(0)" title="">
+                                                                                            کار ذخیره شده
+                                                                                        </a>
+                                                                                    </div>
+                                                                                    <div class="col-xs-2"><span class="icon-save"></span></div>
+                                                                                </div>
+                                                                                <div class="row">
+                                                                                    <div class="col-xs-10">
+                                                                                        <a href="javascript:void(0)" title="">
+                                                                                            قفل شده
+                                                                                        </a>
+                                                                                    </div>
+                                                                                    <div class="col-xs-2"><span class="icon-lock"></span></div>
+                                                                                </div>
+                                                                                <div class="row">
+                                                                                    <div class="col-xs-10">
+                                                                                        <a href="javascript:void(0)" title="">
+                                                                                            مدرک کارتابل فرد غایب
+                                                                                        </a>
+                                                                                    </div>
+                                                                                    <div class="col-xs-2"><span class="icon-user"></span></div>
+                                                                                </div>
+                                                                                <div class="row">
+                                                                                    <div class="col-xs-10">
+                                                                                        <a href="javascript:void(0)" title="">
+                                                                                            منقضی شده
+                                                                                        </a>
+                                                                                    </div>
+                                                                                    <div class="col-xs-2"><span class="icon-time"></span></div>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+
+
+                                                                <div class="col-lg-10 col-md-9 col-sm-9 col-xs-12">
+                                                                    @if (bocrud.IsStandalone)
+                                                                    {
+                                                                        <form class="grid-inline-form" id="gif-@bocrud.ID">
+                                                                            <div class="wbx-grid">
+                                                                                @{WriteLiteral(bocrud.Grid);}
+                                                                            </div>
+                                                                        </form>
+                                                                    }
+                                                                    else
+                                                                    {
+                                                                        WriteLiteral(bocrud.Grid);
+                                                                    }
+                                                                </div>
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="bocrud-grid-summary-container-down">
+                                                        </div>
+                                                    }
+                                                </div>
+
+                                            </div>
+
+
+                                                                                    WriteLiteral(Styles.Render("~/bundles/workbox/css").ToHtmlString());
+                                                                                    WriteLiteral(Scripts.Render("~/bundles/workbox/js").ToHtmlString());
+
+
+
+                                                                                    <script type="text/javascript">
+                                                                                        $(function () {
+                                                                                            window.bocruds['@bocrud.ID'].addEvent('onshowcontent', $.workbox_layout.onshowcontent)
+                                                                                        .addEvent('onpreshowcontent', $.workbox_layout.onpreshowcontent)
+                                                                                        .addEvent('onsubmitsuccess', $.workbox_layout.onsubmitsuccess)
+                                                                                        .addEvent('onsubmiterror', $.classic_layout.onsubmiterror)
+                                                                                        .addEvent('onaddnew', $.classic_layout.onaddnew)
+                                                                                        .addEvent('onpregetcontent', $.classic_layout.onpregetcontent)
+                                                                                        .addEvent('onshowcontentcomplete', $.classic_layout.onshowcontentcomplete)
+                                                                                        .addEvent('ondeletesuccess', $.classic_layout.ondeletesuccess)
+                                                                                        .addEvent('onselectrow', $.workbox_layout.onselectrow)
+                                                                                        .addEvent('onpresearch', $.workbox_layout.onpresearch)
+                                                                                        .addEvent('ongridload', $.workbox_layout.ongridload)
+                                                                                        .addEvent('onviewcancel', $.classic_layout.onviewcancel);
+                                                                                            $.workbox_layout.onload('@bocrud.ID', '@MyUrlHelper.GetBaseUrlWithSlashTail()');
+                                                                                        });
+
+                                                                                    </script>
+
+
+                                                                                    if (bocrud.Form != null && String.IsNullOrEmpty(bocrud.ParentBocrudID) &&
+                                                                                        bocrud.Form.DetailPosition != "NormalDialog")
+                                                                                    {
+                                                                                        <textarea id="JOWR498490TOERT" style="display: none">
+                                                                                            @{WriteLiteral(bocrud.Form.ToString().Replace("textarea", "textareaa"));}
+                                                                                        </textarea>
+                                                                                        <script type="text/javascript">
+                                                                                            $(function () {
+                                                                                                var dform = eval('(' + $('#JOWR498490TOERT:first').val().replace(RegExp('textareaa', 'gi'), 'textarea') + ')');
+                                                                                                window.bocruds['@bocrud.ID'].show_form(dform, dform.mode, dform.xml);
+                                                                                                $.bocrud.reg_form(dform);
+                                                                                            });
+                                                                                        </script>
+                                                                                                }
+                                                                                                if (!String.IsNullOrEmpty(bocrud.SearchForm))
+                                                                                                {
+                                                                                                    <script type="text/javascript">
+                                                                                                        $(function () {
+                                                                                                            var dform = eval('(' + $('#search-formObj-@bocrud.ID:first').val().replace(RegExp('textareaa', 'gi'), 'textarea') + ')');
+                                                                                                            window.bocruds['@bocrud.ID'].searchStyler(dform, dform.xml, 'search-@bocrud.ID-container');
+                                                                                                        });
+                                                                                                    </script>
+                                                                                                }
+
+                                                                                                if (String.IsNullOrEmpty(bocrud.ParentBocrudID))
+                                                                                                {
+                                                                                                    <script type="text/javascript">
+                                                                                                        $('#b-@bocrud.ID').keynav();
+                                                                                                    </script>
+                                                                                                    }
+                                                                                                }
+}

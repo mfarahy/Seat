@@ -1,0 +1,99 @@
+﻿<Bocrud                 Style="classic"
+        DetailPosition="up"
+        Name="ExhExceptionLog"
+        Caption="خطا"
+        Height="480" Width="640"
+        ToStringFormat="{Message}"
+        DirectAccessible="true"
+        AccessOperation="ExhExcptnLg.A"
+                        FilterSpel="SetCommand('Search')"
+                         SummaryXml="ExhExceptionLog-Summary"
+        xmlns="http://exirtechsun.com/uie/2014/schema"
+       xmlns:yaxlib="http://yaxlib.codeplex.com/">
+
+  <ToolbarCommands>
+    <Add Color="btn-danger" Icon="icon-trash" Name="ClearLogs" Text="حذف همه" Confirm="آیا مطمئن هستید همه لاگ ها به طور فیزیکی از سیستم حذف شوند ؟"/>
+    <Add Color="btn-success" Icon="icon-check" Name="Resolve" Tooltip="ردیف شد" Position="InRow" ShowConditionSpel="!#Container.IsResolved" ReloadGrid="true" />
+    <Add Color="btn-success" Icon="icon-check-double" Name="ResolveSimilar" Tooltip="پیغام ردیف شد" ReloadGrid="true" Position="InRow" ShowConditionSpel="!#Container.IsResolved"/>
+    <Add Color="btn-warning" Icon="icon-undo" Name="Unresolve" Tooltip="بازکردن مجدد"  ReloadGrid="true" Position="InRow" ShowConditionSpel="#Container.IsResolved" />
+    <Add Color="btn-primary" Icon="icon-download" Name="Download" Tooltip="دانلود سری کامل" Position="InRow" />
+  </ToolbarCommands>
+  
+  <TreeInfo TidProperty="Id"
+  ExpanderProperty="Child"
+  ParentProperty="Parent"
+  ParentTidProperty="ParentId"
+  TreeView="false"
+  TreeExpandColumn="Message" LeafProperty="IsLeaf" />
+
+  <Groups>
+    <Group Title="جزئیات"  ColumnCount="1" Template="fluid">
+      <Groups>
+        <Group  ColumnCount="1" Template="fluid">
+          <Controls>
+            <TextBox  Caption="پیغام" Name="Message" SafeMode="true"  Direction="Ltr" MultiLine="true" />
+          </Controls>
+        </Group>
+        <Group  ColumnCount="2" Template="fluid">
+          <Controls>
+            <TextBox  Caption="شناسه" Name="Id"  Type="Code"  />
+            <TextBox  Caption="والد" Name="ParentId"  Type="Code"  />
+            <TextBox  Caption="کد" Name="HResult" Type="Code"  />
+            <TextBox  Caption="منبع" Name="Source" Type="Code" />
+            <TextBox  Caption="لینک" Name="HelperLink" Direction="Ltr" />
+            <TextBox  Caption="فرد جاری" Name="CreatePerson"  Help="خطا زمانی که این کاربر در حال کار بوده است اتفاق افتاده است." />
+            <DateTimePicker  Caption="تاریخ ایجاد" Name="CreateDt" ShowTime="true"  />
+            <CheckBox  Caption="آیا بررسی شده است؟" Name="IsResolved"  />
+            <TextBox  Caption="داده‌ها" Name="Data"  Type="Code" MultiLine="true" />
+            <SimpleIcon Name="Icons"  ShowConditionSpel="#Mode=='GridView'">
+              <Icons>
+                <Add Spel="#Container.ExtraId!=null" IconCss="icon-info-square"/>
+                <Add Spel="!String.IsNullOrEmpty(#Container.UserMessage)" IconCss="icon-comment"/>
+              </Icons>
+            </SimpleIcon>
+          </Controls>
+        </Group>
+        <Group  ColumnCount="1" Template="fluid">
+          <Controls>
+             <Label Name="StackTrace" Caption="StackTrace"  Theme="console"/>
+          </Controls>
+        </Group>
+      </Groups>
+    </Group>
+    <Group ColumnCount="1" Template="fluid" Title="اطلاعات بیشتر">
+      <Controls>
+        <Single Name="ExtraLogInfo" BocrudXml="ExhExtraLogInfo"/>
+      </Controls>
+    </Group>
+  </Groups>
+
+  <Grid Caption="لیست خطاهای ثبت شده"
+  EnableSearch="true" ToolbarSearch="true" AutoWidth="true" Width="100"
+  MultiSelect="false" SortName="CreateDt" SortOrder="desc" PagingMode="NextBack" >
+    <Columns>
+      <Column Width="50" Name="Id"  Searchable="true"  />
+      <Column Width="50" Name="ParentId"  Searchable="true"  />
+      <Column Width="400" Name="Message" WordWrap="true" Searchable="true"  />
+      <Column Width="100" Name="Source" WordWrap="true" Searchable="true"  />
+      <Column Width="100" Name="IsResolved"  Searchable="true">
+        <SearchOptions>
+          <ValueOptions>
+            <Add Text="Okay" Value="true"/>
+            <Add Text="Not Okay" Value="false"/>
+            <Add Text="بررسی نشده" Value="null"/>
+          </ValueOptions>
+          <SearchOperators>eq ne</SearchOperators>
+        </SearchOptions>
+      </Column>
+      <Column Width="100" Name="CreateDt"  Searchable="true"/>
+      <Column Width="80" Name="CreatePerson"  Searchable="true" />
+      <Column Width="80" Name="Icons"  Caption=" " Searchable="false" />
+    </Columns>
+  </Grid>
+  <Operations>ViewDetail Search Export</Operations>
+  <!--All Create Update ViewDetail Search Delete Print CreateRoot CreateChild TreeCopy TreeMove None-->
+  <FactoryMethodArgsSpel>
+    <String>'ExhExceptionLogService'</String>
+  </FactoryMethodArgsSpel>
+</Bocrud>
+

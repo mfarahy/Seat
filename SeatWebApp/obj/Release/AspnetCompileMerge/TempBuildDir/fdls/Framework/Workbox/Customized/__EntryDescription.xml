@@ -1,0 +1,28 @@
+﻿<Bocrud PresenterType="Exir.Workbox.Web.BoxPresenter, Exir.Workbox.Web"
+				Style="ace"
+				DetailPosition="up"
+				Name="__EntryDescription"
+				Caption=""
+				Height="480" Width="640"
+DirectAccessible="false"
+AccessOperation="_EntryDscrptn.A"
+				xmlns="http://exirtechsun.com/uie/2014/schema"
+				xmlns:yaxlib="http://yaxlib.codeplex.com/">
+
+	<Groups>
+		<Group Title="جزئیات" ColumnCount="3" Template="fluid">
+			<Controls>
+        <Label>
+          <Text>
+            <![CDATA[
+                @{#Container.JDescription.Replace('\n','<br/>')}
+            ]]>
+          </Text>
+        </Label>
+			</Controls>
+		</Group>
+	</Groups>
+
+	<Operations>ViewDetail</Operations>
+	<!--All Create Update ViewDetail Search Delete Print CreateRoot CreateChild TreeCopy TreeMove None-->
+</Bocrud>

@@ -1,0 +1,36 @@
+﻿<Bocrud Style="classic"
+        DetailPosition="up"
+        Name="__CompareValidator"
+        Caption="اعتبارسنج مقایسه‌ای"
+        Height="400" Width="500"
+        ToStringFormat="{Caption}"
+        DirectAccessible="false"
+        xmlns="http://exirtechsun.com/uie/2014/schema"
+       xmlns:yaxlib="http://yaxlib.codeplex.com/">
+
+  <Groups>
+    <Group Title="تنظیمات مخصوص" ColumnCount="2" Template="fluid">
+      <Controls>
+        <TextBox Name="ControlToCompare" Caption="مقایسه با مقدار کنترل دیگر" Type="Code" />
+        <TextBox Name="ValueToCompare" Caption="مقایسه با مقدار" Type="Code" />
+        <Select2 Name="Operator" Caption="عملگر مقایسه">
+          <Items>
+            <Add Value="Eq" Text="برابر"/>
+            <Add Value="Ne" Text="نا برابر"/>
+            <Add Value="Gt" Text="بزرگتر"/>
+            <Add Value="Ge" Text="بزرگتر یا مساوی"/>
+            <Add Value="Lt" Text="کوچکتر"/>
+            <Add Value="Le" Text="کوچکتر یا مساوی"/>
+          </Items>
+        </Select2>
+      </Controls>
+    </Group>
+    <![CDATA[@{include:__PropertyValidator#//uie:Groups/uie:Group[@Name='CommonSettings']}]]>
+  </Groups>
+
+  <Operations>All</Operations>
+  <FactoryMethodArgsSpel>
+    <String>T(Exir.Framework.Uie.Bocrud.CompareValidator, Exir.Framework.Uie)</String>
+  </FactoryMethodArgsSpel>
+</Bocrud>
+

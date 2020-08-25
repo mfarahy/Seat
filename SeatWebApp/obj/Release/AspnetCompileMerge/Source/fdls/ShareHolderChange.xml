@@ -1,0 +1,50 @@
+<Bocrud ManagerFactoryType="Exir.Framework.Uie.Adapter.PresenterFactory, Exir.Framework.Uie.Adapter"
+                Style="classic"
+		AccessOperation="ShrHldrChng.A"
+		DirectAccessible="false"
+        DetailPosition="up"
+        Name="ShareHolderChange"
+        Caption="$ShareHolderChange"        
+        Height="480" Width="640"
+        ToStringFormat="" 
+        xmlns="http://exirtechsun.com/uie/2014/schema"
+       xmlns:yaxlib="http://yaxlib.codeplex.com/">
+
+	   		
+  <Groups>
+    <Group Title="جزئیات"  ColumnCount="2" Template="fluid">
+      <Controls>
+<TextBox  Caption="$HolderPK" Name="HolderPK"  /> 
+<TextBox  Caption="$InstrumentID" Name="InstrumentID"  /> 
+<TextBox  Caption="$Quoantity" Name="Quoantity"  /> 
+<RawValue  Caption="$Percent" Name="Percent"  /> 
+<TextBox  Caption="$Arrow" Name="Arrow"  /> 
+<TextBox  Caption="$Name" Name="Name"  /> 
+<TextBox  Caption="$InsCode" Name="InsCode"  /> 
+<DateTimePicker  Caption="$DateTime" Name="DateTime"  /> 
+     </Controls>
+    </Group>
+  </Groups>
+
+<Grid Caption="$ShareHolderChange" 
+EnableSearch="false" ToolbarSearch="true" AutoWidth="true" Width="100"  
+MultiSelect="true" EnableColumnChooser="false">
+    <Columns>
+      <Column Width="150" Name="HolderPK" Searchable="true" />
+      <Column Width="150" Name="InstrumentID" Searchable="true" />
+      <Column Width="150" Name="Quoantity" Searchable="true" />
+      <Column Width="150" Name="Percent" Searchable="true" />
+      <Column Width="150" Name="Arrow" Searchable="true" />
+      <Column Width="150" Name="Name" Searchable="true" />
+      <Column Width="150" Name="InsCode" Searchable="true" />
+      <Column Width="150" Name="DateTime" Searchable="true" />
+
+    </Columns>
+</Grid>
+<Operations>All</Operations><!--All Create Update ViewDetail Search Delete Print CreateRoot CreateChild TreeCopy TreeMove None-->
+  <FactoryMethodArgsSpel>
+    <String>'ShareHolderChangeService'</String>
+      <String>T(SeatWebApp.Models.ShareHolderChangeViewModel, SeatWebApp)</String>
+  </FactoryMethodArgsSpel>
+</Bocrud>
+

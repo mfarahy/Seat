@@ -1,0 +1,42 @@
+﻿<Bocrud Style="classic"
+        DetailPosition="up"
+        Name="__ListPropertyItem"
+        Caption="آیتم لیست"
+        Height="500" Width="700"
+        ToStringFormat="{Caption}"
+        DirectAccessible="false"
+        xmlns="http://exirtechsun.com/uie/2014/schema"
+       xmlns:yaxlib="http://yaxlib.codeplex.com/">
+
+  <Groups>
+    <Group ColumnCount="1" Template="fluid" Title="جزییات">
+      <Controls>
+        <TextBox Name="Text" Caption="متن"/>
+        <TextBox Name="Value" Caption="مقدار" Type="Code"/>
+        <CheckBox Name="Selected" Caption="انتخاب شده ؟"/>
+        <CheckBox Name="Selectable" Caption="قابل انتخاب"/>
+        <TextBox Name="SelectableConditionSpel" Caption="اسکریپت قابلیت انتخاب" Type="Code"/>
+        <TextBox Name="ShowConditionSpel" Caption="اسکریپت نمایش" Type="Code"/>
+      </Controls>
+    </Group>
+  </Groups>
+  
+  <Grid Caption="لیست اقلام"
+  EnableSearch="false" ToolbarSearch="false" AutoWidth="true" Width="100"
+  MultiSelect="true">
+    <Columns>
+      <Column Width="150" Name="Text" />
+      <Column Width="150" Name="Value" />
+      <Column Width="50" Name="Selected" />
+      <Column Width="50" Name="Selectable" />
+      <Column Width="150" Name="SelectableConditionSpel" />
+      <Column Width="150" Name="ShowConditionSpel" />
+    </Columns>
+  </Grid>
+
+  <Operations>All</Operations>
+  <FactoryMethodArgsSpel>
+    <String>T(Exir.Framework.Uie.Bocrud.Select2+ListPropertyItem, Exir.Framework.Uie)</String>
+  </FactoryMethodArgsSpel>
+</Bocrud>
+

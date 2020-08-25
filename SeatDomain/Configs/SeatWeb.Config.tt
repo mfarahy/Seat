@@ -1,0 +1,77 @@
+﻿<#@ assembly name="C:\Users\mfarahi\source\repos\Seat\Lib\Exir.Framework.Common.dll" #>
+<#@ template debug="true" hostspecific="true" language="C#" #>
+<#@ include file="EF.Utility.CS.ttinclude"#><#@ output extension="xml" #><#
+	// version 3.5
+
+    CodeGenerationTools code = new CodeGenerationTools(this);
+    MetadataLoader loader = new MetadataLoader(this);
+    CodeRegion region = new CodeRegion(this, 1);
+    MetadataTools ef = new MetadataTools(this);
+	 																			    
+  	string	custom_xml = Host.ResolvePath(@"SeatDomain-Custom.Config.xml");
+    string inputFile = @"..\Dal\SeatWebDataModel.edmx";
+
+	string service_assembly_name = "SeatDomain";
+	string repository_type_name = "SeatDomain.Dal.SeatDBEntities1DbContext, SeatDomain";
+    MetadataWorkspace metadataWorkspace = null;
+    bool allMetadataLoaded =loader.TryLoadAllMetadata(inputFile, out metadataWorkspace);
+    EdmItemCollection ItemCollection = (EdmItemCollection)metadataWorkspace.GetItemCollection(DataSpace.CSpace);
+   
+    EntityFrameworkTemplateFileManager fileManager = EntityFrameworkTemplateFileManager.Create(this);
+    
+    EntityContainer container = ItemCollection.GetItems<EntityContainer>().FirstOrDefault();
+
+	Exir.Framework.Common.T4.ServiceConfigHelper helper = new Exir.Framework.Common.T4.ServiceConfigHelper(custom_xml);
+
+    #><?xml version="1.0" encoding="utf-8" ?>
+    <objects xmlns="http://www.springframework.net"
+             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             xsi:schemaLocation="http://www.springframework.net http://www.springframework.net/xsd/spring-objects.xsd">
+    
+<# 
+    foreach (EntityType entity in ItemCollection
+		.GetItems<EntityType>()
+		.OrderBy(e => e.Name))
+    {        
+	if(!helper.HasCustomTag(entity.Name+"Repository")){
+		if(entity.BaseType==null){ #>
+			<object id="<#=entity.Name #>Repository" singleton="false" scope="request"  type="Exir.Framework.DataAccess.EntityFramework.EntityFrameworkRepository&lt;SeatDomain.Models.<#= entity.Name #>>, Exir.Framework.DataAccess"  >
+				<property name="ContextObjectId" value="SeatWeb-SeatDbContext"/>
+			</object>
+		<# }else{ #>
+			<object id="<#=entity.Name #>Repository" singleton="false" scope="request"   type="Exir.Framework.DataAccess.EntityFramework.EntityFrameworkRepository&lt;SeatDomain.Models.<#=  entity.BaseType.Name #>,SeatDomain.Models.<#= entity.Name #>>, Exir.Framework.DataAccess"  >
+				<property name="ContextObjectId" value="SeatWeb-SeatDbContext"/>
+			</object>
+		<# }
+    }
+	if(!helper.HasCustomTag(entity.Name+"ReadOnlyRepository")){
+		if(entity.BaseType==null){ #>
+			<object id="<#=entity.Name #>ReadOnlyRepository" singleton="false" scope="request"  type="Exir.Framework.DataAccess.EntityFramework.EntityFrameworkRepository&lt;SeatDomain.Models.<#= entity.Name #>>, Exir.Framework.DataAccess"  >
+				<property name="ContextObjectId" value="SeatWeb-ReadOnlySeatDbContext"/>
+			</object>
+		<# }else{ #>
+			<object id="<#=entity.Name #>ReadOnlyRepository" singleton="false" scope="request"   type="Exir.Framework.DataAccess.EntityFramework.EntityFrameworkRepository&lt;SeatDomain.Models.<#=  entity.BaseType.Name #>,SeatDomain.Models.<#= entity.Name #>>, Exir.Framework.DataAccess"  >
+				<property name="ContextObjectId" value="SeatWeb-ReadOnlySeatDbContext"/>
+			</object>
+		<# }
+    }
+	if(entity.Name=="AspNetUser")continue;
+	if(!helper.HasCustomTag(entity.Name+"Service")){
+	 #>
+	 
+	<object id="<#=entity.Name #>Service" singleton="false" scope="request"  type="<#=service_assembly_name#>.Services.<#=entity.Name #>Service, <#=service_assembly_name#>" >
+		<constructor-arg name="repository" ref="<#=entity.Name #>Repository" />
+		<constructor-arg name="readOnlyRepository" ref="<#=entity.Name #>ReadOnlyRepository" />
+	</object>
+
+<#  
+	}
+    } 
+
+
+
+
+    fileManager.Process();
+#>
+ </objects>
+

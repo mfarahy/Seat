@@ -1,0 +1,622 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{3E9FABE2-5320-412F-B0A9-E7D7D9490252}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>SeatDomain</RootNamespace>
+    <AssemblyName>SeatDomain</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <Deterministic>true</Deterministic>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="AntiXssLibrary">
+      <HintPath>..\Lib\AntiXssLibrary.dll</HintPath>
+    </Reference>
+    <Reference Include="AutoMapper">
+      <HintPath>..\Lib\AutoMapper.dll</HintPath>
+    </Reference>
+    <Reference Include="Castle.Core">
+      <HintPath>..\Lib\Castle.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Castle.DynamicLinqQueryBuilder">
+      <HintPath>..\Lib\Castle.DynamicLinqQueryBuilder.dll</HintPath>
+    </Reference>
+    <Reference Include="CodeFirstStoreFunctions">
+      <HintPath>..\Lib\CodeFirstStoreFunctions.dll</HintPath>
+    </Reference>
+    <Reference Include="Common.Logging">
+      <HintPath>..\Lib\Common.Logging.dll</HintPath>
+    </Reference>
+    <Reference Include="Common.Logging.Core">
+      <HintPath>..\Lib\Common.Logging.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="DocumentFormat.OpenXml">
+      <HintPath>..\Lib\DocumentFormat.OpenXml.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework">
+      <HintPath>..\Lib\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.Extended">
+      <HintPath>..\Lib\EntityFramework.Extended.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer">
+      <HintPath>..\Lib\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="Exir.Framework.ApplicationService">
+      <HintPath>..\Lib\Exir.Framework.ApplicationService.dll</HintPath>
+    </Reference>
+    <Reference Include="FluentValidation">
+      <HintPath>..\Lib\FluentValidation.dll</HintPath>
+    </Reference>
+    <Reference Include="HtmlAgilityPack">
+      <HintPath>..\Lib\HtmlAgilityPack.dll</HintPath>
+    </Reference>
+    <Reference Include="Jil">
+      <HintPath>..\Lib\Jil.dll</HintPath>
+    </Reference>
+    <Reference Include="Kavenegar, Version=1.2.4.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Kavenegar.1.2.4\lib\net35\Kavenegar.dll</HintPath>
+    </Reference>
+    <Reference Include="log4net, Version=1.2.10.0, Culture=neutral, PublicKeyToken=1b44e1d426115821, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Lib\log4net.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.12.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="protobuf-net, Version=1.0.0.282, Culture=neutral, PublicKeyToken=257b51d87d2e4d67, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Lib\protobuf-net.dll</HintPath>
+    </Reference>
+    <Reference Include="Spring.Aop">
+      <HintPath>..\Lib\Spring.Aop.dll</HintPath>
+    </Reference>
+    <Reference Include="Spring.Core">
+      <HintPath>..\Lib\Spring.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Spring.Data">
+      <HintPath>..\Lib\Spring.Data.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.Entity" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.IO.Compression" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.ValueTuple, Version=4.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Lib\System.ValueTuple.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="ApplicationInfo.cs" />
+    <Compile Include="Configs\ExceptionElement.cs" />
+    <Compile Include="Configs\JobServiceConfig.cs" />
+    <Compile Include="Configs\QueueElement.cs" />
+    <Compile Include="Dal\SeatDataModel.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SeatDataModel.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Dal\SeatDataModel.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SeatDataModel.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Dal\SeatWebDataModel.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SeatWebDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Dal\SeatWebDataModel.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SeatWebDataModel.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Exceptions\BackstageRescheduleException.cs" />
+    <Compile Include="Exceptions\SeatException.cs" />
+    <Compile Include="Helpers\DateTimeHelper.cs" />
+    <Compile Include="Helpers\FileHelper.cs" />
+    <Compile Include="Helpers\LinqHelper.cs" />
+    <Compile Include="Models\AspNetRole.cs">
+      <DependentUpon>SeatWeb.BusinessObjects.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\AspNetUser.cs">
+      <DependentUpon>SeatWeb.BusinessObjects.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\BackstageJob.cs">
+      <DependentUpon>SeatWeb.BusinessObjects.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\BackstageJobOrder.cs" />
+    <Compile Include="Models\BestLimit.cs">
+      <DependentUpon>Seat.BusinessObjects.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\BigDeal.cs">
+      <DependentUpon>Seat.BusinessObjects.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ClientType.cs">
+      <DependentUpon>Seat.BusinessObjects.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ClosingPrice.cs">
+      <DependentUpon>Seat.BusinessObjects.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\CodalMessage.cs">
+      <DependentUpon>Seat.BusinessObjects.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Customized\AspNetUser.cs" />
+    <Compile Include="Models\Customized\BackstageJob.cs" />
+    <Compile Include="Models\Customized\BigDeal.cs" />
+    <Compile Include="Models\Customized\BigDealSearchModel.cs" />
+    <Compile Include="Models\Customized\CacheReport.cs" />
+    <Compile Include="Models\ClosingPriceInfo.cs" />
+    <Compile Include="Models\Customized\ClientType.cs" />
+    <Compile Include="Models\Customized\DashboardNoteDto.cs" />
+    <Compile Include="Models\Customized\HistoryPartial.cs" />
+    <Compile Include="Models\Customized\InstrumentPartial.cs" />
+    <Compile Include="Models\Customized\KeyValue.cs" />
+    <Compile Include="Models\Customized\UserProfile.cs" />
+    <Compile Include="Models\DashboardNote.cs">
+      <DependentUpon>SeatWeb.BusinessObjects.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\DashboardUserNote.cs">
+      <DependentUpon>SeatWeb.BusinessObjects.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\DayTradeDetails.cs" />
+    <Compile Include="Models\DayValue.cs" />
+    <Compile Include="Models\DescriptionModel.cs" />
+    <Compile Include="Models\FeedBack.cs">
+      <DependentUpon>SeatWeb.BusinessObjects.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\HardLog.cs">
+      <DependentUpon>SeatWeb.BusinessObjects.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\HelpInformation.cs">
+      <DependentUpon>SeatWeb.BusinessObjects.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\History.cs">
+      <DependentUpon>Seat.BusinessObjects.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Holiday.cs">
+      <DependentUpon>SeatWeb.BusinessObjects.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Index.cs" />
+    <Compile Include="Models\IndexLastDayTimeValue.cs">
+      <DependentUpon>Seat.BusinessObjects.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Instrument.cs">
+      <DependentUpon>Seat.BusinessObjects.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\InstrumentCategory.cs">
+      <DependentUpon>Seat.BusinessObjects.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\JobLog.cs">
+      <DependentUpon>SeatWeb.BusinessObjects.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\JobPerformaceLog.cs" />
+    <Compile Include="Models\KeyValue.cs">
+      <DependentUpon>SeatWeb.BusinessObjects.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\LiveInstData.cs">
+      <DependentUpon>Seat.BusinessObjects.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Message.cs">
+      <DependentUpon>Seat.BusinessObjects.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\News.cs">
+      <DependentUpon>SeatWeb.BusinessObjects.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\NewsCategory.cs">
+      <DependentUpon>SeatWeb.BusinessObjects.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Notification.cs">
+      <DependentUpon>Seat.BusinessObjects.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\NotificationLog.cs">
+      <DependentUpon>Seat.BusinessObjects.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\OnlineUser.cs" />
+    <Compile Include="Models\OnlineUserSearchModel.cs" />
+    <Compile Include="Models\Portfolio.cs">
+      <DependentUpon>Seat.BusinessObjects.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SearchModels\BackstageJobSearchModel.cs" />
+    <Compile Include="Models\SearchModels\CacheReportSearchModel.cs" />
+    <Compile Include="Models\Seat.BusinessObjects.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Seat.BusinessObjects.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SeatWeb.BusinessObjects.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SeatWeb.BusinessObjects.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Service\BackstageJobSummary.cs" />
+    <Compile Include="Models\Service\BackstageJobThreadState.cs" />
+    <Compile Include="Models\Service\NewsRow.cs" />
+    <Compile Include="Models\Service\UserActivitySummary.cs" />
+    <Compile Include="Models\ShareHolderChange.cs">
+      <DependentUpon>Seat.BusinessObjects.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ShortLink.cs">
+      <DependentUpon>SeatWeb.BusinessObjects.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SystemMessage.cs">
+      <DependentUpon>SeatWeb.BusinessObjects.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Customized\IndexLastDayTimeValue.cs" />
+    <Compile Include="Models\Trade.cs">
+      <DependentUpon>Seat.BusinessObjects.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\UserActivity.cs">
+      <DependentUpon>SeatWeb.BusinessObjects.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\UserProfile.cs">
+      <DependentUpon>SeatWeb.BusinessObjects.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Services\Customized\NotificationService.cs" />
+    <Compile Include="Services\Customized\PortfolioService.cs" />
+    <Compile Include="Services\Customized\SystemMessageService.cs" />
+    <Compile Include="Services\JobLogService.cs">
+      <DependentUpon>SeatWeb.ServiceGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Services\NotificationLogService.cs">
+      <DependentUpon>Seat.ServiceGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Services\Notifications\KavenegarNotificationProvider.cs" />
+    <Compile Include="Services\Vespertine\IPeriodicallyService.cs" />
+    <Compile Include="Services\Vespertine\JobLogService.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repository\BackstageJobRepository.cs" />
+    <Compile Include="Repository\IBackstageJobRepository.cs" />
+    <Compile Include="Repository\IUserActivityRepository.cs" />
+    <Compile Include="Repository\UserActivityReadOnlyRepository.cs" />
+    <Compile Include="Resources\messages.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>messages.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Services\AspNetRoleService.cs">
+      <DependentUpon>SeatWeb.ServiceGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Services\BestLimitService.cs">
+      <DependentUpon>Seat.ServiceGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Services\BigDealService.cs">
+      <DependentUpon>Seat.ServiceGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Services\ClientTypeService.cs">
+      <DependentUpon>Seat.ServiceGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Services\ClosingPriceService.cs">
+      <DependentUpon>Seat.ServiceGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Services\CodalMessageService.cs">
+      <DependentUpon>Seat.ServiceGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Services\Customized\AspNetUserService.cs" />
+    <Compile Include="Services\Customized\BackstageJobService.cs" />
+    <Compile Include="Services\Customized\BigDealService.cs" />
+    <Compile Include="Services\Customized\IndexLastDayTimeValueService.cs" />
+    <Compile Include="Services\Customized\InstrumentService.cs" />
+    <Compile Include="Services\HistoryServicePartial.cs" />
+    <Compile Include="Services\Customized\HolidayService.cs" />
+    <Compile Include="Services\Customized\IJobServiceBroker.cs" />
+    <Compile Include="Services\Extra\KeyValueService.cs" />
+    <Compile Include="Services\Extra\ShortLinkService.cs" />
+    <Compile Include="Services\HardLogService.cs">
+      <DependentUpon>SeatWeb.ServiceGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Services\HelpInformationService.cs">
+      <DependentUpon>SeatWeb.ServiceGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Services\HistoryService.cs">
+      <DependentUpon>Seat.ServiceGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Services\HolidayService.cs">
+      <DependentUpon>SeatWeb.ServiceGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Services\IndexLastDayTimeValueService.cs">
+      <DependentUpon>Seat.ServiceGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Services\Infrastructure\BaseOfService.cs" />
+    <Compile Include="Services\Infrastructure\IBaseOfService.cs" />
+    <Compile Include="Services\Infrastructure\IMemoryCachedService.cs" />
+    <Compile Include="Services\Infrastructure\IReadOnlySupportBaseOfService.cs" />
+    <Compile Include="Services\Infrastructure\IReadOnlySupportMemoryCachedService.cs" />
+    <Compile Include="Services\Infrastructure\MemoryCachedService.cs" />
+    <Compile Include="Services\Infrastructure\ReadOnlySupportBaseOfService.cs" />
+    <Compile Include="Services\Infrastructure\ReadOnlySupportMemoryCachedService.cs" />
+    <Compile Include="Services\InstrumentCategoryService.cs">
+      <DependentUpon>Seat.ServiceGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Services\InstrumentService.cs">
+      <DependentUpon>Seat.ServiceGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Services\IThumbnailPersistanceService.cs" />
+    <Compile Include="Services\LiveInstDataService.cs">
+      <DependentUpon>Seat.ServiceGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Services\MessageService.cs">
+      <DependentUpon>Seat.ServiceGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Services\Notifications\INotificationProvider.cs" />
+    <Compile Include="Services\OnlineUserService.cs" />
+    <Compile Include="Services\Seat.ServiceGenerator.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Seat.ServiceGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Services\SeatWeb.ServiceGenerator.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SeatWeb.ServiceGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Constants.cs" />
+    <Compile Include="Services\ShareHolderChangeService.cs">
+      <DependentUpon>Seat.ServiceGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Services\SystemMessageService.cs">
+      <DependentUpon>SeatWeb.ServiceGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Services\TradeService.cs">
+      <DependentUpon>Seat.ServiceGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Services\Utility.cs" />
+    <Compile Include="Services\WebSite\DashboardNoteService.cs" />
+    <Compile Include="Services\WebSite\DashboardUserNoteService.cs" />
+    <Compile Include="Services\WebSite\FeedBackService.cs" />
+    <Compile Include="Services\WebSite\HelpInformationService.cs" />
+    <Compile Include="Services\WebSite\NewsCategoryService.cs" />
+    <Compile Include="Services\WebSite\NewsService.cs" />
+    <Compile Include="Services\WebSite\UserActivityService.cs" />
+    <Compile Include="Services\WebSite\UserProfileService.cs" />
+    <Compile Include="Utility.cs" />
+    <Compile Include="Validations\AspNetRoleValidator.cs">
+      <DependentUpon>SeatWeb.ValidatorGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Validations\BackstageJobValidator.cs">
+      <DependentUpon>SeatWeb.ValidatorGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Validations\BestLimitValidator.cs">
+      <DependentUpon>Seat.ValidatorGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Validations\BigDealValidator.cs">
+      <DependentUpon>Seat.ValidatorGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Validations\ClientTypeValidator.cs">
+      <DependentUpon>Seat.ValidatorGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Validations\ClosingPriceValidator.cs">
+      <DependentUpon>Seat.ValidatorGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Validations\CodalMessageValidator.cs">
+      <DependentUpon>Seat.ValidatorGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Validations\Customized\AspNetUserValidator.cs" />
+    <Compile Include="Validations\Customized\HardLogValidator.cs" />
+    <Compile Include="Validations\Customized\NewsValidator.cs" />
+    <Compile Include="Validations\Customized\NotificationValidator.cs" />
+    <Compile Include="Validations\Customized\PortfolioValidator.cs" />
+    <Compile Include="Validations\Customized\UserActivityValidator.cs" />
+    <Compile Include="Validations\Customized\UserProfileValidator.cs" />
+    <Compile Include="Validations\DashboardNoteValidator.cs">
+      <DependentUpon>SeatWeb.ValidatorGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Validations\DashboardUserNoteValidator.cs">
+      <DependentUpon>SeatWeb.ValidatorGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Validations\FeedBackValidator.cs">
+      <DependentUpon>SeatWeb.ValidatorGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Validations\HelpInformationValidator.cs">
+      <DependentUpon>SeatWeb.ValidatorGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Validations\HistoryValidator.cs">
+      <DependentUpon>Seat.ValidatorGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Validations\HolidayValidator.cs">
+      <DependentUpon>SeatWeb.ValidatorGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Validations\IndexLastDayTimeValueValidator.cs">
+      <DependentUpon>Seat.ValidatorGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Validations\InstrumentCategoryValidator.cs">
+      <DependentUpon>Seat.ValidatorGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Validations\InstrumentValidator.cs">
+      <DependentUpon>Seat.ValidatorGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Validations\JobLogValidator.cs">
+      <DependentUpon>SeatWeb.ValidatorGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Validations\KeyValueValidator.cs">
+      <DependentUpon>SeatWeb.ValidatorGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Validations\LiveInstDataValidator.cs">
+      <DependentUpon>Seat.ValidatorGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Validations\MessageValidator.cs">
+      <DependentUpon>Seat.ValidatorGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Validations\NewsCategoryValidator.cs">
+      <DependentUpon>SeatWeb.ValidatorGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Validations\NotificationLogValidator.cs">
+      <DependentUpon>Seat.ValidatorGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Validations\Seat.ValidatorGenerator.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Seat.ValidatorGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Validations\SeatWeb.ValidatorGenerator.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SeatWeb.ValidatorGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Validations\ShareHolderChangeValidator.cs">
+      <DependentUpon>Seat.ValidatorGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Validations\ShortLinkValidator.cs">
+      <DependentUpon>SeatWeb.ValidatorGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Validations\SystemMessageValidator.cs">
+      <DependentUpon>SeatWeb.ValidatorGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Validations\TradeValidator.cs">
+      <DependentUpon>Seat.ValidatorGenerator.tt</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <EntityDeploy Include="Dal\SeatDataModel.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>SeatDataModel.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.Config" />
+    <None Include="Dal\SeatDataModel.edmx.diagram">
+      <DependentUpon>SeatDataModel.edmx</DependentUpon>
+    </None>
+    <EntityDeploy Include="Dal\SeatWebDataModel.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>SeatWebDataModel.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="Dal\SeatWebDataModel.edmx.diagram">
+      <DependentUpon>SeatWebDataModel.edmx</DependentUpon>
+    </None>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <Analyzer Include="..\Lib\EntityFramework.dll" />
+    <Analyzer Include="..\Lib\EntityFramework.Extended.dll" />
+    <Analyzer Include="..\Lib\EntityFramework.SqlServer.dll" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Dal\SeatDataModel.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>SeatDataModel.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Dal\SeatWebDataModel.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>SeatWebDataModel.cs</LastGenOutput>
+    </Content>
+    <Content Include="Models\SeatWeb.BusinessObjects.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>SeatWeb.BusinessObjects.cs</LastGenOutput>
+    </Content>
+    <Content Include="Configs\SeatDomain-Custom.Config.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Models\Seat.BusinessObjects.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>Seat.BusinessObjects.cs</LastGenOutput>
+    </Content>
+    <Content Include="Configs\SeatDomain.Config.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>SeatDomain.Config.xml</LastGenOutput>
+    </Content>
+    <Content Include="Configs\SeatDomain.Config.xml">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SeatDomain.Config.tt</DependentUpon>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Configs\SeatWeb.Config.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>SeatWeb.Config.xml</LastGenOutput>
+    </Content>
+    <Content Include="Configs\SeatWeb.Config.xml">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SeatWeb.Config.tt</DependentUpon>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Services\FullCacheServicesList.txt" />
+    <Content Include="Services\Seat.ServiceGenerator.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>Seat.ServiceGenerator.cs</LastGenOutput>
+    </Content>
+    <Content Include="Services\SeatWeb.ServiceGenerator.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>SeatWeb.ServiceGenerator.cs</LastGenOutput>
+    </Content>
+    <Content Include="Validations\Seat.ValidatorGenerator.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>Seat.ValidatorGenerator.cs</LastGenOutput>
+    </Content>
+    <Content Include="Validations\SeatWeb.ValidatorGenerator.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>SeatWeb.ValidatorGenerator.cs</LastGenOutput>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\Orange\Common\45\Exir.Framework.Common.csproj">
+      <Project>{3626b579-34cb-4a97-b679-5982c75013dd}</Project>
+      <Name>Exir.Framework.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Orange\DataAccess\45\Exir.Framework.DataAccess.csproj">
+      <Project>{7a008d6e-f74d-47e8-b504-9ac382f1b1df}</Project>
+      <Name>Exir.Framework.DataAccess</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Orange\Security\45\Exir.Framework.Security.csproj">
+      <Project>{6e4b8a0a-2210-476f-8cc9-e8b08f63b729}</Project>
+      <Name>Exir.Framework.Security</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Orange\Service\45\Exir.Framework.Service.csproj">
+      <Project>{c42a3f8c-2fdd-4523-9616-6c57735d1194}</Project>
+      <Name>Exir.Framework.Service</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\messages.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>messages.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

@@ -1,0 +1,3 @@
+lotfan z-index ra az class haye zir hazf konid :
+.ui-widget-overlay
+.ui-dialog, .ui-jqdialog

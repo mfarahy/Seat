@@ -1,0 +1,55 @@
+﻿<Bocrud Style="classic"
+        DetailPosition="up"
+        Name="__Comment-View"
+        Caption="نمایش هامش"
+        Height="480" Width="640"
+        ToStringFormat="{Description}"
+        DirectAccessible="false"
+        xmlns="http://exirtechsun.com/uie/2014/schema"
+       xmlns:yaxlib="http://yaxlib.codeplex.com/">
+
+  <DefaultValue>
+    <Add Property="Dt" Value="DateTime.Now"  EvalOnTime="true"/>
+    <Add Property="WriterUserName" Value="#username"/>
+  </DefaultValue>
+  
+  <Groups>
+    <Group Title="جزئیات"  ColumnCount="2" Template="fluid" ShowConditionSpel="#Mode=='DataEntry'">
+      <Controls>
+        <TextBox  Caption="هامش" Name="Description"   MultiLine="true" />
+        <DateTimePicker  Caption="زمان" Name="Dt"  IsEditable="false"  AllowCreateMode="false"  AllowEditMode="false"/>
+      </Controls>
+    </Group>
+    <Group Title="جزئیات"  ColumnCount="2" Template="fluid" ShowConditionSpel="#Mode=='View'">
+      <Controls>
+        <Label>
+          <Styles>
+            <Add Name="color" Value="#87b87f"/>
+            <Add Name="font-size" Value="larger"/>
+          </Styles>
+          <Text>
+            @{String.IsNullOrEmpty(#Container.WriterName)?#Container.WriterUserName:#Container.WriterName}
+          </Text>
+        </Label>
+        <Label  GetValueSpel="#Container.Description" Width="0.99" />
+        <Label>
+          <Styles>
+            <Add Name="color" Value="burlywood"/>
+            <Add Name="float" Value="left"/>
+          </Styles>
+          <Text>
+            @{#PersianDateTime(#Container.Dt)}
+          </Text>
+        </Label>
+
+        <Soon GetValueSpel="#Container.Dt" Caption="زمان مجاز ویرایش" Minute="10" ShowIfNotEmpty="true" Width="100" ShowConditionSpel="#Container.WriterUserName==#username"/>
+      </Controls>
+    </Group>
+  </Groups>
+
+  <Operations>All</Operations>
+  <FactoryMethodArgsSpel>
+    <String>T(Exir.Workbox.Services.CommentService, Exir.Workbox)</String>
+  </FactoryMethodArgsSpel>
+</Bocrud>
+

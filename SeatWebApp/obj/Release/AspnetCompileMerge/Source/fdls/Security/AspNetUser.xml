@@ -1,0 +1,51 @@
+<Bocrud  Style="classic"
+		    AccessOperation="AspNtUsr.A"
+		    DirectAccessible="true"
+        DetailPosition="up"
+        Name="AspNetUser"
+        Caption="کاربر"
+        Height="480" Width="640"
+        ToStringFormat=""
+        xmlns="http://exirtechsun.com/uie/2014/schema"
+       xmlns:yaxlib="http://yaxlib.codeplex.com/">
+
+    
+  <Groups>  
+    <Group Title="جزئیات"  ColumnCount="2" Template="fluid">
+      <Controls>
+        <TextBox  Caption="نام کاربری" Name="UserName"  EditableConditionSpel="!#Container.HasKey()" Type="Code" />
+        <TextBox Caption="کلمه عبور" Name="Password" Password="true" IncludePasswordConfirm="true" AllowEditMode="false" AllowViewMode="false"/>
+        <TextBox  Caption="ایمیل" Name="Email"  Type="Email" />
+        <CheckBox  Caption="ایمیل تایید شده است ؟" Name="EmailConfirmed"  IsEditable="false" AllowCreateMode="false" />
+        <TextBox  Caption="شماره همراه" Name="PhoneNumber"  Type="Tel" />
+        <CheckBox  Caption="شماره همراه تایید شده است ؟" Name="PhoneNumberConfirmed"  IsEditable="false" AllowCreateMode="false"/>
+        <DateTimePicker  Caption="زمان مجاز شدن" Name="LockoutEndDateUtc"  IsEditable="false" AllowCreateMode="false"/>
+        <CheckBox  Caption="مجاز" Name="LockoutEnabled"   AllowCreateMode="false"/>
+        <TextBox  Caption="تعداد ورود ناموفق" Name="AccessFailedCount"  IsEditable="false" AllowCreateMode="false"/>
+        <Select2 BocrudXml="AspNetRole"  Caption="نقش" Name="AspNetRoles" DataTextField="Name"  MultiSelect="true" />
+      </Controls>
+    </Group>
+  </Groups>
+
+  <Grid Caption="لیست کاربران"
+  EnableSearch="false" ToolbarSearch="true" AutoWidth="true" Width="100"
+  MultiSelect="true" EnableColumnChooser="false">
+    <Columns>
+      <Column Width="150" Name="UserName" Searchable="true" />
+      <Column Width="150" Name="Email" Searchable="true" />
+      <Column Width="150" Name="EmailConfirmed" Searchable="false" />
+      <Column Width="150" Name="PhoneNumber" Searchable="true" />
+      <Column Width="150" Name="PhoneNumberConfirmed" Searchable="false" />
+      <Column Width="150" Name="LockoutEndDateUtc" Searchable="false" />
+      <Column Width="150" Name="LockoutEnabled" Searchable="false" />
+      <Column Width="150" Name="AccessFailedCount" Searchable="false" />
+    </Columns>
+  </Grid>
+  <Operations>All</Operations>
+  <!--All Create Update ViewDetail Search Delete Print CreateRoot CreateChild TreeCopy TreeMove None-->
+  <FactoryMethodArgsSpel>
+    <String>'AspNetUserService'</String>
+    <String>T(SeatWebApp.Models.AspNetUserViewModel, SeatWebApp)</String>
+  </FactoryMethodArgsSpel>
+</Bocrud>
+

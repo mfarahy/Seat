@@ -1,0 +1,46 @@
+<Bocrud ManagerFactoryType="Exir.Framework.Uie.Adapter.PresenterFactory, Exir.Framework.Uie.Adapter"
+                Style="classic"
+		AccessOperation="Trd.A"
+		DirectAccessible="false"
+        DetailPosition="up"
+        Name="Trade"
+        Caption="$Trade"        
+        Height="480" Width="640"
+        ToStringFormat="" 
+        xmlns="http://exirtechsun.com/uie/2014/schema"
+       xmlns:yaxlib="http://yaxlib.codeplex.com/">
+
+	   		
+  <Groups>
+    <Group Title="جزئیات"  ColumnCount="2" Template="fluid">
+      <Controls>
+<TextBox  Caption="$InsCode" Name="InsCode"  /> 
+<DateTimePicker  Caption="$DateTime" Name="DateTime"  /> 
+<TextBox  Caption="$Number" Name="Number"  /> 
+<TextBox  Caption="$Quantity" Name="Quantity"  /> 
+<TextBox  Caption="$Price" Name="Price"  /> 
+<TextBox  Caption="$Unknown1" Name="Unknown1"  /> 
+     </Controls>
+    </Group>
+  </Groups>
+
+<Grid Caption="$Trade" 
+EnableSearch="false" ToolbarSearch="true" AutoWidth="true" Width="100"  
+MultiSelect="true" EnableColumnChooser="false">
+    <Columns>
+      <Column Width="150" Name="InsCode" Searchable="true" />
+      <Column Width="150" Name="DateTime" Searchable="true" />
+      <Column Width="150" Name="Number" Searchable="true" />
+      <Column Width="150" Name="Quantity" Searchable="true" />
+      <Column Width="150" Name="Price" Searchable="true" />
+      <Column Width="150" Name="Unknown1" Searchable="true" />
+
+    </Columns>
+</Grid>
+<Operations>All</Operations><!--All Create Update ViewDetail Search Delete Print CreateRoot CreateChild TreeCopy TreeMove None-->
+  <FactoryMethodArgsSpel>
+    <String>'TradeService'</String>
+      <String>T(SeatWebApp.Models.TradeViewModel, SeatWebApp)</String>
+  </FactoryMethodArgsSpel>
+</Bocrud>
+

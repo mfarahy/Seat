@@ -1,0 +1,142 @@
+﻿<Bocrud                 Style="classic"
+        DetailPosition="up"
+        Name="__FdlModel"
+        Caption="فرم"
+        Height="480" Width="640"
+        ToStringFormat="فرم {Caption}"
+        DirectAccessible="true"
+        AccessOperation="FrmBldr.A"
+        xmlns="http://exirtechsun.com/uie/2014/schema"
+       xmlns:yaxlib="http://yaxlib.codeplex.com/">
+  <DefaultValue>
+    <Add Property="Name" Value="'DYN-'"/>
+    <Add Property="Style" Value="'classic'"/>
+    <Add Property="AllowOperations" Value="'All'"/>
+    <Add Property="DetailPosition" Value="'up'"/>
+  </DefaultValue> 
+  <Groups>
+    <Group Title="جزئیات"  ColumnCount="3" Template="fluid">
+      <Controls>
+        <TextBox  Caption="کد" Name="Name" Type="Code" PlaceHolder="DYN-" EditableConditionSpel="Key.IsEmpty">
+          <Validators>
+            <RequiredFieldValidator Required="true"/>
+            <TextValidator MaxLength="50" MinLength="1"/>
+            <RegularExpressionValidator RegularExpression="DYN-[a-zA-Z0-9-]+" ErrorMessage="فقط کاراکترهای انگلیسی و اعداد قابل قبول هستند."/>
+          </Validators>
+        </TextBox>
+        <TextBox  Caption="عنوان" Name="Caption"  />
+        <SimpleTreeSelector Name="ParentMenu" Caption="زیر منو" BocrudXml="__Menu"/>
+        <TextBox  Caption="آیکن" Name="Icon" Type="Code"  Help="برای مشاهده لیست آیکن ها به &lt;a href='/View/Icons' target='_blank'&gt;این قسمت&lt;/a&gt; مراجعه فرمایید و سپس کد آیکن مورد نظر را در این قسمت درج نمایید." />
+        <Select2  Caption="استایل" Name="Style" >
+          <Items>
+            <Add Value="classic" Text="کلاسیک"/>
+            <Add Value="ace" Text="ACE"/>
+          </Items>
+        </Select2>
+        <Select2  Caption="محل دکمه‌ها" Name="ToolbarPosition" >
+          <Items>
+            <Add Value="Up" Text="بالا"/>
+            <Add Value="Down" Text="پایین"/>
+            <Add Value="Both" Text="هر دو"/>
+          </Items>
+        </Select2>
+        <TextBox Name="Help" MultiLine="true" Caption="راهنما"/>
+        <Select2 Name="DetailPosition" Caption="محل نمایش جزئیات">
+          <Items>
+            <Add Text="بالا" Value="up"/>
+            <Add Text="پایین" Value="down"/>
+            <Add Text="تب سمت راست" Value="tabbable-right"/>
+            <Add Text="تب سمت چپ" Value="tabbable-left"/>
+            <Add Text="آکاردئون" Value="accordion"/>
+            <Add Text="دیالوگ" Value="normalDialog"/>
+            <Add Text="تب مرورگر" Value="browserTab"/>
+            <Add Text="جایگزین" Value="replacement"/>
+            <Add Text="ویزارد" Value="wizard"/>
+          </Items>
+        </Select2>
+        <TextBox  Caption="عرض" Name="Width"  />
+        <TextBox  Caption="ارتفاع" Name="Height"  />
+        <TextBox  Caption="فرمت" Name="ToStringFormat"  />
+        <CheckBox  Caption="عدم نمایش گرید ؟" Name="HideGrid" >
+          <Conditions>
+            <Add EvalScript="{HideGrid}">
+              <Actions>
+                <Add Action="Hide" On="Grid"/>
+              </Actions>
+              <ElseActions>
+                <Add Action="Show" On="Grid"/>
+              </ElseActions>
+            </Add>
+          </Conditions>
+        </CheckBox>
+        <Select2 Name="Operations" Caption="عملیات مجاز" MultiSelect="true">
+          <Items>
+            <Add Value="ViewDetail"   Text="مشاهده جزییات"/>
+            <Add Value="Delete"   Text="حذف"/>
+            <Add Value="Update"   Text="به روزرسانی"/>
+            <Add Value="TreeCopy"   Text="کپی"/>
+            <Add Value="TreeMove"   Text="انتقال"/>
+            <Add Value="Print"   Text="چاپ"/>
+            <Add Value="Search"   Text="جستجو"/>
+            <Add Value="ManageFilters"   Text="مدیریت فیلترهای جستجو"/>
+            <Add Value="CreateRoot"  Text="ایجاد گره ریشه"/>
+            <Add Value="CreateChild"   Text="ایجاد گره فرزند"/>
+            <Add Value="Create"   Text="ایجاد"/>
+            <Add Value="MultipleUpdate"  Text="به روزرسانی گروهی"/>
+            <Add Value="Export"  Text="خروجی"/>
+            <Add Value="All"  Text="همه عملیات" />
+          </Items>
+        </Select2>
+      </Controls>
+      <Groups>
+        <Group ColumnCount="1" Template="fluid">
+          <Controls>
+            <One2Many BocrudXml="__ControlGroup" Name="Groups" Caption="بخش ها" Sortable="true"/>
+            <Single Name="Grid" Caption="گرید" BocrudXml="__Grid" UseDialog="false" />
+          </Controls>
+        </Group>
+      </Groups>
+    </Group>
+    <Group Name="SecuritySettings" ColumnCount="2" Template="fluid" Title="امنیت">
+      <Controls>
+        <CheckBox  Caption="دسترسی مستقیم؟" Name="DirectAccessible"  />
+        <TextBox  Caption="عملگر دسترسی" Name="AccessOperation" Type="Code"  />
+        <Break/>
+        <Select2  Caption="نقشی که می تواند ورود اطلاعات انجام دهد" Name="CreatorRoles" SpringExpression="GetRoles()" MultiSelect="true"/>
+        <Select2  Caption="نقشی که می تواند ویرایش اطلاعات انجام دهد" Name="EditorRoles"  SpringExpression="GetRoles()" MultiSelect="true" />
+        <Select2  Caption="نقشی که می تواند مشاهده اطلاعات انجام دهد" Name="ReporterRoles"  SpringExpression="GetRoles()" MultiSelect="true" />
+      </Controls>
+    </Group>
+    <Group Name="Advanced" ColumnCount="2" Template="fluid" Title="پیشرفته">
+      <Controls>
+        <CheckBox Name="ShowToolbarText" Caption="نمایش متن دکمه‌ها"/>
+        <CheckBox Name="ShowEmpty" Caption="نمایش فرم خالی"/>
+        <TextBox Name="SerializedFactoryMethodArgsSpel" Caption="پارامترها"  Type="Code" MultiLine="true" SafeMode="true" SetValueSpel="#Container.SerializedFactoryMethodArgsSpel = 'T(Exir.Framework.Service.Support.KeyValueRowService&lt;SeatDomain.Models.KeyValue>, Exir.Framework.Service)
+' + char.ConvertFromUtf32(39) + 'SetKey=' + #Container.Name + '&amp;ServiceObjectId=KeyValueService' + char.ConvertFromUtf32(39)"/>
+        <One2Many BocrudXml="__ToolbarCommand" Name="ToolbarCommands" Caption="دکمه‌های جعبه ابزار" Sortable="true"/>
+        <Link Caption=" " Text="مشاهده فرم" Name="Link" Controller="Bocrud" Action="Index" Params="xml=@{#Container.Name}" NewPage="true" ShowConditionSpel="#Mode=='GridView'"/>
+      </Controls>
+    </Group>
+  </Groups>
+
+  <Grid Caption="لیست فرم ها"
+  EnableSearch="false" ToolbarSearch="false" AutoWidth="true" Width="100"
+  MultiSelect="true">
+    <Columns>
+      <Column Width="150" Name="Name" />
+      <Column Width="150" Name="Caption" />
+      <Column Width="150" Name="DirectAccessible" />
+      <Column Width="150" Name="AccessOperation" />
+      <Column Width="150" Name="HideGrid" />
+      <Column Width="150" Name="Link" />
+    </Columns>
+  </Grid>
+  <Operations>All</Operations>
+  <!--All Create Update ViewDetail Search Delete Print CreateRoot CreateChild TreeCopy TreeMove None-->
+  <FactoryMethodArgsSpel>
+    <String>T(Exir.Framework.Uie.Adapter.FormBuilder.FdlModelService, Exir.Framework.Uie.Adapter)</String>
+    <String>T(Exir.Framework.Uie.Adapter.FormBuilder.FdlModelViewModel, Exir.Framework.Uie.Adapter)</String>
+    <String>'Path=fdls\Framework\FormBuilder\UserForms'</String>
+  </FactoryMethodArgsSpel>
+</Bocrud>
+

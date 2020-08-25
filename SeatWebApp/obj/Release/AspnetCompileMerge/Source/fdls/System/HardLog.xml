@@ -1,0 +1,74 @@
+<Bocrud                 Style="classic"
+		AccessOperation="HrdLg.R"
+		DirectAccessible="true"
+        DetailPosition="up"
+        Name="HardLog"
+        Caption="لاگ سخت"
+        Height="480" Width="640"
+        ToStringFormat=""
+        xmlns="http://exirtechsun.com/uie/2014/schema"
+       xmlns:yaxlib="http://yaxlib.codeplex.com/">
+
+
+  <Groups>
+    <Group Title="جزئیات"  ColumnCount="2" Template="fluid">
+      <Controls>
+        <DateTimePicker  Caption="زمان" Name="EntryDt" ShowTime="true"  />
+        <TextBox  Caption="سطح" Name="Level"  />
+        <TextBox  Caption="نوع" Name="Kind"  />
+        <TextBox  Caption="نام کاربر" Name="UserName"  />
+        <TextBox  Caption="کلید" Name="TraceKey"  />
+        <TextBox  Caption="IP" Name="IP"  />
+        <TextBox  Caption="Method" Name="Method"  />
+        <TextBox  Caption="Type" Name="Type"  />
+        <TextBox  Caption="تعداد آرگومان ها" Name="ArgumentsCount"  />
+        <TextBox  Caption="مدت زمان اجرا" Name="ElapsedMilliseconds"  />
+        <TextBox  Caption="پیام" Name="Message" Type="Code" MultiLine="true"  ShowConditionSpel="!String.IsNullOrEmpty(#Container.Message)"  />
+      </Controls>
+    </Group>
+    <Group Template="fluid" Title="آرگومان ها" ColumnCount="1"  ShowConditionSpel="!String.IsNullOrEmpty(#Container.Arguments)">
+      <Controls>
+        <Label Name="Arguments" Theme="console" EncodeHtml="false" />
+      </Controls>
+    </Group>
+    <Group Template="fluid" Title="خروجی" ColumnCount="1"  ShowConditionSpel="!String.IsNullOrEmpty(#Container.Result)">
+      <Controls>
+        <Label Name="Result" Theme="console" EncodeHtml="false"/>
+      </Controls>
+    </Group>
+    <Group Title="Exception" ColumnCount="1"  ShowConditionSpel="!String.IsNullOrEmpty(#Container.Exception)">
+      <Controls>
+        <Label Name="Exception" Theme="console"/>
+      </Controls>
+    </Group>
+  </Groups>
+
+  <Grid Caption="لیست لاگ‌ها"
+  EnableSearch="true" ToolbarSearch="true" AutoWidth="true" Width="100"
+  MultiSelect="false" EnableColumnChooser="true" SortName="EntryDt" SortOrder="desc">
+    <Columns>
+      <Column Width="150" Name="EntryDt" Searchable="true" />
+      <Column Width="150" Name="Level" Searchable="true" />
+      <Column Width="150" Name="Kind" Searchable="true" />
+      <Column Width="150" Name="UserName" Searchable="true" />
+      <Column Width="150" Name="TraceKey" Searchable="true" />
+      <Column Width="150" Name="IP" Searchable="true" />
+      <Column Width="150" Name="Method" Searchable="true" />
+      <Column Width="150" Name="Type" Searchable="true" />
+      <Column Width="150" Name="ArgumentsCount" Searchable="true" />
+      <Column Width="150" Name="Arguments" Searchable="true" Hidden="true" />
+      <Column Width="150" Name="ElapsedMilliseconds" Searchable="true" />
+      <Column Width="150" Name="Result" Searchable="true" Hidden="true" />
+      <Column Width="150" Name="Message" Searchable="true" />
+      <Column Width="150" Name="Exception" Searchable="true" />
+
+    </Columns>
+  </Grid>
+  <Operations>ViewDetail Search</Operations>
+  <!--All Create Update ViewDetail Search Delete Print CreateRoot CreateChild TreeCopy TreeMove None-->
+  <FactoryMethodArgsSpel>
+    <String>'HardLogService'</String>
+    <String>T(SeatWebApp.Models.HardLogViewModel, SeatWebApp)</String>
+  </FactoryMethodArgsSpel>
+</Bocrud>
+

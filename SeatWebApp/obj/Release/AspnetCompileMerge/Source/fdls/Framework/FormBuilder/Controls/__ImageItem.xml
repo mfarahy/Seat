@@ -1,0 +1,36 @@
+﻿<Bocrud Style="classic"
+        DetailPosition="up"
+        Name="__ImageItem"
+        Caption="آیتم تصویر"
+        Height="500" Width="700"
+        ToStringFormat="{Caption}"
+        DirectAccessible="false"
+        xmlns="http://exirtechsun.com/uie/2014/schema"
+       xmlns:yaxlib="http://yaxlib.codeplex.com/">
+
+  <Groups>
+    <Group ColumnCount="1" Template="fluid" Title="جزییات">
+      <Controls>
+        <TextBox Name="Path" Caption="مسیر تصویر" Type="Code"/>
+        <TextBox Name="Text" Caption="متن"/>
+        <TextBox Name="Condition" Caption="شرط نمایش" Type="Code"/>
+      </Controls>
+    </Group>
+  </Groups>
+  
+  <Grid Caption="لیست اقلام"
+  EnableSearch="false" ToolbarSearch="false" AutoWidth="true" Width="100"
+  MultiSelect="true">
+    <Columns>
+      <Column Width="200" Name="Path" />
+      <Column Width="70" Name="Text" />
+      <Column Width="150" Name="Condition" />
+    </Columns>
+  </Grid>
+
+  <Operations>All</Operations>
+  <FactoryMethodArgsSpel>
+    <String>T(Exir.Framework.Uie.Bocrud.ImageBox+ImageItem, Exir.Framework.Uie)</String>
+  </FactoryMethodArgsSpel>
+</Bocrud>
+

@@ -1,0 +1,107 @@
+﻿<Bocrud                 Style="classic"
+        DetailPosition="replacement"
+        Name="__Entry"
+        Caption="Entry"        
+        Height="480" Width="640"
+        ToStringFormat="" 
+DirectAccessible="false"
+AccessOperation="_Entry.A"
+        xmlns="http://exirtechsun.com/uie/2014/schema"
+       xmlns:yaxlib="http://yaxlib.codeplex.com/">
+
+
+<TreeInfo TidProperty="Id"
+            ExpanderProperty="NextJobs"
+            ParentProperty="Prev"
+             ParentTidProperty="PrevId"
+             TreeView="false"
+			 LeafProperty="{{IsLeaf}}"
+            TreeExpandColumn="Labels"/>
+
+  <Groups>
+    <Group Title="جزئیات"  ColumnCount="2" Template="fluid">
+      <Controls>
+<FileControl Viewers="IconViewer"  Name="Row_Version" Caption="Row_Version"  /> 
+<DateTimePicker  Name="EntryDt" Caption="EntryDt"  /> 
+<DateTimePicker  Name="ReadDt" Caption="ReadDt"  /> 
+<CheckBox  Name="IsRead" Caption="IsRead"  /> 
+<CheckBox  Name="IsDeleted" Caption="IsDeleted"  /> 
+<CheckBox  Name="IsRejected" Caption="IsRejected"  /> 
+<CheckBox  Name="IsReferRejected" Caption="IsReferRejected"  /> 
+<CheckBox  Name="IsLocked" Caption="IsLocked"  /> 
+<CheckBox  Name="IsReferred" Caption="IsReferred"  /> 
+<CheckBox  Name="IsSaver" Caption="IsSaver"  /> 
+<CheckBox  Name="Referable" Caption="Referable"  /> 
+<CheckBox  Name="Rejectable" Caption="Rejectable"  /> 
+<CheckBox  Name="Spinnable" Caption="Spinnable"  /> 
+<CheckBox  Name="Commentable" Caption="Commentable"  /> 
+<CheckBox  Name="Attachable" Caption="Attachable"  /> 
+<TextBox  Name="Labels" Caption="Labels"  /> 
+<TextBox  Name="SubsequentCount" Caption="SubsequentCount"  /> 
+<TextBox  Name="Deadline" Caption="Deadline"  /> 
+<TextBox  Name="ReferDesc" Caption="ReferDesc"  /> 
+<CheckBox  Name="IsRejectEntry" Caption="IsRejectEntry"  /> 
+<CheckBox  Name="IsHiddenRefer" Caption="IsHiddenRefer"  /> 
+<CheckBox  Name="IsHiddenDesc" Caption="IsHiddenDesc"  /> 
+<TextBox  Name="SenderName" Caption="SenderName"  /> 
+<TextBox  Name="RecieverName" Caption="RecieverName"  /> 
+<TextBox  Name="StopTime" Caption="StopTime"  /> 
+<CheckBox  Name="IsArchived" Caption="IsArchived"  /> 
+<CheckBox  Name="IsObsolete" Caption="IsObsolete"  /> 
+<TextBox  Name="RecieverId" Caption="RecieverId"  /> 
+<TextBox  Name="SenderId" Caption="SenderId"  /> 
+<CheckBox  Name="IsConfirmed" Caption="IsConfirmed"  /> 
+<Many2One Name="Prev" BocrudXml="__Entry" ForeignKey="PrevId"   Caption="Prev"  />
+<Many2One Name="PersonWorkbox" BocrudXml="__PersonWorkbox" ForeignKey="PersonWorkboxId"   Caption="PersonWorkbox"  />
+<Many2One Name="Job" BocrudXml="__Job" ForeignKey="JobId"   Caption="Job"  />
+<Many2One Name="Extended" BocrudXml="__EntryExtended" ForeignKey="ExtendedId"   Caption="Extended"  />
+<Many2One Name="Instance" BocrudXml="__AssignmentInstance" ForeignKey="InstanceId"   Caption="Instance"  />
+<Many2One Name="System" BocrudXml="__WorkflowSystem" ForeignKey="SystemId"   Caption="System"  />
+<Many2One Name="Assignment" BocrudXml="__WorkflowAssignment" ForeignKey="AssignmentId"   Caption="Assignment"  />
+     </Controls>
+    </Group>
+  </Groups>
+
+<Grid Caption="لیست Entry" 
+EnableSearch="false" ToolbarSearch="false" AutoWidth="true" Width="100"  
+MultiSelect="true">
+    <Columns>
+      <Column Width="150" Name="Row_Version" />
+      <Column Width="150" Name="EntryDt" />
+      <Column Width="150" Name="ReadDt" />
+      <Column Width="150" Name="IsRead" />
+      <Column Width="150" Name="IsDeleted" />
+      <Column Width="150" Name="IsRejected" />
+      <Column Width="150" Name="IsReferRejected" />
+      <Column Width="150" Name="IsLocked" />
+      <Column Width="150" Name="IsReferred" />
+      <Column Width="150" Name="IsSaver" />
+      <Column Width="150" Name="Referable" />
+      <Column Width="150" Name="Rejectable" />
+      <Column Width="150" Name="Spinnable" />
+      <Column Width="150" Name="Commentable" />
+      <Column Width="150" Name="Attachable" />
+      <Column Width="150" Name="Labels" />
+      <Column Width="150" Name="SubsequentCount" />
+      <Column Width="150" Name="Deadline" />
+      <Column Width="150" Name="ReferDesc" />
+      <Column Width="150" Name="IsRejectEntry" />
+      <Column Width="150" Name="IsHiddenRefer" />
+      <Column Width="150" Name="IsHiddenDesc" />
+      <Column Width="150" Name="SenderName" />
+      <Column Width="150" Name="RecieverName" />
+      <Column Width="150" Name="StopTime" />
+      <Column Width="150" Name="IsArchived" />
+      <Column Width="150" Name="IsObsolete" />
+      <Column Width="150" Name="RecieverId" />
+      <Column Width="150" Name="SenderId" />
+      <Column Width="150" Name="IsConfirmed" />
+
+    </Columns>
+</Grid>
+<Operations>All</Operations><!--All Create Update ViewDetail Search Delete Print CreateRoot CreateChild TreeCopy TreeMove None-->
+  <FactoryMethodArgsSpel>
+      <String>T(Exir.Workbox.Services.EntryService, Exir.Workbox)</String>
+  </FactoryMethodArgsSpel>
+</Bocrud>
+

@@ -1,0 +1,35 @@
+﻿<Bocrud                 Style="classic"
+        DetailPosition="up"
+        Name="__Comment"
+        Caption="هامش"
+        Height="480" Width="640"
+        ToStringFormat="{Description}"
+DirectAccessible="false"
+AccessOperation="_Cmnt.A"
+        xmlns="http://exirtechsun.com/uie/2014/schema"
+       xmlns:yaxlib="http://yaxlib.codeplex.com/">
+
+  <Groups>
+    <Group Title="جزئیات"  ColumnCount="2" Template="fluid">
+      <Controls>
+        <TextBox  Caption="هامش" Name="Description"   MultiLine="true" />
+        <DateTimePicker  Caption="زمان" Name="Dt"  IsEditable="false"  AllowCreateMode="false"  AllowEditMode="false"/>
+      </Controls>   
+    </Group>
+  </Groups>
+
+  <Grid Caption="لیست هامش ها"
+  EnableSearch="false" ToolbarSearch="false" AutoWidth="true" Width="100"
+  MultiSelect="true"  HideHeader="true" EnablePager="false">
+    <Columns>
+      <Column Width="150" Name="Description" WordWrap="true" />
+      <Column Width="150" Name="Dt" />
+    </Columns>
+  </Grid>
+  <Operations>All</Operations>
+  <!--All Create Update ViewDetail Search Delete Print CreateRoot CreateChild TreeCopy TreeMove None-->
+  <FactoryMethodArgsSpel>
+    <String>T(Exir.Workbox.Services.CommentService, Exir.Workbox)</String>
+  </FactoryMethodArgsSpel>
+</Bocrud>
+

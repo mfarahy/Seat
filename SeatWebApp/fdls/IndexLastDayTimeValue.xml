@@ -1,0 +1,43 @@
+<Bocrud ManagerFactoryType="Exir.Framework.Uie.Adapter.PresenterFactory, Exir.Framework.Uie.Adapter"
+                Style="classic"
+		AccessOperation="IndxLstDyTmVl.A"
+		DirectAccessible="false"
+        DetailPosition="up"
+        Name="IndexLastDayTimeValue"
+        Caption="$IndexLastDayTimeValue"        
+        Height="480" Width="640"
+        ToStringFormat="" 
+        xmlns="http://exirtechsun.com/uie/2014/schema"
+       xmlns:yaxlib="http://yaxlib.codeplex.com/">
+
+	   		
+  <Groups>
+    <Group Title="جزئیات"  ColumnCount="2" Template="fluid">
+      <Controls>
+<DateTimePicker  Caption="$Dt" Name="Dt"  /> 
+<RawValue  Caption="$Value" Name="Value"  /> 
+<RawValue  Caption="$ChangeValue" Name="ChangeValue"  /> 
+<RawValue  Caption="$ChangePercent" Name="ChangePercent"  /> 
+<Many2One BocrudXml="Instrument" ForeignKey="InsCode"   Caption="Instrument" Name="Instrument"  />
+     </Controls>
+    </Group>
+  </Groups>
+
+<Grid Caption="$IndexLastDayTimeValue" 
+EnableSearch="false" ToolbarSearch="true" AutoWidth="false" Width="600"  
+MultiSelect="true" EnableColumnChooser="false">
+    <Columns>
+      <Column Width="150" Name="Dt" Searchable="true" />
+      <Column Width="150" Name="Value" Searchable="true" />
+      <Column Width="150" Name="ChangeValue" Searchable="true" />
+      <Column Width="150" Name="ChangePercent" Searchable="true" />
+
+    </Columns>
+</Grid>
+<Operations>All</Operations><!--All Create Update ViewDetail Search Delete Print CreateRoot CreateChild TreeCopy TreeMove None-->
+  <FactoryMethodArgsSpel>
+    <String>'IndexLastDayTimeValueService'</String>
+      <String>T(SeatWebApp.Models.IndexLastDayTimeValueViewModel, SeatWebApp)</String>
+  </FactoryMethodArgsSpel>
+</Bocrud>
+

@@ -1,0 +1,250 @@
+﻿<#@ template debug="true" hostspecific="true" language="C#" #>
+<#@ include file="EF.Utility.CS.ttinclude"#>
+<#@ output extension=".xml" #>
+<#
+    CodeGenerationTools code = new CodeGenerationTools(this);
+    MetadataLoader loader = new MetadataLoader(this);
+    CodeRegion region = new CodeRegion(this, 1);						
+    MetadataTools ef = new MetadataTools(this);				    			   
+	 													   	     			   
+    string inputFile = @"..\..\SeatDomain\Dal\SeatDataModel.edmx";
+    MetadataWorkspace metadataWorkspace = null;
+    bool allMetadataLoaded =loader.TryLoadAllMetadata(inputFile, out metadataWorkspace);
+    EdmItemCollection ItemCollection = (EdmItemCollection)metadataWorkspace.GetItemCollection(DataSpace.CSpace);
+    string namespaceName = code.VsNamespaceSuggestion();
+
+    EntityFrameworkTemplateFileManager fileManager = EntityFrameworkTemplateFileManager.Create(this);
+    
+    EntityContainer container = ItemCollection.GetItems<EntityContainer>().FirstOrDefault();
+
+    foreach (EntityType entity in ItemCollection.GetItems<EntityType>().OrderBy(e => e.Name))
+    {        
+        string model_name=entity.Name;
+
+		 StringBuilder sb = new StringBuilder();
+            char[] ch = new char[] { 'e', 'a', 'i', 'o','u' };
+            for (int i = 0; i < model_name.Length; ++i)
+            {
+            if (ch.Contains(model_name[i]) || (sb.Length > 0 && model_name[i] == sb[sb.Length - 1])) continue;
+                sb.Append(model_name[i]);
+            }
+
+         string abbr_model_name=   sb.ToString();
+
+        string model_name_file_name=model_name+".xml";
+
+        string current_directory=Host.ResolvePath("");
+        string[] similars=Directory.GetFiles(current_directory,model_name_file_name, SearchOption.AllDirectories);
+        if(similars.Length==0 ||
+            (similars.Length==1 && String.Compare(similars[0],current_directory+"\\"+ model_name_file_name,true)==0))
+        {
+            fileManager.StartNewFile(model_name_file_name);
+
+			var subTypes=ItemCollection.GetItems<EntityType>()
+					.Where(x=>x.Name!=entity.Name && x.BaseType!=null && x.BaseType.Name==entity.Name).OrderBy(e => e.Name) ;
+
+#>
+<Bocrud ManagerFactoryType="Exir.Framework.Uie.Adapter.PresenterFactory, Exir.Framework.Uie.Adapter"
+                Style="classic"
+		AccessOperation="<#=abbr_model_name #>.A"
+		DirectAccessible="false"
+        DetailPosition="up"
+        Name="<#=model_name #>"
+        Caption="$<#=                entity.Documentation!=null && !String.IsNullOrEmpty(entity.Documentation.Summary) ? entity.Documentation.Summary : model_name #>"        
+        Height="480" Width="640"
+        ToStringFormat="" 
+        xmlns="http://exirtechsun.com/uie/2014/schema"
+       xmlns:yaxlib="http://yaxlib.codeplex.com/">
+
+	   		<#
+				if(subTypes.Any()){
+					#>
+		<SubTypes>
+		<# foreach(var subEntity in subTypes){ #>
+			<Add TypeName="<#= subEntity.Name #>" Xml="<#= subEntity.Name #>"/>
+			<# } #>
+		</SubTypes>
+		<# } #>
+
+<#
+            string child_nav_name="";
+            bool first=true,closeComment=false;
+            foreach(var child_nav in entity.NavigationProperties){
+                if(child_nav.ToEndMember.GetEntityType()==entity && 
+                    child_nav.FromEndMember.GetEntityType()==entity &&
+                    child_nav.ToEndMember.RelationshipMultiplicity== RelationshipMultiplicity.Many &&
+                    child_nav.FromEndMember.RelationshipMultiplicity== RelationshipMultiplicity.ZeroOrOne )
+                {  
+                    var association = metadataWorkspace
+                        .GetItems<AssociationType>(DataSpace.CSpace)
+                        .Single(a => a.Name == child_nav.RelationshipType.Name);
+
+                    // Then look at the referential constraints
+                    var toColumns = String.Join(",", 
+                        association.ReferentialConstraints.SelectMany(rc => rc.ToProperties));
+                         var fromColumns = String.Join(",", 
+                        association.ReferentialConstraints.SelectMany(rc => rc.FromProperties));
+             
+                    var parent_nav=entity.NavigationProperties.Where(np=>np.GetDependentProperties().Any(x=>x.Name==toColumns)).First();
+                    var simple_string=entity.Properties
+                        .Where(p => p.TypeUsage.EdmType is PrimitiveType && p.DeclaringType == entity &&
+                        !ef.IsKey(p) && p.TypeUsage.ToString()=="Edm.String").FirstOrDefault();
+                    if(simple_string==null) continue;
+            #>
+  
+<TreeInfo TidProperty="<#=                        fromColumns #>"
+            ExpanderProperty="<#=                        child_nav.Name#>"
+            ParentProperty="<#=                        parent_nav #>"
+             ParentTidProperty="<#=                        toColumns#>"
+             TreeView="false"
+			 LeafProperty="{{IsLeaf}}"
+			 Collapse="false"
+            TreeExpandColumn="<#=                        simple_string #>"/>
+
+<#                  
+                    if(!first){
+                        closeComment=true;
+                        #> <!-- <#
+                    }else{
+                    child_nav_name=child_nav.Name;
+                        }
+break;
+                }
+            }
+            if(closeComment){
+ #>
+-->
+<#}#>
+<#
+            
+            if(entity.Documentation!=null){
+                #><Help><#=                    entity.Documentation.LongDescription #>
+</Help>
+<#
+            }
+ #>
+  <Groups>
+    <Group Title="جزئیات"  ColumnCount="2" Template="fluid">
+      <Controls>
+<#
+            int focusIndex=1;
+            foreach (EdmProperty edmProperty in entity.Properties
+                .Where(p => p.TypeUsage.EdmType is PrimitiveType  &&
+                !ef.IsKey(p) &&
+                !entity.NavigationProperties.Any(np =>
+                np.ToEndMember.RelationshipMultiplicity != RelationshipMultiplicity.Many &&
+                ef.GetDependentProperties(np).Any(y=>y.Name==p.Name))))                
+            {
+                var caption=edmProperty.Documentation==null || String.IsNullOrEmpty(edmProperty.Documentation.Summary)? code.Escape(edmProperty):edmProperty.Documentation.Summary;
+                var help= edmProperty.Documentation!=null?"Help=\""+edmProperty.Documentation.LongDescription+"\"":"";
+
+                switch(edmProperty.TypeUsage.ToString()){
+                    case "Edm.Byte":
+                    case "Edm.Int32":
+                    case "Edm.Int16":
+                    case "Edm.Int64":
+                    case "Edm.String":
+                    case "Edm.Decimal":
+                    case "Edm.Single":
+ #><TextBox <#
+                        break;
+                    case "Edm.Binary":
+#><FileControl Viewers="IconViewer" <#
+                        break;
+                    case "Edm.Boolean":
+#><CheckBox <#
+                        break;
+                    case "Edm.DateTime":
+#><DateTimePicker <#
+                        break;
+                    default:
+                        #><RawValue <#
+                        break;
+                }
+#> Caption="$<#=caption#>" Name="<#=                    code.Escape(edmProperty) #>" <#=                    help#> /> 
+<#
+            } 
+            foreach (NavigationProperty np in entity.NavigationProperties)
+            {
+                var caption=np.Documentation==null || String.IsNullOrEmpty(np.Documentation.Summary)? code.Escape(np):np.Documentation.Summary;
+                var help= np.Documentation!=null?"Help=\""+np.Documentation.LongDescription+"\"":"";
+
+                if(!String.IsNullOrEmpty(child_nav_name) && np.Name==child_nav_name) continue;
+
+                if(np.ToEndMember.RelationshipMultiplicity == RelationshipMultiplicity.Many){
+                    if(np.FromEndMember.RelationshipMultiplicity == RelationshipMultiplicity.ZeroOrOne )
+                    {
+                        string t = code.Escape(np.TypeUsage).ToString();
+                        t=t.Substring(t.IndexOf('<')+1).TrimEnd('>');
+#><Many2Many BocrudXml="<#=                            t#>" <#
+                    }else
+                        if(np.FromEndMember.RelationshipMultiplicity == RelationshipMultiplicity.One )
+                    {
+					continue;
+                        string t = code.Escape(np.TypeUsage).ToString();
+                        t=t.Substring(t.IndexOf('<')+1).TrimEnd('>');
+#><One2Many BocrudXml="<#=                            t#>" <#
+                    }else{
+                        string t = code.Escape(np.TypeUsage).ToString();
+                        t=t.Substring(t.IndexOf('<')+1).TrimEnd('>');
+#><Many2Many BocrudXml="<#=                            t#>" <#
+                    }
+                }else{
+#><Many2One BocrudXml="<#=                        code.Escape(np.TypeUsage)#>" ForeignKey="<#=                        code.Escape(ef.GetDependentProperties(np).First().Name) #>"  <#
+                }
+                 #>
+ Caption="<#=                    caption #>" Name="<#=                    code.Escape(np) #>" <#=                    help #> />
+<#
+            }
+#>
+     </Controls>
+    </Group>
+  </Groups>
+<#
+            int width=0;
+            foreach (EdmProperty edmProperty in entity.Properties
+                .Where(p => p.TypeUsage.EdmType is PrimitiveType && p.DeclaringType == entity &&
+                !ef.IsKey(p) &&
+                !entity.NavigationProperties.Any(np =>np.DeclaringType == entity &&
+                np.ToEndMember.RelationshipMultiplicity != RelationshipMultiplicity.Many &&
+                ef.GetDependentProperties(np).Any(y=>y.Name==p.Name))
+                ))
+                width+=150;
+#>
+
+<Grid Caption="$<#=                entity.Documentation!=null && !String.IsNullOrEmpty(entity.Documentation.Summary) ? entity.Documentation.Summary : model_name #>" 
+EnableSearch="false" ToolbarSearch="true" AutoWidth="<#=                (width>600).ToString().ToLower()#>" Width="<#=                width>600?100:width#>"  
+MultiSelect="true" EnableColumnChooser="false">
+    <Columns>
+<#
+            foreach (EdmProperty edmProperty in entity.Properties
+                .Where(p => p.TypeUsage.EdmType is PrimitiveType && p.DeclaringType == entity &&
+                !ef.IsKey(p) &&
+                !entity.NavigationProperties.Any(np =>np.DeclaringType == entity &&
+                np.ToEndMember.RelationshipMultiplicity != RelationshipMultiplicity.Many &&
+                ef.GetDependentProperties(np).Any(y=>y.Name==p.Name))
+                ))
+            {
+#>
+      <Column Width="150" Name="<#=                    code.Escape(edmProperty) #>" Searchable="true" />
+<#
+            }
+ #>
+
+    </Columns>
+</Grid>
+<Operations>All</Operations><!--All Create Update ViewDetail Search Delete Print CreateRoot CreateChild TreeCopy TreeMove None-->
+  <FactoryMethodArgsSpel>
+    <String>'<#=model_name #>Service'</String>
+      <String>T(SeatWebApp.Models.<#=model_name #>ViewModel, SeatWebApp)</String>
+  </FactoryMethodArgsSpel>
+</Bocrud>
+
+<#          
+        }
+    } 
+    fileManager.Process();
+#>
+
+
+       

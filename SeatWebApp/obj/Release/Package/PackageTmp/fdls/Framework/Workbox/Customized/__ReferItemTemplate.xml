@@ -1,0 +1,41 @@
+﻿<Bocrud                 Style="classic"
+        DetailPosition="up"
+        Name="__ReferItemTemplate"
+        Caption="ReferItemTemplate"        
+        Height="480" Width="640"
+        ToStringFormat="" 
+DirectAccessible="false"
+AccessOperation="_RfrItmTmplt.A"
+        xmlns="http://exirtechsun.com/uie/2014/schema"
+       xmlns:yaxlib="http://yaxlib.codeplex.com/">
+
+  <Groups>
+    <Group Title="جزئیات"  ColumnCount="2" Template="fluid">
+      <Controls>
+<TextBox  Caption="TargetUnitId" Name="TargetUnitId"  /> 
+<TextBox  Caption="TargetUserId" Name="TargetUserId"  /> 
+<CheckBox  Caption="AllowRepetitive" Name="AllowRepetitive"  /> 
+<CheckBox  Caption="IncludeSubUnits" Name="IncludeSubUnits"  /> 
+<Many2One BocrudXml="ReferType" ForeignKey="ReferTypeId"   Caption="ReferType" Name="ReferType"  />
+<Many2One BocrudXml="ReferTemplate" ForeignKey="ReferTemplateId"   Caption="Template" Name="Template"  />
+     </Controls>
+    </Group>
+  </Groups>
+
+<Grid Caption="لیست ReferItemTemplate" 
+EnableSearch="false" ToolbarSearch="false" AutoWidth="false" Width="600"  
+MultiSelect="true">
+    <Columns>
+      <Column Width="150" Name="TargetUnitId" />
+      <Column Width="150" Name="TargetUserId" />
+      <Column Width="150" Name="AllowRepetitive" />
+      <Column Width="150" Name="IncludeSubUnits" />
+
+    </Columns>
+</Grid>
+<Operations>All</Operations><!--All Create Update ViewDetail Search Delete Print CreateRoot CreateChild TreeCopy TreeMove None-->
+  <FactoryMethodArgsSpel>
+    <String>T(Exir.Workbox.Services.ReferItemTemplateService, Exir.Workbox)</String>
+  </FactoryMethodArgsSpel>
+</Bocrud>
+

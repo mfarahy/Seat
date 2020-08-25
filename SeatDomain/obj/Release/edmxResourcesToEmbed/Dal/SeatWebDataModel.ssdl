@@ -1,0 +1,377 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="SeatWebDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="AspNetRoles">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="256" Nullable="false" />
+  </EntityType>
+  <EntityType Name="AspNetUserRoles">
+    <Key>
+      <PropertyRef Name="UserId" />
+      <PropertyRef Name="RoleId" />
+    </Key>
+    <Property Name="UserId" Type="int" Nullable="false" />
+    <Property Name="RoleId" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="AspNetUsers">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Access" Type="nvarchar(max)" />
+    <Property Name="Email" Type="nvarchar" MaxLength="256" />
+    <Property Name="EmailConfirmed" Type="bit" Nullable="false" />
+    <Property Name="PasswordHash" Type="nvarchar(max)" />
+    <Property Name="SecurityStamp" Type="nvarchar(max)" />
+    <Property Name="PhoneNumber" Type="nvarchar(max)" />
+    <Property Name="PhoneNumberConfirmed" Type="bit" Nullable="false" />
+    <Property Name="TwoFactorEnabled" Type="bit" Nullable="false" />
+    <Property Name="LockoutEndDateUtc" Type="datetime" />
+    <Property Name="LockoutEnabled" Type="bit" Nullable="false" />
+    <Property Name="AccessFailedCount" Type="int" Nullable="false" />
+    <Property Name="UserName" Type="nvarchar" MaxLength="256" Nullable="false" />
+  </EntityType>
+  <EntityType Name="BackstageJobs">
+    <Key>
+      <PropertyRef Name="BackstageJobPK" />
+    </Key>
+    <Property Name="BackstageJobPK" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="RunAs" Type="nvarchar" MaxLength="70" Nullable="false" />
+    <Property Name="TimeToRun" Type="datetime" Nullable="false" />
+    <Property Name="Status" Type="smallint" Nullable="false" />
+    <Property Name="Service" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="Action" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="SerializedArgs" Type="nvarchar(max)" />
+    <Property Name="RemoveIfSuccess" Type="bit" Nullable="false" />
+    <Property Name="RetryCount" Type="tinyint" Nullable="false" />
+    <Property Name="Priority" Type="smallint" Nullable="false" />
+    <Property Name="UniqueCode" Type="varchar" MaxLength="50" />
+    <Property Name="Dependency" Type="varchar" MaxLength="50" />
+    <Property Name="Queue" Type="varchar" MaxLength="50" />
+    <Property Name="Server" Type="varchar" MaxLength="50" />
+    <Property Name="Tags" Type="nvarchar" MaxLength="50" />
+    <Property Name="Debug" Type="bit" Nullable="false" />
+    <Property Name="Error" Type="nvarchar(max)" />
+    <Property Name="Duration" Type="bigint" />
+    <Property Name="RunDt" Type="datetime" />
+    <Property Name="ExecutionLog" Type="varbinary(max)" />
+    <Property Name="MaxCpu" Type="tinyint" />
+    <Property Name="MaxMemory" Type="tinyint" />
+    <Property Name="MidCpu" Type="tinyint" />
+    <Property Name="MidMemory" Type="tinyint" />
+  </EntityType>
+  <EntityType Name="HardLog">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="EntryDt" Type="datetime" Nullable="false" />
+    <Property Name="Level" Type="varchar" MaxLength="10" />
+    <Property Name="Kind" Type="tinyint" Nullable="false" />
+    <Property Name="UserName" Type="varchar" MaxLength="200" />
+    <Property Name="TraceKey" Type="bigint" />
+    <Property Name="IP" Type="varchar" MaxLength="20" />
+    <Property Name="Method" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="Type" Type="varchar" MaxLength="150" Nullable="false" />
+    <Property Name="ArgumentsCount" Type="int" Nullable="false" />
+    <Property Name="Arguments" Type="nvarchar(max)" />
+    <Property Name="ElapsedMilliseconds" Type="bigint" Nullable="false" />
+    <Property Name="Result" Type="nvarchar(max)" />
+    <Property Name="Message" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Exception" Type="nvarchar(max)" />
+  </EntityType>
+  <EntityType Name="Holidays">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Date" Type="datetime" Nullable="false" />
+    <Property Name="HolidayType" Type="smallint" Nullable="false" />
+    <Property Name="HolidayTitle" Type="nvarchar" MaxLength="200" Nullable="false" />
+    <Property Name="Audit_CreateDate" Type="datetime" Nullable="false" />
+    <Property Name="Audit_CreatorUserName" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Audit_CreatorIP" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Audit_LastModifyDate" Type="datetime" Nullable="false" />
+    <Property Name="Audit_LastModifierUserName" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Audit_LastModifierIP" Type="varchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="JobLogs">
+    <Key>
+      <PropertyRef Name="JobLogPK" />
+    </Key>
+    <Property Name="JobLogPK" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="RunDt" Type="datetime" Nullable="false" />
+    <Property Name="Status" Type="smallint" Nullable="false" />
+    <Property Name="JobName" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="Log" Type="varbinary(max)" Nullable="false" />
+    <Property Name="Duration" Type="time" Precision="7" Nullable="false" />
+    <Property Name="Audit_CreateDate" Type="datetime" Nullable="false" />
+    <Property Name="Audit_CreatorUserName" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Audit_CreatorIP" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Audit_LastModifyDate" Type="datetime" Nullable="false" />
+    <Property Name="Audit_LastModifierUserName" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Audit_LastModifierIP" Type="varchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="KeyValues">
+    <Key>
+      <PropertyRef Name="KeyValuePK" />
+    </Key>
+    <Property Name="KeyValuePK" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="SetKey" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="RowKey" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="Path" Type="varchar" MaxLength="1000" />
+    <Property Name="Key" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Value" Type="nvarchar(max)" />
+    <Property Name="Type" Type="tinyint" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ShortLinks">
+    <Key>
+      <PropertyRef Name="ShortLinkPK" />
+    </Key>
+    <Property Name="ShortLinkPK" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="OrginalLink" Type="nvarchar" MaxLength="1000" Nullable="false" />
+    <Property Name="Title" Type="nvarchar" MaxLength="50" />
+    <Property Name="Code" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="ReferCount" Type="int" Nullable="false" />
+    <Property Name="CreateDate" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="SystemMessages">
+    <Key>
+      <PropertyRef Name="MessagePK" />
+    </Key>
+    <Property Name="MessagePK" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Code" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Subject" Type="nvarchar" MaxLength="2000" Nullable="false" />
+    <Property Name="Text" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Media" Type="varchar" MaxLength="10" Nullable="false" />
+    <Property Name="Culture" Type="char" MaxLength="5" Nullable="false" />
+    <Property Name="IsEnable" Type="bit" Nullable="false" />
+    <Property Name="Audit_CreatorUserName" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Audit_CreatorIP" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Audit_CreateDate" Type="datetime" Nullable="false" />
+    <Property Name="Audit_LastModifyDate" Type="datetime" Nullable="false" />
+    <Property Name="Audit_LastModifierUserName" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Audit_LastModifierIP" Type="varchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="UserActivities">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="EntryDt" Type="datetime" Nullable="false" />
+    <Property Name="UserName" Type="varchar" MaxLength="200" />
+    <Property Name="IP" Type="varchar" MaxLength="20" />
+    <Property Name="Message" Type="nvarchar" MaxLength="500" Nullable="false" />
+    <Property Name="PageName" Type="varchar" MaxLength="100" />
+    <Property Name="Metadata" Type="nvarchar" MaxLength="200" />
+    <Property Name="Session" Type="varchar" MaxLength="100" />
+    <Property Name="Action" Type="varchar" MaxLength="100" />
+  </EntityType>
+  <EntityType Name="DashboardNotes">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Text" Type="nvarchar" MaxLength="3000" Nullable="false" />
+    <Property Name="Color" Type="varchar" MaxLength="6" />
+    <Property Name="Roles" Type="nvarchar" MaxLength="500" />
+    <Property Name="StartDt" Type="datetime" />
+    <Property Name="EndDt" Type="datetime" />
+    <Property Name="Audit_CreatorUserName" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Audit_CreatorIP" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Audit_CreateDate" Type="datetime" Nullable="false" />
+    <Property Name="Audit_LastModifyDate" Type="datetime" Nullable="false" />
+    <Property Name="Audit_LastModifierUserName" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Audit_LastModifierIP" Type="varchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="DashboardUserNotes">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="UserName" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="NoteId" Type="int" Nullable="false" />
+    <Property Name="SeenDt" Type="datetime" />
+  </EntityType>
+  <EntityType Name="FeedBacks">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="UserName" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="CreateDate" Type="datetime" Nullable="false" />
+    <Property Name="Description" Type="nvarchar" MaxLength="1000" Nullable="false" />
+    <Property Name="LinkAddresss" Type="nvarchar" MaxLength="500" Nullable="false" />
+    <Property Name="Status" Type="int" Nullable="false" />
+    <Property Name="CategoryType" Type="int" Nullable="false" />
+    <Property Name="Mobile" Type="varchar" MaxLength="13" />
+    <Property Name="Email" Type="varchar" MaxLength="100" />
+    <Property Name="Response" Type="nvarchar" MaxLength="500" />
+  </EntityType>
+  <EntityType Name="HelpInformation">
+    <Key>
+      <PropertyRef Name="HelpInfoPK" />
+    </Key>
+    <Property Name="HelpInfoPK" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="FormName" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="FieldName" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="Text" Type="nvarchar" MaxLength="4000" />
+    <Property Name="RoleName" Type="nvarchar" MaxLength="100" />
+  </EntityType>
+  <EntityType Name="News">
+    <Key>
+      <PropertyRef Name="NewsPk" />
+    </Key>
+    <Property Name="NewsPk" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Subject" Type="nvarchar" MaxLength="250" Nullable="false" />
+    <Property Name="Abstract" Type="nvarchar" MaxLength="500" Nullable="false" />
+    <Property Name="Content" Type="nvarchar(max)" />
+    <Property Name="CategoryPk" Type="int" Nullable="false" />
+    <Property Name="IsDeleted" Type="bit" Nullable="false" />
+    <Property Name="IsArchived" Type="bit" Nullable="false" />
+    <Property Name="NewsArchiveDate" Type="date" />
+    <Property Name="NewsExpireDate" Type="date" />
+    <Property Name="Audit_CreateDate" Type="datetime" Nullable="false" />
+    <Property Name="Audit_CreatorUserName" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Audit_CreatorIP" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Audit_LastModifyDate" Type="datetime" Nullable="false" />
+    <Property Name="Audit_LastModifierUserName" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Audit_LastModifierIP" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="PageName" Type="nvarchar" MaxLength="500" />
+    <Property Name="Image" Type="varbinary(max)" />
+    <Property Name="Metadata" Type="nvarchar" MaxLength="500" />
+    <Property Name="SortNumber" Type="int" />
+    <Property Name="ColSpan" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="NewsCategory">
+    <Key>
+      <PropertyRef Name="CategoryPk" />
+    </Key>
+    <Property Name="CategoryPk" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="CategoryTitle" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Audit_CreatorUserName" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Audit_CreateDate" Type="datetime" Nullable="false" />
+    <Property Name="Audit_CreatorIP" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Audit_LastModifyDate" Type="datetime" Nullable="false" />
+    <Property Name="Audit_LastModifierUserName" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Audit_LastModifierIP" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="IsListable" Type="bit" />
+    <Property Name="Code" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="UserProfile">
+    <Key>
+      <PropertyRef Name="ProfilePK" />
+    </Key>
+    <Property Name="ProfilePK" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="50" />
+    <Property Name="LastName" Type="nvarchar" MaxLength="50" />
+    <Property Name="Avatar" Type="varbinary(max)" />
+    <Property Name="Gender" Type="bit" />
+    <Property Name="Birthday" Type="datetime" />
+    <Property Name="PreventAnonyRegRequest" Type="bit" Nullable="false" />
+    <Property Name="Username" Type="varchar" MaxLength="70" Nullable="false" />
+    <Property Name="Audit_CreatorUserName" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Audit_CreatorIP" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Audit_CreateDate" Type="datetime" Nullable="false" />
+    <Property Name="Audit_LastModifyDate" Type="datetime" Nullable="false" />
+    <Property Name="Audit_LastModifierUserName" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Audit_LastModifierIP" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="PhoneNumberHashedConfirmCode" Type="int" />
+    <Property Name="EmailConfirmSendDt" Type="datetime" />
+    <Property Name="PhoneNumberConfirmSendDt" Type="datetime" />
+    <Property Name="PhoneNumberConfirmSendCount" Type="int" Nullable="false" />
+    <Property Name="EmailConfirmSendCount" Type="int" Nullable="false" />
+  </EntityType>
+  <Association Name="FK_DashboardUserNotes_DashboardNotes">
+    <End Role="DashboardNotes" Type="Self.DashboardNotes" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="DashboardUserNotes" Type="Self.DashboardUserNotes" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="DashboardNotes">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="DashboardUserNotes">
+        <PropertyRef Name="NoteId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_AspNetUserRoles_dbo_AspNetRoles_RoleId">
+    <End Role="AspNetRoles" Type="Self.AspNetRoles" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="AspNetUserRoles" Type="Self.AspNetUserRoles" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AspNetRoles">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="AspNetUserRoles">
+        <PropertyRef Name="RoleId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_AspNetUserRoles_dbo_AspNetUsers_UserId">
+    <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="AspNetUserRoles" Type="Self.AspNetUserRoles" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AspNetUsers">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="AspNetUserRoles">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_News_Category">
+    <End Role="NewsCategory" Type="Self.NewsCategory" Multiplicity="1" />
+    <End Role="News" Type="Self.News" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="NewsCategory">
+        <PropertyRef Name="CategoryPk" />
+      </Principal>
+      <Dependent Role="News">
+        <PropertyRef Name="CategoryPk" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="SeatWebDBModelStoreContainer">
+    <EntitySet Name="AspNetRoles" EntityType="Self.AspNetRoles" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="AspNetUserRoles" EntityType="Self.AspNetUserRoles" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="AspNetUsers" EntityType="Self.AspNetUsers" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="BackstageJobs" EntityType="Self.BackstageJobs" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="HardLog" EntityType="Self.HardLog" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Holidays" EntityType="Self.Holidays" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="JobLogs" EntityType="Self.JobLogs" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="KeyValues" EntityType="Self.KeyValues" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ShortLinks" EntityType="Self.ShortLinks" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="SystemMessages" EntityType="Self.SystemMessages" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="UserActivities" EntityType="Self.UserActivities" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="DashboardNotes" EntityType="Self.DashboardNotes" Schema="webapp" store:Type="Tables" />
+    <EntitySet Name="DashboardUserNotes" EntityType="Self.DashboardUserNotes" Schema="webapp" store:Type="Tables" />
+    <EntitySet Name="FeedBacks" EntityType="Self.FeedBacks" Schema="webapp" store:Type="Tables" />
+    <EntitySet Name="HelpInformation" EntityType="Self.HelpInformation" Schema="webapp" store:Type="Tables" />
+    <EntitySet Name="News" EntityType="Self.News" Schema="webapp" store:Type="Tables" />
+    <EntitySet Name="NewsCategory" EntityType="Self.NewsCategory" Schema="webapp" store:Type="Tables" />
+    <EntitySet Name="UserProfile" EntityType="Self.UserProfile" Schema="webapp" store:Type="Tables" />
+    <AssociationSet Name="FK_DashboardUserNotes_DashboardNotes" Association="Self.FK_DashboardUserNotes_DashboardNotes">
+      <End Role="DashboardNotes" EntitySet="DashboardNotes" />
+      <End Role="DashboardUserNotes" EntitySet="DashboardUserNotes" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_AspNetUserRoles_dbo_AspNetRoles_RoleId" Association="Self.FK_dbo_AspNetUserRoles_dbo_AspNetRoles_RoleId">
+      <End Role="AspNetRoles" EntitySet="AspNetRoles" />
+      <End Role="AspNetUserRoles" EntitySet="AspNetUserRoles" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_AspNetUserRoles_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserRoles_dbo_AspNetUsers_UserId">
+      <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+      <End Role="AspNetUserRoles" EntitySet="AspNetUserRoles" />
+    </AssociationSet>
+    <AssociationSet Name="FK_News_Category" Association="Self.FK_News_Category">
+      <End Role="NewsCategory" EntitySet="NewsCategory" />
+      <End Role="News" EntitySet="News" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

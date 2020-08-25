@@ -1,0 +1,37 @@
+﻿<Bocrud Style="classic"
+        DetailPosition="up"
+        Name="__Many2One"
+        Caption="> کنترل چند به یک"
+        Height="500" Width="700"
+        ToStringFormat="{Caption}"
+        DirectAccessible="false"
+        xmlns="http://exirtechsun.com/uie/2014/schema"
+       xmlns:yaxlib="http://yaxlib.codeplex.com/">
+
+  <Groups>
+    <![CDATA[@{include:__FormControl#//uie:Groups/uie:Group[@Name='CommonSettings']}]]>
+
+    <Group Title="تنظیمات مخصوص" ColumnCount="3" Template="fluid">
+      <Controls>
+        <Select2  Caption="فرم مربوطه" Name="BocrudXml" SpringExpression="GetAllFdlNames()"  DataValueField="Name" DataTextField="Caption">
+          <Validators>
+            <RequiredFieldValidator Required="true"/>
+          </Validators>
+        </Select2>
+        <TextBox Name="CodeProperty" Caption="خصوصیت کلیدی" Type="Code" />
+        <TextBox Name="Format" Caption="فرمت" Type="Code" />
+        <TextBox Name="ModalWidth" Caption="عرض" Type="Code" />
+        <TextBox Name="ModalHeight" Caption="ارتفاع" Type="Code" />
+      </Controls>
+    </Group>
+
+    <![CDATA[@{include:__FormControl#//uie:Groups/uie:Group[@Name='AdvancedCommonSettings']}]]>
+    <![CDATA[@{include:__FormControl#//uie:Groups/uie:Group[@Name='GridColumnSettings']}]]>
+  </Groups>
+
+  <Operations>All</Operations>
+  <FactoryMethodArgsSpel>
+    <String>T(Exir.Framework.Uie.Bocrud.Many2One, Exir.Framework.Uie)</String>
+  </FactoryMethodArgsSpel>
+</Bocrud>
+

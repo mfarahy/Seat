@@ -1,0 +1,54 @@
+﻿<Bocrud                 Style="classic"
+		AccessOperation="Hldy.A"
+		DirectAccessible="true"
+        DetailPosition="up"
+        Name="Holiday"
+        Caption="تعطیلات رسمی"
+        Height="480" Width="640"
+        ToStringFormat=""
+        xmlns="http://exirtechsun.com/uie/2014/schema"
+       xmlns:yaxlib="http://yaxlib.codeplex.com/">
+
+
+  <Groups>
+    <Group Title="جزئیات"  ColumnCount="2" Template="fluid">
+      <Controls>
+        <DateTimePicker  Caption="تاریخ تعطیلی" Name="Date"  />
+        <Select2 Caption="نوع تعطیلی" Name="HolidayType" >
+          <Items>
+            <Add Text="تعطیلی رسمی تقویم شمسی" Value="1" Selected="true"/>
+            <Add Text="تعطیلی رسمی تقویم قمری" Value="2"/>
+            <Add Text="تعطیلی رسمی اعلام شده توسط دولت" Value="3"/>
+            <Add Text="تعطیلات رسمی دیگر" Value="4"/>
+          </Items>
+        </Select2>
+        <TextBox  Caption="عنوان تعطیلی" Name="HolidayTitle"  />
+        <!--<TextBox  Caption="Audit_CreatorUser" Name="Audit_CreatorUser"  />
+        <TextBox  Caption="Audit_CreatorIP" Name="Audit_CreatorIP"  />
+        <DateTimePicker  Caption="Audit_CreateDate" Name="Audit_CreateDate"  />-->
+      </Controls>
+    </Group>
+  </Groups>
+
+  <Grid Caption="لیست تعطیلات"
+  EnableSearch="false" ToolbarSearch="true" AutoWidth="true" Width="100"
+  MultiSelect="true" EnableColumnChooser="false">
+    <Columns>
+      <Column Width="150" Name="Date" Searchable="true" />
+      <Column Width="150" Name="HolidayType" Searchable="true" />
+      <Column Width="150" Name="HolidayTitle" Searchable="true" />
+      <!--<Column Width="150" Name="Audit_CreatorUser" Searchable="true" />
+      <Column Width="150" Name="Audit_CreatorIP" Searchable="true" />
+      <Column Width="150" Name="Audit_CreateDate" Searchable="true" />-->
+
+    </Columns>
+  </Grid>
+  <Operations>All</Operations>
+  <!--All Create Update ViewDetail Search Delete Print CreateRoot CreateChild TreeCopy TreeMove None-->
+  <FactoryMethodArgsSpel>
+    <String>'HolidayService'</String>
+    <String>T(SeatWebApp.Models.HolidayViewModel, SeatWebApp)</String>
+     <String>'FullCacheMode=true'</String>
+ </FactoryMethodArgsSpel>
+</Bocrud>
+

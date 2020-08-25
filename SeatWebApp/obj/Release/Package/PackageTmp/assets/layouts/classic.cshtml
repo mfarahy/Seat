@@ -1,0 +1,251 @@
+﻿@using Exir.Framework.Uie;
+@using System.Web.WebPages;
+@using Exir.Framework.Uie.Contracts;
+@using Exir.Framework.Uie.Grid
+
+@RenderBocrud(Model)
+@helper RenderBocrud(Exir.Framework.Uie.Bocrud.BocrudResultModel bocrud)
+{
+    if (bocrud == null)
+    {
+        return;
+    }
+    bool hasParent = !String.IsNullOrEmpty(bocrud.ParentBocrudID);
+    string icon_css = hasParent ? "align-top" : "";
+    string root_css = hasParent ? "" : "bocrud-root";
+    if (String.IsNullOrEmpty(bocrud.ParentBocrudID) && !bocrud.HideHeader)
+    {
+        <div class="page-header bocrud-page-title" name="@bocrud.Name">
+            <div class="bocrud-page-image">
+                @foreach (string img in bocrud.Images ?? new List<string>())
+                {
+                    <img src="@(MyUrlHelper.GetBaseUrlWithSlashTail() + img)" alt="@img" />
+                }
+            </div>
+            <h1>
+                @bocrud.Title
+                @if (!String.IsNullOrEmpty(bocrud.Help))
+                {
+                    <small class="bocrud-page-help">
+                        <i class="icon-double-angle-left"></i>
+                        @{WriteLiteral(bocrud.Help);}
+                    </small>
+                }
+            </h1>
+        </div>
+
+    }
+<div id="b-@bocrud.ID" class="bocrud-container" name="@bocrud.Name">
+    @if (!String.IsNullOrEmpty(bocrud.SearchForm))
+    {
+        <div class="accordion-style1 panel-group accordion-style2 bocrud-search-container">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h4 class="panel-title">
+                        <a href="#@bocrud.ID-sacc" data-parent="#accordion" data-toggle="collapse" class="accordion-toggle collapsed">
+                            <i data-icon-show="icon-angle-left" data-icon-hide="icon-angle-down" class="bigger-110 icon-angle-left"></i>
+                            &nbsp;
+                            @{
+                                IResourceProvider resProvider = ServiceContainer.Instance.GetService<IResourceProvider>();
+                                WriteLiteral(resProvider.GetResource(bocrud.Name, "search_title") ?? "جست‌وجو");
+                            }
+
+                        </a>
+                    </h4>
+                </div>
+                <div id="@bocrud.ID-sacc" class="panel-collapse collapse" style="height: 0px;">
+                    <div class="panel-body">
+                        <textarea id="search-formObj-@bocrud.ID" style="display: none">
+                                @{WriteLiteral(bocrud.SearchForm.Replace("textarea", "textareaa"));}
+                            </textarea>
+                        <div id="search-@bocrud.ID-container" class="bocrud-search-form">
+                        </div>
+                        <p id="search-btn-@bocrud.ID" class="bocrud-search-btn">
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <hr />
+    }
+    @if (!bocrud.HideToolbar)
+    {
+        <div class="bocrud-toolbar-container" jsbid="@bocrud.ID">
+            @RenderToolbar(bocrud)
+        </div>
+    <p class="inline-edit-toolbar" style="display: inline-block;"></p>
+    }
+    <div id="bc-@bocrud.ID">
+        @if (!String.IsNullOrEmpty(bocrud.Grid))
+        {
+            <div class="bocrud-grid-summary-container-up">
+            </div>
+            <div id="grid-@bocrud.ID" class="ui-widget-content ui-corner-all">
+
+                <div class="row">
+
+                    @{
+                        bool hasCat = bocrud.Categories != null && bocrud.Categories.Count > 0;
+                        if (hasCat)
+                        {
+                            <div class="col-md-3 col-sm-3 col-xs-12">
+                                <div id="@bocrud.ID-bctree-cats" class="bocrud-grid-categories">
+                                    @foreach (string c in bocrud.Categories)
+                                    {
+                                        WriteLiteral(c);
+                                    }
+                                </div>
+                            </div>
+                        }
+                    }
+                    <div class="col-md-@(hasCat?"9":"12") col-sm-@(hasCat?"9":"12") col-xs-12">
+                        @if (bocrud.IsStandalone)
+                        {
+                            <form class="grid-inline-form" id="gif-@bocrud.ID">
+                                @{WriteLiteral(bocrud.Grid);}
+                            </form>
+                        }
+                        else
+                        {
+                            WriteLiteral(bocrud.Grid);
+                        }
+                    </div>
+                </div>
+            </div>
+            <div class="bocrud-grid-summary-container-down">
+            </div>
+        }
+    </div>
+</div>
+
+    if (bocrud.Form != null && bocrud.Form.DetailPosition != "NormalDialog")
+    {
+        <textarea id="dform-@bocrud.ID" style="display: none">
+            @{WriteLiteral(bocrud.Form.ToString().Replace("textarea", "textareaa"));}
+        </textarea>
+    }
+
+    if (String.IsNullOrEmpty(bocrud.ParentBocrudID))
+    {
+        <script type="text/javascript">
+            $(function () {
+                window.bocruds['@bocrud.ID'].addEvent('onshowcontent', $.classic_layout.onshowcontent)
+            .addEvent('onpreshowcontent', $.classic_layout.onpreshowcontent)
+            .addEvent('onsubmitsuccess', $.classic_layout.onsubmitsuccess)
+            .addEvent('onsubmiterror', $.classic_layout.onsubmiterror)
+            .addEvent('onaddnew', $.classic_layout.onaddnew)
+            .addEvent('onpregetcontent', $.classic_layout.onpregetcontent)
+            .addEvent('onshowcontentcomplete', $.classic_layout.onshowcontentcomplete)
+            .addEvent('ondeletesuccess', $.classic_layout.ondeletesuccess)
+            .addEvent('onsubmitcomplete', $.classic_layout.onsubmitcomplete)
+            .addEvent('onvalidationfailed', $.classic_layout.onvalidationfailed)
+            .addEvent('onviewcancel', $.classic_layout.onviewcancel);
+                $.classic_layout.onload('@bocrud.ID');
+
+                var d = $('#dform-@bocrud.ID:first');
+                if (d.length == 1) {
+                    var dform = eval('(' + d.val().replace(RegExp('textareaa', 'gi'), 'textarea') + ')');
+                    document.title = document.title + ' ' + dform.title;
+                    $('.bocrud-page-title:first h1').text(dform.title);
+                    window.bocruds['@bocrud.ID'].show_form(dform, dform.mode, dform.xml);
+                    $.bocrud.reg_form(dform);
+                    d.remove()
+                }
+
+                $('#b-@bocrud.ID').keynav();
+            });
+        </script>
+
+        if (!String.IsNullOrEmpty(bocrud.SearchForm))
+        {
+            <script type="text/javascript">
+                $(function () {
+                    var dform = eval('(' + $('#search-formObj-@bocrud.ID:first').val().replace(RegExp('textareaa', 'gi'), 'textarea') + ')');
+                    window.bocruds['@bocrud.ID'].searchStyler(dform, dform.xml, 'search-@bocrud.ID-container');
+                });
+            </script>
+        }
+    }
+    else
+    {
+        <textarea class='bocrud-js' jsbid='@bocrud.ParentBocrudID' event='oncontrolplaced'>
+            window.bocruds['@bocrud.ID'].addEvent('onshowcontent', $.classic_layout.onshowcontent)
+            .addEvent('onpreshowcontent', $.classic_layout.onpreshowcontent)
+            .addEvent('onsubmitsuccess', $.classic_layout.onsubmitsuccess)
+            .addEvent('onsubmiterror', $.classic_layout.onsubmiterror)
+            .addEvent('onaddnew', $.classic_layout.onaddnew)
+            .addEvent('onpregetcontent', $.classic_layout.onpregetcontent)
+            .addEvent('onshowcontentcomplete', $.classic_layout.onshowcontentcomplete)
+            .addEvent('ondeletesuccess', $.classic_layout.ondeletesuccess)
+            .addEvent('onviewcancel', $.classic_layout.onviewcancel)
+            .addEvent('onsubmitcomplete', $.classic_layout.onsubmitcomplete)
+            .addEvent('onvalidationfailed', $.classic_layout.onvalidationfailed);
+           $.classic_layout.onload('@bocrud.ID');
+
+            var d = $('#dform-@bocrud.ID:first');
+            if(d.length==1){
+            var dform = eval('(' + d.val().replace(RegExp('textareaa', 'gi'), 'textarea') + ')');
+            window.bocruds['@bocrud.ID'].show_form(dform, dform.mode, dform.xml);
+            $.bocrud.reg_form(dform);
+            d.remove();
+            }
+
+            $('#b-@bocrud.ID').keynav();
+        </textarea>
+        if (!String.IsNullOrEmpty(bocrud.SearchForm))
+        {
+            <textarea class='bocrud-js' jsbid='@bocrud.ParentBocrudID' event='oncontrolplaced'>
+            var dform = eval('(' + $('#search-formObj-@bocrud.ID:first').val().replace(RegExp('textareaa', 'gi'), 'textarea') + ')');
+            window.bocruds['@bocrud.ID'].searchStyler(dform, dform.xml, 'search-@bocrud.ID-container');
+   </textarea>
+        }
+
+    }
+
+}
+
+
+@helper RenderToolbar(Exir.Framework.Uie.Bocrud.BocrudResultModel bocrud)
+{
+    bool hasParent = !String.IsNullOrEmpty(bocrud.ParentBocrudID);
+    string icon_css = hasParent ? "align-top" : "";
+    string root_css = hasParent ? "" : "bocrud-root";
+
+    <div class="bocrud-toolbar toolbar @root_css" jsbid="@bocrud.ID">
+        @foreach (GridToolbarItemInfo b in bocrud.Toolbar)
+        {
+            if (b.ClientId == bocrud.ID + "addNew")
+            {
+                if (String.IsNullOrEmpty(bocrud.SubtypeMenu))
+                {
+                    <button class="btn btn-success no-radius bocrud-focusable bocrud-focusable " id="@b.ClientId" type="button" title="@b.Title" onclick="@b.On_Click">
+                        <i class="icon-plus @icon_css"></i>
+                        @if (b.ShowText)
+                        {
+                            <span> @b.Caption</span>
+                        }
+                    </button>
+                }
+                else
+                {
+                    <div class="btn-group">
+                        <button data-toggle="dropdown" data-appendTo="body" class="btn btn-success no-radius bocrud-focusable bocrud-focusable  dropdown-toggle" id="@b.ClientId" type="button" title="@b.Title">
+                            <i class="icon-plus @icon_css"></i>
+                            @if (b.ShowText)
+                            {
+                                <span> @b.Caption</span>
+                            }
+                        </button>
+                        @{
+                            WriteLiteral(bocrud.SubtypeMenu);
+                        }
+                    </div>
+                }
+            }
+        }
+        <p class="grid-toolbar toolbar" jsbid="@bocrud.ID" style="display: inline-block;">
+        </p>
+        @{WriteLiteral(bocrud.PrintMenu);}
+        @{WriteLiteral(bocrud.ExportMenu);}
+    </div>
+}

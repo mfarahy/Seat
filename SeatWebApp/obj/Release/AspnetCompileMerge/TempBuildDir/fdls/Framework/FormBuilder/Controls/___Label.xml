@@ -1,0 +1,36 @@
+﻿<Bocrud Style="classic"
+        DetailPosition="up"
+        Name="___Label"
+        Caption="کنترل برچسب"
+        Height="600" Width="700"
+        ToStringFormat="{Caption}"
+        DirectAccessible="false"
+        xmlns="http://exirtechsun.com/uie/2014/schema"
+       xmlns:yaxlib="http://yaxlib.codeplex.com/">
+
+  <Groups>
+    <![CDATA[@{include:__FormControl#//uie:Groups/uie:Group[@Name='CommonSettings']}]]>
+
+    <Group Title="متن" ColumnCount="1" Template="fluid">
+      <Controls>
+        <CKEditor Name="Text" Caption="متن" />
+      </Controls>
+    </Group>
+
+    <Group Title="تنظیمات مخصوص" ColumnCount="3" Template="fluid">
+      <Controls>
+        <TextBox Name="Theme" Caption="تم" Type="Code"/>
+        <CheckBox Name="EncodeHtml" Caption="انکود کردن متن"/>
+      </Controls>
+    </Group>
+
+    <![CDATA[@{include:__FormControl#//uie:Groups/uie:Group[@Name='AdvancedCommonSettings']}]]>
+    <![CDATA[@{include:__FormControl#//uie:Groups/uie:Group[@Name='GridColumnSettings']}]]>
+  </Groups>
+
+  <Operations>All</Operations>
+  <FactoryMethodArgsSpel>
+    <String>T(Exir.Framework.Uie.Bocrud.Label, Exir.Framework.Uie)</String>
+  </FactoryMethodArgsSpel>
+</Bocrud>
+

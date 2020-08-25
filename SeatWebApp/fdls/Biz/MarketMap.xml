@@ -1,0 +1,26 @@
+<Bocrud PresenterType="SeatWebApp.Services.MarketMapPresenter, SeatWebApp"
+        Style="classic"
+		    DirectAccessible="true"
+        DetailPosition="up"
+        Name="MarketMap"
+        Caption="Market Map"
+        Height="480" Width="640"
+        ToStringFormat="{Symbol} - {Name}"
+        xmlns="http://exirtechsun.com/uie/2014/schema"
+       xmlns:yaxlib="http://yaxlib.codeplex.com/">
+
+
+  <Groups>
+    <Group  ColumnCount="2" Template="fluid">
+      <Controls>
+        <TreeMap  Name="Data"  Height="400" />
+       
+      </Controls>
+    </Group>
+  </Groups>
+
+  <Operations>ViewDetail</Operations>
+  <!--All Create Update ViewDetail Search Delete Print CreateRoot CreateChild TreeCopy TreeMove None-->
+ 
+</Bocrud>
+

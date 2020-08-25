@@ -1,0 +1,199 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+    <objects xmlns="http://www.springframework.net"
+             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             xsi:schemaLocation="http://www.springframework.net http://www.springframework.net/xsd/spring-objects.xsd">
+    
+			<object id="BestLimitRepository" singleton="false" scope="request"  type="Exir.Framework.DataAccess.EntityFramework.EntityFrameworkRepository&lt;SeatDomain.Models.BestLimit>, Exir.Framework.DataAccess"  >
+				<property name="ContextObjectId" value="SeatDomain-SeatDbContext"/>
+			</object>
+					<object id="BestLimitReadOnlyRepository" singleton="false" scope="request"  type="Exir.Framework.DataAccess.EntityFramework.EntityFrameworkRepository&lt;SeatDomain.Models.BestLimit>, Exir.Framework.DataAccess"  >
+				<property name="ContextObjectId" value="SeatDomain-ReadOnlySeatDbContext"/>
+			</object>
+			 
+	<object id="BestLimitService" singleton="false" scope="request"  type="SeatDomain.Services.BestLimitService, SeatDomain" >
+		<constructor-arg name="repository" ref="BestLimitRepository" />
+		<constructor-arg name="readOnlyRepository" ref="BestLimitReadOnlyRepository" />
+	</object>
+
+			<object id="BigDealRepository" singleton="false" scope="request"  type="Exir.Framework.DataAccess.EntityFramework.EntityFrameworkRepository&lt;SeatDomain.Models.BigDeal>, Exir.Framework.DataAccess"  >
+				<property name="ContextObjectId" value="SeatDomain-SeatDbContext"/>
+			</object>
+					<object id="BigDealReadOnlyRepository" singleton="false" scope="request"  type="Exir.Framework.DataAccess.EntityFramework.EntityFrameworkRepository&lt;SeatDomain.Models.BigDeal>, Exir.Framework.DataAccess"  >
+				<property name="ContextObjectId" value="SeatDomain-ReadOnlySeatDbContext"/>
+			</object>
+			 
+	<object id="BigDealService" singleton="false" scope="request"  type="SeatDomain.Services.BigDealService, SeatDomain" >
+		<constructor-arg name="repository" ref="BigDealRepository" />
+		<constructor-arg name="readOnlyRepository" ref="BigDealReadOnlyRepository" />
+	</object>
+
+			<object id="ClientTypeRepository" singleton="false" scope="request"  type="Exir.Framework.DataAccess.EntityFramework.EntityFrameworkRepository&lt;SeatDomain.Models.ClientType>, Exir.Framework.DataAccess"  >
+				<property name="ContextObjectId" value="SeatDomain-SeatDbContext"/>
+			</object>
+					<object id="ClientTypeReadOnlyRepository" singleton="false" scope="request"  type="Exir.Framework.DataAccess.EntityFramework.EntityFrameworkRepository&lt;SeatDomain.Models.ClientType>, Exir.Framework.DataAccess"  >
+				<property name="ContextObjectId" value="SeatDomain-ReadOnlySeatDbContext"/>
+			</object>
+			 
+	<object id="ClientTypeService" singleton="false" scope="request"  type="SeatDomain.Services.ClientTypeService, SeatDomain" >
+		<constructor-arg name="repository" ref="ClientTypeRepository" />
+		<constructor-arg name="readOnlyRepository" ref="ClientTypeReadOnlyRepository" />
+	</object>
+
+			<object id="ClosingPriceRepository" singleton="false" scope="request"  type="Exir.Framework.DataAccess.EntityFramework.EntityFrameworkRepository&lt;SeatDomain.Models.ClosingPrice>, Exir.Framework.DataAccess"  >
+				<property name="ContextObjectId" value="SeatDomain-SeatDbContext"/>
+			</object>
+					<object id="ClosingPriceReadOnlyRepository" singleton="false" scope="request"  type="Exir.Framework.DataAccess.EntityFramework.EntityFrameworkRepository&lt;SeatDomain.Models.ClosingPrice>, Exir.Framework.DataAccess"  >
+				<property name="ContextObjectId" value="SeatDomain-ReadOnlySeatDbContext"/>
+			</object>
+			 
+	<object id="ClosingPriceService" singleton="false" scope="request"  type="SeatDomain.Services.ClosingPriceService, SeatDomain" >
+		<constructor-arg name="repository" ref="ClosingPriceRepository" />
+		<constructor-arg name="readOnlyRepository" ref="ClosingPriceReadOnlyRepository" />
+	</object>
+
+			<object id="CodalMessageRepository" singleton="false" scope="request"  type="Exir.Framework.DataAccess.EntityFramework.EntityFrameworkRepository&lt;SeatDomain.Models.CodalMessage>, Exir.Framework.DataAccess"  >
+				<property name="ContextObjectId" value="SeatDomain-SeatDbContext"/>
+			</object>
+					<object id="CodalMessageReadOnlyRepository" singleton="false" scope="request"  type="Exir.Framework.DataAccess.EntityFramework.EntityFrameworkRepository&lt;SeatDomain.Models.CodalMessage>, Exir.Framework.DataAccess"  >
+				<property name="ContextObjectId" value="SeatDomain-ReadOnlySeatDbContext"/>
+			</object>
+			 
+	<object id="CodalMessageService" singleton="false" scope="request"  type="SeatDomain.Services.CodalMessageService, SeatDomain" >
+		<constructor-arg name="repository" ref="CodalMessageRepository" />
+		<constructor-arg name="readOnlyRepository" ref="CodalMessageReadOnlyRepository" />
+	</object>
+
+			<object id="HistoryRepository" singleton="false" scope="request"  type="Exir.Framework.DataAccess.EntityFramework.EntityFrameworkRepository&lt;SeatDomain.Models.History>, Exir.Framework.DataAccess"  >
+				<property name="ContextObjectId" value="SeatDomain-SeatDbContext"/>
+			</object>
+					<object id="HistoryReadOnlyRepository" singleton="false" scope="request"  type="Exir.Framework.DataAccess.EntityFramework.EntityFrameworkRepository&lt;SeatDomain.Models.History>, Exir.Framework.DataAccess"  >
+				<property name="ContextObjectId" value="SeatDomain-ReadOnlySeatDbContext"/>
+			</object>
+			 
+	<object id="HistoryService" singleton="false" scope="request"  type="SeatDomain.Services.HistoryService, SeatDomain" >
+		<constructor-arg name="repository" ref="HistoryRepository" />
+		<constructor-arg name="readOnlyRepository" ref="HistoryReadOnlyRepository" />
+	</object>
+
+			<object id="IndexLastDayTimeValueRepository" singleton="false" scope="request"  type="Exir.Framework.DataAccess.EntityFramework.EntityFrameworkRepository&lt;SeatDomain.Models.IndexLastDayTimeValue>, Exir.Framework.DataAccess"  >
+				<property name="ContextObjectId" value="SeatDomain-SeatDbContext"/>
+			</object>
+					<object id="IndexLastDayTimeValueReadOnlyRepository" singleton="false" scope="request"  type="Exir.Framework.DataAccess.EntityFramework.EntityFrameworkRepository&lt;SeatDomain.Models.IndexLastDayTimeValue>, Exir.Framework.DataAccess"  >
+				<property name="ContextObjectId" value="SeatDomain-ReadOnlySeatDbContext"/>
+			</object>
+			 
+	<object id="IndexLastDayTimeValueService" singleton="false" scope="request"  type="SeatDomain.Services.IndexLastDayTimeValueService, SeatDomain" >
+		<constructor-arg name="repository" ref="IndexLastDayTimeValueRepository" />
+		<constructor-arg name="readOnlyRepository" ref="IndexLastDayTimeValueReadOnlyRepository" />
+	</object>
+
+			<object id="InstrumentRepository" singleton="false" scope="request"  type="Exir.Framework.DataAccess.EntityFramework.EntityFrameworkRepository&lt;SeatDomain.Models.Instrument>, Exir.Framework.DataAccess"  >
+				<property name="ContextObjectId" value="SeatDomain-SeatDbContext"/>
+			</object>
+					<object id="InstrumentReadOnlyRepository" singleton="false" scope="request"  type="Exir.Framework.DataAccess.EntityFramework.EntityFrameworkRepository&lt;SeatDomain.Models.Instrument>, Exir.Framework.DataAccess"  >
+				<property name="ContextObjectId" value="SeatDomain-ReadOnlySeatDbContext"/>
+			</object>
+			 
+	<object id="InstrumentService" singleton="false" scope="request"  type="SeatDomain.Services.InstrumentService, SeatDomain" >
+		<constructor-arg name="repository" ref="InstrumentRepository" />
+		<constructor-arg name="readOnlyRepository" ref="InstrumentReadOnlyRepository" />
+	</object>
+
+			<object id="InstrumentCategoryRepository" singleton="false" scope="request"  type="Exir.Framework.DataAccess.EntityFramework.EntityFrameworkRepository&lt;SeatDomain.Models.InstrumentCategory>, Exir.Framework.DataAccess"  >
+				<property name="ContextObjectId" value="SeatDomain-SeatDbContext"/>
+			</object>
+					<object id="InstrumentCategoryReadOnlyRepository" singleton="false" scope="request"  type="Exir.Framework.DataAccess.EntityFramework.EntityFrameworkRepository&lt;SeatDomain.Models.InstrumentCategory>, Exir.Framework.DataAccess"  >
+				<property name="ContextObjectId" value="SeatDomain-ReadOnlySeatDbContext"/>
+			</object>
+			 
+	<object id="InstrumentCategoryService" singleton="false" scope="request"  type="SeatDomain.Services.InstrumentCategoryService, SeatDomain" >
+		<constructor-arg name="repository" ref="InstrumentCategoryRepository" />
+		<constructor-arg name="readOnlyRepository" ref="InstrumentCategoryReadOnlyRepository" />
+	</object>
+
+			<object id="LiveInstDataRepository" singleton="false" scope="request"  type="Exir.Framework.DataAccess.EntityFramework.EntityFrameworkRepository&lt;SeatDomain.Models.LiveInstData>, Exir.Framework.DataAccess"  >
+				<property name="ContextObjectId" value="SeatDomain-SeatDbContext"/>
+			</object>
+					<object id="LiveInstDataReadOnlyRepository" singleton="false" scope="request"  type="Exir.Framework.DataAccess.EntityFramework.EntityFrameworkRepository&lt;SeatDomain.Models.LiveInstData>, Exir.Framework.DataAccess"  >
+				<property name="ContextObjectId" value="SeatDomain-ReadOnlySeatDbContext"/>
+			</object>
+			 
+	<object id="LiveInstDataService" singleton="false" scope="request"  type="SeatDomain.Services.LiveInstDataService, SeatDomain" >
+		<constructor-arg name="repository" ref="LiveInstDataRepository" />
+		<constructor-arg name="readOnlyRepository" ref="LiveInstDataReadOnlyRepository" />
+	</object>
+
+			<object id="MessageRepository" singleton="false" scope="request"  type="Exir.Framework.DataAccess.EntityFramework.EntityFrameworkRepository&lt;SeatDomain.Models.Message>, Exir.Framework.DataAccess"  >
+				<property name="ContextObjectId" value="SeatDomain-SeatDbContext"/>
+			</object>
+					<object id="MessageReadOnlyRepository" singleton="false" scope="request"  type="Exir.Framework.DataAccess.EntityFramework.EntityFrameworkRepository&lt;SeatDomain.Models.Message>, Exir.Framework.DataAccess"  >
+				<property name="ContextObjectId" value="SeatDomain-ReadOnlySeatDbContext"/>
+			</object>
+			 
+	<object id="MessageService" singleton="false" scope="request"  type="SeatDomain.Services.MessageService, SeatDomain" >
+		<constructor-arg name="repository" ref="MessageRepository" />
+		<constructor-arg name="readOnlyRepository" ref="MessageReadOnlyRepository" />
+	</object>
+
+			<object id="NotificationRepository" singleton="false" scope="request"  type="Exir.Framework.DataAccess.EntityFramework.EntityFrameworkRepository&lt;SeatDomain.Models.Notification>, Exir.Framework.DataAccess"  >
+				<property name="ContextObjectId" value="SeatDomain-SeatDbContext"/>
+			</object>
+					<object id="NotificationReadOnlyRepository" singleton="false" scope="request"  type="Exir.Framework.DataAccess.EntityFramework.EntityFrameworkRepository&lt;SeatDomain.Models.Notification>, Exir.Framework.DataAccess"  >
+				<property name="ContextObjectId" value="SeatDomain-ReadOnlySeatDbContext"/>
+			</object>
+			 
+	<object id="NotificationService" singleton="false" scope="request"  type="SeatDomain.Services.NotificationService, SeatDomain" >
+		<constructor-arg name="repository" ref="NotificationRepository" />
+		<constructor-arg name="readOnlyRepository" ref="NotificationReadOnlyRepository" />
+	</object>
+
+			<object id="NotificationLogRepository" singleton="false" scope="request"  type="Exir.Framework.DataAccess.EntityFramework.EntityFrameworkRepository&lt;SeatDomain.Models.NotificationLog>, Exir.Framework.DataAccess"  >
+				<property name="ContextObjectId" value="SeatDomain-SeatDbContext"/>
+			</object>
+					<object id="NotificationLogReadOnlyRepository" singleton="false" scope="request"  type="Exir.Framework.DataAccess.EntityFramework.EntityFrameworkRepository&lt;SeatDomain.Models.NotificationLog>, Exir.Framework.DataAccess"  >
+				<property name="ContextObjectId" value="SeatDomain-ReadOnlySeatDbContext"/>
+			</object>
+			 
+	<object id="NotificationLogService" singleton="false" scope="request"  type="SeatDomain.Services.NotificationLogService, SeatDomain" >
+		<constructor-arg name="repository" ref="NotificationLogRepository" />
+		<constructor-arg name="readOnlyRepository" ref="NotificationLogReadOnlyRepository" />
+	</object>
+
+			<object id="PortfolioRepository" singleton="false" scope="request"  type="Exir.Framework.DataAccess.EntityFramework.EntityFrameworkRepository&lt;SeatDomain.Models.Portfolio>, Exir.Framework.DataAccess"  >
+				<property name="ContextObjectId" value="SeatDomain-SeatDbContext"/>
+			</object>
+					<object id="PortfolioReadOnlyRepository" singleton="false" scope="request"  type="Exir.Framework.DataAccess.EntityFramework.EntityFrameworkRepository&lt;SeatDomain.Models.Portfolio>, Exir.Framework.DataAccess"  >
+				<property name="ContextObjectId" value="SeatDomain-ReadOnlySeatDbContext"/>
+			</object>
+			 
+	<object id="PortfolioService" singleton="false" scope="request"  type="SeatDomain.Services.PortfolioService, SeatDomain" >
+		<constructor-arg name="repository" ref="PortfolioRepository" />
+		<constructor-arg name="readOnlyRepository" ref="PortfolioReadOnlyRepository" />
+	</object>
+
+			<object id="ShareHolderChangeRepository" singleton="false" scope="request"  type="Exir.Framework.DataAccess.EntityFramework.EntityFrameworkRepository&lt;SeatDomain.Models.ShareHolderChange>, Exir.Framework.DataAccess"  >
+				<property name="ContextObjectId" value="SeatDomain-SeatDbContext"/>
+			</object>
+					<object id="ShareHolderChangeReadOnlyRepository" singleton="false" scope="request"  type="Exir.Framework.DataAccess.EntityFramework.EntityFrameworkRepository&lt;SeatDomain.Models.ShareHolderChange>, Exir.Framework.DataAccess"  >
+				<property name="ContextObjectId" value="SeatDomain-ReadOnlySeatDbContext"/>
+			</object>
+			 
+	<object id="ShareHolderChangeService" singleton="false" scope="request"  type="SeatDomain.Services.ShareHolderChangeService, SeatDomain" >
+		<constructor-arg name="repository" ref="ShareHolderChangeRepository" />
+		<constructor-arg name="readOnlyRepository" ref="ShareHolderChangeReadOnlyRepository" />
+	</object>
+
+			<object id="TradeRepository" singleton="false" scope="request"  type="Exir.Framework.DataAccess.EntityFramework.EntityFrameworkRepository&lt;SeatDomain.Models.Trade>, Exir.Framework.DataAccess"  >
+				<property name="ContextObjectId" value="SeatDomain-SeatDbContext"/>
+			</object>
+					<object id="TradeReadOnlyRepository" singleton="false" scope="request"  type="Exir.Framework.DataAccess.EntityFramework.EntityFrameworkRepository&lt;SeatDomain.Models.Trade>, Exir.Framework.DataAccess"  >
+				<property name="ContextObjectId" value="SeatDomain-ReadOnlySeatDbContext"/>
+			</object>
+			 
+	<object id="TradeService" singleton="false" scope="request"  type="SeatDomain.Services.TradeService, SeatDomain" >
+		<constructor-arg name="repository" ref="TradeRepository" />
+		<constructor-arg name="readOnlyRepository" ref="TradeReadOnlyRepository" />
+	</object>
+
+ </objects>
+

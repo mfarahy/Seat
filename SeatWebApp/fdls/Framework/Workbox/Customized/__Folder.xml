@@ -1,0 +1,92 @@
+﻿<Bocrud         FactoryMethod="CreateProxyInstance"
+        IsFactoryMethodStatic="true"
+        Style="classic"
+        DetailPosition="up"
+        Name="__Folder"
+        Caption="پوشه کارتابل"
+        Height="480" Width="640"
+        ToStringFormat="{Name}({Code})"
+DirectAccessible="true"
+AccessOperation="_Fldr.A"
+        xmlns="http://exirtechsun.com/uie/2014/schema"
+       xmlns:yaxlib="http://yaxlib.codeplex.com/">
+
+  <ToolbarCommands>
+    <Add Name="MoveUp" Text="بالا" Icon="icon-arrow-up" MinRowCount="1" MaxRowCount="1"/>
+    <Add Name="MoveDown" Text="پایین" Icon="icon-arrow-down" MinRowCount="1" MaxRowCount="1"/>
+  </ToolbarCommands>
+
+  <TreeInfo TidProperty="Id"
+              ExpanderProperty="Childs"
+              ParentProperty="Parent"
+               ParentTidProperty="ParentId"
+               TreeView="false"
+              TreeExpandColumn="Name"/>
+
+  <Groups>
+    <Group Title="فیلتر کارپوشه" ColumnCount="1" Template="fluid">
+      <Controls>
+
+        <FilterBuilder Name="WorkboxFilter" BocrudXml="__Box-Search" Caption="فیلتر" />
+
+
+      </Controls>
+    </Group>
+    <Group Title="جزئیات"  ColumnCount="2" Template="fluid">
+      <Controls>
+        <Select2 BocrudXml="__Folder" Name="ParentId" Caption="پوشه والد" />
+
+        <TextBox  Caption="نام پوشه" Name="Name"  />
+        <TextBox  Caption="کد پوشه" Name="Code" Direction="Ltr" FontName="Courier New" Help="ترجیحا برای کدها یک کد کوتاه و مختصر استفاده نمایید" />
+        <TextBox  Caption="شماره ترتیب" Name="LevelOrder" Help="موقعیت پوشه را میان سایر پوشه ها مشخص می کند. عدد بزرگتر پایین تر و عدد کمتر در بالاتر قرار می گیرد" />
+        
+        <CheckBox  Caption="غیر فعال ؟" Name="IsInactive"  DisplayMode="AsCheckBox" TrueText="Yes" FalseText="No"  Help="در صورتی که فیلتری غیر فعال باشد نمایش داده می شود ولی غیر قابل اجرا می باشد" />
+        <CheckBox  Caption="باید باز شود ؟" Name="MustOpen"  DisplayMode="AsCheckBox" TrueText="Yes" FalseText="No"/>
+        <CheckBox  Caption="پیش فرض ؟" Name="IsDefault" DisplayMode="AsCheckBox" TrueText="Yes" FalseText="No" Help="یعنی فیلتر این پوشه به صورت پیش فرض در هنگام باز شدن کارتابل اعمال شود"  />
+        <CheckBox  Caption="همیشگی است ؟" Name="IsPersisted" DisplayMode="AsCheckBox" TrueText="Yes" FalseText="No" Help="مشخص می کند فیلتر این پوشه همیشه باید اعمال شود. یعنی زمانی که پوشه انتخاب شود فیلتر اعمال می شود و زمانی که انتخاب نشود معکوس فیلتر اعمال می شود."  />
+        <TextColor  Text="رنگ پوشه" Name="ForegroundColor" BackgroundProperty="BackgroundColor" />
+
+        <List Caption="نوع عملیات صفر انتخاب" Name="ZeroSelectAction" ShowConditionSpel="#Container.Parent==null and #Container.ParentId==0">
+          <Items>
+            <Add Text="NONE" Value="NONE"/>
+            <Add Text="AND" Value="AND"/>
+            <Add Text="OR" Value="OR"/>
+          </Items>
+        </List>
+
+        <List
+          Caption="نوع عملیات تمام انتخاب"
+          Name="AllSelectAction" ShowConditionSpel="#Container.Parent==null and #Container.ParentId==0">
+          <Items>
+            <Add Text="NONE" Value="NONE"/>
+            <Add Text="AND" Value="AND"/>
+            <Add Text="OR" Value="OR"/>
+          </Items>
+        </List>
+
+      </Controls>
+    </Group>
+  </Groups>
+
+  <Grid Caption="لیست پوشه های کارپوشه" EnableSearch="false" ToolbarSearch="false" AutoWidth="true" Width="100"
+  MultiSelect="true" SortName="LevelOrder">
+    <Columns>
+      <Column Width="150" Name="Name" />
+      <Column Width="150" Name="Code" />
+      <Column Width="150" Name="LevelOrder" />
+      <Column Width="150" Name="IsInactive" />
+      <Column Width="150" Name="MustOpen" />
+      <Column Width="150" Name="IsDefault" />
+      <Column Width="150" Name="IsPersisted" />
+      <Column Width="150" Name="ForegroundColor" Caption="رنگ پوشه" />
+      <Column Width="150" Name="AllSelectAction" />
+      <Column Width="150" Name="ZeroSelectAction" />
+    </Columns>
+  </Grid>
+  <Operations>All</Operations>
+  <!--All Create Update ViewDetail Search Delete Print CreateRoot CreateChild TreeCopy TreeMove None-->
+  <FactoryMethodArgsSpel>
+    <String>T(Exir.Workbox.Services.FolderService, Exir.Workbox)</String>
+  </FactoryMethodArgsSpel>
+</Bocrud>
+

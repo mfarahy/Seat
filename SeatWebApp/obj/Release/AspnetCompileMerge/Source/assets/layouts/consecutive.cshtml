@@ -1,0 +1,43 @@
+﻿@using Exir.Framework.Uie.Bocrud
+@RenderGroup(Model)
+@helper RenderGroup(Exir.Framework.Uie.Bocrud.GroupResultModel group)
+{
+    <div class="bocrud-group">
+        @foreach (var c in group.Controls)
+        {
+            @RenderControl(c)
+        }
+        @foreach (GroupResultModel subgroup in group.Groups)
+        {
+            <fieldset name='@subgroup.Name' class='bocrud-subgroup'>
+                @if (!string.IsNullOrEmpty(subgroup.Title))
+                {
+                    <legend>@subgroup.Title</legend>
+                }
+                @RenderGroup(subgroup)
+            </fieldset>
+
+        }
+    </div>
+}
+@helper RenderControl(Exir.Framework.Uie.Bocrud.ControlResultModel control)
+{
+    if (control.Hidden) { control.OuterStyle += ";display:none"; }
+    <a name='@control.UniqueID-anchor'></a>
+    <div style='@control.OuterStyle' name='@control.HolderPrefix@control.Name' affecton="@control.AffectedItems" type="@control.ControlType" uidprefix="@control.UidPrefix" id='@control.UniqueID-holder' class='bocrud-control @(String.IsNullOrEmpty(control.DebugInfo) ? "" : "bocrud-debug-mode")  @(control.Hidden?"bocrud-server-hide":"")' @if (!String.IsNullOrEmpty(control.DebugInfo)) { WriteLiteral("title='" + control.DebugInfo + "'"); }>
+        @if (!String.IsNullOrEmpty(control.Caption))
+        {
+            <label for='@control.UniqueID' class='bocrud-control-caption'>
+                @control.Caption :
+            </label>
+        }
+        @if (!String.IsNullOrEmpty(control.Help))
+        {
+            <span title="" data-html="true" data-content="@{WriteLiteral(control.Help);}" data-placement="auto" data-trigger="hover"
+                  data-rel="popover" class="help-button" data-original-title="اطلاعات بیشتر">?</span>
+        }
+        <span class='bocrud-control-content'>
+            @{WriteLiteral(control.Content);}
+        </span>
+    </div>
+}

@@ -1,0 +1,43 @@
+﻿<Bocrud                 Style="classic"
+        DetailPosition="replacement"
+        Name="__ScheduledMessage"
+        Caption="ScheduledMessage"        
+        Height="480" Width="640"
+        ToStringFormat="" 
+DirectAccessible="false"
+AccessOperation="_SchdldMsg.A"
+        xmlns="http://exirtechsun.com/uie/2014/schema"
+       xmlns:yaxlib="http://yaxlib.codeplex.com/">
+
+  <Groups>
+    <Group Title="جزئیات"  ColumnCount="2" Template="fluid">
+      <Controls>
+<TextBox  Name="Subject" Caption="Subject"  /> 
+<TextBox  Name="Body" Caption="Body"  /> 
+<DateTimePicker  Name="SendDt" Caption="SendDt"  /> 
+<DateTimePicker  Name="RegDt" Caption="RegDt"  /> 
+<FileControl Viewers="IconViewer"  Name="Attachments" Caption="Attachments"  /> 
+<TextBox  Name="SenderId" Caption="SenderId"  /> 
+     </Controls>
+    </Group>
+  </Groups>
+
+<Grid Caption="لیست ScheduledMessage" 
+EnableSearch="false" ToolbarSearch="false" AutoWidth="true" Width="100"  
+MultiSelect="true">
+    <Columns>
+      <Column Width="150" Name="Subject" />
+      <Column Width="150" Name="Body" />
+      <Column Width="150" Name="SendDt" />
+      <Column Width="150" Name="RegDt" />
+      <Column Width="150" Name="Attachments" />
+      <Column Width="150" Name="SenderId" />
+
+    </Columns>
+</Grid>
+<Operations>All</Operations><!--All Create Update ViewDetail Search Delete Print CreateRoot CreateChild TreeCopy TreeMove None-->
+  <FactoryMethodArgsSpel>
+      <String>T(Exir.Workbox.Services.ScheduledMessageService, Exir.Workbox)</String>
+  </FactoryMethodArgsSpel>
+</Bocrud>
+

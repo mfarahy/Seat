@@ -1,0 +1,37 @@
+﻿<Bocrud Style="classic"
+        DetailPosition="up"
+        Name="__CheckBox"
+        Caption="کنترل چک باکس"
+        Height="500" Width="700"
+        ToStringFormat="{Caption}"
+        DirectAccessible="false"
+        xmlns="http://exirtechsun.com/uie/2014/schema"
+       xmlns:yaxlib="http://yaxlib.codeplex.com/">
+
+  <Groups>
+    <![CDATA[@{include:__FormControl#//uie:Groups/uie:Group[@Name='CommonSettings']}]]>
+
+    <Group Title="تنظیمات مخصوص" ColumnCount="3" Template="fluid">
+      <Controls>
+        <Select2 Name="DisplayMode" Caption="نوع نمایش">
+          <Items>
+            <Add Value="AsList" Text="متنی" />
+            <Add Value="AsRadioButton" Text="رنگ" />
+            <Add Value="AsCheckBox" Text="آدرس ایمیل" />
+          </Items>
+        </Select2>
+        <TextBox  Name="TrueText" Caption="متن درست" />
+        <TextBox  Name="FalseText" Caption="متن غلط" />
+      </Controls>
+    </Group>
+
+    <![CDATA[@{include:__FormControl#//uie:Groups/uie:Group[@Name='AdvancedCommonSettings']}]]>
+    <![CDATA[@{include:__FormControl#//uie:Groups/uie:Group[@Name='GridColumnSettings']}]]>
+  </Groups>
+
+  <Operations>All</Operations>
+  <FactoryMethodArgsSpel>
+    <String>T(Exir.Framework.Uie.Bocrud.CheckBox, Exir.Framework.Uie)</String>
+  </FactoryMethodArgsSpel>
+</Bocrud>
+

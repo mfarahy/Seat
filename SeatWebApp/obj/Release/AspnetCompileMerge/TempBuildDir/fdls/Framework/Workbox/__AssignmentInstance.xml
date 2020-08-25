@@ -1,0 +1,55 @@
+﻿<Bocrud                 Style="classic"
+        DetailPosition="replacement"
+        Name="__AssignmentInstance"
+        Caption="AssignmentInstance"        
+        Height="480" Width="640"
+        ToStringFormat="" 
+DirectAccessible="false"
+AccessOperation="_AsgnmntInstnc.A"
+        xmlns="http://exirtechsun.com/uie/2014/schema"
+       xmlns:yaxlib="http://yaxlib.codeplex.com/">
+
+  <Groups>
+    <Group Title="جزئیات"  ColumnCount="2" Template="fluid">
+      <Controls>
+<DateTimePicker  Name="StartDt" Caption="StartDt"  /> 
+<TextBox  Name="EntityId" Caption="EntityId"  /> 
+<RawValue  Name="Wfiid" Caption="Wfiid"  /> 
+<TextBox  Name="Starter" Caption="Starter"  /> 
+<TextBox  Name="AssignmentId" Caption="AssignmentId"  /> 
+<TextBox  Name="DefaultFormName" Caption="DefaultFormName"  /> 
+<TextBox  Name="DefaultPlayerName" Caption="DefaultPlayerName"  /> 
+<TextBox  Name="SystemId" Caption="SystemId"  /> 
+<TextBox  Name="SystemCode" Caption="SystemCode"  /> 
+<TextBox  Name="DefinitionFileId" Caption="DefinitionFileId"  /> 
+<CheckBox  Name="HasAttachment" Caption="HasAttachment"  /> 
+<CheckBox  Name="HasComment" Caption="HasComment"  /> 
+     </Controls>
+    </Group>
+  </Groups>
+
+<Grid Caption="لیست AssignmentInstance" 
+EnableSearch="false" ToolbarSearch="false" AutoWidth="true" Width="100"  
+MultiSelect="true">
+    <Columns>
+      <Column Width="150" Name="StartDt" />
+      <Column Width="150" Name="EntityId" />
+      <Column Width="150" Name="Wfiid" />
+      <Column Width="150" Name="Starter" />
+      <Column Width="150" Name="AssignmentId" />
+      <Column Width="150" Name="DefaultFormName" />
+      <Column Width="150" Name="DefaultPlayerName" />
+      <Column Width="150" Name="SystemId" />
+      <Column Width="150" Name="SystemCode" />
+      <Column Width="150" Name="DefinitionFileId" />
+      <Column Width="150" Name="HasAttachment" />
+      <Column Width="150" Name="HasComment" />
+
+    </Columns>
+</Grid>
+<Operations>All</Operations><!--All Create Update ViewDetail Search Delete Print CreateRoot CreateChild TreeCopy TreeMove None-->
+  <FactoryMethodArgsSpel>
+      <String>T(Exir.Workbox.Services.AssignmentInstanceService, Exir.Workbox)</String>
+  </FactoryMethodArgsSpel>
+</Bocrud>
+

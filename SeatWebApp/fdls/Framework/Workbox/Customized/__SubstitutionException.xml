@@ -1,0 +1,63 @@
+﻿<Bocrud                 Style="classic"
+        DetailPosition="replacement"
+        Name="__SubstitutionException"
+        Caption="SubstitutionException"        
+        Height="480" Width="640"
+        ToStringFormat="" 
+DirectAccessible="false"
+AccessOperation="_SbstnExcptn.A"
+        xmlns="http://exirtechsun.com/uie/2014/schema"
+       xmlns:yaxlib="http://yaxlib.codeplex.com/">
+
+  <Groups>
+    <Group Title="جزئیات"  ColumnCount="2" Template="fluid">
+      <Controls>
+<DateTimePicker  Name="StartDt" Caption="StartDt"  /> 
+<DateTimePicker  Name="EndDt" Caption="EndDt"  /> 
+<CheckBox  Name="IsActive" Caption="IsActive"  /> 
+<CheckBox  Name="Referable" Caption="Referable"  /> 
+<CheckBox  Name="Spinnable" Caption="Spinnable"  /> 
+<CheckBox  Name="Confirmable" Caption="Confirmable"  /> 
+<CheckBox  Name="Commentable" Caption="Commentable"  /> 
+<CheckBox  Name="Attachable" Caption="Attachable"  /> 
+<CheckBox  Name="Editable" Caption="Editable"  /> 
+<CheckBox  Name="HiddenReferVisible" Caption="HiddenReferVisible"  /> 
+<CheckBox  Name="RefTakeback" Caption="RefTakeback"  /> 
+<CheckBox  Name="WfTakeback" Caption="WfTakeback"  /> 
+<CheckBox  Name="Visible" Caption="Visible"  /> 
+<TextBox  Name="SubstituteId" Caption="SubstituteId"  /> 
+<TextBox  Name="ExceptionUserId" Caption="ExceptionUserId"  /> 
+<TextBox  Name="ExceptionUnitId" Caption="ExceptionUnitId"  /> 
+     </Controls>
+    </Group>
+  </Groups>
+
+<Grid Caption="لیست SubstitutionException" 
+EnableSearch="false" ToolbarSearch="false" AutoWidth="true" Width="100"  
+MultiSelect="true">
+    <Columns>
+      <Column Width="150" Name="StartDt" />
+      <Column Width="150" Name="EndDt" />
+      <Column Width="150" Name="IsActive" />
+      <Column Width="150" Name="Referable" />
+      <Column Width="150" Name="Spinnable" />
+      <Column Width="150" Name="Confirmable" />
+      <Column Width="150" Name="Commentable" />
+      <Column Width="150" Name="Attachable" />
+      <Column Width="150" Name="Editable" />
+      <Column Width="150" Name="HiddenReferVisible" />
+      <Column Width="150" Name="RefTakeback" />
+      <Column Width="150" Name="WfTakeback" />
+      <Column Width="150" Name="Visible" />
+      <Column Width="150" Name="SubstituteId" />
+      <Column Width="150" Name="ExceptionUserId" />
+      <Column Width="150" Name="ExceptionUnitId" />
+
+    </Columns>
+</Grid>
+<Operations>All</Operations><!--All Create Update ViewDetail Search Delete Print CreateRoot CreateChild TreeCopy TreeMove None-->
+  <FactoryMethodArgsSpel>
+      <String>T(Exir.Workbox.Services.SubstitutionExceptionService, Exir.Workbox)</String>
+  </FactoryMethodArgsSpel>
+</Bocrud>
+

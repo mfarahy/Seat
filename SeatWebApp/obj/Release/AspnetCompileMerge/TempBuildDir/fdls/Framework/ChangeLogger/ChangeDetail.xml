@@ -1,0 +1,38 @@
+﻿<Bocrud                 Style="classic"
+        DetailPosition="down"
+        Name="ChangeDetail"
+        Caption="جزئیات تغییرات"
+        Height="480" Width="640"
+        ToStringFormat="{Name}"
+DirectAccessible="false"
+AccessOperation="ChngDtl.A"
+        xmlns="http://exirtechsun.com/uie/2014/schema"
+       xmlns:yaxlib="http://yaxlib.codeplex.com/">
+
+  <Groups>
+    <Group Title="جزئیات"  ColumnCount="3" Template="fluid">
+      <Controls>
+        <TextBox  Caption="فیلد" Name="FieldName" GetValueSpel="#Resource('Glossary',#Container.FieldName)"  />
+        <TextBox  Caption="مقدار قبلی" Name="OldValue"  ShowConditionSpel ="!String.IsNullOrEmpty(#Container.OldValue)" />
+        <TextBox  Caption="مقدار جدید" Name="NewValue"  />
+      </Controls>
+    </Group>   
+  </Groups>
+
+  <Grid Caption="لیست جزئیات تغییرات" EnableColumnChooser="false"
+  EnableSearch="false" ToolbarSearch="false" AutoWidth="true" Width="100"
+  MultiSelect="true">
+    <Columns>
+      <Column Width="150" Name="FieldName" />
+      <Column Width="150" Name="OldValue" />
+      <Column Width="150" Name="NewValue" />
+
+    </Columns>
+  </Grid>
+  <Operations>All</Operations>
+  <!--All Create Update ViewDetail Search Delete Print CreateRoot CreateChild TreeCopy TreeMove None-->
+  <FactoryMethodArgsSpel>
+    <String>T(Exir.Framework.ApplicationService.ChangeLogger.ChangeDetailService, Exir.Framework.ApplicationService)</String>
+  </FactoryMethodArgsSpel>
+</Bocrud>
+

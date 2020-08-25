@@ -1,0 +1,48 @@
+﻿<Bocrud PresenterType="Exir.Workbox.Web.UserUnitPresenter, Exir.Workbox.Web"
+        Style="classic"
+        DetailPosition="up"
+        Name="__WbxUserAndUnit"
+        Caption="فرد و یا واحد سازمانی"
+        Height="550" Width="740"
+        ToStringFormat="{Name}"
+        FilterSpel="Equal('ParentId',null)"
+        FilterSpelWhenSearch="null"
+        UseFilterAsDefault="false"
+        DirectAccessible="false"
+        xmlns="http://exirtechsun.com/uie/2014/schema"
+       xmlns:yaxlib="http://yaxlib.codeplex.com/">
+
+
+  <TreeInfo TidProperty="Id"
+              ExpanderProperty="SubUnits"
+              ParentProperty="Parent"
+              ParentTidProperty="ParentId"
+              TreeView="true"
+              LevelProperty="Level" LeafProperty="IsLeaf" 
+              TreeExpandColumn="Name"/>
+
+  <Groups>
+    <Group Title="جزئیات"  ColumnCount="2" Template="fluid">
+      <Controls>
+        <TextBox  Caption="نام فرد یا واحد" Name="Name"  />
+        <SimpleIcon Name="Type" Caption="نوع">
+          <Icons>
+            <Add IconCss="icon-user pink" Spel="#Container.Id&lt;0" Tooltip="فرد"/>
+            <Add IconCss="icon-group icon-large" Spel="#Container.Id>0" Tooltip="واحد"/>
+          </Icons>
+        </SimpleIcon>
+      </Controls>
+    </Group>
+  </Groups>
+
+  <Grid Caption="لیست واحدها" EnableSearch="false" ToolbarSearch="true" AutoWidth="false" Width="600"
+  MultiSelect="true">
+    <Columns>
+      <Column Width="300" Name="Name" Searchable="true" />
+      <Column Width="150" Name="Type" Searchable="false" />
+    </Columns>
+  </Grid>
+  <Operations>ViewDetail</Operations>
+  <!--All Create Update ViewDetail Search Delete Print CreateRoot CreateChild TreeCopy TreeMove None-->
+</Bocrud>
+

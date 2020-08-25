@@ -1,0 +1,41 @@
+﻿@using Exir.Framework.Uie;
+@using Exir.Framework.Common;
+@using Exir.Framework.Uie.Components.Menu;
+@{
+    Exir.Framework.Common.IResourceProvider resprovider = ObjectRegistry.GetObject<Exir.Framework.Common.IResourceProvider>();
+}
+    <ul class="nav nav-list">
+        @if (!User.Identity.IsAuthenticated)
+        {
+        <li>
+            <a href="@MyUrlHelper.GetUrl("Account", "Login")" >
+                <i class="icon-key"></i>
+                <span class="menu-text">ورود/ثبت نام</span>
+            </a>
+        </li>
+        }      
+        @{
+            WriteLiteral(
+            SystemMenuItem
+                .Load()
+                .RenderChilds(@"
+				<li class=""hover"">
+                        <a href=""#"" class=""dropdown-toggle"">
+                            <i class=""{icon}""></i>
+                            <span class=""menu-text"">{caption}</span>
+                            <b class=""arrow icon-angle-down""></b>
+                        </a>
+                        <ul class=""submenu"">
+                {child}
+                        </ul>
+                </li>
+                ", @"
+				<li id=""{id}"" class=""hover bocrud-menu-item"" countable=""{countable}"">
+                        <a href=""{url}"" >
+                            <i class=""icon {icon}""></i>
+                            <span class=""menu-text"">{caption}</span>
+                        </a>
+                </li>
+                "));
+        }
+    </ul>

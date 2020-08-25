@@ -1,0 +1,318 @@
+﻿@using System.Web.Optimization;
+@using Exir.Framework.Uie.Bocrud;
+@using Exir.Framework.Uie;
+@using Exir.Framework.Common;
+@using SeatWebApp.Models;
+@using Exir.Framework.Uie.Contracts.ClientValidations;
+@{
+    Layout = "/Views/Shared/_CleanLayout.cshtml";
+    var appVersion = SeatDomain.ApplicationInfo.Version;
+
+    string langCode = System.Globalization.CultureInfo.CurrentUICulture.IetfLanguageTag.Split('-')[0];
+    var auth = ObjectRegistry.GetObject<IAuthenticaterProvider>();
+    var security = ObjectRegistry.GetObject<Exir.Framework.Security.SchemaSecurity.ISchemaSecurityProvider>();
+    var rp = ObjectRegistry.GetObject<Exir.Framework.Common.IResourceProvider>();
+}
+<script type="text/javascript">
+    $('body').attr('class', 'rtl login-layout blur-login');
+</script>
+
+<div class="col-sm-10 col-sm-offset-1">
+    <div class="login-container">
+        <div class="center">
+            <h1>
+                <i class="ace-icon icon icon-chart-line green"></i>
+                <span class="white">
+                    سامانه
+                </span>
+                <span class="red"> سهام VIP</span>
+            </h1>
+            <h4 class="light-blue" id="id-company-text">&copy; @rp.GetResource("Global", "company_name")</h4>
+        </div>
+
+        <div class="space-6"></div>
+
+        <div class="position-relative">
+            <div id="login-box" class="login-box visible widget-box no-border">
+                <div class="widget-body">
+                    <div class="widget-main">
+                        <h4 class="header blue lighter bigger">
+                            <i class="ace-icon icon icon-coffee green"></i>
+                            لطفا اطلاعات خود را وارد نمایید
+                        </h4>
+
+                        <div class="space-6"></div>
+
+                        @using (Html.BeginFormControl("Login"))
+                        {
+                            <fieldset>
+                                <label class="block clearfix">
+                                    <span class="block input-icon input-icon-right">
+                                        @Html.RenderControl("UserName", new TextBox
+                                        {
+                                       Caption = "نام کاربری",
+                                    Type = TextBox.Types.Code,
+                                   }, new RequiredFieldValidator(), new TextValidator(1, 50), new RegularExpressionValidator("[a-zA-Z0-9_-]{1,50}"))
+
+                                        <i class="ace-icon icon icon-user"></i>
+                                    </span>
+                                </label>
+
+                                <label class="block clearfix">
+                                    <span class="block input-icon input-icon-right">
+                                        @Html.RenderControl("Password", new TextBox
+                                       {
+                                      Caption = "کلمه عبور",
+                                    Password = true,
+                                  }, new RequiredFieldValidator(), new TextValidator(6, 50))
+                                        <i class="ace-icon icon icon-lock"></i>
+                                    </span>
+                                </label>
+
+                                <div class="space"></div>
+                                @Html.ValidationSummary(true)
+
+                                <div class="clearfix">
+                                    <label class="inline">
+                                        @Html.RenderControl("RememberMe", new CheckBox { Caption = "مرا به یاد داشته باش" })
+                                    </label>
+
+                                    @Html.RenderControl(new Trigger
+                                    {
+                                 ButtonType = Trigger.ButtonTypes.Submit,
+                                  Text = "ورود",
+                                   Icon = "ace-icon icon icon-key",
+                                   Validate = true,
+                                    Color = "btn-primary"
+                               })
+                                </div>
+
+                                <div class="space-4"></div>
+                            </fieldset>
+                        }
+
+                        <div class="social-or-login center">
+                            <span class="bigger-110">Or Login Using</span>
+                        </div>
+
+                        <div class="space-6"></div>
+
+                        <div class="social-login center">
+                            <a class="btn btn-primary">
+                                <i class="ace-icon icon icon-facebook"></i>
+                            </a>
+
+                            <a class="btn btn-info">
+                                <i class="ace-icon icon icon-twitter"></i>
+                            </a>
+
+                            <a class="btn btn-danger">
+                                <i class="ace-icon icon icon-google-plus"></i>
+                            </a>
+                        </div>
+                    </div><!-- /.widget-main -->
+
+                    <div class="toolbar clearfix">
+                        <div>
+                            <a href="#" data-target="#forgot-box" class="forgot-password-link">
+                                <i class="ace-icon icon icon-arrow-right"></i>
+                                فراموشی کلمه عبور
+                            </a>
+                        </div>
+
+                        <div>
+                            <a href="#" data-target="#signup-box" class="user-signup-link">
+                                ثبت نام
+                                <i class="ace-icon icon icon-arrow-left"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div><!-- /.widget-body -->
+            </div><!-- /.login-box -->
+
+            <div id="forgot-box" class="forgot-box widget-box no-border">
+                <div class="widget-body">
+                    <div class="widget-main">
+                        <h4 class="header red lighter bigger">
+                            <i class="ace-icon icon icon-key"></i>
+                            بازیابی کلمه عبور
+                        </h4>
+
+                        <div class="space-6"></div>
+                        <p>
+                            برای بازیابی کلمه عبور لطفا آدرس ایمیل و یا شماره همراه خود را وارد نمایید:
+                        </p>
+
+                        @using (Html.BeginFormControl("ResetPassword"))
+                        {
+                            <fieldset>
+                                <label class="block clearfix">
+                                    <span class="block input-icon input-icon-right">
+                                        @Html.RenderControl("Email", new TextBox
+                                       {
+                                      Caption = "آدرس ایمیل",
+                                   Type = TextBox.Types.Email,
+                                  }, new RegularExpressionValidator(BuiltInValidations.Email))
+                                        <i class="ace-icon icon icon-envelope"></i>
+                                    </span>
+                                </label>
+
+                                <label class="block clearfix">
+                                    <span class="block input-icon input-icon-right">
+                                        @Html.RenderControl("MobileNo", new TextBox
+                                    {
+                                   Caption = "شماره همراه",
+                                   Type = TextBox.Types.Tel,
+                                    Mask = "09999999999"
+                               }, new RegularExpressionValidator(@"09\d{9}"))
+                                        <i class="ace-icon icon icon-retweet"></i>
+                                    </span>
+                                </label>
+                                @Html.ValidationSummary(true)
+
+                                <div class="clearfix">
+                                    @Html.RenderControl(new Trigger
+                                        {
+                                     ButtonType = Trigger.ButtonTypes.Submit,
+                                      Text = "ارسال",
+                                       Icon = "ace-icon icon icon-lightbulb-o",
+                                       Validate = true,
+                                        Color = "btn-primary"
+                                   })
+
+                                </div>
+                            </fieldset>
+                        }
+                    </div><!-- /.widget-main -->
+
+                    <div class="toolbar center">
+                        <a href="#" data-target="#login-box" class="back-to-login-link">
+                            بازگشت برای ورود
+                            <i class="ace-icon icon icon-arrow-right"></i>
+                        </a>
+                    </div>
+                </div><!-- /.widget-body -->
+            </div><!-- /.forgot-box -->
+
+            <div id="signup-box" class="signup-box widget-box no-border">
+                <div class="widget-body">
+                    <div class="widget-main">
+                        <h4 class="header green lighter bigger">
+                            <i class="ace-icon icon icon-users blue"></i>
+                            ثبت نام کاربر جدید
+                        </h4>
+
+                        <div class="space-6"></div>
+                        <p> لطفا جهت ثبت نام اطلاعات خود را وارد نمایید: </p>
+
+                        @using (Html.BeginFormControl("Signup"))
+                        {
+
+                    <fieldset>
+                        <label class="block clearfix">
+                            <span class="block input-icon input-icon-right">
+                                @Html.RenderControl("UserName", new TextBox
+                                {
+                               Caption = "نام کاربری",
+                            Type = TextBox.Types.Code,
+                           }, new RequiredFieldValidator(), new TextValidator(1, 50), new RegularExpressionValidator("[a-zA-Z0-9_-]{1,50}"))
+
+                                <i class="ace-icon icon icon-user"></i>
+                            </span>
+                        </label>
+
+                        <label class="block clearfix">
+                            <span class="block input-icon input-icon-right">
+                                @Html.RenderControl("Email", new TextBox
+                               {
+                              Caption = "آدرس ایمیل",
+                           Type = TextBox.Types.Email,
+                          }, new RegularExpressionValidator(BuiltInValidations.Email))
+                                <i class="ace-icon icon icon-envelope"></i>
+                            </span>
+                        </label>
+
+
+                        <label class="block clearfix">
+                            <span class="block input-icon input-icon-right">
+                                @Html.RenderControl("Password", new TextBox
+                             {
+                               ConfirmPasswordPlaceHolder = "تکرار مجدد کلمه عبور",
+                            Caption = "کلمه عبور",
+                          Password = true,
+                           IncludePasswordConfirm = true,
+                        }, new RequiredFieldValidator(), new TextValidator(6, 50))
+                                <i class="ace-icon icon icon-lock"></i>
+                            </span>
+                        </label>
+
+                        <label class="block clearfix">
+                            <span class="block input-icon input-icon-right">
+                                @Html.RenderControl("MobileNo", new TextBox
+                            {
+                           Caption = "شماره همراه",
+                           Type = TextBox.Types.Tel,
+                            Mask = "09999999999"
+                       }, new RequiredFieldValidator(), new RegularExpressionValidator(@"09\d{9}"))
+                                <i class="ace-icon icon icon-mobile"></i>
+                            </span>
+                        </label>
+                        <div class="space-24"></div>
+                        <label class="block">
+                            @Html.RenderControl("Agreement", new CheckBox
+                           {
+                          Caption = "متن قرارداد و قوانین سایت را مطالعه کرده ام و آن را می پذیرم.",
+                          RenderStyle = RenderStyles.InlineCaptionLast
+                      }, new RequiredFieldValidator())
+                            <br />
+                            <span class="lbl">
+                                <a href="@MyUrlHelper.GetUrl("Home","Contact")">مشاهده قرارداد و قوانین سایت</a>
+                            </span>
+                        </label>
+
+                        @Html.RenderControl("CaptchaCode", new Captcha(), new RequiredFieldValidator(), new RegularExpressionValidator(BuiltInValidations.Digits))
+
+                        <div class="space-24"></div>
+                        @Html.ValidationSummary(true)
+
+                        <div class="clearfix">
+
+                            @Html.RenderControl(new Trigger
+                            {
+                         ButtonType = Trigger.ButtonTypes.Submit,
+                          Text = "ثبت نام",
+                           Icon = "ace-icon icon icon-arrow-right icon-on-right",
+                           Validate = true,
+                            Color = "btn-primary"
+                       })
+
+                        </div>
+                    </fieldset>
+
+                        }
+                    </div>
+
+                    <div class="toolbar center">
+                        <a href="#" data-target="#login-box" class="back-to-login-link">
+                            <i class="ace-icon icon icon-arrow-left"></i>
+                            ورود
+                        </a>
+                    </div>
+                </div><!-- /.widget-body -->
+            </div><!-- /.signup-box -->
+        </div><!-- /.position-relative -->
+
+    </div>
+</div><!-- /.col -->
+<!-- inline scripts related to this page -->
+<script type="text/javascript">
+    jQuery(function ($) {
+        $(document).on('click', '.toolbar a[data-target]', function (e) {
+            e.preventDefault();
+            var target = $(this).data('target');
+            $('.widget-box.visible').removeClass('visible');//hide others
+            $(target).addClass('visible');//show target
+        });
+    });
+
+</script>

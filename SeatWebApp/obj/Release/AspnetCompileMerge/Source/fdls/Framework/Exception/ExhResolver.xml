@@ -1,0 +1,76 @@
+﻿<Bocrud                 Style="classic"
+        DetailPosition="up"
+        Name="ExhResolver"
+        Caption="سازنده خطای جایگزین"
+        Height="480" Width="640"
+        ToStringFormat="{Name}"
+        DirectAccessible="true"
+        AccessOperation="ExhRslvr.A"
+        xmlns="http://exirtechsun.com/uie/2014/schema"
+       xmlns:yaxlib="http://yaxlib.codeplex.com/">
+  
+  <DefaultValue>
+    <Add Property="CreatePerson" Value="#username" DisableProperty="true"/>
+    <Add Property="CreateDt" Value="DateTime.Now" DisableProperty="true"/>
+  </DefaultValue>
+
+  <Groups>
+    <Group Title="جزئیات"  ColumnCount="1" Template="fluid">
+      <Groups>
+        <Group Title="شروط"  ColumnCount="1" Template="fluid" Name="conditions">
+          <Controls>
+            <TextBox  Caption="پیغام خطا" Name="Message" Direction="Ltr" Help=" &lt;p&gt; برای ایجاد یک عبارت مناسب بهتر است از نرم افزار &lt;strong&gt;Expresso&lt;/strong&gt; استفاده کنید.&lt;/p&gt;"  />
+            <TextBox  Caption="کد خطا" Name="HResult" Direction="Ltr"  Help="یک عدد صحیح می باشد" />
+            <TextBox  Caption="منبع" Name="Source"  Direction="Ltr" />
+            <TextBox  Caption="جزئیات اجرا" Name="StackTrace"  Help="همان StackTrace می باشد."  Direction="Ltr"/>
+            <TextBox  Caption="لینک کمکی" Name="HelperLink"   Direction="Ltr"/>
+          </Controls>
+        </Group>
+        <Group ColumnCount="1" Template="fluid">
+          <Controls>
+            <Trigger AllowEditMode="true" AllowViewMode="false"
+                      Name="Test" Text="تست"  Help="این آزمون بر روی 1000 خطای آخر انجام می شود">
+              <Conditions>
+                <Add EvalScript="true">
+                  <Actions>
+                    <Add Action="Update" On="TestResult" Send="Message,HResult,Source,StackTrace,HelperLink"/>
+                  </Actions>
+                </Add>
+              </Conditions>
+            </Trigger>
+            
+            <CrudControl Caption="نتیجه تست" BocrudXml="ExhExceptionLog"
+                          FilterSpel="SetCommand('Test',#Container)"
+                          Name="TestResult" Operations="ViewDetail"></CrudControl>
+                          
+          </Controls>
+        </Group>
+        <Group ColumnCount="2" Template="fluid">
+          <Controls>
+            <TextBox  Caption="فرد ایجاد کننده" Name="CreatePerson"   />
+            <DateTimePicker  Caption="تاریخ ایجاد" Name="CreateDt" />
+            <TextBox  Caption="نام" Name="Name"  />
+            <Many2One BocrudXml="ExhFriendlyException" ForeignKey="FriendlyExceptionId"   Caption="خطای جایگزین" Name="FriendlyException"  />
+          </Controls>
+        </Group>
+      </Groups>
+    </Group>
+   
+  </Groups>
+
+  <Grid Caption="لیست سازنده های خطاهای جایگزین"
+  EnableSearch="false" ToolbarSearch="true" AutoWidth="true" Width="100"
+  MultiSelect="true">
+    <Columns>
+      <Column Width="150" Name="Name" WordWrap="true"  Searchable="true"/>
+      <Column Width="150" Name="Message" Searchable="true" />
+      <Column Width="500" Name="FriendlyException" WordWrap="true" Searchable="true" />
+    </Columns>
+  </Grid>
+  <Operations>All</Operations>
+  <!--All Create Update ViewDetail Search Delete Print CreateRoot CreateChild TreeCopy TreeMove None-->
+  <FactoryMethodArgsSpel>
+    <String>'ExhResolverService'</String>
+  </FactoryMethodArgsSpel>
+</Bocrud>
+

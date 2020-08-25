@@ -1,0 +1,45 @@
+﻿<Bocrud                 Style="classic"
+        DetailPosition="up"
+        Name="__AllowedReferent"
+        Caption="مجوز ارجاع"
+        Height="480" Width="640"
+        ToStringFormat=""
+DirectAccessible="false"
+AccessOperation="_AlwdRfrnt.A"
+        xmlns="http://exirtechsun.com/uie/2014/schema"
+       xmlns:yaxlib="http://yaxlib.codeplex.com/">
+
+  <Groups>
+    <Group Title="جزئیات"  ColumnCount="2" Template="fluid">
+      <Controls>
+        <Select2 BocrudXml="__WorkflowSystem"  Caption="سیستم" Name="SystemId"  />
+        <Many2One Name="Target" ForeignKey="TargetId" Caption="کاربر یا واحد ارجاع دهنده"
+                BocrudXml="__WbxUserAndUnit" Operations="Search"    />
+        <DateTimePicker  Caption="تاریخ شروع مجوز" Name="StartDt" ShowTime="true"  />
+        <DateTimePicker  Caption="تاریخ پایان" Name="EndDt"  ShowTime="true" />
+        <SimpleTreeSelector Name="AllowedItems" BocrudXml="__WbxUserAndUnit"
+                            Caption="کاربر و یا واحدهای مجاز مقصد" FilterSpel="null" />
+        <!--<Many2Many Name="AllowedItems" Caption="کاربر و یا واحدهای مجاز"  BocrudXml="__WbxUserAndUnit"/>-->
+      </Controls>
+    </Group>
+  </Groups>
+
+  <Grid Caption="لیست مجوزهای ارجاع"
+  EnableSearch="false" ToolbarSearch="false" AutoWidth="true" Width="100"
+  MultiSelect="true">
+    <Columns>
+      <Column Width="150" Name="StartDt" />
+      <Column Width="150" Name="EndDt" />
+      <Column Width="150" Name="AllowedItems" />
+      <Column Width="150" Name="Target" />
+
+    </Columns>
+  </Grid>
+  <Operations>All</Operations>
+  <!--All Create Update ViewDetail Search Delete Print CreateRoot CreateChild TreeCopy TreeMove None-->
+  <FactoryMethodArgsSpel>
+    <String>T(Exir.Workbox.Services.AllowedReferentService, Exir.Workbox)</String>
+    <String>T(Exir.Workbox.Web.AllowedReferentModel, Exir.Workbox.Web)</String>
+  </FactoryMethodArgsSpel>
+</Bocrud>
+

@@ -1,0 +1,43 @@
+﻿<Bocrud                 Style="classic"
+        DetailPosition="up"
+        Name="NewsCategory"
+        Caption="دسته بندی خبر"        
+        Height="480" Width="640"
+        ToStringFormat="{CategoryTitle}" 
+DirectAccessible="true"
+AccessOperation="NwsCtgry.A"
+        xmlns="http://exirtechsun.com/uie/2014/schema"
+       xmlns:yaxlib="http://yaxlib.codeplex.com/">
+
+	   		
+  <Groups>
+    <Group Title="جزئیات"  ColumnCount="2" Template="fluid">
+      <Controls>
+<TextBox  Caption="عنوان" Name="CategoryTitle"  /> 
+<CheckBox  Caption="قابل نمایش" Name="IsListable"  /> 
+     </Controls>
+    </Group>
+  </Groups>
+
+<Grid Caption="لیست دسته های خبری" 
+EnableSearch="false" ToolbarSearch="true" AutoWidth="true" Width="100"  
+MultiSelect="true" EnableColumnChooser="false">
+    <Columns>
+      <Column Width="150" Name="CategoryTitle" Searchable="true" />
+      <Column Width="150" Name="IsListable" Searchable="true" />
+      <Column Width="150" Name="Audit_CreatorUserName" Caption="درج کننده" Hidden="true" Searchable="true"/>
+      <Column Width="150" Name="Audit_CreatorIP" Caption="IP درج کننده" Hidden="true" Searchable="true"/>
+      <Column Width="150" Name="Audit_CreateDate" Caption="تاریخ درج" Hidden="true" Searchable="true"/>
+      <Column Width="150" Name="Audit_LastModifyDate" Caption="تاریخ ویرایش" Hidden="true" Searchable="true"/>
+      <Column Width="150" Name="Audit_LastModifierUserName" Caption="ویرایش کننده" Hidden="true" Searchable="true"/>
+      <Column Width="150" Name="Audit_LastModifierIP" Caption="IP ویرایش کننده" Hidden="true" Searchable="true"/>
+
+    </Columns>
+</Grid>
+<Operations>All</Operations><!--All Create Update ViewDetail Search Delete Print CreateRoot CreateChild TreeCopy TreeMove None-->
+  <FactoryMethodArgsSpel>
+    <String>'NewsCategoryService'</String>
+      <String>T(SeatWebApp.Models.NewsCategoryViewModel, SeatWebApp)</String>
+  </FactoryMethodArgsSpel>
+</Bocrud>
+

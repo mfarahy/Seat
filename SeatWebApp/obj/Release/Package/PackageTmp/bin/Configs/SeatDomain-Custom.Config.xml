@@ -1,0 +1,139 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<objects xmlns="http://www.springframework.net"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://www.springframework.net http://www.springframework.net/xsd/spring-objects.xsd">
+
+
+	<object id="CacheableAspect" type="Exir.Framework.Common.Caching.CacheableAspect, Exir.Framework.Common" >
+		<constructor-arg name="debug" value="true" />
+	</object>
+
+	<object id="SqlServerTransactionAdvice" type="Exir.Framework.DataAccess.Transaction.SqlServerTransactionAdvice, Exir.Framework.DataAccess">
+		<constructor-arg index="0" value="Transaction" />
+		<property name="AppNamePrefix" value="mfarahy208" />
+	</object>
+
+	<object id="SqlServerTransactionAdvisor" type="Exir.Framework.DataAccess.Transaction.SqlServerTransactionAdvisor, Exir.Framework.DataAccess">
+		<constructor-arg index="0" ref="SqlServerTransactionAdvice" />
+	</object>
+
+	<object id="EntityFrameworkLogger" type="Exir.Framework.DataAccess.EntityFrameworkLogger, Exir.Framework.DataAccess">
+		<property name="QueryLike" value="MerchantTerminal" />
+		<property name="LogStackTrace" value="true" />
+	</object>
+
+	<object id="DatabaseLoggerInterceptor" type="Exir.Framework.DataAccess.DatabaseLoggerInterceptor, Exir.Framework.DataAccess">
+		<property name="Duration" value="25" />
+	</object>
+	<object id="InMemoryCache" type="Exir.Framework.Uie.Caching.AspNetCacheProvider, Exir.Framework.Uie">
+		<property name="LifeTimeMinutes" value="5" />
+	</object>
+
+	<object id="ExcelExporter" type="Exir.Framework.Service.Exporting.ExcelExporter, Exir.Framework.Service">
+		<property name="Caption" value="Excel" />
+	</object>
+
+	<object id="LoggerAdvice" type="Exir.Framework.Common.Logging.LoggerAdvice, Exir.Framework.Common">
+		<property name="LogArguments" value="true" />
+		<property name="LogUser" value="true" />
+		<property name="LogIP" value="true" />
+		<property name="LogResult" value="true" />
+		<property name="Trace" value="true" />
+		<property name="Users" value=""/>
+	</object>
+
+	<object id="LoggerAdvisor" type="Exir.Framework.Common.Logging.LoggerAdvisor, Exir.Framework.Common">
+		<constructor-arg name="advice" ref="LoggerAdvice"/>
+	</object>
+
+	<object id="ValidationAdvisor" type="Exir.Framework.Security.ObjectValidation.ValidationAdvisor, Exir.Framework.Security"/>
+	<object id="AopDiagnoserInterceptor" singleton="true" type="Exir.Framework.DataAccess.Performance.AopDiagnoserInterceptor, Exir.Framework.DataAccess"/>
+
+	<object type="Spring.Aop.Framework.AutoProxy.ObjectNameAutoProxyCreator, Spring.Aop">
+		<property name="Optimize" value="true" />
+		<property name="ObjectNames">
+			<list>
+				<value>*Service</value>
+			</list>
+		</property>
+		<property name="InterceptorNames">
+			<list>
+				<value>CacheableAspect</value>
+				<!--
+				AopDiagnoserInterceptor
+				<value>WorkflowDriver</value>
+				<value>SqlServerTransactionAdvisor</value>
+				<value>LoggerAdvisor</value>
+				<value>ValidationAdvisor</value>
+				<value>ModuleActivationCheckActive</value>-->
+			</list>
+		</property>
+	</object>
+
+	<object id="ResourceProviderSpringObjectId"  scope="application" type="Exir.Framework.Common.ResxResourceProvider, Exir.Framework.Common">
+		<constructor-arg name="path" value="~/resources;~/bin/resources;C:\Program Files\Sadad PSP Co\Sadad.Mmp.JobService.Setup\Resources" />
+		<property name="Map">
+			<dictionary key-type="string" value-type="string">
+				<entry key="MerchantRequestPrimary" value="MerchantRequestForm" />
+				<entry key="*" value="Glossary" />
+			</dictionary>
+		</property>
+	</object>
+	
+  <object id="GeneralSpelContext" type="Exir.Framework.Service.GeneralSpelContext, Exir.Framework.Service">
+  </object>
+  <object id="SeatDomain-SeatDbContext" singleton="false" type="SeatDomain.Dal.SeatDBEntitiesDbContext, SeatDomain"  >
+    <constructor-arg name="databaseName" value="SeatDb"/>
+    <constructor-arg name="connectionString" value="LocalSqlServer"/>
+    <property name="CommandTimeout" value="5001"/>
+  </object>
+
+  <object id="SeatDomain-ReadOnlySeatDbContext" singleton="false" scope="request"   type="SeatDomain.Dal.SeatDBEntitiesDbContext, SeatDomain"  >
+    <constructor-arg name="databaseName" value="SeatDb"/>
+    <constructor-arg name="connectionString" value="LocalSqlServer-ReadOnly"/>
+    <property name="CommandTimeout" value="5001"/>
+  </object>
+
+  <object id="SeatWeb-SeatDbContext" singleton="false" type="SeatDomain.Dal.SeatDBEntities1DbContext, SeatDomain"  >
+    <constructor-arg name="databaseName" value="SeatDb"/>
+    <constructor-arg name="connectionString" value="LocalSqlServer"/>
+    <property name="CommandTimeout" value="5001"/>
+  </object>
+
+  <object id="SeatWeb-ReadOnlySeatDbContext" singleton="false" scope="request"   type="SeatDomain.Dal.SeatDBEntities1DbContext, SeatDomain"  >
+    <constructor-arg name="databaseName" value="SeatDb"/>
+    <constructor-arg name="connectionString" value="LocalSqlServer-ReadOnly"/>
+    <property name="CommandTimeout" value="5001"/>
+  </object>
+
+  <object id="DashboardNoteService" singleton="false" scope="request"  type="SeatDomain.Services.DashboardNoteService, SeatDomain" >
+    <constructor-arg name="repository" ref="DashboardNoteRepository" />
+    <constructor-arg name="readOnlyRepository" ref="DashboardNoteReadOnlyRepository" />
+    <constructor-arg name="dashboardUserNoteService" ref="DashboardUserNoteService" />
+  </object>
+
+  <object id="UserActivityReadOnlyRepository" singleton="false" scope="request" type="SeatDomain.Repository.UserActivityReadOnlyRepository, SeatDomain">
+    <property name="ContextObjectId" value="SeatWeb-ReadOnlySeatDbContext"/>
+  </object>
+
+  <object id="UserActivityRepository" singleton="false" scope="request" type="SeatDomain.Repository.UserActivityReadOnlyRepository, SeatDomain">
+    <property name="ContextObjectId" value="SeatWeb-SeatDbContext"/>
+  </object>
+
+  <object id="BackstageJobRepository" singleton="false" scope="request"  type="SeatDomain.Repository.BackstageJobRepository, SeatDomain"  >
+    <property name="ContextObjectId" value="SeatWeb-SeatDbContext"/>
+  </object>
+  <object id="BackstageJobReadOnlyRepository" singleton="false" scope="request"  type="SeatDomain.Repository.BackstageJobRepository, SeatDomain"  >
+    <property name="ContextObjectId" value="SeatWeb-ReadOnlySeatDbContext"/>
+  </object>
+  <object id="ShortLinkService" singleton="false" scope="request"  type="SeatDomain.Services.ShortLinkService, SeatDomain" >
+    <constructor-arg name="repository" ref="ShortLinkRepository" />
+  </object>
+
+
+  <object id="OnlineUserService" singleton="false" scope="request" type="SeatDomain.Services.OnlineUserService, SeatDomain"/>
+
+  <object id="KavenegarNotificationProvider" singleton="false" scope="request" type="SeatDomain.Services.Notifications.KavenegarNotificationProvider, SeatDomain"/>
+
+</objects>
+

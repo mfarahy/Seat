@@ -1,0 +1,63 @@
+﻿<Bocrud                 Style="classic"
+        DetailPosition="up"
+        Name="__WorkboxMacro"
+        Caption="ماکرو"
+        Height="480" Width="640"
+        ToStringFormat=""
+        DirectAccessible="true"
+        xmlns="http://exirtechsun.com/uie/2014/schema"
+       xmlns:yaxlib="http://yaxlib.codeplex.com/">
+
+  <DefaultValue>
+    <Add Property ="WorkboxId" Value="T(Exir.Workbox.WorkboxServer, Exir.Workbox).GetCurrentWorkbox().Id"/>
+  </DefaultValue>
+
+  <Groups>
+    <Group Title="جزئیات"  ColumnCount="2" Template="fluid">
+      <Controls>
+        <TextBox  Caption="توضیحات"  MultiLine="true" Name="Description"  />
+        <CheckBox Caption="فعال ؟" Name="IsActive" TrueText="Yes" FalseText="No" DisplayMode="AsCheckBox"/>
+
+        <Select2 BocrudXml="__Macro" ForeignKey="MacroId" Caption="مجری" Name="Macro" >
+          <Conditions>
+            <Add EvalScript="true">
+              <Actions>
+                <Add Action="Update" On="Config" Send="Macro"/>
+              </Actions>
+            </Add>
+          </Conditions>
+        </Select2>
+
+        <Break Name="br1"/>
+
+        <PropertyGrid  Caption="MacroConfig" Name="Config"  />
+
+      </Controls>
+      <Groups>
+        <Group ColumnCount="1" Template="fluid">
+          <Controls>
+            <FilterBuilder Caption="فیلتر کارتابل" Name="Metadata" BocrudXml="__Box-Search" />
+          </Controls>
+        </Group>
+      </Groups>
+    </Group>
+  </Groups>
+
+  <Grid Caption="لیست ماکروها"
+  EnableSearch="false" ToolbarSearch="false" AutoWidth="false" Width="600"
+  MultiSelect="true">
+    <Columns>
+      <Column Width="400" Name="Description" />
+      <Column Width="100" Name="IsActive" />
+      <Column Width="200" Name="Macro" />
+
+    </Columns>
+  </Grid>
+  <Operations>All</Operations>
+  <!--All Create Update ViewDetail Search Delete Print CreateRoot CreateChild TreeCopy TreeMove None-->
+  <FactoryMethodArgsSpel>
+    <String>T(Exir.Workbox.Services.WorkboxMacroService, Exir.Workbox)</String>
+    <String>T(Exir.Workbox.Web.WorkboxMacroModel, Exir.Workbox.Web)</String>
+  </FactoryMethodArgsSpel>
+</Bocrud>
+

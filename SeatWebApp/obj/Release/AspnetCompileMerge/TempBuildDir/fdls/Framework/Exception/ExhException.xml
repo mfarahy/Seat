@@ -1,0 +1,45 @@
+﻿<Bocrud                 Style="classic"
+        DetailPosition="up"
+        Name="ExhException"
+        Caption="ExhException"        
+        Height="480" Width="640"
+        ToStringFormat="" 
+DirectAccessible="false"
+AccessOperation="ExhExcptn.A"
+        xmlns="http://exirtechsun.com/uie/2014/schema"
+       xmlns:yaxlib="http://yaxlib.codeplex.com/">
+
+  <Groups>
+    <Group Title="جزئیات"  ColumnCount="2" Template="fluid">
+      <Controls>
+<TextBox  Caption="Message" Name="Message"  /> 
+<TextBox  Caption="HResult" Name="HResult"  /> 
+<TextBox  Caption="Source" Name="Source"  /> 
+<TextBox  Caption="StackTrace" Name="StackTrace"  /> 
+<TextBox  Caption="HelperLink" Name="HelperLink"  /> 
+<TextBox  Caption="CreatePerson" Name="CreatePerson"  /> 
+<DateTimePicker  Caption="CreateDt" Name="CreateDt"  /> 
+     </Controls>
+    </Group>
+  </Groups>
+
+<Grid Caption="لیست ExhException" 
+EnableSearch="false" ToolbarSearch="false" AutoWidth="true" Width="100"  
+MultiSelect="true">
+    <Columns>
+      <Column Width="150" Name="Message" />
+      <Column Width="150" Name="HResult" />
+      <Column Width="150" Name="Source" />
+      <Column Width="150" Name="StackTrace" />
+      <Column Width="150" Name="HelperLink" />
+      <Column Width="150" Name="CreatePerson" />
+      <Column Width="150" Name="CreateDt" />
+
+    </Columns>
+</Grid>
+<Operations>All</Operations><!--All Create Update ViewDetail Search Delete Print CreateRoot CreateChild TreeCopy TreeMove None-->
+  <FactoryMethodArgsSpel>
+    <String>'ExhExceptionService'</String>
+  </FactoryMethodArgsSpel>
+</Bocrud>
+

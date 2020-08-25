@@ -1,0 +1,76 @@
+﻿<Bocrud                 Style="classic"
+        DetailPosition="up"
+        Name="FeedBack"
+        Caption="بازخورد"
+        Height="480" Width="640"
+        ToStringFormat="بازخورد {UserName}"
+        FilterSpel="NotEqual('Status',1).NotEqual('Status',2)"
+        DirectAccessible="true"
+        AccessOperation="FdBck.A"
+        xmlns="http://exirtechsun.com/uie/2014/schema"
+       xmlns:yaxlib="http://yaxlib.codeplex.com/">
+
+  <ToolbarCommands>
+    <Add Name="Response" Text="پاسخ" Icon="icon-reply" Position="InRow" Before="Description" Color="btn-primary" ShowConditionSpel="!String.IsNullOrEmpty(#Container.Email) or !String.IsNullOrEmpty(#Container.Mobile)" />
+    <Add Name="Okay" Text="اوکی شد" Icon="icon-badge-check" Position="InRow" Color="btn-success" ShowConditionSpel="#Container.Status==0 and (!String.IsNullOrEmpty(#Container.Email) or !String.IsNullOrEmpty(#Container.Mobile))"/>
+  </ToolbarCommands>
+  <Groups>
+    <Group Title="جزئیات"  ColumnCount="2" Template="fluid">
+      <Controls>
+        <TextBox  Caption="نام کاربر" Name="UserName"    />
+        <DateTimePicker  Caption="تاریخ ایجاد" Name="CreateDate"  />
+        <TextBox  Caption="پیام" MultiLine="true" Name="Description"  />
+        <TextBox  Caption="آدرس صفحه"  Direction="Ltr"  Name="LinkAddresss"  />
+        <Select2 Caption="وضعیت" Name="Status" >
+          <Items >
+            <Add Text="بررسی نشده" Value="0"/>
+            <Add Text="بررسی شده" Value="1"/>
+            <Add Text="حذف شده" Value="2"/>
+          </Items>
+        </Select2>
+        <Radio  Caption="نوع پیام" Name="CategoryType"  >
+          <Items >
+            <Add Text="باگ" Value="0"/>
+            <Add Text="پیشنهاد" Value="1"/>
+          </Items>
+        </Radio>
+        <TextBox Name="Email" Caption="آدرس ایمیل" Type="Email" ShowIfNotEmpty="true"/>
+        <TextBox Name="Mobile" Caption="شماره همراه" Type="Tel" ShowIfNotEmpty="true"/>
+        <TextBox Name="Response" Caption="پاسخ" MultiLine="true" ShowIfNotEmpty="true"/>
+        <ConditionLabel Name="CssStatus" Caption="وضعیت2" >
+          <Items>
+            <Add Condition="#Container.Status==1" Text="success"/>
+            <Add Condition="#Container.Status==2" Text="deleted"/>
+            <Add Condition="#Container.Status==3" Text="success"/>
+            <Add Condition="#Container.Status==4" Text="error"/>
+          </Items>
+        </ConditionLabel>
+      </Controls>
+    </Group>
+  </Groups>
+
+  <Grid Caption="لیست بازخوردها"
+  EnableSearch="false" ToolbarSearch="true" AutoWidth="true" Width="100"
+  MultiSelect="true" EnableColumnChooser="false" CssColumn="CssStatus" >
+    <Columns>
+      <Column Width="150" Name="UserName" Searchable="true" Hidden="true" />
+      <Column Width="150" Name="CreateDate" Searchable="true"  Hidden="true"/>
+      <Column Width="150" Name="CategoryType" Searchable="true" />
+      <Column Width="150" Name="Description" Searchable="true"  />
+      <Column Width="150" Name="LinkAddresss" Searchable="true"  Hidden="true"/>
+      <Column Width="150" Name="Status" Searchable="true" Hidden="true"/>
+      <Column Width="150" Name="Email" Searchable="true" />
+      <Column Width="150" Name="Mobile" Searchable="true" />
+      <Column Width="150" Name="Response"  Hidden="true"/>
+      <Column Width="150" Name="CssStatus" Hidden="true" HidedInDialog="true"  />
+
+    </Columns>
+  </Grid>
+  <Operations>All</Operations>
+  <!--All Create Update ViewDetail Search Delete Print CreateRoot CreateChild TreeCopy TreeMove None-->
+  <FactoryMethodArgsSpel>
+    <String>'FeedBackService'</String>
+    <String>T(SeatWebApp.Models.FeedBackViewModel, SeatWebApp)</String>
+  </FactoryMethodArgsSpel>
+</Bocrud>
+

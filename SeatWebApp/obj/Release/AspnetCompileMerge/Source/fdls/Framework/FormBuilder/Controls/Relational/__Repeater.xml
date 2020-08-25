@@ -1,0 +1,46 @@
+﻿<Bocrud Style="classic"
+        DetailPosition="up"
+        Name="__Repeater"
+        Caption="> کنترل تکرار کننده"
+        Height="500" Width="700"
+        ToStringFormat="{Caption}"
+        DirectAccessible="false"
+        xmlns="http://exirtechsun.com/uie/2014/schema"
+       xmlns:yaxlib="http://yaxlib.codeplex.com/">
+
+  <Groups>
+    <![CDATA[@{include:__FormControl#//uie:Groups/uie:Group[@Name='CommonSettings']}]]>
+
+    <Group Name="SpecialSettings" Title="تنظیمات مخصوص" ColumnCount="3" Template="fluid">
+      <Controls>
+        <Select2  Caption="فرم مربوطه" Name="BocrudXml" SpringExpression="GetAllFdlNames()"  DataValueField="Name" DataTextField="Caption"/>
+
+        <Select2 Name="FillType" Caption="استایل">
+          <Items>
+            <Add Value="Horizontal"  Text="افقی"/>
+            <Add Value="Vertical" Text="عمودی"/>
+          </Items>
+        </Select2>
+
+        <TextBox Name="Column" Caption="تعداد ستون"/>
+        <TextBox Name="ColumnSpel" Caption="اسکریپت تعداد ستون" Type="Code"/>
+        <CheckBox Name="ClearValidations" Caption="غیر فعال سازی اعتبار سنجی ؟"/>
+        <CheckBox Name="Fluid" Caption="استایل fluid ?"/>
+
+      </Controls>
+    </Group>
+    <Group Name="Controls" Title="کنترل‌ها" ColumnCount="1" Template="fluid">
+      <Controls>
+        <Single Name="View" BocrudXml="__ControlGroup" UseDialog="false" />
+      </Controls>
+    </Group>
+
+    <![CDATA[@{include:__FormControl#//uie:Groups/uie:Group[@Name='AdvancedCommonSettings']}]]>
+  </Groups>
+
+  <Operations>All</Operations>
+  <FactoryMethodArgsSpel>
+    <String>T(Exir.Framework.Uie.Bocrud.Repeater, Exir.Framework.Uie)</String>
+  </FactoryMethodArgsSpel>
+</Bocrud>
+

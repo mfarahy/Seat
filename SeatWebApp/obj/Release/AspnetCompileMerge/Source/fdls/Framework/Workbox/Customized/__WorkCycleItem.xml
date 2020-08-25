@@ -1,0 +1,81 @@
+﻿<Bocrud PresenterType="Exir.Workbox.Web.BoxPresenter, Exir.Workbox.Web"
+        Style="classic"
+        DetailPosition="up"
+        Name="__WorkCycleItem"
+        Caption="چرخه کار"
+        Height="480" Width="640"
+        ToStringFormat="{Description}"
+DirectAccessible="false"
+AccessOperation="_WrkCyclItm.A"
+        xmlns="http://exirtechsun.com/uie/2014/schema"
+       xmlns:yaxlib="http://yaxlib.codeplex.com/">
+
+  <Groups>
+    <Group Title="جزئیات"  ColumnCount="2" Template="fluid">
+      <Controls>
+        <Multiplexer Caption="ایستگاه" Name="StationSwitch">
+          <Controls>
+            <TextBox  Name="Station" ShowConditionSpel="#Container.SubFlowInstanceId==0" />
+            <Link  Name="Station2" Text="@{#Container.Station}" Url="Bocrud/Index" Params="xml=__SubFlowWorkCycle&amp;id=@{#Container.SubFlowInstanceId}" ShowConditionSpel="#Container.SubFlowInstanceId!=0" Popup="true" Popup_Height="500" Popup_Width="800" />
+          </Controls>
+        </Multiplexer>
+        <TextBox  Caption="موضوع" Name="Subject" />
+        <TextBox  Caption="عملیات" Name="Action" />
+        <TextBox  Caption="گزارش کار" Name="WorkReport" />
+        <TextBox  Caption="توضیحات" Name="Description" />
+        <Time  Caption="زمان توقف" Name="StopTime" />
+        <DateTimePicker  Caption="زمان کار" Name="EntryDt" ShowTime="true" />
+
+        <Multiplexer Caption="فرستنده" Name="Sender"  ShowConditionSpel="#Container.Sender!=null">
+          <Controls>            
+            <TextBox   Name="SenderName" GetValueSpel="#Container.Sender.Name" ShowConditionSpel="#Container.Sender.Image==null" />
+            <FileControl Name="SenderImage"  GridViewThumbnailWidth="30" ThumbnailWidth="50"
+                         Viewers="ImageViewer" GetValueSpel="#Container.Sender.Image"  Downloadable="false" ShowConditionSpel="#Container.Sender.Image!=null">
+            </FileControl>
+          </Controls>
+        </Multiplexer>
+
+        <!--<TextBox Name="Sender" Caption="فرستنده" GetValueSpel="#Container.Sender!=null ? #Container.Sender.Name : ''"/>-->
+
+        <TextBox Name="RecieverImages" Caption="گیرنده(گان)" GetValueSpel="#Container.Recievers!=null ? #Container.Recievers.!{Name}.join(', '): ''">
+          <!--<GridOuterStyles>
+            <Add Name="white-space" Value="normal"/>
+          </GridOuterStyles>-->
+        </TextBox>
+
+        <!--<FileControl Name="RecieverImages" Caption="گیرنده(گان)"  GridViewThumbnailWidth="30" ThumbnailWidth="50" Downloadable="false" Viewers="ImageViewer" 
+                     ShowConditionSpel="#Container.Recievers!=null"  
+                     GetValueSpel="#Container.Recievers.!{Image}" />-->
+
+
+        <List Name="Status" Caption="وضعیت" >
+          <Items>
+            <Add Value="Flowed" Text="جریان یافته"/>
+            <Add Value="Suspended" Text="متوقف"/>
+            <Add Value="Failed" Text="خطا"/>
+          </Items>
+        </List>
+      
+      </Controls>
+    </Group>
+  </Groups>
+
+  <Grid Caption="گردش کار"
+  EnableSearch="false" ToolbarSearch="false" AutoWidth="true" Width="100"
+  MultiSelect="true"  HideHeader="true" EnablePager="false">
+    <Columns>
+      <Column Width="150" Name="StationSwitch"  WordWrap="true"/>
+      <Column Width="350" Name="Subject"  WordWrap="true"/>
+      <Column Width="100" Name="Action"  />
+      <Column Width="100" Name="Description" />
+      <Column Width="100" Name="EntryDt" />
+      <Column Width="150" Name="StopTime" />
+      <Column Width="150" Name="Sender" />
+      <Column Width="150" Name="RecieverImages"   WordWrap="true"/>
+      <Column Width="100" Name="Status" />
+    </Columns>
+  </Grid>
+  <Operations>All</Operations>
+  <!--All Create Update ViewDetail Search Delete Print CreateRoot CreateChild TreeCopy TreeMove None-->
+</Bocrud>
+

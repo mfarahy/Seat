@@ -1,0 +1,36 @@
+﻿<Bocrud                 Style="classic"
+        DetailPosition="replacement"
+        Name="__EntryExtended"
+        Caption="EntryExtended"        
+        Height="480" Width="640"
+        ToStringFormat="" 
+DirectAccessible="false"
+AccessOperation="_EntryExtnd.A"
+        xmlns="http://exirtechsun.com/uie/2014/schema"
+       xmlns:yaxlib="http://yaxlib.codeplex.com/">
+
+  <Groups>
+    <Group Title="جزئیات"  ColumnCount="2" Template="fluid">
+      <Controls>
+<TextBox  Name="RefSettings" Caption="RefSettings"  /> 
+<TextBox  Name="WorkReport" Caption="WorkReport"  /> 
+<Many2One Name="Instance" BocrudXml="__AssignmentInstance" ForeignKey="InstanceId"   Caption="Instance"  />
+     </Controls>
+    </Group>
+  </Groups>
+
+<Grid Caption="لیست EntryExtended" 
+EnableSearch="false" ToolbarSearch="false" AutoWidth="false" Width="300"  
+MultiSelect="true">
+    <Columns>
+      <Column Width="150" Name="RefSettings" />
+      <Column Width="150" Name="WorkReport" />
+
+    </Columns>
+</Grid>
+<Operations>All</Operations><!--All Create Update ViewDetail Search Delete Print CreateRoot CreateChild TreeCopy TreeMove None-->
+  <FactoryMethodArgsSpel>
+      <String>T(Exir.Workbox.Services.EntryExtendedService, Exir.Workbox)</String>
+  </FactoryMethodArgsSpel>
+</Bocrud>
+

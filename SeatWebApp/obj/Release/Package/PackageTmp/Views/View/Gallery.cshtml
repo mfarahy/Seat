@@ -1,0 +1,202 @@
+﻿@using Exir.Framework.Uie
+@{
+    ViewBag.Title = "گالری فایل ها";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
+    var path = System.Configuration.ConfigurationManager.AppSettings["content-files-path"];
+    var images = new string[] { ".jpg", ".png", ".jpeg" };
+}
+
+<div class="page-header">
+    <h1>
+        گالری فایل ها
+        <small>
+            <i class="ace-icon icon icon-angle-double-right"></i>
+            این فایل ها بیشتر در محتویات صفحات استفاده شده اند.
+        </small>
+    </h1>
+</div><!-- /.page-header -->
+<style>
+    .ace-thumbnails > li {
+        width: 150px;
+        height: 150px;
+        background-color: #222a2d;
+    }
+
+        .ace-thumbnails > li img {
+            border: 1px solid white;
+        }
+</style>
+
+<div class="row">
+    <div class="col-xs-12">
+        <!-- PAGE CONTENT BEGINS -->
+        <div>
+            <ul class="ace-thumbnails clearfix">
+                @foreach (var file in Exir.Framework.Common.FileSystemProvider.Instance.GetFiles(Server.MapPath(path)))
+                {
+                    string fileName = Path.GetFileName(file);
+                    string ext = Path.GetExtension(file).ToLower();
+                    bool is_image = images.Contains(ext);
+                    string url = MyUrlHelper.ConvertPhysicalPathToAbsoluteUri(file, true);
+                    if (is_image)
+                    {
+                        <li>
+                            @if (is_image)
+                            {
+                                <a href="@url" title="@fileName" data-rel="colorbox">
+                                    <img style="max-width:150px;max-width:150px;" src="@url" />
+                                </a>
+                            }
+
+                            <div class="tools">
+                                <a class="get-link" data-url="@url" href="javascript:void(0)">
+                                    <i class="ace-icon icon icon-link"></i>
+                                </a>
+
+                                <a class="remove-image" data-value="@fileName" href="javascript:void(0)">
+                                    <i class="ace-icon icon icon-times red"></i>
+                                </a>
+                            </div>
+                        </li>
+                    }
+                    else
+                    {
+                        var extension = Path.GetExtension(fileName).TrimStart('.') + ".png";
+                        <li>
+
+                            <a href="@url" title="@fileName">
+                                <img style="max-width:150px;max-width:150px;" src="/assets/img/icons/@extension" />
+                            </a>
+                            <div class="tools">
+                                <a class="get-link" data-url="@url" href="javascript:void(0)">
+                                    <i class="ace-icon icon icon-link"></i>
+                                </a>
+
+                                <a class="remove-image" data-value="@fileName" href="javascript:void(0)">
+                                    <i class="ace-icon icon icon-times red"></i>
+                                </a>
+                            </div>
+                        </li>
+                    }
+                }
+
+            </ul>
+        </div><!-- PAGE CONTENT ENDS -->
+    </div><!-- /.col -->
+</div><!-- /.row -->
+
+
+<div class="row">
+    <div class="col-xs-12">
+        <div class="widget-box">
+            <div class="widget-header">
+                <h4 class="widget-title">آپلود فایل</h4>
+
+                <div class="widget-toolbar">
+                    <a href="#" data-action="collapse">
+                        <i class="ace-icon icon icon-chevron-up"></i>
+                    </a>
+
+                    <a href="#" data-action="close">
+                        <i class="ace-icon icon icon-times"></i>
+                    </a>
+                </div>
+            </div>
+
+            <div class="widget-body">
+                <div class="widget-main">
+                    <form action="/View/UploadToGallery" method="post" enctype="multipart/form-data">
+                        <div class="form-group">
+                            <div class="col-xs-12">
+                                <input type="file" name="id-input-file-2" id="id-input-file-2" />
+                            </div>
+                        </div>
+
+
+                        <div class="form-actions center">
+                            <button type="submit" class="btn btn-sm btn-success">
+                                آپلود
+                                <i class="ace-icon icon icon-upload icon-on-right bigger-110"></i>
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+
+</div>
+<script src="/assets/tem/ace/assets/js/jquery.colorbox.min.js"></script>
+<!-- inline scripts related to this page -->
+<script type="text/javascript">
+    jQuery(function ($) {
+        var $overflow = '';
+        var colorbox_params = {
+            rel: 'colorbox',
+            reposition: true,
+            scalePhotos: true,
+            scrolling: false,
+            previous: '<i class="ace-icon icon icon-arrow-left"></i>',
+            next: '<i class="ace-icon icon icon-arrow-right"></i>',
+            close: '&times;',
+            current: '{current} of {total}',
+            maxWidth: '100%',
+            maxHeight: '100%',
+            onOpen: function () {
+                $overflow = document.body.style.overflow;
+                document.body.style.overflow = 'hidden';
+            },
+            onClosed: function () {
+                document.body.style.overflow = $overflow;
+            },
+            onComplete: function () {
+                $.colorbox.resize();
+            }
+        };
+
+        $('.ace-thumbnails [data-rel="colorbox"]').colorbox(colorbox_params);
+        $("#cboxLoadingGraphic").html("<i class='ace-icon icon icon-spinner orange fa-spin'></i>");//let's add a custom loading icon
+
+
+        $(document).one('ajaxloadstart.page', function (e) {
+            $('#colorbox, #cboxOverlay').remove();
+        });
+
+
+        $('#id-input-file-2').ace_file_input({
+            no_file: 'هیچ فایلی انتخاب نشده است ...',
+            btn_choose: 'انتخاب فایل',
+            btn_change: 'تغییر',
+            droppable: false,
+            onchange: null,
+            thumbnail: false //| true | large
+            //whitelist:'gif|png|jpg|jpeg'
+            //blacklist:'exe|php'
+            //onchange:''
+            //
+        });
+
+        new ClipboardJS('.get-link', {
+            text: function (trigger) {
+                return $(trigger).data('url');
+            }
+        });
+
+        $('.remove-image').click(function () {
+            var link = $(this);
+            if (!confirm('ایا مطمئن هستید فایل ' + link.data('value') + ' حذف شود؟')) return;
+            $.ajax({
+                url: '/View/RemoveFromGallery',
+                method: 'POST',
+                data: { fileName: link.data('value') },
+                success: function () {
+                    link.closest('li').remove();
+                }
+            });
+        });
+
+    })
+</script>

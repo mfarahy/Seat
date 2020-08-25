@@ -1,0 +1,84 @@
+﻿@using System.Web.Optimization;
+@using Exir.Framework.Uie.Bocrud;
+@using Exir.Framework.Uie;
+@using Exir.Framework.Common
+@{
+    Layout = null;
+    string langCode = System.Globalization.CultureInfo.CurrentUICulture.IetfLanguageTag.Split('-')[0];
+    var rp = ObjectRegistry.GetObject<Exir.Framework.Common.IResourceProvider>();
+    var version = Exir.Framework.Common.FrameworkInfo.Version;
+    var appVersion = SeatDomain.ApplicationInfo.Version;
+
+}
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="description" content="سامانه ثبت پذیرندگی، درخواست و سهام VIP شرکت پرداخت الکترونک سداد جهت پشتیبانی و ثبت و پیگیری درخواست کارتخوان POS پوز، درخواست درگاه پرداخت اینترنتی IPG و درخواست موبایل پوز یا موبایل پوز MPOS" />
+    <!--[if IE]><meta http-equiv="X-UA-Compatible" content="IE=Standards"><![endif]-->
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+    <meta name="theme-color" content="#2C6AA0" />
+    <meta name="msapplication-navbutton-color" content="#2C6AA0" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="#2C6AA0" />
+
+    <title>
+        @if (IsSectionDefined("Title"))
+        {
+            @RenderSection("Title")
+        } : سهام VIP
+    </title>
+
+    @MyUrlHelper.RenderCssBundles("~/bundles/jquery_bocrud_ace/css/rtl", appVersion)
+
+
+    @if (IsSectionDefined("header"))
+    {
+        @RenderSection("header")
+    }
+    @MyUrlHelper.RenderCssBundles("~/bundles/control-panel/css", appVersion)
+
+</head>
+<body class="@(System.Threading.Thread.CurrentThread.CurrentUICulture.TextInfo.IsRightToLeft?"rtl":"") no-skin" clearlayout="true">
+
+    <script src="/assets/js/jquery-3.4.1.min.js"></script>
+
+    <div class="main-container" id="main-container">
+        <script type="text/javascript">
+            try { ace.settings.check('main-container', 'fixed'); } catch (e) { }
+        </script>
+        <div class="main-content">
+            <div class="row">
+
+                <div class="container-fluid">
+                    @{
+                        var text = RenderBody().ToHtmlString();
+                        if (text.StartsWith("s\r\n\r\n"))
+                        {
+                            text = text.Substring(4);
+                        }
+                        WriteLiteral(text);
+                    }
+                </div>
+
+            </div><!-- /.row -->
+
+        </div><!-- /.main-content -->
+    </div>
+    <script type="text/javascript">
+        if ("ontouchend" in document) document.write("<script src='/assets/tem/ace/assets/js/jquery.mobile.custom.min.js'>" + "<" + "/script>");
+    </script>
+
+    @if (IsSectionDefined("Scripts"))
+    {
+        @RenderSection("Scripts")
+    }
+    @MyUrlHelper.RenderJsBundles("~/bundles/jquery_bocrud_ace/js/" + langCode, appVersion)
+    @MyUrlHelper.RenderJsBundles("~/bundles/control-panel/js", appVersion)
+
+</body>
+</html>

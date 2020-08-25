@@ -1,0 +1,36 @@
+﻿<Bocrud Style="classic"
+        DetailPosition="up"
+        Name="__Single"
+        Caption="> کنترل تکی"
+        Height="500" Width="700"
+        ToStringFormat="{Caption}"
+        DirectAccessible="false"
+        xmlns="http://exirtechsun.com/uie/2014/schema"
+       xmlns:yaxlib="http://yaxlib.codeplex.com/">
+
+  <Groups>
+    <![CDATA[@{include:__FormControl#//uie:Groups/uie:Group[@Name='CommonSettings']}]]>
+
+    <Group Name="SpecialSettings" Title="تنظیمات مخصوص" ColumnCount="3" Template="fluid">
+      <Controls>
+        <Select2  Caption="فرم مربوطه" Name="BocrudXml" SpringExpression="GetAllFdlNames()"  DataValueField="Name" DataTextField="Caption">
+          <Validators>
+            <RequiredFieldValidator Required="true"/>
+          </Validators>
+        </Select2>
+        <CheckBox Name="UseDialog" Caption="نمایش دیالوگ ؟"/>
+        <TextBox Name="Format" Caption="فرمت" Type="Code"/>
+        <CheckBox Name="Validatable" Caption="اعتبارسنجی ؟"/>
+        
+      </Controls>
+    </Group>
+
+    <![CDATA[@{include:__FormControl#//uie:Groups/uie:Group[@Name='AdvancedCommonSettings']}]]>
+  </Groups>
+
+  <Operations>All</Operations>
+  <FactoryMethodArgsSpel>
+    <String>T(Exir.Framework.Uie.Bocrud.Single, Exir.Framework.Uie)</String>
+  </FactoryMethodArgsSpel>
+</Bocrud>
+

@@ -1,0 +1,54 @@
+﻿<#@ template debug="true" hostspecific="true" language="C#" #>
+<#@ assembly name="System.Core" #>
+<#@ import namespace="System.Linq" #>
+<#@ import namespace="System.IO" #>
+<#@ import namespace="System.Text" #>
+<#@ import namespace="System.Collections.Generic" #>
+<#@ output extension=".cs" #>
+
+//<#
+var host_path=	 Host.ResolvePath("");
+var host_path_frags=	host_path.Split('\\');
+	host_path=host_path_frags[host_path_frags.Length-4];
+ #>
+
+<#
+        string version_file_name = Host.ResolvePath("") + "\\AssemblyVersion.cs";
+        string content = System.IO.File.ReadAllText(version_file_name);
+        var versionKeyWord = "AssemblyVersion";
+		var vi=content.IndexOf(versionKeyWord);
+		if(vi<0){
+			string backup_content= System.IO.File.ReadAllText(Host.ResolvePath("") + "\\backup.txt");
+			#>
+			<#= backup_content #>
+			<#
+        }else{
+        var indexOfVersion = content.IndexOf(versionKeyWord) + versionKeyWord.Length;
+        var oldVersion = content.Substring(indexOfVersion, content.IndexOf("]", indexOfVersion) - indexOfVersion);
+        oldVersion = oldVersion.Trim('(', ')', '\"');
+        var fVersion = oldVersion.Split('.');
+        int MajorVersion = int.Parse(fVersion[0]);
+        int MinorVersion = int.Parse(fVersion[1]);;
+        int BuildNumber = int.Parse(fVersion[2]) + 1;
+		if(BuildNumber>1000){
+		MinorVersion++;
+		BuildNumber=0;
+		}
+
+        int Revision = (int)(DateTime.UtcNow - new DateTime(2017, 4, 1)).TotalDays;
+
+        string newVersion = MajorVersion + "." + MinorVersion + "." + BuildNumber + "." + Revision;
+
+#>
+using System.Reflection;
+using System.Runtime.CompilerServices;
+using System.Runtime.InteropServices;
+
+[assembly: AssemblyVersion("<#=newVersion#>")]
+[assembly: AssemblyFileVersion("<#=newVersion#>")]
+[assembly: AssemblyCompany("Exir")]
+[assembly: AssemblyCopyright("Copyright © 2012-<#=DateTime.Now.Year#>")]
+[assembly: AssemblyTrademark("")]
+
+
+<# } #>

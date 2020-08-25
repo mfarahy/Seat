@@ -1,0 +1,1059 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="SeatWebDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="AspNetRoles">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="256" Nullable="false" />
+        </EntityType>
+        <EntityType Name="AspNetUserRoles">
+          <Key>
+            <PropertyRef Name="UserId" />
+            <PropertyRef Name="RoleId" />
+          </Key>
+          <Property Name="UserId" Type="int" Nullable="false" />
+          <Property Name="RoleId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="AspNetUsers">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Access" Type="nvarchar(max)" />
+          <Property Name="Email" Type="nvarchar" MaxLength="256" />
+          <Property Name="EmailConfirmed" Type="bit" Nullable="false" />
+          <Property Name="PasswordHash" Type="nvarchar(max)" />
+          <Property Name="SecurityStamp" Type="nvarchar(max)" />
+          <Property Name="PhoneNumber" Type="nvarchar(max)" />
+          <Property Name="PhoneNumberConfirmed" Type="bit" Nullable="false" />
+          <Property Name="TwoFactorEnabled" Type="bit" Nullable="false" />
+          <Property Name="LockoutEndDateUtc" Type="datetime" />
+          <Property Name="LockoutEnabled" Type="bit" Nullable="false" />
+          <Property Name="AccessFailedCount" Type="int" Nullable="false" />
+          <Property Name="UserName" Type="nvarchar" MaxLength="256" Nullable="false" />
+        </EntityType>
+        <EntityType Name="BackstageJobs">
+          <Key>
+            <PropertyRef Name="BackstageJobPK" />
+          </Key>
+          <Property Name="BackstageJobPK" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="RunAs" Type="nvarchar" MaxLength="70" Nullable="false" />
+          <Property Name="TimeToRun" Type="datetime" Nullable="false" />
+          <Property Name="Status" Type="smallint" Nullable="false" />
+          <Property Name="Service" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="Action" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="SerializedArgs" Type="nvarchar(max)" />
+          <Property Name="RemoveIfSuccess" Type="bit" Nullable="false" />
+          <Property Name="RetryCount" Type="tinyint" Nullable="false" />
+          <Property Name="Priority" Type="smallint" Nullable="false" />
+          <Property Name="UniqueCode" Type="varchar" MaxLength="50" />
+          <Property Name="Dependency" Type="varchar" MaxLength="50" />
+          <Property Name="Queue" Type="varchar" MaxLength="50" />
+          <Property Name="Server" Type="varchar" MaxLength="50" />
+          <Property Name="Tags" Type="nvarchar" MaxLength="50" />
+          <Property Name="Debug" Type="bit" Nullable="false" />
+          <Property Name="Error" Type="nvarchar(max)" />
+          <Property Name="Duration" Type="bigint" />
+          <Property Name="RunDt" Type="datetime" />
+          <Property Name="ExecutionLog" Type="varbinary(max)" />
+          <Property Name="MaxCpu" Type="tinyint" />
+          <Property Name="MaxMemory" Type="tinyint" />
+          <Property Name="MidCpu" Type="tinyint" />
+          <Property Name="MidMemory" Type="tinyint" />
+        </EntityType>
+        <EntityType Name="HardLog">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="EntryDt" Type="datetime" Nullable="false" />
+          <Property Name="Level" Type="varchar" MaxLength="10" />
+          <Property Name="Kind" Type="tinyint" Nullable="false" />
+          <Property Name="UserName" Type="varchar" MaxLength="200" />
+          <Property Name="TraceKey" Type="bigint" />
+          <Property Name="IP" Type="varchar" MaxLength="20" />
+          <Property Name="Method" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="Type" Type="varchar" MaxLength="150" Nullable="false" />
+          <Property Name="ArgumentsCount" Type="int" Nullable="false" />
+          <Property Name="Arguments" Type="nvarchar(max)" />
+          <Property Name="ElapsedMilliseconds" Type="bigint" Nullable="false" />
+          <Property Name="Result" Type="nvarchar(max)" />
+          <Property Name="Message" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Exception" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="Holidays">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Date" Type="datetime" Nullable="false" />
+          <Property Name="HolidayType" Type="smallint" Nullable="false" />
+          <Property Name="HolidayTitle" Type="nvarchar" MaxLength="200" Nullable="false" />
+          <Property Name="Audit_CreateDate" Type="datetime" Nullable="false" />
+          <Property Name="Audit_CreatorUserName" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Audit_CreatorIP" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Audit_LastModifyDate" Type="datetime" Nullable="false" />
+          <Property Name="Audit_LastModifierUserName" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Audit_LastModifierIP" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="JobLogs">
+          <Key>
+            <PropertyRef Name="JobLogPK" />
+          </Key>
+          <Property Name="JobLogPK" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="RunDt" Type="datetime" Nullable="false" />
+          <Property Name="Status" Type="smallint" Nullable="false" />
+          <Property Name="JobName" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="Log" Type="varbinary(max)" Nullable="false" />
+          <Property Name="Duration" Type="time" Precision="7" Nullable="false" />
+          <Property Name="Audit_CreateDate" Type="datetime" Nullable="false" />
+          <Property Name="Audit_CreatorUserName" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Audit_CreatorIP" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Audit_LastModifyDate" Type="datetime" Nullable="false" />
+          <Property Name="Audit_LastModifierUserName" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Audit_LastModifierIP" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="KeyValues">
+          <Key>
+            <PropertyRef Name="KeyValuePK" />
+          </Key>
+          <Property Name="KeyValuePK" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="SetKey" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="RowKey" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Path" Type="varchar" MaxLength="1000" />
+          <Property Name="Key" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Value" Type="nvarchar(max)" />
+          <Property Name="Type" Type="tinyint" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ShortLinks">
+          <Key>
+            <PropertyRef Name="ShortLinkPK" />
+          </Key>
+          <Property Name="ShortLinkPK" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="OrginalLink" Type="nvarchar" MaxLength="1000" Nullable="false" />
+          <Property Name="Title" Type="nvarchar" MaxLength="50" />
+          <Property Name="Code" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="ReferCount" Type="int" Nullable="false" />
+          <Property Name="CreateDate" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="SystemMessages">
+          <Key>
+            <PropertyRef Name="MessagePK" />
+          </Key>
+          <Property Name="MessagePK" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Code" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Subject" Type="nvarchar" MaxLength="2000" Nullable="false" />
+          <Property Name="Text" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Media" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="Culture" Type="char" MaxLength="5" Nullable="false" />
+          <Property Name="IsEnable" Type="bit" Nullable="false" />
+          <Property Name="Audit_CreatorUserName" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Audit_CreatorIP" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Audit_CreateDate" Type="datetime" Nullable="false" />
+          <Property Name="Audit_LastModifyDate" Type="datetime" Nullable="false" />
+          <Property Name="Audit_LastModifierUserName" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Audit_LastModifierIP" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="UserActivities">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="EntryDt" Type="datetime" Nullable="false" />
+          <Property Name="UserName" Type="varchar" MaxLength="200" />
+          <Property Name="IP" Type="varchar" MaxLength="20" />
+          <Property Name="Message" Type="nvarchar" MaxLength="500" Nullable="false" />
+          <Property Name="PageName" Type="varchar" MaxLength="100" />
+          <Property Name="Metadata" Type="nvarchar" MaxLength="200" />
+          <Property Name="Session" Type="varchar" MaxLength="100" />
+          <Property Name="Action" Type="varchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="DashboardNotes">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Text" Type="nvarchar" MaxLength="3000" Nullable="false" />
+          <Property Name="Color" Type="varchar" MaxLength="6" />
+          <Property Name="Roles" Type="nvarchar" MaxLength="500" />
+          <Property Name="StartDt" Type="datetime" />
+          <Property Name="EndDt" Type="datetime" />
+          <Property Name="Audit_CreatorUserName" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Audit_CreatorIP" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Audit_CreateDate" Type="datetime" Nullable="false" />
+          <Property Name="Audit_LastModifyDate" Type="datetime" Nullable="false" />
+          <Property Name="Audit_LastModifierUserName" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Audit_LastModifierIP" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="DashboardUserNotes">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="NoteId" Type="int" Nullable="false" />
+          <Property Name="SeenDt" Type="datetime" />
+        </EntityType>
+        <EntityType Name="FeedBacks">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserName" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="CreateDate" Type="datetime" Nullable="false" />
+          <Property Name="Description" Type="nvarchar" MaxLength="1000" Nullable="false" />
+          <Property Name="LinkAddresss" Type="nvarchar" MaxLength="500" Nullable="false" />
+          <Property Name="Status" Type="int" Nullable="false" />
+          <Property Name="CategoryType" Type="int" Nullable="false" />
+          <Property Name="Mobile" Type="varchar" MaxLength="13" />
+          <Property Name="Email" Type="varchar" MaxLength="100" />
+          <Property Name="Response" Type="nvarchar" MaxLength="500" />
+        </EntityType>
+        <EntityType Name="HelpInformation">
+          <Key>
+            <PropertyRef Name="HelpInfoPK" />
+          </Key>
+          <Property Name="HelpInfoPK" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FormName" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="FieldName" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="Text" Type="nvarchar" MaxLength="4000" />
+          <Property Name="RoleName" Type="nvarchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="News">
+          <Key>
+            <PropertyRef Name="NewsPk" />
+          </Key>
+          <Property Name="NewsPk" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Subject" Type="nvarchar" MaxLength="250" Nullable="false" />
+          <Property Name="Abstract" Type="nvarchar" MaxLength="500" Nullable="false" />
+          <Property Name="Content" Type="nvarchar(max)" />
+          <Property Name="CategoryPk" Type="int" Nullable="false" />
+          <Property Name="IsDeleted" Type="bit" Nullable="false" />
+          <Property Name="IsArchived" Type="bit" Nullable="false" />
+          <Property Name="NewsArchiveDate" Type="date" />
+          <Property Name="NewsExpireDate" Type="date" />
+          <Property Name="Audit_CreateDate" Type="datetime" Nullable="false" />
+          <Property Name="Audit_CreatorUserName" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Audit_CreatorIP" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Audit_LastModifyDate" Type="datetime" Nullable="false" />
+          <Property Name="Audit_LastModifierUserName" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Audit_LastModifierIP" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="PageName" Type="nvarchar" MaxLength="500" />
+          <Property Name="Image" Type="varbinary(max)" />
+          <Property Name="Metadata" Type="nvarchar" MaxLength="500" />
+          <Property Name="SortNumber" Type="int" />
+          <Property Name="ColSpan" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="NewsCategory">
+          <Key>
+            <PropertyRef Name="CategoryPk" />
+          </Key>
+          <Property Name="CategoryPk" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CategoryTitle" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Audit_CreatorUserName" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Audit_CreateDate" Type="datetime" Nullable="false" />
+          <Property Name="Audit_CreatorIP" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Audit_LastModifyDate" Type="datetime" Nullable="false" />
+          <Property Name="Audit_LastModifierUserName" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Audit_LastModifierIP" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="IsListable" Type="bit" />
+          <Property Name="Code" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="UserProfile">
+          <Key>
+            <PropertyRef Name="ProfilePK" />
+          </Key>
+          <Property Name="ProfilePK" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" />
+          <Property Name="LastName" Type="nvarchar" MaxLength="50" />
+          <Property Name="Avatar" Type="varbinary(max)" />
+          <Property Name="Gender" Type="bit" />
+          <Property Name="Birthday" Type="datetime" />
+          <Property Name="PreventAnonyRegRequest" Type="bit" Nullable="false" />
+          <Property Name="Username" Type="varchar" MaxLength="70" Nullable="false" />
+          <Property Name="Audit_CreatorUserName" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Audit_CreatorIP" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Audit_CreateDate" Type="datetime" Nullable="false" />
+          <Property Name="Audit_LastModifyDate" Type="datetime" Nullable="false" />
+          <Property Name="Audit_LastModifierUserName" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Audit_LastModifierIP" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="PhoneNumberHashedConfirmCode" Type="int" />
+          <Property Name="EmailConfirmSendDt" Type="datetime" />
+          <Property Name="PhoneNumberConfirmSendDt" Type="datetime" />
+          <Property Name="PhoneNumberConfirmSendCount" Type="int" Nullable="false" />
+          <Property Name="EmailConfirmSendCount" Type="int" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_DashboardUserNotes_DashboardNotes">
+          <End Role="DashboardNotes" Type="Self.DashboardNotes" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="DashboardUserNotes" Type="Self.DashboardUserNotes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DashboardNotes">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="DashboardUserNotes">
+              <PropertyRef Name="NoteId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_AspNetUserRoles_dbo_AspNetRoles_RoleId">
+          <End Role="AspNetRoles" Type="Self.AspNetRoles" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="AspNetUserRoles" Type="Self.AspNetUserRoles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetRoles">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AspNetUserRoles">
+              <PropertyRef Name="RoleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_AspNetUserRoles_dbo_AspNetUsers_UserId">
+          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="AspNetUserRoles" Type="Self.AspNetUserRoles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AspNetUserRoles">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_News_Category">
+          <End Role="NewsCategory" Type="Self.NewsCategory" Multiplicity="1" />
+          <End Role="News" Type="Self.News" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="NewsCategory">
+              <PropertyRef Name="CategoryPk" />
+            </Principal>
+            <Dependent Role="News">
+              <PropertyRef Name="CategoryPk" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="SeatWebDBModelStoreContainer">
+          <EntitySet Name="AspNetRoles" EntityType="Self.AspNetRoles" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AspNetUserRoles" EntityType="Self.AspNetUserRoles" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AspNetUsers" EntityType="Self.AspNetUsers" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="BackstageJobs" EntityType="Self.BackstageJobs" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="HardLog" EntityType="Self.HardLog" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Holidays" EntityType="Self.Holidays" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="JobLogs" EntityType="Self.JobLogs" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="KeyValues" EntityType="Self.KeyValues" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ShortLinks" EntityType="Self.ShortLinks" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SystemMessages" EntityType="Self.SystemMessages" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UserActivities" EntityType="Self.UserActivities" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DashboardNotes" EntityType="Self.DashboardNotes" Schema="webapp" store:Type="Tables" />
+          <EntitySet Name="DashboardUserNotes" EntityType="Self.DashboardUserNotes" Schema="webapp" store:Type="Tables" />
+          <EntitySet Name="FeedBacks" EntityType="Self.FeedBacks" Schema="webapp" store:Type="Tables" />
+          <EntitySet Name="HelpInformation" EntityType="Self.HelpInformation" Schema="webapp" store:Type="Tables" />
+          <EntitySet Name="News" EntityType="Self.News" Schema="webapp" store:Type="Tables" />
+          <EntitySet Name="NewsCategory" EntityType="Self.NewsCategory" Schema="webapp" store:Type="Tables" />
+          <EntitySet Name="UserProfile" EntityType="Self.UserProfile" Schema="webapp" store:Type="Tables" />
+          <AssociationSet Name="FK_DashboardUserNotes_DashboardNotes" Association="Self.FK_DashboardUserNotes_DashboardNotes">
+            <End Role="DashboardNotes" EntitySet="DashboardNotes" />
+            <End Role="DashboardUserNotes" EntitySet="DashboardUserNotes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_AspNetUserRoles_dbo_AspNetRoles_RoleId" Association="Self.FK_dbo_AspNetUserRoles_dbo_AspNetRoles_RoleId">
+            <End Role="AspNetRoles" EntitySet="AspNetRoles" />
+            <End Role="AspNetUserRoles" EntitySet="AspNetUserRoles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_AspNetUserRoles_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserRoles_dbo_AspNetUsers_UserId">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="AspNetUserRoles" EntitySet="AspNetUserRoles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_News_Category" Association="Self.FK_News_Category">
+            <End Role="NewsCategory" EntitySet="NewsCategory" />
+            <End Role="News" EntitySet="News" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="SeatWebDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="BackstageJob">
+          <Key>
+            <PropertyRef Name="BackstageJobPK" />
+          </Key>
+          <Property Name="BackstageJobPK" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="RunAs" Type="String" MaxLength="70" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="TimeToRun" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Status" Type="Int16" Nullable="false" />
+          <Property Name="Service" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Action" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="SerializedArgs" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="RemoveIfSuccess" Type="Boolean" Nullable="false" />
+          <Property Name="RetryCount" Type="Byte" Nullable="false" />
+          <Property Name="Priority" Type="Int16" Nullable="false" />
+          <Property Name="UniqueCode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Dependency" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Queue" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Server" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Tags" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Debug" Type="Boolean" Nullable="false" />
+          <Property Name="Error" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Duration" Type="Int64" />
+          <Property Name="RunDt" Type="DateTime" Precision="3" />
+          <Property Name="ExecutionLog" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="MaxCpu" Type="Byte" />
+          <Property Name="MaxMemory" Type="Byte" />
+          <Property Name="MidCpu" Type="Byte" />
+          <Property Name="MidMemory" Type="Byte" />
+        </EntityType>
+        <EntityType Name="HardLog">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="EntryDt" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Level" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="Kind" Type="Byte" Nullable="false" />
+          <Property Name="UserName" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="TraceKey" Type="Int64" />
+          <Property Name="IP" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Method" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Type" Type="String" MaxLength="150" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ArgumentsCount" Type="Int32" Nullable="false" />
+          <Property Name="Arguments" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ElapsedMilliseconds" Type="Int64" Nullable="false" />
+          <Property Name="Result" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Message" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Exception" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Holiday">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Date" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="HolidayType" Type="Int16" Nullable="false" />
+          <Property Name="HolidayTitle" Type="String" MaxLength="200" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Audit_CreateDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Audit_CreatorUserName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Audit_CreatorIP" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Audit_LastModifyDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Audit_LastModifierUserName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Audit_LastModifierIP" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <EntityType Name="UserActivity">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="EntryDt" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="UserName" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="IP" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Message" Type="String" MaxLength="500" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="PageName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Metadata" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="Session" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Action" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="DashboardNote">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Text" Type="String" MaxLength="3000" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Color" Type="String" MaxLength="6" FixedLength="false" Unicode="false" />
+          <Property Name="Roles" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="StartDt" Type="DateTime" Precision="3" />
+          <Property Name="EndDt" Type="DateTime" Precision="3" />
+          <Property Name="Audit_CreatorUserName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Audit_CreatorIP" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Audit_CreateDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Audit_LastModifyDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Audit_LastModifierUserName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Audit_LastModifierIP" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="DashboardUserNotes" Relationship="Self.FK_DashboardUserNotes_DashboardNotes" FromRole="DashboardNotes" ToRole="DashboardUserNotes" />
+        </EntityType>
+        <EntityType Name="DashboardUserNote">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="NoteId" Type="Int32" Nullable="false" />
+          <Property Name="SeenDt" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="DashboardNote" Relationship="Self.FK_DashboardUserNotes_DashboardNotes" FromRole="DashboardUserNotes" ToRole="DashboardNotes" />
+        </EntityType>
+        <EntityType Name="FeedBack">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CreateDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Description" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="LinkAddresss" Type="String" MaxLength="500" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Status" Type="Int32" Nullable="false" />
+          <Property Name="CategoryType" Type="Int32" Nullable="false" />
+          <Property Name="Mobile" Type="String" MaxLength="13" FixedLength="false" Unicode="false" />
+          <Property Name="Email" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Response" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="HelpInformation">
+          <Key>
+            <PropertyRef Name="HelpInfoPK" />
+          </Key>
+          <Property Name="HelpInfoPK" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FormName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="FieldName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Text" Type="String" MaxLength="4000" FixedLength="false" Unicode="true" />
+          <Property Name="RoleName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="News">
+          <Key>
+            <PropertyRef Name="NewsPk" />
+          </Key>
+          <Property Name="NewsPk" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Subject" Type="String" MaxLength="250" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Abstract" Type="String" MaxLength="500" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Content" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="CategoryPk" Type="Int32" Nullable="false" />
+          <Property Name="IsDeleted" Type="Boolean" Nullable="false" />
+          <Property Name="IsArchived" Type="Boolean" Nullable="false" />
+          <Property Name="NewsArchiveDate" Type="DateTime" Precision="0" />
+          <Property Name="NewsExpireDate" Type="DateTime" Precision="0" />
+          <Property Name="Audit_CreateDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Audit_CreatorUserName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Audit_CreatorIP" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Audit_LastModifyDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Audit_LastModifierUserName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Audit_LastModifierIP" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="PageName" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="Image" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="Metadata" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="SortNumber" Type="Int32" />
+          <Property Name="ColSpan" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="NewsCategory" Relationship="Self.FK_News_Category" FromRole="News" ToRole="NewsCategory" />
+        </EntityType>
+        <EntityType Name="NewsCategory">
+          <Key>
+            <PropertyRef Name="CategoryPk" />
+          </Key>
+          <Property Name="CategoryPk" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CategoryTitle" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Audit_CreatorUserName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Audit_CreateDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Audit_CreatorIP" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Audit_LastModifyDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Audit_LastModifierUserName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Audit_LastModifierIP" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="IsListable" Type="Boolean" />
+          <Property Name="Code" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="News" Relationship="Self.FK_News_Category" FromRole="NewsCategory" ToRole="News" />
+        </EntityType>
+        <EntityType Name="UserProfile">
+          <Key>
+            <PropertyRef Name="ProfilePK" />
+          </Key>
+          <Property Name="ProfilePK" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="LastName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Avatar" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="Gender" Type="Boolean" />
+          <Property Name="Birthday" Type="DateTime" Precision="3" />
+          <Property Name="PreventAnonyRegRequest" Type="Boolean" Nullable="false" />
+          <Property Name="Username" Type="String" MaxLength="70" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Audit_CreatorUserName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Audit_CreatorIP" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Audit_CreateDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Audit_LastModifyDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Audit_LastModifierUserName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Audit_LastModifierIP" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="PhoneNumberHashedConfirmCode" Type="Int32" />
+          <Property Name="EmailConfirmSendDt" Type="DateTime" Precision="3" />
+          <Property Name="PhoneNumberConfirmSendDt" Type="DateTime" Precision="3" />
+          <Property Name="PhoneNumberConfirmSendCount" Type="Int32" Nullable="false" />
+          <Property Name="EmailConfirmSendCount" Type="Int32" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_DashboardUserNotes_DashboardNotes">
+          <End Role="DashboardNotes" Type="Self.DashboardNote" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="DashboardUserNotes" Type="Self.DashboardUserNote" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DashboardNotes">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="DashboardUserNotes">
+              <PropertyRef Name="NoteId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_News_Category">
+          <End Role="NewsCategory" Type="Self.NewsCategory" Multiplicity="1" />
+          <End Role="News" Type="Self.News" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="NewsCategory">
+              <PropertyRef Name="CategoryPk" />
+            </Principal>
+            <Dependent Role="News">
+              <PropertyRef Name="CategoryPk" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="SeatDBEntities1" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="BackstageJobs" EntityType="Self.BackstageJob" />
+          <EntitySet Name="HardLogs" EntityType="Self.HardLog" />
+          <EntitySet Name="Holidays" EntityType="Self.Holiday" />
+          <EntitySet Name="UserActivities" EntityType="Self.UserActivity" />
+          <EntitySet Name="DashboardNotes" EntityType="Self.DashboardNote" />
+          <EntitySet Name="DashboardUserNotes" EntityType="Self.DashboardUserNote" />
+          <EntitySet Name="FeedBacks" EntityType="Self.FeedBack" />
+          <EntitySet Name="HelpInformations" EntityType="Self.HelpInformation" />
+          <EntitySet Name="News" EntityType="Self.News" />
+          <EntitySet Name="NewsCategories" EntityType="Self.NewsCategory" />
+          <EntitySet Name="UserProfiles" EntityType="Self.UserProfile" />
+          <AssociationSet Name="FK_DashboardUserNotes_DashboardNotes" Association="Self.FK_DashboardUserNotes_DashboardNotes">
+            <End Role="DashboardNotes" EntitySet="DashboardNotes" />
+            <End Role="DashboardUserNotes" EntitySet="DashboardUserNotes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_News_Category" Association="Self.FK_News_Category">
+            <End Role="NewsCategory" EntitySet="NewsCategories" />
+            <End Role="News" EntitySet="News" />
+          </AssociationSet>
+          <EntitySet Name="ShortLinks" EntityType="SeatWebDBModel.ShortLink" />
+          <EntitySet Name="KeyValues" EntityType="SeatWebDBModel.KeyValue" />
+          <EntitySet Name="SystemMessages" EntityType="SeatWebDBModel.SystemMessage" />
+          <EntitySet Name="AspNetRoles" EntityType="SeatWebDBModel.AspNetRole" />
+          <EntitySet Name="AspNetUsers" EntityType="SeatWebDBModel.AspNetUser" />
+          <AssociationSet Name="AspNetUserRoles" Association="SeatWebDBModel.AspNetUserRoles">
+            <End Role="AspNetRole" EntitySet="AspNetRoles" />
+            <End Role="AspNetUser" EntitySet="AspNetUsers" />
+          </AssociationSet>
+          <EntitySet Name="JobLogs" EntityType="SeatWebDBModel.JobLog" />
+        </EntityContainer>
+        <EntityType Name="ShortLink">
+          <Key>
+            <PropertyRef Name="ShortLinkPK" />
+          </Key>
+          <Property Name="ShortLinkPK" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="OrginalLink" Type="String" Nullable="false" MaxLength="1000" FixedLength="false" Unicode="true" />
+          <Property Name="Title" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Code" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ReferCount" Type="Int32" Nullable="false" />
+          <Property Name="CreateDate" Type="DateTime" Nullable="false" Precision="3" />
+        </EntityType>
+        <EntityType Name="KeyValue">
+          <Key>
+            <PropertyRef Name="KeyValuePK" />
+          </Key>
+          <Property Name="KeyValuePK" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="SetKey" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="RowKey" Type="Guid" Nullable="false" />
+          <Property Name="Path" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+          <Property Name="Key" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Value" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Type" Type="Byte" Nullable="false" />
+        </EntityType>
+        <EntityType Name="SystemMessage">
+          <Key>
+            <PropertyRef Name="MessagePK" />
+          </Key>
+          <Property Name="MessagePK" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Code" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Subject" Type="String" Nullable="false" MaxLength="2000" FixedLength="false" Unicode="true" />
+          <Property Name="Text" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Media" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="Culture" Type="String" Nullable="false" MaxLength="5" FixedLength="true" Unicode="false" />
+          <Property Name="IsEnable" Type="Boolean" Nullable="false" />
+          <Property Name="Audit_CreatorUserName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Audit_CreatorIP" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Audit_CreateDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Audit_LastModifyDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Audit_LastModifierUserName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Audit_LastModifierIP" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="AspNetRole">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="AspNetUsers" Relationship="SeatWebDBModel.AspNetUserRoles" FromRole="AspNetRole" ToRole="AspNetUser" />
+        </EntityType>
+        <EntityType Name="AspNetUser">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Access" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Email" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="EmailConfirmed" Type="Boolean" Nullable="false" />
+          <Property Name="PasswordHash" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="SecurityStamp" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="PhoneNumber" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="PhoneNumberConfirmed" Type="Boolean" Nullable="false" />
+          <Property Name="TwoFactorEnabled" Type="Boolean" Nullable="false" />
+          <Property Name="LockoutEndDateUtc" Type="DateTime" Precision="3" />
+          <Property Name="LockoutEnabled" Type="Boolean" Nullable="false" />
+          <Property Name="AccessFailedCount" Type="Int32" Nullable="false" />
+          <Property Name="UserName" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="AspNetRoles" Relationship="SeatWebDBModel.AspNetUserRoles" FromRole="AspNetUser" ToRole="AspNetRole" />
+        </EntityType>
+        <Association Name="AspNetUserRoles">
+          <End Type="SeatWebDBModel.AspNetRole" Role="AspNetRole" Multiplicity="*" />
+          <End Type="SeatWebDBModel.AspNetUser" Role="AspNetUser" Multiplicity="*" />
+        </Association>
+        <EntityType Name="JobLog">
+          <Key>
+            <PropertyRef Name="JobLogPK" />
+          </Key>
+          <Property Name="JobLogPK" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="RunDt" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Status" Type="Int16" Nullable="false" />
+          <Property Name="JobName" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Log" Type="Binary" Nullable="false" MaxLength="Max" FixedLength="false" />
+          <Property Name="Duration" Type="Time" Nullable="false" Precision="7" />
+          <Property Name="Audit_CreateDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Audit_CreatorUserName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Audit_CreatorIP" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Audit_LastModifyDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Audit_LastModifierUserName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Audit_LastModifierIP" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="SeatWebDBModelStoreContainer" CdmEntityContainer="SeatDBEntities1">
+          <EntitySetMapping Name="BackstageJobs">
+            <EntityTypeMapping TypeName="SeatWebDBModel.BackstageJob">
+              <MappingFragment StoreEntitySet="BackstageJobs">
+                <ScalarProperty Name="BackstageJobPK" ColumnName="BackstageJobPK" />
+                <ScalarProperty Name="RunAs" ColumnName="RunAs" />
+                <ScalarProperty Name="TimeToRun" ColumnName="TimeToRun" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="Service" ColumnName="Service" />
+                <ScalarProperty Name="Action" ColumnName="Action" />
+                <ScalarProperty Name="SerializedArgs" ColumnName="SerializedArgs" />
+                <ScalarProperty Name="RemoveIfSuccess" ColumnName="RemoveIfSuccess" />
+                <ScalarProperty Name="RetryCount" ColumnName="RetryCount" />
+                <ScalarProperty Name="Priority" ColumnName="Priority" />
+                <ScalarProperty Name="UniqueCode" ColumnName="UniqueCode" />
+                <ScalarProperty Name="Dependency" ColumnName="Dependency" />
+                <ScalarProperty Name="Queue" ColumnName="Queue" />
+                <ScalarProperty Name="Server" ColumnName="Server" />
+                <ScalarProperty Name="Tags" ColumnName="Tags" />
+                <ScalarProperty Name="Debug" ColumnName="Debug" />
+                <ScalarProperty Name="Error" ColumnName="Error" />
+                <ScalarProperty Name="Duration" ColumnName="Duration" />
+                <ScalarProperty Name="RunDt" ColumnName="RunDt" />
+                <ScalarProperty Name="ExecutionLog" ColumnName="ExecutionLog" />
+                <ScalarProperty Name="MaxCpu" ColumnName="MaxCpu" />
+                <ScalarProperty Name="MaxMemory" ColumnName="MaxMemory" />
+                <ScalarProperty Name="MidCpu" ColumnName="MidCpu" />
+                <ScalarProperty Name="MidMemory" ColumnName="MidMemory" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="HardLogs">
+            <EntityTypeMapping TypeName="SeatWebDBModel.HardLog">
+              <MappingFragment StoreEntitySet="HardLog">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="EntryDt" ColumnName="EntryDt" />
+                <ScalarProperty Name="Level" ColumnName="Level" />
+                <ScalarProperty Name="Kind" ColumnName="Kind" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="TraceKey" ColumnName="TraceKey" />
+                <ScalarProperty Name="IP" ColumnName="IP" />
+                <ScalarProperty Name="Method" ColumnName="Method" />
+                <ScalarProperty Name="Type" ColumnName="Type" />
+                <ScalarProperty Name="ArgumentsCount" ColumnName="ArgumentsCount" />
+                <ScalarProperty Name="Arguments" ColumnName="Arguments" />
+                <ScalarProperty Name="ElapsedMilliseconds" ColumnName="ElapsedMilliseconds" />
+                <ScalarProperty Name="Result" ColumnName="Result" />
+                <ScalarProperty Name="Message" ColumnName="Message" />
+                <ScalarProperty Name="Exception" ColumnName="Exception" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Holidays">
+            <EntityTypeMapping TypeName="SeatWebDBModel.Holiday">
+              <MappingFragment StoreEntitySet="Holidays">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="HolidayType" ColumnName="HolidayType" />
+                <ScalarProperty Name="HolidayTitle" ColumnName="HolidayTitle" />
+                <ScalarProperty Name="Audit_CreateDate" ColumnName="Audit_CreateDate" />
+                <ScalarProperty Name="Audit_CreatorUserName" ColumnName="Audit_CreatorUserName" />
+                <ScalarProperty Name="Audit_CreatorIP" ColumnName="Audit_CreatorIP" />
+                <ScalarProperty Name="Audit_LastModifyDate" ColumnName="Audit_LastModifyDate" />
+                <ScalarProperty Name="Audit_LastModifierUserName" ColumnName="Audit_LastModifierUserName" />
+                <ScalarProperty Name="Audit_LastModifierIP" ColumnName="Audit_LastModifierIP" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UserActivities">
+            <EntityTypeMapping TypeName="SeatWebDBModel.UserActivity">
+              <MappingFragment StoreEntitySet="UserActivities">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="EntryDt" ColumnName="EntryDt" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="IP" ColumnName="IP" />
+                <ScalarProperty Name="Message" ColumnName="Message" />
+                <ScalarProperty Name="PageName" ColumnName="PageName" />
+                <ScalarProperty Name="Metadata" ColumnName="Metadata" />
+                <ScalarProperty Name="Session" ColumnName="Session" />
+                <ScalarProperty Name="Action" ColumnName="Action" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DashboardNotes">
+            <EntityTypeMapping TypeName="SeatWebDBModel.DashboardNote">
+              <MappingFragment StoreEntitySet="DashboardNotes">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Text" ColumnName="Text" />
+                <ScalarProperty Name="Color" ColumnName="Color" />
+                <ScalarProperty Name="Roles" ColumnName="Roles" />
+                <ScalarProperty Name="StartDt" ColumnName="StartDt" />
+                <ScalarProperty Name="EndDt" ColumnName="EndDt" />
+                <ScalarProperty Name="Audit_CreatorUserName" ColumnName="Audit_CreatorUserName" />
+                <ScalarProperty Name="Audit_CreatorIP" ColumnName="Audit_CreatorIP" />
+                <ScalarProperty Name="Audit_CreateDate" ColumnName="Audit_CreateDate" />
+                <ScalarProperty Name="Audit_LastModifyDate" ColumnName="Audit_LastModifyDate" />
+                <ScalarProperty Name="Audit_LastModifierUserName" ColumnName="Audit_LastModifierUserName" />
+                <ScalarProperty Name="Audit_LastModifierIP" ColumnName="Audit_LastModifierIP" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DashboardUserNotes">
+            <EntityTypeMapping TypeName="SeatWebDBModel.DashboardUserNote">
+              <MappingFragment StoreEntitySet="DashboardUserNotes">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="NoteId" ColumnName="NoteId" />
+                <ScalarProperty Name="SeenDt" ColumnName="SeenDt" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="FeedBacks">
+            <EntityTypeMapping TypeName="SeatWebDBModel.FeedBack">
+              <MappingFragment StoreEntitySet="FeedBacks">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="LinkAddresss" ColumnName="LinkAddresss" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="CategoryType" ColumnName="CategoryType" />
+                <ScalarProperty Name="Mobile" ColumnName="Mobile" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Response" ColumnName="Response" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="HelpInformations">
+            <EntityTypeMapping TypeName="SeatWebDBModel.HelpInformation">
+              <MappingFragment StoreEntitySet="HelpInformation">
+                <ScalarProperty Name="HelpInfoPK" ColumnName="HelpInfoPK" />
+                <ScalarProperty Name="FormName" ColumnName="FormName" />
+                <ScalarProperty Name="FieldName" ColumnName="FieldName" />
+                <ScalarProperty Name="Text" ColumnName="Text" />
+                <ScalarProperty Name="RoleName" ColumnName="RoleName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="News">
+            <EntityTypeMapping TypeName="SeatWebDBModel.News">
+              <MappingFragment StoreEntitySet="News">
+                <ScalarProperty Name="NewsPk" ColumnName="NewsPk" />
+                <ScalarProperty Name="Subject" ColumnName="Subject" />
+                <ScalarProperty Name="Abstract" ColumnName="Abstract" />
+                <ScalarProperty Name="Content" ColumnName="Content" />
+                <ScalarProperty Name="CategoryPk" ColumnName="CategoryPk" />
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+                <ScalarProperty Name="IsArchived" ColumnName="IsArchived" />
+                <ScalarProperty Name="NewsArchiveDate" ColumnName="NewsArchiveDate" />
+                <ScalarProperty Name="NewsExpireDate" ColumnName="NewsExpireDate" />
+                <ScalarProperty Name="Audit_CreateDate" ColumnName="Audit_CreateDate" />
+                <ScalarProperty Name="Audit_CreatorUserName" ColumnName="Audit_CreatorUserName" />
+                <ScalarProperty Name="Audit_CreatorIP" ColumnName="Audit_CreatorIP" />
+                <ScalarProperty Name="Audit_LastModifyDate" ColumnName="Audit_LastModifyDate" />
+                <ScalarProperty Name="Audit_LastModifierUserName" ColumnName="Audit_LastModifierUserName" />
+                <ScalarProperty Name="Audit_LastModifierIP" ColumnName="Audit_LastModifierIP" />
+                <ScalarProperty Name="PageName" ColumnName="PageName" />
+                <ScalarProperty Name="Image" ColumnName="Image" />
+                <ScalarProperty Name="Metadata" ColumnName="Metadata" />
+                <ScalarProperty Name="SortNumber" ColumnName="SortNumber" />
+                <ScalarProperty Name="ColSpan" ColumnName="ColSpan" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="NewsCategories">
+            <EntityTypeMapping TypeName="SeatWebDBModel.NewsCategory">
+              <MappingFragment StoreEntitySet="NewsCategory">
+                <ScalarProperty Name="CategoryPk" ColumnName="CategoryPk" />
+                <ScalarProperty Name="CategoryTitle" ColumnName="CategoryTitle" />
+                <ScalarProperty Name="Audit_CreatorUserName" ColumnName="Audit_CreatorUserName" />
+                <ScalarProperty Name="Audit_CreateDate" ColumnName="Audit_CreateDate" />
+                <ScalarProperty Name="Audit_CreatorIP" ColumnName="Audit_CreatorIP" />
+                <ScalarProperty Name="Audit_LastModifyDate" ColumnName="Audit_LastModifyDate" />
+                <ScalarProperty Name="Audit_LastModifierUserName" ColumnName="Audit_LastModifierUserName" />
+                <ScalarProperty Name="Audit_LastModifierIP" ColumnName="Audit_LastModifierIP" />
+                <ScalarProperty Name="IsListable" ColumnName="IsListable" />
+                <ScalarProperty Name="Code" ColumnName="Code" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UserProfiles">
+            <EntityTypeMapping TypeName="SeatWebDBModel.UserProfile">
+              <MappingFragment StoreEntitySet="UserProfile">
+                <ScalarProperty Name="EmailConfirmSendCount" ColumnName="EmailConfirmSendCount" />
+                <ScalarProperty Name="PhoneNumberConfirmSendCount" ColumnName="PhoneNumberConfirmSendCount" />
+                <ScalarProperty Name="PhoneNumberConfirmSendDt" ColumnName="PhoneNumberConfirmSendDt" />
+                <ScalarProperty Name="EmailConfirmSendDt" ColumnName="EmailConfirmSendDt" />
+                <ScalarProperty Name="PhoneNumberHashedConfirmCode" ColumnName="PhoneNumberHashedConfirmCode" />
+                <ScalarProperty Name="ProfilePK" ColumnName="ProfilePK" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="Avatar" ColumnName="Avatar" />
+                <ScalarProperty Name="Gender" ColumnName="Gender" />
+                <ScalarProperty Name="Birthday" ColumnName="Birthday" />
+                <ScalarProperty Name="PreventAnonyRegRequest" ColumnName="PreventAnonyRegRequest" />
+                <ScalarProperty Name="Username" ColumnName="Username" />
+                <ScalarProperty Name="Audit_CreatorUserName" ColumnName="Audit_CreatorUserName" />
+                <ScalarProperty Name="Audit_CreatorIP" ColumnName="Audit_CreatorIP" />
+                <ScalarProperty Name="Audit_CreateDate" ColumnName="Audit_CreateDate" />
+                <ScalarProperty Name="Audit_LastModifyDate" ColumnName="Audit_LastModifyDate" />
+                <ScalarProperty Name="Audit_LastModifierUserName" ColumnName="Audit_LastModifierUserName" />
+                <ScalarProperty Name="Audit_LastModifierIP" ColumnName="Audit_LastModifierIP" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ShortLinks">
+            <EntityTypeMapping TypeName="SeatWebDBModel.ShortLink">
+              <MappingFragment StoreEntitySet="ShortLinks">
+                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+                <ScalarProperty Name="ReferCount" ColumnName="ReferCount" />
+                <ScalarProperty Name="Code" ColumnName="Code" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="OrginalLink" ColumnName="OrginalLink" />
+                <ScalarProperty Name="ShortLinkPK" ColumnName="ShortLinkPK" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="KeyValues">
+            <EntityTypeMapping TypeName="SeatWebDBModel.KeyValue">
+              <MappingFragment StoreEntitySet="KeyValues">
+                <ScalarProperty Name="Type" ColumnName="Type" />
+                <ScalarProperty Name="Value" ColumnName="Value" />
+                <ScalarProperty Name="Key" ColumnName="Key" />
+                <ScalarProperty Name="Path" ColumnName="Path" />
+                <ScalarProperty Name="RowKey" ColumnName="RowKey" />
+                <ScalarProperty Name="SetKey" ColumnName="SetKey" />
+                <ScalarProperty Name="KeyValuePK" ColumnName="KeyValuePK" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SystemMessages">
+            <EntityTypeMapping TypeName="SeatWebDBModel.SystemMessage">
+              <MappingFragment StoreEntitySet="SystemMessages">
+                <ScalarProperty Name="Audit_LastModifierIP" ColumnName="Audit_LastModifierIP" />
+                <ScalarProperty Name="Audit_LastModifierUserName" ColumnName="Audit_LastModifierUserName" />
+                <ScalarProperty Name="Audit_LastModifyDate" ColumnName="Audit_LastModifyDate" />
+                <ScalarProperty Name="Audit_CreateDate" ColumnName="Audit_CreateDate" />
+                <ScalarProperty Name="Audit_CreatorIP" ColumnName="Audit_CreatorIP" />
+                <ScalarProperty Name="Audit_CreatorUserName" ColumnName="Audit_CreatorUserName" />
+                <ScalarProperty Name="IsEnable" ColumnName="IsEnable" />
+                <ScalarProperty Name="Culture" ColumnName="Culture" />
+                <ScalarProperty Name="Media" ColumnName="Media" />
+                <ScalarProperty Name="Text" ColumnName="Text" />
+                <ScalarProperty Name="Subject" ColumnName="Subject" />
+                <ScalarProperty Name="Code" ColumnName="Code" />
+                <ScalarProperty Name="MessagePK" ColumnName="MessagePK" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AspNetRoles">
+            <EntityTypeMapping TypeName="SeatWebDBModel.AspNetRole">
+              <MappingFragment StoreEntitySet="AspNetRoles">
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AspNetUsers">
+            <EntityTypeMapping TypeName="SeatWebDBModel.AspNetUser">
+              <MappingFragment StoreEntitySet="AspNetUsers">
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="AccessFailedCount" ColumnName="AccessFailedCount" />
+                <ScalarProperty Name="LockoutEnabled" ColumnName="LockoutEnabled" />
+                <ScalarProperty Name="LockoutEndDateUtc" ColumnName="LockoutEndDateUtc" />
+                <ScalarProperty Name="TwoFactorEnabled" ColumnName="TwoFactorEnabled" />
+                <ScalarProperty Name="PhoneNumberConfirmed" ColumnName="PhoneNumberConfirmed" />
+                <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+                <ScalarProperty Name="SecurityStamp" ColumnName="SecurityStamp" />
+                <ScalarProperty Name="PasswordHash" ColumnName="PasswordHash" />
+                <ScalarProperty Name="EmailConfirmed" ColumnName="EmailConfirmed" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Access" ColumnName="Access" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <AssociationSetMapping Name="AspNetUserRoles" TypeName="SeatWebDBModel.AspNetUserRoles" StoreEntitySet="AspNetUserRoles">
+            <EndProperty Name="AspNetUser">
+              <ScalarProperty Name="Id" ColumnName="UserId" />
+            </EndProperty>
+            <EndProperty Name="AspNetRole">
+              <ScalarProperty Name="Id" ColumnName="RoleId" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <EntitySetMapping Name="JobLogs">
+            <EntityTypeMapping TypeName="SeatWebDBModel.JobLog">
+              <MappingFragment StoreEntitySet="JobLogs">
+                <ScalarProperty Name="Audit_LastModifierIP" ColumnName="Audit_LastModifierIP" />
+                <ScalarProperty Name="Audit_LastModifierUserName" ColumnName="Audit_LastModifierUserName" />
+                <ScalarProperty Name="Audit_LastModifyDate" ColumnName="Audit_LastModifyDate" />
+                <ScalarProperty Name="Audit_CreatorIP" ColumnName="Audit_CreatorIP" />
+                <ScalarProperty Name="Audit_CreatorUserName" ColumnName="Audit_CreatorUserName" />
+                <ScalarProperty Name="Audit_CreateDate" ColumnName="Audit_CreateDate" />
+                <ScalarProperty Name="Duration" ColumnName="Duration" />
+                <ScalarProperty Name="Log" ColumnName="Log" />
+                <ScalarProperty Name="JobName" ColumnName="JobName" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="RunDt" ColumnName="RunDt" />
+                <ScalarProperty Name="JobLogPK" ColumnName="JobLogPK" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

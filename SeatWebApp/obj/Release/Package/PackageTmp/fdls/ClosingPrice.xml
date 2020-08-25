@@ -1,0 +1,58 @@
+<Bocrud ManagerFactoryType="Exir.Framework.Uie.Adapter.PresenterFactory, Exir.Framework.Uie.Adapter"
+                Style="classic"
+		AccessOperation="ClsngPrc.A"
+		DirectAccessible="false"
+        DetailPosition="up"
+        Name="ClosingPrice"
+        Caption="$ClosingPrice"        
+        Height="480" Width="640"
+        ToStringFormat="" 
+        xmlns="http://exirtechsun.com/uie/2014/schema"
+       xmlns:yaxlib="http://yaxlib.codeplex.com/">
+
+	   		
+  <Groups>
+    <Group Title="جزئیات"  ColumnCount="2" Template="fluid">
+      <Controls>
+<DateTimePicker  Caption="$DateTime" Name="DateTime"  /> 
+<TextBox  Caption="$InsCode" Name="InsCode"  /> 
+<TextBox  Caption="$PdrCotVal" Name="PdrCotVal"  /> 
+<TextBox  Caption="$PClosing" Name="PClosing"  /> 
+<TextBox  Caption="$First" Name="First"  /> 
+<TextBox  Caption="$Ystrdy" Name="Ystrdy"  /> 
+<TextBox  Caption="$Max" Name="Max"  /> 
+<TextBox  Caption="$Min" Name="Min"  /> 
+<TextBox  Caption="$TradeCount" Name="TradeCount"  /> 
+<TextBox  Caption="$Vol" Name="Vol"  /> 
+<TextBox  Caption="$Val" Name="Val"  /> 
+<TextBox  Caption="$BVal" Name="BVal"  /> 
+     </Controls>
+    </Group>
+  </Groups>
+
+<Grid Caption="$ClosingPrice" 
+EnableSearch="false" ToolbarSearch="true" AutoWidth="true" Width="100"  
+MultiSelect="true" EnableColumnChooser="false">
+    <Columns>
+      <Column Width="150" Name="DateTime" Searchable="true" />
+      <Column Width="150" Name="InsCode" Searchable="true" />
+      <Column Width="150" Name="PdrCotVal" Searchable="true" />
+      <Column Width="150" Name="PClosing" Searchable="true" />
+      <Column Width="150" Name="First" Searchable="true" />
+      <Column Width="150" Name="Ystrdy" Searchable="true" />
+      <Column Width="150" Name="Max" Searchable="true" />
+      <Column Width="150" Name="Min" Searchable="true" />
+      <Column Width="150" Name="TradeCount" Searchable="true" />
+      <Column Width="150" Name="Vol" Searchable="true" />
+      <Column Width="150" Name="Val" Searchable="true" />
+      <Column Width="150" Name="BVal" Searchable="true" />
+
+    </Columns>
+</Grid>
+<Operations>All</Operations><!--All Create Update ViewDetail Search Delete Print CreateRoot CreateChild TreeCopy TreeMove None-->
+  <FactoryMethodArgsSpel>
+    <String>'ClosingPriceService'</String>
+      <String>T(SeatWebApp.Models.ClosingPriceViewModel, SeatWebApp)</String>
+  </FactoryMethodArgsSpel>
+</Bocrud>
+

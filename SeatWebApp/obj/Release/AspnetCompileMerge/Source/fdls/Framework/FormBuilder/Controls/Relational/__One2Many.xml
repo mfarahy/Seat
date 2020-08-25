@@ -1,0 +1,35 @@
+﻿<Bocrud Style="classic"
+        DetailPosition="up"
+        Name="__One2Many"
+        Caption="> کنترل یک به چند"
+        Height="500" Width="700"
+        ToStringFormat="{Caption}"
+        DirectAccessible="false"
+        xmlns="http://exirtechsun.com/uie/2014/schema"
+       xmlns:yaxlib="http://yaxlib.codeplex.com/">
+
+  <Groups>
+    <![CDATA[@{include:__FormControl#//uie:Groups/uie:Group[@Name='CommonSettings']}]]>
+
+    <Group Title="تنظیمات مخصوص" ColumnCount="3" Template="fluid">
+      <Controls>
+        <Select2  Caption="فرم مربوطه" Name="BocrudXml" SpringExpression="GetAllFdlNames()"  DataValueField="Name" DataTextField="Caption">
+          <Validators>
+            <RequiredFieldValidator Required="true"/>
+          </Validators>
+        </Select2>
+        <TextBox Name="TargetProperty" Caption="خصوصیت کلیدی" Type="Code" />
+        <CheckBox Name="InlineEdit" Caption="ویرایش در جا ؟" />
+        <CheckBox Name="Sortable" Caption="قابل مرتب سازی ؟" />
+      </Controls>
+    </Group>
+
+    <![CDATA[@{include:__FormControl#//uie:Groups/uie:Group[@Name='AdvancedCommonSettings']}]]>
+  </Groups>
+
+  <Operations>All</Operations>
+  <FactoryMethodArgsSpel>
+    <String>T(Exir.Framework.Uie.Bocrud.One2Many, Exir.Framework.Uie)</String>
+  </FactoryMethodArgsSpel>
+</Bocrud>
+

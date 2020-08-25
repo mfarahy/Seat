@@ -1,0 +1,82 @@
+﻿<Bocrud                 Style="classic"
+        DetailPosition="up"
+        Name="ChangeHistory"
+        Caption="لاگ تغییرات"
+        Height="480" Width="640"
+        ToStringFormat="{Name}"
+DirectAccessible="true"
+AccessOperation="ChngHstry.A"
+                         DblClickAction="ShowDetails"
+        xmlns="http://exirtechsun.com/uie/2014/schema"
+       xmlns:yaxlib="http://yaxlib.codeplex.com/">
+
+  <ToolbarCommands>
+    <Add Name="Get" Icon="icon-document" Position="InRow" Tooltip="مشاهده جزئیات" Color="grid-view-btn"/>
+  </ToolbarCommands>
+  
+  <Groups>
+    <Group Title="جزئیات"  ColumnCount="3" Template="fluid">
+      <Controls>
+        
+        <TextBox  Caption="موجودیت" Name="Entity" GetValueSpel="#Resource('Glossary',#Container.Entity)" />
+        <TextBox  Caption="نام موجودیت" Name="EntityName"  />
+        <TextBox  Caption="ش.ش. موجودیت" Name="EntityId"  />
+        <TextBox  Caption="نام کاربر" Name="Username"  />
+        <Select2  Caption="عملیات" Name="Operation" >
+          <Items>
+            <Add Text="افزودن" Value="Added"/>
+            <Add Text="حذف" Value="Deleted"/>
+            <Add Text="ویرایش" Value="Modified"/>
+          </Items>
+        </Select2>
+        <DateTimePicker Caption="تاریخ" Name="ChangeDt"  ShowTime="true" />
+      </Controls>
+      <Groups>
+        <Group ColumnCount="1" Template="fluid" Title="ریز تغییرات" ShowConditionSpel="#Container.ChangeDetails!=null and #Container.ChangeDetails.Count>0">
+          <Controls>
+            <Repeater Caption="تغییرات مرتبط" Column="1" GetValueSpel="Service().GetRelatives(#Container.Id,#Container.TransactionKey)" Fluid="true">
+              <View>
+                <Groups>
+                  <Group ColumnCount="3" Template="fluid">
+                    <Controls>
+                      <Label  Caption="موجودیت" Name="Entity"  RenderStyle="InlineCaptionFirst" />
+                      <Label  Caption="نام موجودیت" Name="EntityName" RenderStyle="InlineCaptionFirst" />
+                      <Label  Caption="ش.ش. موجودیت" Name="EntityId"  RenderStyle="InlineCaptionFirst"/>
+                      <Label  Caption="عملیات" Name="Operation"  RenderStyle="InlineCaptionFirst"/>
+                    </Controls>
+                  </Group>
+                  <Group ColumnCount="1" Template="fluid">
+                    <Controls>
+                      <One2Many Name="ChangeDetails" BocrudXml="ChangeDetail" IsEditable="false"/>
+                    </Controls>
+                  </Group>
+                </Groups>
+              </View>
+            </Repeater>
+            <One2Many Name="ChangeDetails" BocrudXml="ChangeDetail" IsEditable="false"/>
+          </Controls>
+        </Group>
+      </Groups>
+    </Group>
+  </Groups>
+
+  <Grid Caption="لیست تغییرات" EnableColumnChooser="false"
+  EnableSearch="false" ToolbarSearch="true" AutoWidth="true" Width="100"
+  MultiSelect="false"  SortName="Id" SortOrder="desc">
+    <Columns>
+      <Column Width="150" Name="EntityId"   Searchable="true"  Sortable="true"/>
+      <Column Width="150" Name="Entity"   Searchable="true"  Sortable="true"/>
+      <Column Width="150" Name="Username"  Searchable="true"  Sortable="true" />
+      <Column Width="150" Name="Operation"  Searchable="true"  Sortable="true"/>
+      <Column Width="150" Name="ChangeDt"  Searchable="true"  Sortable="true"/>
+
+    </Columns>
+  </Grid>
+  <Operations>ViewDetail Search</Operations>
+  <!--All Create Update ViewDetail Search Delete Print CreateRoot CreateChild TreeCopy TreeMove None-->
+  <FactoryMethodArgsSpel>
+    <String>T(Exir.Framework.ApplicationService.ChangeLogger.ChangeHistoryService, Exir.Framework.ApplicationService)</String>
+    <String>T(Exir.Framework.Uie.Adapter.ChangeHistoryViewModel, Exir.Framework.Uie.Adapter)</String>
+  </FactoryMethodArgsSpel>
+</Bocrud>
+

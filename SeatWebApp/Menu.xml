@@ -1,0 +1,206 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<SystemMenuItem>
+  <Parameters />
+  <Childs>
+
+    <Menu Caption="صفحه اصلی" Icon="icon-home" ControllerName="Home" Action="Index"/>
+
+    <Menu Caption="نقشه بازار" Icon="icon-map" ControllerName="Bocrud">
+      <Parameters>
+        <Add Key="xml" Val="MarketMap" />
+        <Add Key="sv" Val="1" />
+        <Add Key="id" Val="1" />
+      </Parameters>
+    </Menu>
+
+    <Menu Caption="معاملات درشت" Icon="icon-hotjar" ControllerName="Bocrud">
+      <Parameters>
+        <Add Key="xml" Val="BigDeal" />
+      </Parameters>
+    </Menu>
+
+    <Menu Caption="مدیریت سبد" Icon="icon-shopping-basket" ControllerName="Bocrud" Operation="Portfolio">
+      <Parameters>
+        <Add Key="xml" Val="Portfolio" />
+      </Parameters>
+    </Menu>
+
+    <Menu Caption="زنگ هشدار" Icon="icon-bell" ControllerName="Bocrud" Operation="Ntfctn.A">
+      <Parameters>
+        <Add Key="xml" Val="Notification" />
+      </Parameters>
+    </Menu>
+
+    <Menu Caption="امنیت" Icon="icon-key" ControllerName="Bocrud">
+      <Childs>
+        <Menu Caption="کاربر" Operation="AspNtUsr.A" ControllerName="Bocrud">
+          <Parameters>
+            <Add Key="xml" Val="AspNetUser" />
+          </Parameters>
+          <Childs />
+        </Menu>
+        <Menu Caption="کاربران آنلاین" Operation="AspNtUsr.A" ControllerName="Bocrud">
+          <Parameters>
+            <Add Key="xml" Val="OnlineUsers" />
+          </Parameters>
+          <Childs />
+        </Menu>
+      </Childs>
+    </Menu>
+    <Menu Caption="سیستم" Icon="icon-cogs" ControllerName="Bocrud">
+      <Parameters />
+      <Childs>
+
+        <Menu Caption="لاگ" >
+          <Parameters />
+          <Childs>
+            <Menu Caption="لاگ سخت" Operation="HrdLg.R" ControllerName="Bocrud">
+              <Parameters>
+                <Add Key="xml" Val="HardLog" />
+              </Parameters>
+              <Childs />
+            </Menu>
+            <Menu Caption="لاگ خطا" Operation="ExhExcptnLg.A" ControllerName="Bocrud">
+              <Parameters>
+                <Add Key="xml" Val="ExhExceptionLog" />
+              </Parameters>
+              <Childs />
+            </Menu>
+            <Menu Caption="لاگ سیستم" Operation="_Lg.A" ControllerName="Bocrud">
+              <Parameters>
+                <Add Key="xml" Val="__Log" />
+              </Parameters>
+              <Childs />
+            </Menu>
+            <Menu Caption="لاگ تغییرات" Operation="ChngHstry.A" ControllerName="Bocrud">
+              <Parameters>
+                <Add Key="xml" Val="ChangeHistory" />
+              </Parameters>
+              <Childs />
+            </Menu>
+            <Menu Caption="لاگ فعالیت کاربر" Operation="UsrActvty.A" ControllerName="Bocrud">
+              <Parameters>
+                <Add Key="xml" Val="UserActivity" />
+              </Parameters>
+              <Childs />
+            </Menu>
+          </Childs>
+        </Menu>
+        <Menu Caption="صف کار" Operation="BckstgJb.A" ControllerName="Bocrud">
+          <Parameters>
+            <Add Key="xml" Val="BackstageJob" />
+          </Parameters>
+          <Childs />
+        </Menu>
+        <Menu Caption="گزارشات کش">
+          <Parameters />
+          <Childs>
+            <Menu Caption="کش سامانه" Operation="CacheRpt.A" ControllerName="Bocrud">
+              <Parameters>
+                <Add Key="xml" Val="CacheReport" />
+              </Parameters>
+              <Childs />
+            </Menu>
+          </Childs>
+        </Menu>
+        <Menu Caption="مدیریت خطا">
+          <Parameters />
+          <Childs>
+            <Menu Caption="خطاهای جایگزین" Operation="ExhFrndlyExcptn.A" ControllerName="Bocrud">
+              <Parameters>
+                <Add Key="xml" Val="ExhFriendlyException" />
+              </Parameters>
+              <Childs />
+            </Menu>
+            <Menu Caption="سازنده خطای جایگزین" Operation="ExhRslvr.A" ControllerName="Bocrud">
+              <Parameters>
+                <Add Key="xml" Val="ExhResolver" />
+              </Parameters>
+              <Childs />
+            </Menu>
+          </Childs>
+        </Menu>
+
+        <Menu Caption="فرم ساز" Operation="FrmBldr.A" ControllerName="Bocrud" Icon="icon-window-alt">
+          <Parameters>
+            <Add Key="xml" Val="__FdlModel" />
+          </Parameters>
+          <Childs />
+        </Menu>
+        <Menu Caption="لینک‌های کوتاه شده" Operation="ShrtLnk.A" ControllerName="Bocrud" Icon="icon-link">
+          <Parameters>
+            <Add Key="xml" Val="ShortLink" />
+          </Parameters>
+          <Childs />
+        </Menu>
+        <Menu Caption="داشبورد">
+          <Parameters />
+          <Childs>
+            <Menu Caption="ویجت" Operation="C_Dsh_WdgtInstncs.A" ControllerName="Bocrud">
+              <Parameters>
+                <Add Key="xml" Val="C__Dash_WidgetInstances" />
+              </Parameters>
+              <Childs />
+            </Menu>
+            <Menu Caption="انواع ویجت" Operation="C_Dsh_WdgtDfntns.A" ControllerName="Bocrud">
+              <Parameters>
+                <Add Key="xml" Val="C__Dash_WidgetDefinitions" />
+              </Parameters>
+              <Childs />
+            </Menu>
+            <Menu Caption="ویجت های کاربران" Operation="C_Dsh_UsrWdgts.A" ControllerName="Bocrud">
+              <Parameters>
+                <Add Key="xml" Val="C__Dash_UserWidgets" />
+              </Parameters>
+              <Childs />
+            </Menu>
+            <Menu Caption="یادداشت داشبورد" Operation="DshbrdNt.A" ControllerName="Bocrud">
+              <Parameters>
+                <Add Key="xml" Val="DashboardNote" />
+              </Parameters>
+              <Childs />
+            </Menu>
+          </Childs>
+        </Menu>
+      </Childs>
+    </Menu>
+    <Menu Caption="وب سایت" Icon="icon-globe" ControllerName="Bocrud">
+      <Parameters />
+      <Childs>
+        <Menu Caption="فایل های محتوا" ActionName="Gallery" Operation="HlpInfrmtn.A" ControllerName="View"/>
+        <Menu Caption="آیکن" ActionName="Icons" Operation="HlpInfrmtn.A" ControllerName="View"/>
+        <Menu Caption="اطلاعات راهنما" Operation="HlpInfrmtn.A" ControllerName="Bocrud">
+          <Parameters>
+            <Add Key="xml" Val="HelpInformation" />
+          </Parameters>
+          <Childs />
+        </Menu>
+        <Menu Caption="دسته بندی اخبار" Operation="NwsCtgry.A" ControllerName="Bocrud">
+          <Parameters>
+            <Add Key="xml" Val="NewsCategory" />
+          </Parameters>
+          <Childs />
+        </Menu>
+        <Menu Caption="اخبار" Operation="Nws.A" ControllerName="Bocrud">
+          <Parameters>
+            <Add Key="xml" Val="News" />
+          </Parameters>
+          <Childs />
+        </Menu>
+        <Menu Caption="بازخورد" Operation="FdBck.A" ControllerName="Bocrud">
+          <Parameters>
+            <Add Key="xml" Val="FeedBack" />
+          </Parameters>
+          <Childs />
+        </Menu>
+		  <Menu Caption="پیغامهای سیستم" Operation="SystmMsg.A" ControllerName="Bocrud">
+			  <Parameters>
+				  <Add Key="xml" Val="SystemMessage" />
+			  </Parameters>
+			  <Childs />
+		  </Menu>
+      </Childs>
+    </Menu>
+
+  </Childs>
+</SystemMenuItem>

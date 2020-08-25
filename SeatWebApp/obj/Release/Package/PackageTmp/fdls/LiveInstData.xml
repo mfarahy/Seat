@@ -1,0 +1,84 @@
+<Bocrud ManagerFactoryType="Exir.Framework.Uie.Adapter.PresenterFactory, Exir.Framework.Uie.Adapter"
+                Style="classic"
+		AccessOperation="LvInstDt.A"
+		DirectAccessible="false"
+        DetailPosition="up"
+        Name="LiveInstData"
+        Caption="$LiveInstData"        
+        Height="480" Width="640"
+        ToStringFormat="" 
+        xmlns="http://exirtechsun.com/uie/2014/schema"
+       xmlns:yaxlib="http://yaxlib.codeplex.com/">
+
+	   		
+  <Groups>
+    <Group Title="جزئیات"  ColumnCount="2" Template="fluid">
+      <Controls>
+<TextBox  Caption="$InsCode" Name="InsCode"  /> 
+<RawValue  Caption="$EstimatedEPS" Name="EstimatedEPS"  /> 
+<TextBox  Caption="$ZTitad" Name="ZTitad"  /> 
+<TextBox  Caption="$Flow" Name="Flow"  /> 
+<TextBox  Caption="$MinYear" Name="MinYear"  /> 
+<TextBox  Caption="$MaxYear" Name="MaxYear"  /> 
+<TextBox  Caption="$QTotTran5JAvg" Name="QTotTran5JAvg"  /> 
+<RawValue  Caption="$SectorPE" Name="SectorPE"  /> 
+<RawValue  Caption="$KAjCapValCpsIdx" Name="KAjCapValCpsIdx"  /> 
+<TextBox  Caption="$PriceMin" Name="PriceMin"  /> 
+<TextBox  Caption="$PriceMax" Name="PriceMax"  /> 
+<DateTimePicker  Caption="$DEven" Name="DEven"  /> 
+<TextBox  Caption="$Status" Name="Status"  /> 
+<TextBox  Caption="$PriceYesterday" Name="PriceYesterday"  /> 
+<TextBox  Caption="$Last" Name="Last"  /> 
+<TextBox  Caption="$Count" Name="Count"  /> 
+<TextBox  Caption="$PdrCotVal" Name="PdrCotVal"  /> 
+<TextBox  Caption="$PClosing" Name="PClosing"  /> 
+<TextBox  Caption="$Vol" Name="Vol"  /> 
+<TextBox  Caption="$Val" Name="Val"  /> 
+<TextBox  Caption="$BVal" Name="BVal"  /> 
+<RawValue  Caption="$NAV" Name="NAV"  /> 
+<DateTimePicker  Caption="$NAVDate" Name="NAVDate"  /> 
+<TextBox  Caption="$PSGelStaMin" Name="PSGelStaMin"  /> 
+<TextBox  Caption="$PSGelStaMax" Name="PSGelStaMax"  /> 
+     </Controls>
+    </Group>
+  </Groups>
+
+<Grid Caption="$LiveInstData" 
+EnableSearch="false" ToolbarSearch="true" AutoWidth="true" Width="100"  
+MultiSelect="true" EnableColumnChooser="false">
+    <Columns>
+      <Column Width="150" Name="InsCode" Searchable="true" />
+      <Column Width="150" Name="EstimatedEPS" Searchable="true" />
+      <Column Width="150" Name="ZTitad" Searchable="true" />
+      <Column Width="150" Name="Flow" Searchable="true" />
+      <Column Width="150" Name="MinYear" Searchable="true" />
+      <Column Width="150" Name="MaxYear" Searchable="true" />
+      <Column Width="150" Name="QTotTran5JAvg" Searchable="true" />
+      <Column Width="150" Name="SectorPE" Searchable="true" />
+      <Column Width="150" Name="KAjCapValCpsIdx" Searchable="true" />
+      <Column Width="150" Name="PriceMin" Searchable="true" />
+      <Column Width="150" Name="PriceMax" Searchable="true" />
+      <Column Width="150" Name="DEven" Searchable="true" />
+      <Column Width="150" Name="Status" Searchable="true" />
+      <Column Width="150" Name="PriceYesterday" Searchable="true" />
+      <Column Width="150" Name="Last" Searchable="true" />
+      <Column Width="150" Name="Count" Searchable="true" />
+      <Column Width="150" Name="PdrCotVal" Searchable="true" />
+      <Column Width="150" Name="PClosing" Searchable="true" />
+      <Column Width="150" Name="Vol" Searchable="true" />
+      <Column Width="150" Name="Val" Searchable="true" />
+      <Column Width="150" Name="BVal" Searchable="true" />
+      <Column Width="150" Name="NAV" Searchable="true" />
+      <Column Width="150" Name="NAVDate" Searchable="true" />
+      <Column Width="150" Name="PSGelStaMin" Searchable="true" />
+      <Column Width="150" Name="PSGelStaMax" Searchable="true" />
+
+    </Columns>
+</Grid>
+<Operations>All</Operations><!--All Create Update ViewDetail Search Delete Print CreateRoot CreateChild TreeCopy TreeMove None-->
+  <FactoryMethodArgsSpel>
+    <String>'LiveInstDataService'</String>
+      <String>T(SeatWebApp.Models.LiveInstDataViewModel, SeatWebApp)</String>
+  </FactoryMethodArgsSpel>
+</Bocrud>
+

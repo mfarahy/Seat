@@ -1,0 +1,30 @@
+﻿<Bocrud Style="classic"
+        DetailPosition="down"
+        Name="ExhExceptionLog-Summary"
+        Caption="فرم خلاصه وضعیت لاگ خطا"
+        DirectAccessible="false"
+        xmlns="http://exirtechsun.com/uie/2014/schema"
+       xmlns:yaxlib="http://yaxlib.codeplex.com/">
+
+  <Groups>
+    <Group Title="جزئیات"  ColumnCount="1" Template="fluid">
+      <Controls>
+        <BarChart ChartType="spline" Name="DataSeries" Caption="نرخ وقوع" BlackList="Year,Month,Day,Time" Height="200">
+          <Axis>
+            <x name="TimeCaption" type="timeseries">
+              <tick format="%Y-%m-%d"></tick>
+            </x>
+          </Axis>        
+        </BarChart>
+      </Controls>
+    </Group>
+  </Groups>
+
+  <FactoryMethodArgsSpel>
+    <String>T(Exir.Framework.ApplicationService.ExceptionHandling.ExceptionLogSummary, Exir.Framework.ApplicationService)</String>
+  </FactoryMethodArgsSpel>
+
+  <Operations>ViewDetail</Operations>
+  <!--All Create Update ViewDetail Search Delete Print CreateRoot CreateChild TreeCopy TreeMove None-->
+</Bocrud>
+

@@ -1,0 +1,46 @@
+<Bocrud ManagerFactoryType="Exir.Framework.Uie.Adapter.PresenterFactory, Exir.Framework.Uie.Adapter"
+                Style="classic"
+		AccessOperation="CdlMsg.A"
+		DirectAccessible="false"
+        DetailPosition="up"
+        Name="CodalMessage"
+        Caption="$CodalMessage"        
+        Height="480" Width="640"
+        ToStringFormat="" 
+        xmlns="http://exirtechsun.com/uie/2014/schema"
+       xmlns:yaxlib="http://yaxlib.codeplex.com/">
+
+	   		
+  <Groups>
+    <Group Title="جزئیات"  ColumnCount="2" Template="fluid">
+      <Controls>
+<TextBox  Caption="$Symbol" Name="Symbol"  /> 
+<TextBox  Caption="$CompanyName" Name="CompanyName"  /> 
+<TextBox  Caption="$Title" Name="Title"  /> 
+<DateTimePicker  Caption="$SentDateTime" Name="SentDateTime"  /> 
+<DateTimePicker  Caption="$PublishDateTime" Name="PublishDateTime"  /> 
+<TextBox  Caption="$InsCode" Name="InsCode"  /> 
+     </Controls>
+    </Group>
+  </Groups>
+
+<Grid Caption="$CodalMessage" 
+EnableSearch="false" ToolbarSearch="true" AutoWidth="true" Width="100"  
+MultiSelect="true" EnableColumnChooser="false">
+    <Columns>
+      <Column Width="150" Name="Symbol" Searchable="true" />
+      <Column Width="150" Name="CompanyName" Searchable="true" />
+      <Column Width="150" Name="Title" Searchable="true" />
+      <Column Width="150" Name="SentDateTime" Searchable="true" />
+      <Column Width="150" Name="PublishDateTime" Searchable="true" />
+      <Column Width="150" Name="InsCode" Searchable="true" />
+
+    </Columns>
+</Grid>
+<Operations>All</Operations><!--All Create Update ViewDetail Search Delete Print CreateRoot CreateChild TreeCopy TreeMove None-->
+  <FactoryMethodArgsSpel>
+    <String>'CodalMessageService'</String>
+      <String>T(SeatWebApp.Models.CodalMessageViewModel, SeatWebApp)</String>
+  </FactoryMethodArgsSpel>
+</Bocrud>
+
